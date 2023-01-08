@@ -3,8 +3,11 @@
 ## Stack
 
 Frontend :
+- Mobile :
 
 ![Flutter](https://img.icons8.com/color/48/null/flutter.png)
+
+- Web :
 
 Backend :
 
