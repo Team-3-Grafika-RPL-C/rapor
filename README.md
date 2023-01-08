@@ -5,13 +5,15 @@
 Frontend :
 - Mobile :
 
-![Flutter](https://img.icons8.com/color/48/null/flutter.png)
+![Flutter](https://img.icons8.com/color/64/null/flutter.png)
 
 - Web :
 
 Backend :
 
 ![Codeigniter](https://img.icons8.com/external-tal-revivo-color-tal-revivo/64/000000/external-codeigniter-is-an-open-source-software-rapid-development-web-framework-logo-color-tal-revivo.png)
+
+![PostgreSQl](https://img.icons8.com/color/64/null/postgreesql.png)
 
 ## Message Commit Style
 
