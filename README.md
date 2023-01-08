@@ -4,7 +4,7 @@
 
 Frontend :
 
-![Flutter](https://img.icons8.com/color/48/null/flutter.png)
+![Flutter](https://img.icons8.com/color/96/null/flutter.png)
 
 Backend :
 
