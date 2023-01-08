@@ -33,24 +33,6 @@ Referensi:
 
 Lihat [disini](https://hackernoon.com/git-branch-naming-convention-7-best-practices-to-follow-1c2l33g2) untuk panduan penamanan branch.
 
-- Contoh :
-
-```powershell
-sandy_login_new
-```
-
-## Import
-
-Urutan dalam meng-import pada file JS:
-
-1. Assets
-2. Library
-3. Layouts
-4. Pages
-5. Sections
-6. Components
-7. Types
-
 ## Tips
 
 - Ketika lupa buat branch baru tetapi udah ada perubahan yang belum di commit ([solusi](https://stackoverflow.com/a/2569513/16478205))
