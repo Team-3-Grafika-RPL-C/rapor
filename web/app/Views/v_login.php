@@ -5,27 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <!-- Bulma -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
 </head>
 <body>
-<div class="container">
-    <div class="columns is-flex is-justify-content-center">
-        <div class="column is-three-quarters">
-            <div class="card is-flex is-justify-content-center">
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-content">
-                            <h1 class="title is-1">Selamat Datang!</h1>
-                            <p class="subtitle is-flex is-justify-content-center">Silahkan Masuk Terlebih Dahulu</p>
+    <!-- Navbar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a href="" class="navbar-item">
+                <img src="<?= base_url(); ?>/assets/rapodig.png">
+            </a>
+        </div>
+    </nav>
+    <!-- Card -->
+    <div class="container mx-auto">
+        <div class="columns is-flex is-justify-content-center">
+            <div class="column is-half">
+                <div class="card is-flex is-justify-content-center">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <h1 class="title is-1">Selamat Datang!</h1>
+                                <p class="subtitle is-flex is-justify-content-center">Silahkan Masuk Terlebih Dahulu</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="content">
-                        <form action="" method="post"></form>
+                        <div class="content py-6">
+                            <form action="" method="post">
+                                <div class="field">
+                                    <label for="label">Username</label>
+                                    <div class="control has-icons-left has-icons-right">
+                                        <input class="input" type="text" name="text" id="" placeholder="Nama">
+                                        <span class="icon is-small is-left">
+                                            <i class="ri-user-3-fill"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label for="label">Password</label>
+                                    <div class="control has-icons-left has-icons-right">
+                                        <input class="input" type="password" name="password" id="" placeholder="NIP">
+                                        <span class="icon is-small is-left">
+                                            <i class="ri-lock-fill"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="control is-flex is-justify-content-end py-3">
+                                    <button class="button is-rounded" style="min-width: 16vh;background-color: #845EF7; color: white" id="login-btn" type="submit">Login</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>
