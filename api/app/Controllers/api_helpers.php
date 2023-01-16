@@ -65,7 +65,7 @@ class Api_helpers extends ResourceController
 
     public function isAdmin(string $token)
     {
-        $query = "SELECT a.is_admin FROM accounts.account a WHERE a.id = (SELECT ass.id_account FROM account.session ass WHERE ass.token = ?)";
+        $query = "SELECT a.is_admin FROM accounts.account a WHERE a.id = (SELECT ass.id_account FROM accounts.session ass WHERE ass.token = ?)";
         return $this->queryGetFirst($query, [$token])['is_admin'] == "t";
     }
 

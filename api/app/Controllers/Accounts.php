@@ -167,4 +167,25 @@ class Accounts extends ResourceController
             'message' => lang('Message.session_validate')
         ]);
     }
+
+
+    public function logout() // GET
+    {
+        $jwt = $this->request->getCookie('jwt');
+
+        $token = getTokenJwt($jwt);
+        if ($token === false) {
+            return $this->respond([
+                'message' => lang('Message.login_required')
+            ], 401);
+        }
+        
+        if ($this->api_helpers->clearUnusedSession($token, true) === false) {
+            return $this->respond(status: 500);
+        }
+
+        $this->response->deleteCookie('jwt');
+
+        return $this->respond(status: 200);
+    }
 }

@@ -100,7 +100,7 @@ function getLanguage()
     return $language;
 }
 
-function generateIdTokenWithToken(string $id)
+function generateIdTokenWithId(string $id)
 {
     return hash('sha256', uniqid() . $id);
 }
