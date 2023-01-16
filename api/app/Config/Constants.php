@@ -92,3 +92,6 @@ define('EVENT_PRIORITY_NORMAL', 100);
  * @deprecated Use \CodeIgniter\Events\Events::PRIORITY_HIGH instead.
  */
 define('EVENT_PRIORITY_HIGH', 10);
+
+defined('LANGUAGE') || define('LANGUAGE', ['en', 'id']);
+defined('JWT_KEY') || define('JWT_KEY', 'i3rj29vweqgun394i0m200cods0eew33c20o0o2f');
