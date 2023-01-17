@@ -3,10 +3,9 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\m_login;
 use Tests\Support\Entity\User;
 
-class login extends BaseController
+class c_login extends BaseController
 {
     public function __construct()
     {
