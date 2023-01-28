@@ -10,7 +10,7 @@
     <title>Rapodig - Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link href="package/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <!-- Icon hehe -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
@@ -650,17 +650,17 @@
     </div>
 
    <!-- Bootstrap core JavaScript-->
-   <script src="<?= base_url(); ?>/vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <script src="<?= base_url(); ?>/package/jquery/jquery.min.js"></script>
+    <script src="<?= base_url(); ?>/package/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="<?= base_url(); ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?= base_url(); ?>/package/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url(); ?>/js/rapodig.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="<?= base_url(); ?>/vendor/chart.js/Chart.min.js"></script>
+    <script src="<?= base_url(); ?>/package/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="<?= base_url(); ?>/js/demo/chart-area-demo.js"></script>
