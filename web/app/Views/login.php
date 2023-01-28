@@ -32,7 +32,7 @@
                             <div class="col-lg-6 d-none d-lg-block card-right">
                                 <div class="d-flex justify-content-center pt-5">
                                     <div class="m-5 p-5">
-                                        <img class="p-5" src="<?= base_url(); ?>/assets/rapodig-removebg-preview.png" alt="Logo Rapodig">
+                                        <img class="p-5" src="<?= base_url(); ?>/assets/rapodig.png" alt="Logo Rapodig">
                                     </div>
                                 </div>
                             </div>
