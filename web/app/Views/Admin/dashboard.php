@@ -7,24 +7,29 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Rapodig - Dashboard</title>
 
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <!-- Icon hehe -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link rel="stylesheet" href="<?= base_url(); ?>/css/style.css">
     <link href="<?= base_url(); ?>/css/rapodig.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<?= base_url(); ?>/css/style.css">
   </head>
 
   <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
-      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+      <ul class="navbar-nav bg-indigo sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-          <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+          <div class="sidebar-brand-icon">
+            <img src="<?= base_url(); ?>/assets/logo-polowijen.png" alt="Logo SDN Polowijen 1 Malang" srcset="" height="45rem">
           </div>
-          <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+          <div class="sidebar-brand-text mt-2 mx-2"><p class="small font-weight-bold">SDN POLOWIJEN 1<br> MALANG</p></div>
         </a>
 
         <!-- Divider -->
@@ -33,28 +38,33 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
           <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="ri-dashboard-fill" style="font-size: 14px"></i>
             <span>Dashboard</span></a
           >
         </li>
 
         <!-- Divider -->
-        <hr class="sidebar-divider" />
+        <!-- <hr class="sidebar-divider" /> -->
 
         <!-- Heading -->
-        <div class="sidebar-heading">Interface</div>
+        <!-- <div class="sidebar-heading">Interface</div> -->
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
+            <i class="ri-book-2-fill" style="font-size: 14px"></i>
+            <span>Data Umum</span>
           </a>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Custom Components:</h6>
-              <a class="collapse-item" href="buttons.html">Buttons</a>
-              <a class="collapse-item" href="cards.html">Cards</a>
+              <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+              <a class="collapse-item" href="buttons.html">Data Kelas</a>
+              <a class="collapse-item" href="cards.html">Data Guru</a>
+              <a class="collapse-item" href="cards.html">Data Siswa</a>
+              <a class="collapse-item" href="cards.html">Data Mapel</a>
+              <a class="collapse-item" href="cards.html">Ekstrakurikuler</a>
+              <a class="collapse-item" href="cards.html">Capaian Pembelajaran</a>
+              <a class="collapse-item" href="cards.html">Tujuan Pembelajaran</a>
             </div>
           </div>
         </li>
@@ -62,31 +72,36 @@
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
+            <i class="ri-settings-2-line" style="font-size: 14px"></i>
+            <span>Setting Data</span>
           </a>
           <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Custom Utilities:</h6>
-              <a class="collapse-item" href="utilities-color.html">Colors</a>
-              <a class="collapse-item" href="utilities-border.html">Borders</a>
-              <a class="collapse-item" href="utilities-animation.html">Animations</a>
-              <a class="collapse-item" href="utilities-other.html">Other</a>
+              <h6 class="collapse-header">Setting Tahun Ajaran</h6>
+              <a class="collapse-item" href="utilities-color.html">Set Tahun Ajaran</a>
+              <a class="collapse-item" href="utilities-border.html">Set Semester</a>
+              <a class="collapse-item" href="utilities-animation.html">Set Guru Pelajaran</a>
+              <h6 class="collapse-header">Setting Siswa dan Guru</h6>
+              <a class="collapse-item" href="utilities-color.html">Set Siswa Kelas</a>
+              <a class="collapse-item" href="utilities-border.html">Set Siswa Ekskul</a>
+              <a class="collapse-item" href="utilities-animation.html">Set Guru Ekskul</a>
+              <h6 class="collapse-header">Setting Pelajaran</h6>
+              <a class="collapse-item" href="utilities-color.html">Set Pelajaran Kelas</a>
             </div>
           </div>
         </li>
 
         <!-- Divider -->
-        <hr class="sidebar-divider" />
+        <!-- <hr class="sidebar-divider" /> -->
 
         <!-- Heading -->
-        <div class="sidebar-heading">Addons</div>
+        <!-- <div class="sidebar-heading">Addons</div> -->
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
+            <i class="ri-draft-fill"></i>
+            <span>Penilaian</span>
           </a>
           <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -114,7 +129,7 @@
         <li class="nav-item">
           <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a
+            <span>Logout</span></a
           >
         </li>
 
@@ -124,13 +139,6 @@
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
           <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-
-        <!-- Sidebar Message -->
-        <div class="sidebar-card d-none d-lg-flex">
-          <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="..." />
-          <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-          <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
         </div>
       </ul>
       <!-- End of Sidebar -->
@@ -642,8 +650,8 @@
       </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url(); ?>/vendor/jquery/jquery.min.js"></script>
+   <!-- Bootstrap core JavaScript-->
+   <script src="<?= base_url(); ?>/vendor/jquery/jquery.min.js"></script>
     <script src="<?= base_url(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->

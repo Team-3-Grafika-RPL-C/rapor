@@ -16,7 +16,7 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-indigo o-hidden">
 
     <div class="container">
 
@@ -28,32 +28,32 @@
                 <div class="card o-hidden border-0 shadow-lg my-4">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
-                        <div class="row" style="height:90vh;">
+                        <div class="row">
                             <div class="col-lg-6 d-none d-lg-block card-right">
-                                <div class="d-flex justify-content-center">
+                                <div class="d-flex justify-content-center pt-5">
                                     <div class="m-5 p-5">
                                         <img class="p-5" src="<?= base_url(); ?>/assets/rapodig-removebg-preview.png" alt="Logo Rapodig">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 pb-5">
                                 <div class="p-5 mt-5">
                                     <div class="text-center">
-                                        <h1 class="bold">Selamat Datang!</h1>
+                                        <h1>Selamat Datang!</h1>
                                         <h5 class="mb-4">Silahkan masuk terlebih dahulu</h5>
                                     </div>
                                     <form class="user">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user text-muted"
+                                            <input type="text" class="form-control form-control-user login-placeholder"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Username">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password" class="form-control form-control-user login-placeholder"
                                                 id="exampleInputPassword" placeholder="Password">
                                         </div>
-                                        <div class="my-5">
-                                            <a href="" class="btn btn-user btn-block" style="background-color: #845EF7; color: white">
+                                        <div class="my-5 pb-5">
+                                            <a href="<?= base_url(); ?>/dashboard" class="btn btn-user btn-block" style="background-color: #845EF7; color: white">
                                                 Login
                                             </a>
                                         </div>
