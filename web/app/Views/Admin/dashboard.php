@@ -49,15 +49,14 @@
         <!-- Heading -->
         <!-- <div class="sidebar-heading">Interface</div> -->
 
-        <!-- Nav Item - Pages Collapse Menu -->
+        <!-- Nav Item - Data Umum Collapse Menu  -->
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDataUmum" aria-expanded="true" aria-controls="collapseDataUmum">
             <i class="ri-book-2-fill" style="font-size: 14px"></i>
             <span>Data Umum</span>
           </a>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div id="collapseDataUmum" class="collapse" aria-labelledby="headingDataUmum" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <!-- <h6 class="collapse-header">Custom Components:</h6> -->
               <a class="collapse-item" href="buttons.html">Data Kelas</a>
               <a class="collapse-item" href="cards.html">Data Guru</a>
               <a class="collapse-item" href="cards.html">Data Siswa</a>
@@ -69,13 +68,13 @@
           </div>
         </li>
 
-        <!-- Nav Item - Utilities Collapse Menu -->
+        <!-- Nav Item - Setting Data Collapse Menu -->
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettingData" aria-expanded="true" aria-controls="collapseSettingData">
             <i class="ri-settings-2-line" style="font-size: 14px"></i>
             <span>Setting Data</span>
           </a>
-          <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div id="collapseSettingData" class="collapse" aria-labelledby="headingSettingData" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Setting Tahun Ajaran</h6>
               <a class="collapse-item" href="utilities-color.html">Set Tahun Ajaran</a>
@@ -97,37 +96,60 @@
         <!-- Heading -->
         <!-- <div class="sidebar-heading">Addons</div> -->
 
-        <!-- Nav Item - Pages Collapse Menu -->
+        <!-- Nav Item - Penilaian Collapse Menu -->
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePenilaian" aria-expanded="true" aria-controls="collapsePenilaian">
             <i class="ri-draft-fill"></i>
             <span>Penilaian</span>
           </a>
-          <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div id="collapsePenilaian" class="collapse" aria-labelledby="headingPenilaian" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Input Data</h6>
               <a class="collapse-item" href="login.html">Input Nilai Mapel</a>
-              <a class="collapse-item" href="register.html">Input Nilai Ekstrakurikuler</a>
+              <a class="collapse-item" href="register.html">Input Nilai Ekskul</a>
               <div class="collapse-divider"></div>
               <h6 class="collapse-header">Rekap Nilai</h6>
               <a class="collapse-item" href="404.html">Rekap Nilai</a>
-              <a class="collapse-item" href="blank.html">Rekap Nilai Ekstrakurikuler</a>
+              <a class="collapse-item" href="blank.html">Rekap Nilai Ekskul</a>
             </div>
           </div>
         </li>
 
-        <!-- Nav Item - Charts -->
+        <!-- Nav Item - Presensi Collapse Menu -->
         <li class="nav-item">
-          <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a
-          >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePresensi" aria-expanded="true" aria-controls="collapsePresensi">
+            <i class="ri-calendar-check-line" style="font-size: 14px"></i>
+            <span>Presensi</span>
+          </a>
+          <div id="collapsePresensi" class="collapse" aria-labelledby="headingPresensi" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="buttons.html">Input Presensi</a>
+              <a class="collapse-item" href="cards.html">Rekap Presensi</a>
+            </div>
+          </div>
         </li>
 
-        <!-- Nav Item - Tables -->
+        <!-- Nav Item - Rapor Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRapor" aria-expanded="true" aria-controls="collapseRapor">
+            <i class="ri-book-read-fill" style="font-size: 14px"></i>
+            <span>Rapor</span>
+          </a>
+          <div id="collapseRapor" class="collapse" aria-labelledby="headingRapor" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="buttons.html">Rapor Semester</a>
+              <a class="collapse-item" href="cards.html">Catatan Semester</a>
+              <a class="collapse-item" href="cards.html">Status Kenaikan</a>
+              <a class="collapse-item" href="cards.html">Identitas Siswa</a>
+              <a class="collapse-item" href="cards.html">Pindah Sekolah</a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Nav Item - Logout -->
         <li class="nav-item">
           <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="ri-logout-box-line"></i>
             <span>Logout</span></a
           >
         </li>
