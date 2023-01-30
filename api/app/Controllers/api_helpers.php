@@ -74,4 +74,5 @@ class Api_helpers extends ResourceController
         $query = "SELECT count(x.id) as jml FROM $table x WHERE x.id = ? AND x.is_deleted != TRUE";
         return $this->queryGetFirst($query, [$id])['jml'] >= 1;
     }
+    
 }
