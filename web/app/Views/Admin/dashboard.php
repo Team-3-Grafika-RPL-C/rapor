@@ -5,7 +5,7 @@
           <!-- Begin Page Content -->
           <div class="container-fluid d-block">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-              <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Dashboard</h1>
+              <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Dashboard WI</h1>
             </div>
 
             <div class="row">
@@ -74,29 +74,42 @@
             
             <!-- Pie Chart -->
             <div class="col">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Data Siswa Berdasarkan Jenis Kelamin</h6>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Putra
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Putri
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              <div class="card shadow mb-4">
+                  <!-- Card Header - Dropdown -->
+                  <div
+                      class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                      <h6 class="m-0 font-weight-bold text-primary">Data Siswa Berdasarkan Jenis Kelamin</h6>
+                  </div>
+                  <!-- Card Body -->
+                  <div class="card-body">
+                      <div class="chart-pie pt-4 pb-2">
+                          <canvas id="myPieChart"></canvas>
+                      </div>
+                      <div class="mt-4 text-center small">
+                          <span class="mr-2">
+                              <i class="fas fa-circle text-primary"></i> Putra
+                          </span>
+                          <span class="mr-2">
+                              <i class="fas fa-circle text-success"></i> Putri
+                          </span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Bar Chart -->
+          <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Data Perkembangan Jumlah Siswa</h6>
+              </div>
+              <div class="card-body">
+                  <div class="chart-bar">
+                      <canvas id="myBarChart"></canvas>
+                  </div>
+              </div>
+          </div>
+
+      </div>
 
             
         </div>

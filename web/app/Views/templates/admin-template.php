@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -16,7 +17,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="<?= base_url(); ?>/package/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
-    <link href="<?= base_url(); ?>/css/rapodig.min.css" rel="stylesheet" />
+    <link href="<?= base_url(); ?>/css/rapodig.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?= base_url(); ?>/css/style.css">
   </head>
   <body id="page-top">
@@ -163,22 +164,21 @@
         </div>
       </ul>
       <!-- End of Sidebar -->
+
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
+
         <!-- Main Content -->
         <div id="content">
+
           <!-- Topbar -->
           <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
             <!-- Sidebar Toggle (Topbar) -->
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-              <i class="fa fa-bars"></i>
+                <i class="fa fa-bars"></i>
             </button>
 
-            <div class="">
-              <img src="<?= base_url(); ?>/assets/rapodig.png" alt="Logo Rapodig" height="45rem">
-            </div>
-
-            <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">              
               <!-- Nav Item - User Information -->
               <li class="nav-item">
@@ -186,13 +186,15 @@
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"><h5 class="mt-3">Welcome, User</h5></span>
                   <i class="ri-user-6-line ri-2x"></i>
                 </a>
-                </div>
               </li>
             </ul>
           </nav>
           <!-- End of Topbar -->
 
       <?= $this->renderSection('conten'); ?>
+      
+      </div>
+    </div>
       
     <!-- Bootstrap core JavaScript-->
     <script src="<?= base_url(); ?>/package/jquery/jquery.min.js"></script>
@@ -210,6 +212,7 @@
     <!-- Page level custom scripts -->
     <script src="<?= base_url(); ?>/js/demo/chart-area-demo.js"></script>
     <script src="<?= base_url(); ?>/js/demo/chart-pie-demo.js"></script>
+    <script src="<?= base_url(); ?>/js/demo/chart-bar-demo.js"></script>
 
     <!-- Page level plugins -->
     <script src="<?= base_url(); ?>/package/datatables/jquery.dataTables.min.js"></script>
