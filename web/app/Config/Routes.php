@@ -34,6 +34,7 @@ $routes->get('/dashboard', 'c_dashboard::index');
 $routes->get('/data-siswa', 'c_dashboard::dataSiswa');
 $routes->get('/data-kelas', 'c_dashboard::dataKelas');
 
+$routes->get('/test', 'c_dashboard::test');
 
 // $routes->get('/','c_login::index');
 // $routes->post('/', 'c_login::loginProcess');

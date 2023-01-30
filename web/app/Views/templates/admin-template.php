@@ -15,6 +15,7 @@
     <!-- Icon hehe -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Custom styles for this template-->
+    <link href="<?= base_url(); ?>/package/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="<?= base_url(); ?>/css/rapodig.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?= base_url(); ?>/css/style.css">
   </head>
@@ -165,7 +166,7 @@
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
-        <div>
+        <div id="content">
           <!-- Topbar -->
           <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
             <!-- Sidebar Toggle (Topbar) -->
