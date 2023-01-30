@@ -15,5 +15,10 @@ class c_dashboard extends BaseController
     {
         return view('admin/data-siswa');
     }
+
+    public function dataKelas()
+    {
+        return view('admin/data-kelas');
+    }
 }
     
