@@ -2,21 +2,18 @@
 
 namespace App\Controllers;
 
+use App\Controllers\BaseController;
+
 class c_dashboard extends BaseController
 {
     public function index()
     {
-        return view('Components/header')
-        . view('Components/sidebar')
-        . view('admin/dashboard')
-        . view('Components/footer');
+        return view('admin/dashboard');
     }
 
     public function dataSiswa()
     {
-        return view('Components/header')
-        . view('Components/sidebar')
-        . view('admin/data-siswa')
-        . view('Components/footer');
+        return view('admin/data-siswa');
     }
 }
+    

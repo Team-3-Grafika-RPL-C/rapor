@@ -1,32 +1,6 @@
+<?= $this->extend('templates/admin-template.php'); ?>
 
-      <!-- Content Wrapper -->
-      <div id="content-wrapper" class="d-flex flex-column">
-        <!-- Main Content -->
-        <div>
-          <!-- Topbar -->
-          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-            <!-- Sidebar Toggle (Topbar) -->
-            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-              <i class="fa fa-bars"></i>
-            </button>
-
-            <div class="">
-              <img src="<?= base_url(); ?>/assets/rapodig.png" alt="Logo Rapodig" height="45rem">
-            </div>
-
-            <!-- Topbar Navbar -->
-            <ul class="navbar-nav ml-auto">              
-              <!-- Nav Item - User Information -->
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><h5 class="mt-3">Welcome, User</h5></span>
-                  <i class="ri-user-6-line ri-2x"></i>
-                </a>
-                </div>
-              </li>
-            </ul>
-          </nav>
-          <!-- End of Topbar -->
+<?= $this->section('conten'); ?>
 
           <!-- Begin Page Content -->
           <div class="container-fluid">
@@ -150,5 +124,5 @@
         </div>
       </div>
     </div>
-
+<?= $this->endsection(); ?>
    
