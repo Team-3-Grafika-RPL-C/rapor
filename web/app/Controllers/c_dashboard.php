@@ -20,6 +20,12 @@ class c_dashboard extends BaseController
     {
         return view('admin/data-kelas');
     }
+
+    public function dataGuru()
+    {
+        return view('admin/data-guru');
+    }
+
     public function test()
     {
         return view('admin/test_datasiswa');

@@ -37,7 +37,7 @@
           <div id="collapseDataUmum" class="collapse" aria-labelledby="headingDataUmum" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="<?= base_url(); ?>/data-kelas">Data Kelas</a>
-              <a class="collapse-item" href="cards.html">Data Guru</a>
+              <a class="collapse-item" href="<?= base_url(); ?>/data-guru">Data Guru</a>
               <a class="collapse-item" href="<?= base_url(); ?>/data-siswa">Data Siswa</a>
               <a class="collapse-item" href="cards.html">Data Mapel</a>
               <a class="collapse-item" href="cards.html">Ekstrakurikuler</a>

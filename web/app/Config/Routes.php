@@ -32,6 +32,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/dashboard', 'c_dashboard::index');
 $routes->get('/data-siswa', 'c_dashboard::dataSiswa');
+$routes->get('/data-guru', 'c_dashboard::dataGuru');
 $routes->get('/data-kelas', 'c_dashboard::dataKelas');
 
 $routes->get('/test', 'c_dashboard::test');
