@@ -3,7 +3,7 @@
 <?= $this->section('conten'); ?>
 
           <!-- Begin Page Content -->
-          <div class="container-fluid">
+          <div class="container-fluid d-block">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
               <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Dashboard</h1>
             </div>

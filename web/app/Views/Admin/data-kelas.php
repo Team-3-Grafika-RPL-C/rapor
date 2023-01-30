@@ -32,16 +32,16 @@
                         <td>Satu</td>
                         <td>Dian Retno, S.Pd</td>
                         <td>
-                                <a href="" class="btn btn-primary rounded" data-toggle="modal">
-                                    <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                                </a>
-                                <a href="" class="edit" data-toggle="modal">
-                                    <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                                </a>
-                                <a href="" class="delete" data-toggle="modal">
-                                    <i class="" data-toggle="tooltip" title="Delete"></i>
-                                </a>
-                            </td>
+                            <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
+                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
+                            </a>
+                            <a href="" class="btn btn-warning btn-rounded" data-toggle="modal">
+                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
+                            </a>
+                            <a href="" class="btn btn-danger btn-rounded" data-toggle="modal">
+                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
+                            </a>
+                        </td>
                     </tr>
                     <tr>
                         <td>2</td>

@@ -218,3 +218,6 @@ a.text-indigo-900:hover,
 a.text-indigo-900:focus {
   color: #7048e8 !important;
 }
+.btn-rounded {
+  border-radius: 50% !important;
+}
