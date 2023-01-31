@@ -30,5 +30,9 @@ class c_dashboard extends BaseController
     {
         return view('admin/test_datasiswa');
     }
+    public function form_datakelas()
+    {
+        return view('admin/form-data_kelas');
+    }
 }
     

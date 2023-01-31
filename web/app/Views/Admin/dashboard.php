@@ -5,7 +5,7 @@
           <!-- Begin Page Content -->
           <div class="container-fluid d-block">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-              <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Dashboard WI</h1>
+              <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Dashboard</h1>
             </div>
 
             <div class="row">
@@ -87,10 +87,10 @@
                       </div>
                       <div class="mt-4 text-center small">
                           <span class="mr-2">
-                              <i class="fas fa-circle text-primary"></i> Putra
+                              <i class="fas fa-circle text-blue"></i> Putra
                           </span>
                           <span class="mr-2">
-                              <i class="fas fa-circle text-success"></i> Putri
+                              <i class="fas fa-circle text-pink"></i> Putri
                           </span>
                       </div>
                   </div>

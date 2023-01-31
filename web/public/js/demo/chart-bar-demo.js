@@ -32,13 +32,13 @@ var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["2018", "2019", "2020", "2022", "2023"],
     datasets: [{
-      label: "Revenue",
-      backgroundColor: "#4e73df",
-      hoverBackgroundColor: "#2e59d9",
-      borderColor: "#4e73df",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      label: "Jumlah Siswa",
+      backgroundColor: "#FFCE52",
+      hoverBackgroundColor: "#FBBD23",
+      borderColor: "#FFCE52",
+      data: [30, 75, 80, 60, 100],
     }],
   },
   options: {
@@ -46,7 +46,7 @@ var myBarChart = new Chart(ctx, {
     layout: {
       padding: {
         left: 10,
-        right: 25,
+        right: 10,
         top: 25,
         bottom: 0
       }
@@ -54,7 +54,7 @@ var myBarChart = new Chart(ctx, {
     scales: {
       xAxes: [{
         time: {
-          unit: 'month'
+          unit: 'year'
         },
         gridLines: {
           display: false,
@@ -63,21 +63,21 @@ var myBarChart = new Chart(ctx, {
         ticks: {
           maxTicksLimit: 6
         },
-        maxBarThickness: 25,
+        maxBarThickness: 50,
       }],
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15000,
+          max: 150,
           maxTicksLimit: 5,
-          padding: 10,
+          padding: 5,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
             return '$' + number_format(value);
           }
         },
         gridLines: {
-          color: "rgb(234, 236, 244)",
+          color: "#C8CDD0",
           zeroLineColor: "rgb(234, 236, 244)",
           drawBorder: false,
           borderDash: [2],

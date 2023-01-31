@@ -6,6 +6,7 @@
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Data Kelas</h1>
+        <a class="btn d-none d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url(); ?>/data-kelas/form" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">Tambah</a>
     </div>
 
 <!-- DataTales Example -->

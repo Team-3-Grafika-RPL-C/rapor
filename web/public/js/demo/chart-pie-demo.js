@@ -7,11 +7,11 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Putra", "Putri"],
+    labels: ["Putri", "Putra"],
     datasets: [{
       data: [55, 15],
-      backgroundColor: ['#4e73df', '#36b9cc'],
-      hoverBackgroundColor: ['#2e59d9', '#2c9faf'],
+      backgroundColor: ['#FAA3A3', '#74C0FC'],
+      hoverBackgroundColor: ['#F87272', '#339AF0'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }],
   },

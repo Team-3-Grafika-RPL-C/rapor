@@ -221,3 +221,24 @@ a.text-indigo-900:focus {
 .btn-rounded {
   border-radius: 50% !important;
 }
+.text-pink {
+  color: #FAA3A3 !important;
+}
+
+a.text-pink:hover, a.text-pink:focus {
+  color: #F87272 !important;
+}
+.text-blue {
+  color: #74C0FC !important;
+}
+
+a.text-blue:hover, a.text-blue:focus {
+  color: #339AF0 !important;
+}
+.text-indigo-500 {
+  color: #845EF7 !important;
+}
+
+a.text-indigo-500:hover, a.text-indigo-500:focus {
+  color: #5f3dc4 !important;
+}
