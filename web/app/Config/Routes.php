@@ -34,7 +34,18 @@ $routes->get('/dashboard', 'c_dashboard::index');
 $routes->get('/data-siswa', 'c_dashboard::dataSiswa');
 $routes->get('/data-guru', 'c_dashboard::dataGuru');
 $routes->get('/data-kelas', 'c_dashboard::dataKelas');
+$routes->get('/data-mapel', 'c_dashboard::dataMapel');
+$routes->get('/data-ekskul', 'c_dashboard::dataEkskul');
+$routes->get('/data-cp', 'c_dashboard::dataCp');
+$routes->get('/data-tp', 'c_dashboard::dataTp');
+
 $routes->get('/data-kelas/form', 'c_dashboard::form_datakelas');
+$routes->get('/data-guru/form', 'c_dashboard::form_dataguru');
+$routes->get('/data-siswa/form', 'c_dashboard::form_datasiswa');
+$routes->get('/data-mapel/form', 'c_dashboard::form_datamapel');
+$routes->get('/data-ekskul/form', 'c_dashboard::form_dataekskul');
+$routes->get('/data-cp/form', 'c_dashboard::form_datacp');
+$routes->get('/data-tp/form', 'c_dashboard::form_datatp');
 
 $routes->get('/test', 'c_dashboard::test');
 

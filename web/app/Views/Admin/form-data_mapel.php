@@ -3,14 +3,14 @@
 
 <div class="container-fluid d-block">
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
-        <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Data Kelas</h1>
+        <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Data Mata Pelajaran</h1>
     </div>
     <div class="card shadow mb-5">
         <!-- Card Header -->
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-4">
-                <h3 class="h3 mb-0 font-weight-bold text-indigo-500">Form Data Kelas</h3>
-                <a class="btn d-flex text-light btn-sm shadow d-flex" href="<?= base_url(); ?>/data-kelas" style="background-color: #845EF7; border-radius: 16px">
+                <h3 class="h3 mb-0 font-weight-bold text-indigo-500">Form Data Mata Pelajaran</h3>
+                <a class="btn d-flex text-light btn-sm shadow d-flex" href="<?= base_url(); ?>/data-mapel" style="background-color: #845EF7; border-radius: 16px">
                     <i class="ri-logout-box-line text-light"></i>
                     <p class="mt-auto mb-auto ml-2 d-none d-md-block">Kembali</p>
                 </a>
@@ -21,27 +21,39 @@
                     <form action="" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">Nama Kelas</h6>
+                                <h6 class="h6 text-gray-900 font-weight-bold">Kode Mapel</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nama_kelas" name="Nama Kelas">
+                                <input type="text" autocomplete="off" class="form-control" id="kode_mapel" name="Kode Mapel">
                             </div>
                             <div class="col-md-4 mb-4">
-                                <h6 class="h text-gray-900 font-weight-bold">Tingkat</h6>
+                                <h6 class="h text-gray-900 font-weight-bold">Mata Pelajaran</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <input type="text" autocomplete="off" class="form-control" id="mata_pelajaran" name="Mata Pelajaran">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">KKM</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <input type="text" autocomplete="off" class="form-control" id="kkm" name="KKM">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Tingkat</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="tingkat" name="Tingkat">
                             </div>
                             <div class="col-md-4 mb-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">Wali Kelas</h6>
+                                <h6 class="h6 text-gray-900 font-weight-bold">Tahun</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="wali_kelas" name="Wali Kelas">
+                                <input type="text" autocomplete="off" class="form-control" id="tahun" name="Tahun">
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mb-3 mt-5 pt-5">
                             <button class="btn text-light mx-1" style="min-width: 6rem; background-color: #845EF7; border-radius: 8px" type="submit">Simpan</button>
-                            <a href="<?= base_url(); ?>/data-kelas" class="btn ms-1 text-gray-900" data-toggle="modal" data-target="#cancel" style="min-width: 6rem; background-color: #ECEEEF; border-radius: 8px">Batal</a>
+                            <a href="<?= base_url(); ?>/data-mapel" class="btn ms-1 text-gray-900" data-toggle="modal" data-target="#cancel" style="min-width: 6rem; background-color: #ECEEEF; border-radius: 8px">Batal</a>
                         </div>
                     </form>
                 </div>

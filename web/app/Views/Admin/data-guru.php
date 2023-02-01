@@ -5,6 +5,12 @@
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Data Guru</h1>
+        <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url(); ?>/data-guru/form" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">
+            <span class="d-flex">
+                <i class="ri-add-line mt-auto mb-auto mr-1" style="font-size: 14px;"></i>
+                Tambah
+            </span>
+        </a>
     </div>
     
     <!-- DataTales Example -->

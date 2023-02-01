@@ -25,6 +25,27 @@ class c_dashboard extends BaseController
     {
         return view('admin/data-guru');
     }
+    
+    public function dataMapel()
+    {
+        return view('admin/data-mapel');
+    }
+
+    public function dataEkskul()
+    {
+        return view('admin/data-ekskul');
+    }
+
+    public function dataCp()
+    {
+        return view('admin/data-cp');
+    }
+
+    public function dataTp()
+    {
+        return view('admin/data-tp');
+    }
+
 
     public function test()
     {
@@ -33,6 +54,30 @@ class c_dashboard extends BaseController
     public function form_datakelas()
     {
         return view('admin/form-data_kelas');
+    }
+    public function form_dataguru()
+    {
+        return view('admin/form-data_guru');
+    }
+    public function form_datasiswa()
+    {
+        return view('admin/form-data_siswa');
+    }
+    public function form_datamapel()
+    {
+        return view('admin/form-data_mapel');
+    }
+    public function form_dataekskul()
+    {
+        return view('admin/form-data_ekskul');
+    }
+    public function form_datacp()
+    {
+        return view('admin/form-data_cp');
+    }
+    public function form_datatp()
+    {
+        return view('admin/form-data_tp');
     }
 }
     
