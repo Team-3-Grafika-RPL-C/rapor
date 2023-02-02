@@ -31,21 +31,29 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/dashboard', 'c_dashboard::index');
-$routes->get('/data-siswa', 'c_dashboard::dataSiswa');
-$routes->get('/data-guru', 'c_dashboard::dataGuru');
-$routes->get('/data-kelas', 'c_dashboard::dataKelas');
-$routes->get('/data-mapel', 'c_dashboard::dataMapel');
-$routes->get('/data-ekskul', 'c_dashboard::dataEkskul');
-$routes->get('/data-cp', 'c_dashboard::dataCp');
-$routes->get('/data-tp', 'c_dashboard::dataTp');
 
-$routes->get('/data-kelas/form', 'c_dashboard::form_datakelas');
-$routes->get('/data-guru/form', 'c_dashboard::form_dataguru');
-$routes->get('/data-siswa/form', 'c_dashboard::form_datasiswa');
-$routes->get('/data-mapel/form', 'c_dashboard::form_datamapel');
-$routes->get('/data-ekskul/form', 'c_dashboard::form_dataekskul');
-$routes->get('/data-cp/form', 'c_dashboard::form_datacp');
-$routes->get('/data-tp/form', 'c_dashboard::form_datatp');
+$routes->get('/data-kelas', 'c_dataKelas::index');
+$routes->get('/data-kelas/form', 'c_dataKelas::form');
+
+$routes->get('/data-guru', 'c_dataGuru::index');
+$routes->get('/data-guru/form', 'c_dataGuru::form');
+
+$routes->get('/data-siswa', 'c_dataSiswa::index');
+$routes->get('/data-siswa/form', 'c_dataSiswa::form');
+
+$routes->get('/data-mapel', 'c_dataMapel::index');
+$routes->get('/data-mapel/form', 'c_dataMapel::form');
+
+
+$routes->get('/data-ekskul', 'c_dataEkskul::index');
+$routes->get('/data-ekskul/form', 'c_dataEkskul::form');
+
+$routes->get('/data-cp', 'c_dataCP::index');
+$routes->get('/data-cp/form', 'c_dataCP::form');
+
+
+$routes->get('/data-tp', 'c_dataTP::index');
+$routes->get('/data-tp/form', 'c_dataTP::form');
 
 $routes->get('/test', 'c_dashboard::test');
 

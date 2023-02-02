@@ -24,17 +24,18 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center">Kode CP</th>
-                        <th class="text-center">Capaian Pembelajaran</th>
-                        <th class="text-center">Action</th>
+                        <th scope="col" class="text-center">No</th>
+                        <th scope="col" class="text-center">Kode CP</th>
+                        <th scope="col" class="text-center">Capaian Pembelajaran</th>
+                        <th scope="col" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
                         <td>A.1.AGM.1.1</td>
-                        <td>Peserta didik mampu mengenal dirinya sebagai pribadi yang dicintai Tuhan; yang memiliki anggota  tubuh yang sangat berguna serta memahami cara merawatnya; mengenal temannya, lingkungan rumah dan sekolah tempat dirinya berkembang.</td>
+                        <?php $your_text = "Peserta didik mampu bersikap menjadi pendengar yang penuh perhatian. Peserta didik menunjukkan  minat pada tuturan yang didengar serta mampu memahami pesan lisan dan informasi dari media audio, teks aural (teks yang dibacakan dan/atau didengar), instruksi lisan, dan percakapan yang berkaitan dengan tujuan berkomunikasi." ?>
+                        <td><?= substr_replace($your_text, "...", 80); ?></td>
                         <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -50,23 +51,7 @@
                     <tr>
                         <td>2</td>
                         <td>A.1.IND.1.1</td>
-                        <td>Peserta didik mampu bersikap menjadi pendengar yang penuh perhatian. Peserta didik menunjukkan  minat pada tuturan yang didengar serta mampu memahami pesan lisan dan informasi dari media audio, teks aural (teks yang dibacakan dan/atau didengar), instruksi lisan, dan percakapan yang berkaitan dengan tujuan berkomunikasi.</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded" data-toggle="modal">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>A.1.IND.1.1</td>
-                        <td>Peserta didik mampu bersikap menjadi pendengar yang penuh perhatian. Peserta didik menunjukkan  minat pada tuturan yang didengar serta mampu memahami pesan lisan dan informasi dari media audio, teks aural (teks yang dibacakan dan/atau didengar), instruksi lisan, dan percakapan yang berkaitan dengan tujuan berkomunikasi.</td>
+                        <td><?= substr_replace($your_text, "...", 80); ?></td>
                         <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -82,7 +67,7 @@
                     <tr>
                         <td>3</td>
                         <td>A.1.ING.1.1</td>
-                        <td>Peserta didik mampu menggunakan Bahasa Inggris sederhana untuk berinteraksi dalam situasi sosial dan kelas seperti berkenalan, memberikan informasi diri, mengucapkan salam dan selamat tinggal, serta menjawab pertanyaan pendek sederhana dengan kata, frase atau kalimat sederhana. Mereka memahami ide pokok dari informasi yang disampaikan secara lisan dengan bantuan visual dan menggunakan kosakata sederhana. Mereka menggunakan alat bantu visual untuk membantu mereka berkomunikasi.</td>
+                        <td><?= substr_replace($your_text, "...", 80); ?></td>
                         <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>

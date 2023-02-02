@@ -37,7 +37,7 @@
                             <td>21202020202</td>
                             <td>Dian Retno, S.Pd</td>
                             <td>Jl. Mawar No.11</td>
-                            <td>Aktif</td>
+                            <td><div class="btn d-sm-inline-block bg-success-900 text-light btn-sm px-4" disabled>Aktif</div></td>
                             <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -55,7 +55,7 @@
                             <td>212020254402</td>
                             <td>Gunawan Dwiyono, S.Pd</td>
                             <td>Jl. Melati No.1</td>
-                            <td>Aktif</td>
+                            <td><div class="btn d-sm-inline-block bg-success-900 text-light btn-sm px-4" disabled>Aktif</div></td>
                             <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -73,7 +73,7 @@
                             <td>212987020202</td>
                             <td>Solikin, S.Pd</td>
                             <td>Jl. Comboran No.69</td>
-                            <td>Aktif</td>
+                            <td><div class="btn d-sm-inline-block bg-success-900 text-light btn-sm px-4" disabled>Aktif</div></td>
                             <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -91,7 +91,7 @@
                             <td>55203838202</td>
                             <td>Vira Alfita, M.Pd</td>
                             <td>Jl. Gadang No.11</td>
-                            <td>Aktif</td>
+                            <td><div class="btn d-sm-inline-block bg-success-900 text-light btn-sm px-4" disabled>Aktif</div></td>
                             <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -109,7 +109,7 @@
                             <td>2120647602</td>
                             <td>Bagaskara, M.Pd</td>
                             <td>Jl. Mergosono No.8</td>
-                            <td>Aktif</td>
+                            <td><div class="btn d-sm-inline-block bg-success-900 text-light btn-sm px-4" disabled>Aktif</div></td>
                             <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -127,7 +127,7 @@
                             <td>2126280202</td>
                             <td>Goh Cafriel Chelsea, S.Pd</td>
                             <td>Jl. Bululawang No.3</td>
-                            <td>Aktif</td>
+                            <td><div class="btn d-sm-inline-block bg-success-900 text-light btn-sm px-4" disabled>Aktif</div></td>
                             <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -145,7 +145,7 @@
                             <td>21202020202</td>
                             <td>Faisal Adi, S.Pd</td>
                             <td>Jl. Kenanga No.11</td>
-                            <td>Aktif</td>
+                            <td><div class="btn d-sm-inline-block bg-success-900 text-light btn-sm px-4" disabled>Aktif</div></td>
                             <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -163,7 +163,7 @@
                             <td>212020254402</td>
                             <td>Adinda Devina, S.Pd</td>
                             <td>Jl. Bareng No.9</td>
-                            <td>Aktif</td>
+                            <td><div class="btn d-sm-inline-block bg-success-900 text-light btn-sm px-4" disabled>Aktif</div></td>
                             <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -181,7 +181,7 @@
                             <td>212987020202</td>
                             <td>Wayan, S.Pd</td>
                             <td>Jl. Teratai No.69</td>
-                            <td>Aktif</td>
+                            <td><div class="btn d-sm-inline-block bg-success-900 text-light btn-sm px-4" disabled>Aktif</div></td>
                             <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -199,7 +199,7 @@
                             <td>55203838202</td>
                             <td>Anggraeni Tyas, M.Pd</td>
                             <td>Jl. P.Sayang No.1</td>
-                            <td>Aktif</td>
+                            <td><div class="btn d-sm-inline-block bg-success-900 text-light btn-sm px-4" disabled>Aktif</div></td>
                             <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -217,7 +217,7 @@
                             <td>2120647602</td>
                             <td>Yunia, M.Pd</td>
                             <td>Jl. Kembang Sepatu No.8</td>
-                            <td>Aktif</td>
+                            <td><div class="btn d-sm-inline-block bg-success-900 text-light btn-sm px-4" disabled>Aktif</div></td>
                             <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -235,7 +235,7 @@
                             <td>2126280202</td>
                             <td>Wawan, S.Pd</td>
                             <td>Jl. Songgoriti No.3</td>
-                            <td>Aktif</td>
+                            <td><div class="btn d-sm-inline-block bg-success-900 text-light btn-sm px-4" disabled>Aktif</div></td>
                             <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -253,7 +253,7 @@
                             <td>2126280202</td>
                             <td>Imam, S.Pd</td>
                             <td>Jl. Halmahera No.3</td>
-                            <td>Aktif</td>
+                            <td><div class="btn d-sm-inline-block bg-success-900 text-light btn-sm px-4" disabled>Aktif</div></td>
                             <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>

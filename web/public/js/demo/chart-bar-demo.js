@@ -60,21 +60,13 @@ var myBarChart = new Chart(ctx, {
           display: false,
           drawBorder: false
         },
-        ticks: {
-          maxTicksLimit: 6
-        },
         maxBarThickness: 50,
       }],
       yAxes: [{
         ticks: {
           min: 0,
-          max: 150,
-          maxTicksLimit: 5,
+          stepSize: 25,
           padding: 5,
-          // Include a dollar sign in the ticks
-          callback: function(value, index, values) {
-            return '$' + number_format(value);
-          }
         },
         gridLines: {
           color: "#C8CDD0",
@@ -100,12 +92,6 @@ var myBarChart = new Chart(ctx, {
       yPadding: 15,
       displayColors: false,
       caretPadding: 10,
-      callbacks: {
-        label: function(tooltipItem, chart) {
-          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
-        }
-      }
     },
   }
 });

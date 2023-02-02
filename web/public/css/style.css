@@ -210,6 +210,9 @@ form.user .form-control-user {
 .bg-success-700 {
   background-color: #36d399 !important;
 }
+.bg-success-900 {
+  background-color: #21976B !important;
+}
 .text-indigo-900 {
   color: #5f3dc4 !important;
 }

@@ -71,7 +71,7 @@
                         <tr>
                             <td>3</td>
                             <td>A.1.ING.1.1.1</td>
-                            <td>Berinteraksi dalam situasi sosial dan kelas seperti berkenalan, memberikan informasi diri dengan kalimat sederhana</td>
+                            <td><?= substr_replace("Berinteraksi dalam situasi sosial dan kelas seperti berkenalan, memberikan informasi diri dengan kalimat sederhana", "...", 80); ?></td>
                             <td>Bahasa Inggris</td>
                             <td>Ganjil</td>
                             <td class="text-center">

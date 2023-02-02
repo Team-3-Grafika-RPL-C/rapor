@@ -10,9 +10,11 @@
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <h3 class="h3 mb-0 font-weight-bold text-indigo-500">Form Tujuan Pembelajaran</h3>
-                <a class="btn d-flex text-light btn-sm shadow d-flex" href="<?= base_url(); ?>/data-tp" style="background-color: #845EF7; border-radius: 16px">
-                    <i class="ri-logout-box-line text-light"></i>
-                    <p class="mt-auto mb-auto ml-2 d-none d-md-block">Kembali</p>
+                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url(); ?>/data-tp" style="background-color: #845EF7; border-radius: 16px">
+                    <span class="d-flex">
+                        <i class="ri-logout-box-line  mt-auto mb-auto mr-1"></i>
+                        Kembali
+                    </span>
                 </a>
             </div>
             <!-- Form Data Kelas -->
@@ -27,7 +29,7 @@
                                 <input type="text" autocomplete="off" class="form-control" id="kode" name="Kode">
                             </div>
                             <div class="col-md-4 mb-4">
-                                <h6 class="h text-gray-900 font-weight-bold">Deskripsi</h6>
+                                <h6 class="h text-gray-900 font-weight-bold">Deskripsi <br> Tujuan Pembelajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="deskripsi" name="Deskripsi">
