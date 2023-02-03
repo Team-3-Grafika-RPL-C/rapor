@@ -24,10 +24,9 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th class="text-center">No</th>
+                        <th class="col-1 my-auto text-center">No</th>
                         <th class="text-center">Nama Kelas</th>
-                        <th class="text-center">Tingkat</th>
-                        <th class="text-center">Wali Kelas</th>
+                        <th class="text-center">Tingkat</th>                        
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -36,7 +35,6 @@
                         <td>1</td>
                         <td>1A</td>
                         <td>Satu</td>
-                        <td>Dian Retno, S.Pd</td>
                         <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -53,7 +51,6 @@
                         <td>2</td>
                         <td>1B</td>
                         <td>Satu</td>
-                        <td>Gunawan Dwiyono, S.Pd</td>
                         <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -70,7 +67,6 @@
                         <td>3</td>
                         <td>2A</td>
                         <td>Dua</td>
-                        <td>Solikin, S.Pd</td>
                         <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -87,7 +83,6 @@
                         <td>4</td>
                         <td>2B</td>
                         <td>Dua</td>
-                        <td>Vira Alfita, M.Pd</td>
                         <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -104,7 +99,6 @@
                         <td>5</td>
                         <td>3A</td>
                         <td>Tiga</td>
-                        <td>Bagaskara, M.Pd</td>
                         <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -121,7 +115,6 @@
                         <td>6</td>
                         <td>3B</td>
                         <td>Tiga</td>
-                        <td>Faisal Adi, S.Pd</td>
                         <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -138,7 +131,6 @@
                         <td>7</td>
                         <td>4A</td>
                         <td>Empat</td>
-                        <td>Adinda Devina, M.Pd</td>
                         <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -155,7 +147,6 @@
                         <td>8</td>
                         <td>4B</td>
                         <td>Empat</td>
-                        <td>Wayan, S.Pd</td>
                         <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -172,7 +163,6 @@
                         <td>9</td>
                         <td>5A</td>
                         <td>Lima</td>
-                        <td>Anggraeni Tyas, M.Pd</td>
                         <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -189,7 +179,6 @@
                         <td>10</td>
                         <td>5B</td>
                         <td>Lima</td>
-                        <td>Yunia, M.Pd</td>
                         <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -206,7 +195,6 @@
                         <td>11</td>
                         <td>6B</td>
                         <td>Enam</td>
-                        <td>Wawan, M.Pd</td>
                         <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
@@ -223,7 +211,6 @@
                         <td>12</td>
                         <td>6B</td>
                         <td>Enam</td>
-                        <td>Imam, M.Pd</td>
                         <td class="text-center">
                             <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
