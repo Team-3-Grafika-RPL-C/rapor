@@ -13,4 +13,8 @@ class c_dataEkskul extends BaseController {
     {
         return view('dashboard/data_umum/form-data_ekskul');
     }
+    public function form_detail()
+    {
+        return view('dashboard/data_umum/form-data_ekskul_detail');
+    }
 }

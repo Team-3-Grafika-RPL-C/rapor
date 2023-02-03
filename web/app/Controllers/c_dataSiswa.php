@@ -13,4 +13,8 @@ class c_dataSiswa extends BaseController {
     {
         return view('dashboard/data_umum/form-data_siswa');
     }
+    public function form_detail()
+    {
+        return view('dashboard/data_umum/form-data_siswa_detail');
+    }
 }

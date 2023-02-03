@@ -13,4 +13,8 @@ class c_dataMapel extends BaseController {
     {
         return view('dashboard/data_umum/form-data_mapel');
     }
+    public function form_detail()
+    {
+        return view('dashboard/data_umum/form-data_mapel_detail');
+    }
 }

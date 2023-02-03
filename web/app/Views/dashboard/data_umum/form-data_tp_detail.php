@@ -3,14 +3,14 @@
 
 <div class="container-fluid d-block">
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
-        <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Data Kelas</h1>
+        <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Tujuan Pembelajaran</h1>
     </div>
     <div class="card shadow mb-5">
         <!-- Card Header -->
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-4">
-                <h3 class="h3 mb-0 font-weight-bold text-indigo-500">Detail Data Kelas</h3>
-                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url(); ?>/data-kelas" style="background-color: #845EF7; border-radius: 16px">
+                <h3 class="h3 mb-0 font-weight-bold text-indigo-500">Detail Tujuan Pembelajaran</h3>
+                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url(); ?>/data-tp" style="background-color: #845EF7; border-radius: 16px">
                     <span class="d-flex">
                         <i class="ri-logout-box-line  mt-auto mb-auto mr-1"></i>
                         Kembali
@@ -23,22 +23,28 @@
                     <form action="" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">Nama Kelas</h6>
+                                <h6 class="h6 text-gray-900 font-weight-bold">Kode</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nama_kelas" name="Nama Kelas" value="1A" readonly>
+                                <input type="text" autocomplete="off" class="form-control" id="kode" name="Kode" value="A.1.AGM.1.1.1" readonly>
                             </div>
                             <div class="col-md-4 mb-4">
-                                <h6 class="h text-gray-900 font-weight-bold">Tingkat</h6>
+                                <h6 class="h text-gray-900 font-weight-bold">Deskripsi <br> Tujuan Pembelajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="tingkat" name="Tingkat" value="Satu" readonly>
+                                <input type="text" autocomplete="off" class="form-control" id="deskripsi" name="Deskripsi" value="Mengetahui rukun iman dan rukun islam" readonly>
                             </div>
                             <div class="col-md-4 mb-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">Wali Kelas</h6>
+                                <h6 class="h6 text-gray-900 font-weight-bold">Capaian Pembelajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="wali_kelas" name="Wali Kelas" value="Bayu Andika, S.Pd" readonly>
+                                <input type="text" autocomplete="off" class="form-control" id="cp" name="Cp" value="Agama" readonly>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Semester</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <input type="text" autocomplete="off" class="form-control" id="semester" name="Semester" value="Ganjil" readonly>
                             </div>
                         </div>
                     </form>

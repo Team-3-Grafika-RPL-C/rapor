@@ -13,4 +13,8 @@ class c_dataCP extends BaseController {
     {
         return view('dashboard/data_umum/form-data_cp');
     }
+    public function form_detail()
+    {
+        return view('dashboard/data_umum/form-data_cp_detail');
+    }
 }

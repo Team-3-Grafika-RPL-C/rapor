@@ -39,15 +39,15 @@
                             <td>Agama</td>
                             <td>Ganjil</td>
                             <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded" data-toggle="modal">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
+                                <a href="<?= base_url(); ?>/data-tp/form-detail" class="btn btn-info btn-rounded">
+                                    <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
+                                </a>
+                                <a href="" class="btn btn-warning btn-rounded">
+                                    <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
+                                </a>
+                                <a href="" class="btn btn-danger btn-rounded">
+                                    <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
+                                </a>
                             </td>
                         </tr>
                         <tr>

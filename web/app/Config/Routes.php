@@ -38,23 +38,29 @@ $routes->get('/data-kelas/form-detail', 'c_dataKelas::form_detail');
 
 $routes->get('/data-guru', 'c_dataGuru::index');
 $routes->get('/data-guru/form', 'c_dataGuru::form');
+$routes->get('/data-guru/form-detail', 'c_dataGuru::form_detail');
 
 $routes->get('/data-siswa', 'c_dataSiswa::index');
 $routes->get('/data-siswa/form', 'c_dataSiswa::form');
+$routes->get('/data-siswa/form-detail', 'c_dataSiswa::form_detail');
 
 $routes->get('/data-mapel', 'c_dataMapel::index');
 $routes->get('/data-mapel/form', 'c_dataMapel::form');
+$routes->get('/data-mapel/form-detail', 'c_dataMapel::form_detail');
 
 
 $routes->get('/data-ekskul', 'c_dataEkskul::index');
 $routes->get('/data-ekskul/form', 'c_dataEkskul::form');
+$routes->get('/data-ekskul/form-detail', 'c_dataEkskul::form_detail');
 
 $routes->get('/data-cp', 'c_dataCP::index');
 $routes->get('/data-cp/form', 'c_dataCP::form');
+$routes->get('/data-cp/form-detail', 'c_dataCP::form_detail');
 
 
 $routes->get('/data-tp', 'c_dataTP::index');
 $routes->get('/data-tp/form', 'c_dataTP::form');
+$routes->get('/data-tp/form-detail', 'c_dataTP::form_detail');
 
 $routes->get('/set-tahun_ajaran', 'c_setTahunAjaran::index');
 $routes->get('/set-tahun_ajaran/form', 'c_setTahunAjaran::form');
