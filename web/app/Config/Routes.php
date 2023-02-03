@@ -34,6 +34,7 @@ $routes->get('/dashboard', 'c_dashboard::index');
 
 $routes->get('/data-kelas', 'c_dataKelas::index');
 $routes->get('/data-kelas/form', 'c_dataKelas::form');
+$routes->get('/data-kelas/form-detail', 'c_dataKelas::form_detail');
 
 $routes->get('/data-guru', 'c_dataGuru::index');
 $routes->get('/data-guru/form', 'c_dataGuru::form');

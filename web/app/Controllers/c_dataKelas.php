@@ -13,4 +13,8 @@ class c_dataKelas extends BaseController {
     {
         return view('dashboard/data_umum/form-data_kelas');
     }
+    public function form_detail()
+    {
+        return view('dashboard/data_umum/form-data_kelas_detail');
+    }
 }
