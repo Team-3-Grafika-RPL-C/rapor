@@ -78,15 +78,15 @@
           <div id="collapseSettingData" class="collapse" aria-labelledby="headingSettingData" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Setting Tahun Ajaran</h6>
-              <a class="collapse-item" href="utilities-color.html">Set Tahun Ajaran</a>
-              <a class="collapse-item" href="utilities-border.html">Set Semester</a>
-              <a class="collapse-item" href="utilities-animation.html">Set Guru Pelajaran</a>
+              <a class="collapse-item" href="<?= base_url(); ?>/set-tahun_ajaran">Set Tahun Ajaran</a>
+              <a class="collapse-item" href="<?= base_url(); ?>/set-semester">Set Semester</a>
+              <a class="collapse-item" href="<?= base_url(); ?>/set-guru_pelajaran">Set Guru Pelajaran</a>
               <h6 class="collapse-header">Setting Siswa dan Guru</h6>
-              <a class="collapse-item" href="utilities-color.html">Set Siswa Kelas</a>
-              <a class="collapse-item" href="utilities-border.html">Set Siswa Ekskul</a>
-              <a class="collapse-item" href="utilities-animation.html">Set Guru Ekskul</a>
+              <a class="collapse-item" href="<?= base_url(); ?>/set-siswa_kelas">Set Siswa Kelas</a>
+              <a class="collapse-item" href="<?= base_url(); ?>/set-siswa_ekskul">Set Siswa Ekskul</a>
+              <a class="collapse-item" href="<?= base_url(); ?>/set-guru_ekskul">Set Guru Ekskul</a>
               <h6 class="collapse-header">Setting Pelajaran</h6>
-              <a class="collapse-item" href="utilities-color.html">Set Pelajaran Kelas</a>
+              <a class="collapse-item" href="<?= base_url(); ?>/set-pelajaran_kelas">Set Pelajaran Kelas</a>
             </div>
           </div>
         </li>
@@ -98,7 +98,7 @@
         <!-- <div class="sidebar-heading">Addons</div> -->
 
         <!-- Nav Item - Penilaian Collapse Menu -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link collapsed d-flex" href="#" data-toggle="collapse" data-target="#collapsePenilaian" aria-expanded="true" aria-controls="collapsePenilaian">
             <i class="ri-draft-fill" style="font-size: 24px"></i>
             <span class="mt-auto mb-auto ml-2 mr-auto">Penilaian</span>
@@ -114,10 +114,10 @@
               <a class="collapse-item" href="blank.html">Rekap Nilai Ekskul</a>
             </div>
           </div>
-        </li>
+        </li> -->
 
         <!-- Nav Item - Presensi Collapse Menu -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link collapsed d-flex" href="#" data-toggle="collapse" data-target="#collapsePresensi" aria-expanded="true" aria-controls="collapsePresensi">
             <i class="ri-calendar-check-line" style="font-size: 24px"></i>
             <span class="mt-auto mb-auto ml-2 mr-auto">Presensi</span>
@@ -128,7 +128,7 @@
               <a class="collapse-item" href="cards.html">Rekap Presensi</a>
             </div>
           </div>
-        </li>
+        </li> -->
 
         <!-- Nav Item - Rapor Collapse Menu -->
         <li class="nav-item">
