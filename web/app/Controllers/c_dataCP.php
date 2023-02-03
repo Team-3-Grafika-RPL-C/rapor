@@ -7,14 +7,23 @@ use App\Controllers\BaseController;
 class c_dataCP extends BaseController {
     public function index()
     {
-        return view('dashboard/data_umum/data-cp');
+        $data = [
+            'title' => 'Rapodig - Data Capaian Pembelajaran'
+        ];
+        return view('dashboard/data_umum/data-cp', $data);
     }
     public function form()
     {
-        return view('dashboard/data_umum/form-data_cp');
+        $data = [
+            'title' => 'Rapodig - Tambah Capaian Pembelajaran'
+        ];
+        return view('dashboard/data_umum/form-data_cp', $data);
     }
     public function form_detail()
     {
-        return view('dashboard/data_umum/form-data_cp_detail');
+        $data = [
+            'title' => 'Rapodig - Detail Capaian Pembelajaran'
+        ];
+        return view('dashboard/data_umum/form-data_cp_detail', $data);
     }
 }

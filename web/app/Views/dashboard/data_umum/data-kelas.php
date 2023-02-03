@@ -25,17 +25,17 @@
                 <thead>
                     <tr>
                         <th class="col-1 my-auto text-center">No</th>
-                        <th class="text-center">Nama Kelas</th>
-                        <th class="text-center">Tingkat</th>                        
-                        <th class="text-center">Action</th>
+                        <th class="col-3 my-auto text-center">Nama Kelas</th>
+                        <th class="col-4 my-auto text-center">Tingkat</th>                        
+                        <th class="col-4 my-auto text-center">Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
                     <tr>
                         <td>1</td>
                         <td>1A</td>
                         <td>Satu</td>
-                        <td class="text-center">
+                        <td>
                             <a class="btn btn-info btn-rounded" href="<?= base_url(); ?>/data-kelas/form-detail">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
                             </a>
