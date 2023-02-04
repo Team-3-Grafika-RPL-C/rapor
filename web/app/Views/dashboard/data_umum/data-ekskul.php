@@ -24,27 +24,25 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center">Ekstrakurikuler</th>
-                        <th class="text-center">KKM</th>
-                        <th class="text-center">Keterangan</th>
-                        <th class="text-center">Action</th>
+                        <th class="col-1 my-auto text-center">No</th>
+                        <th class="col-4 my-auto text-center">Ekstrakurikuler</th>
+                        <th class="col-3 my-auto text-center">KKM</th>
+                        <th class="col-4 my-auto text-center">Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
                     <tr>
                         <td>1</td>
                         <td>TIK</td>
                         <td>75</td>
-                        <td>Pembina: Bill Gates</td>
-                        <td class="text-center">
-                            <a href="<?= base_url(); ?>/data-ekskul/form-detail" class="btn btn-info btn-rounded">
+                        <td>
+                            <a href="<?= base_url(); ?>/data-ekskul/form-detail" class="btn btn-info btn-rounded my-1">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
                             </a>
-                            <a href="" class="btn btn-warning btn-rounded">
+                            <a href="" class="btn btn-warning btn-rounded my-1">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded">
+                            <a href="" class="btn btn-danger btn-rounded my-1">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                         </td>
@@ -53,15 +51,14 @@
                         <td>2</td>
                         <td>Bahasa Jepang</td>
                         <td>75</td>
-                        <td>Pembina: Luffy D Monkey</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
+                        <td>
+                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
                             </a>
-                            <a href="" class="btn btn-warning btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                         </td>
@@ -70,15 +67,14 @@
                         <td>3</td>
                         <td>Karate</td>
                         <td>75</td>
-                        <td>Pembina: Wuryandaru</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
+                        <td>
+                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
                             </a>
-                            <a href="" class="btn btn-warning btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                         </td>
@@ -87,15 +83,14 @@
                         <td>4</td>
                         <td>Pramuka</td>
                         <td>75</td>
-                        <td>Pembina: Agus Putanto</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
+                        <td>
+                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
                             </a>
-                            <a href="" class="btn btn-warning btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                         </td>
@@ -104,15 +99,14 @@
                         <td>5</td>
                         <td>Paduan Suara</td>
                         <td>75</td>
-                        <td>Pembina: Rosita</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
+                        <td>
+                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
                             </a>
-                            <a href="" class="btn btn-warning btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                         </td>
@@ -121,15 +115,14 @@
                         <td>6</td>
                         <td>Basket</td>
                         <td>75</td>
-                        <td>Pembina: Hanif Hubbudin</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
+                        <td>
+                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
                             </a>
-                            <a href="" class="btn btn-warning btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                         </td>
@@ -138,15 +131,14 @@
                         <td>7</td>
                         <td>Paskibra</td>
                         <td>75</td>
-                        <td>Pembina: Ferdi Sambo</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
+                        <td>
+                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
                             </a>
-                            <a href="" class="btn btn-warning btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                         </td>

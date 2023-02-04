@@ -7,11 +7,17 @@ use App\Controllers\BaseController;
 class c_setTahunAjaran extends BaseController {
     public function index()
     {
-        return view('dashboard/setting_data/set-tahun_ajaran');
+        $data = [
+            'title' => 'Rapodig - Set Tahun Ajaran'
+        ];
+        return view('dashboard/setting_data/set-tahun_ajaran', $data);
     }
     public function form()
     {
-        return view('dashboard/setting_data/form-set_tahun_ajaran');
+        $data = [
+            'title' => 'Rapodig - Tambah Tahun Ajaran'
+        ];
+        return view('dashboard/setting_data/form-set_tahun_ajaran', $data);
     }
     public function form_detail()
     {

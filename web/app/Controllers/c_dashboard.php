@@ -8,7 +8,10 @@ class c_dashboard extends BaseController
 {
     public function index()
     {
-        return view('dashboard/dashboard');
+        $data = [
+            'title' => 'Rapodig - Dashboard'
+        ];
+        return view('dashboard/dashboard', $data);
     }
     public function test()
     {

@@ -7,14 +7,23 @@ use App\Controllers\BaseController;
 class c_dataKelas extends BaseController {
     public function index()
     {
-        return view('dashboard/data_umum/data-kelas');
+        $data = [
+            'title' => 'Rapodig - Data Kelas'
+        ];
+        return view('dashboard/data_umum/data-kelas', $data);
     }
     public function form()
     {
-        return view('dashboard/data_umum/form-data_kelas');
+        $data = [
+            'title' => 'Rapodig - Tambah Data Kelas'
+        ];
+        return view('dashboard/data_umum/form-data_kelas', $data);
     }
     public function form_detail()
     {
-        return view('dashboard/data_umum/form-data_kelas_detail');
+        $data = [
+            'title' => 'Rapodig - Detail Data Kelas'
+        ];
+        return view('dashboard/data_umum/form-data_kelas_detail', $data);
     }
 }

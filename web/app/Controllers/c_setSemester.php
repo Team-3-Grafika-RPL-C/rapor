@@ -7,6 +7,9 @@ use App\Controllers\BaseController;
 class c_setSemester extends BaseController {
     public function index()
     {
-        return view('dashboard/setting_data/set-semester');
+        $data = [
+            'title' => 'Rapodig - Set Semester'
+        ];
+        return view('dashboard/setting_data/set-semester', $data);
     }
 }

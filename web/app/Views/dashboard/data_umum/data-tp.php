@@ -23,29 +23,27 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="text-center">No</th>
-                            <th class="text-center">Kode TP</th>
-                            <th class="text-center">Deskripsi Tujuan Pembelajaran</th>
-                            <th class="text-center">Mapel</th>
-                            <th class="text-center">Semester</th>
-                            <th class="text-center">Action</th>
+                            <th class="col-1 my-auto text-center">No</th>
+                            <th class="col-2 my-auto text-center">Kode TP</th>
+                            <th class="col-4 my-auto text-center">Deskripsi Tujuan Pembelajaran</th>
+                            <th class="col-2 my-auto text-center">Mapel</th>
+                            <th class="col-3 my-auto text-center">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                         <tr>
                             <td>1</td>
                             <td>A.1.AGM.1.1.1</td>
                             <td>Mengetahui rukun iman dan rukun islam</td>
                             <td>Agama</td>
-                            <td>Ganjil</td>
-                            <td class="text-center">
-                                <a href="<?= base_url(); ?>/data-tp/form-detail" class="btn btn-info btn-rounded">
+                            <td>
+                                <a href="<?= base_url(); ?>/data-tp/form-detail" class="btn btn-info btn-rounded my-1">
                                     <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
                                 </a>
-                                <a href="" class="btn btn-warning btn-rounded">
+                                <a href="" class="btn btn-warning btn-rounded my-1">
                                     <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                                 </a>
-                                <a href="" class="btn btn-danger btn-rounded">
+                                <a href="" class="btn btn-danger btn-rounded my-1">
                                     <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                                 </a>
                             </td>
@@ -55,15 +53,14 @@
                             <td>A.1.IND.1.1.2</td>
                             <td>Melakukan instruksi yang dibaca dan didengar</td>
                             <td>Bahasa Indonesia</td>
-                            <td>Ganjil</td>
-                            <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
+                            <td>
+                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
                             </a>
-                            <a href="" class="btn btn-warning btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                             </td>
@@ -73,15 +70,14 @@
                             <td>A.1.ING.1.1.1</td>
                             <td><?= substr_replace("Berinteraksi dalam situasi sosial dan kelas seperti berkenalan, memberikan informasi diri dengan kalimat sederhana", "...", 80); ?></td>
                             <td>Bahasa Inggris</td>
-                            <td>Ganjil</td>
-                            <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded" data-toggle="modal">
+                            <td>
+                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
                             </a>
-                            <a href="" class="btn btn-warning btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                             </td>

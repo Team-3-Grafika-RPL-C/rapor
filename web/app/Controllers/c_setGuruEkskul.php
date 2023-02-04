@@ -7,10 +7,16 @@ use App\Controllers\BaseController;
 class c_setGuruEkskul extends BaseController {
     public function index()
     {
-        return view('dashboard/setting_data/set-guru_ekskul');
+        $data = [
+            'title' => 'Rapodig - Set Guru Ekskul'
+        ];
+        return view('dashboard/setting_data/set-guru_ekskul', $data);
     }
     public function form()
     {
-        return view('dashboard/setting_data/form-set_guru_ekskul');
+        $data = [
+            'title' => 'Rapodig - Tambah Guru Ekskul'
+        ];
+        return view('dashboard/setting_data/form-set_guru_ekskul', $data);
     }
 }
