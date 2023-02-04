@@ -12,8 +12,8 @@
                 <h3 class="h3 mb-0 font-weight-bold text-indigo-500">Form Data Kelas</h3>
                 <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url(); ?>/data-kelas" style="background-color: #845EF7; border-radius: 16px">
                     <span class="d-flex">
-                        <i class="ri-logout-box-line  mt-auto mb-auto mr-1"></i>
-                        Kembali
+                        <i class="ri-logout-box-line mt-auto mb-auto mr-1"></i>
+                        <p class="d-none d-sm-block mt-auto mb-auto">Kembali</p>
                     </span>
                 </a>
             </div>
@@ -39,6 +39,12 @@
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="wali_kelas" name="Wali Kelas">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Jumlah Siswa</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <input type="number" autocomplete="off" class="form-control" id="jumlah_siswa" name="Jumlah Siswa">
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mb-3 mt-5 pt-5">

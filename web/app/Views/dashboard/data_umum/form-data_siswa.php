@@ -13,7 +13,7 @@
                 <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url(); ?>/data-siswa" style="background-color: #845EF7; border-radius: 16px">
                     <span class="d-flex">
                         <i class="ri-logout-box-line  mt-auto mb-auto mr-1"></i>
-                        Kembali
+                        <p class="d-none d-sm-block mt-auto mb-auto">Kembali</p>
                     </span>
                 </a>
             </div>

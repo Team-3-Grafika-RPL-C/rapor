@@ -12,8 +12,8 @@
                 <h3 class="h3 mb-0 font-weight-bold text-indigo-500">Detail Capaian Pembelajaran</h3>
                 <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url(); ?>/data-cp" style="background-color: #845EF7; border-radius: 16px">
                     <span class="d-flex">
-                        <i class="ri-logout-box-line  mt-auto mb-auto mr-1"></i>
-                        Kembali
+                        <i class="ri-logout-box-line mt-auto mb-auto mr-1"></i>
+                        <p class="d-none d-sm-block mt-auto mb-auto">Kembali</p>
                     </span>
                 </a>
             </div>

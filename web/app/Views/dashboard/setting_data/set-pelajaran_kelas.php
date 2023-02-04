@@ -129,14 +129,14 @@
                             </div>
                             <div class="col-md-2 mt-auto mb-auto">
                                 <div class="d-flex flex-wrap text-center">
-                                    <div class="col-12">
-                                        <a data-toggle="modal">
-                                            <i class="ri-arrow-right-circle-line" style="font-size: 48px;" data-toggle="tooltip" title="Select"></i>
+                                    <div class="col-12 my-1">
+                                        <a class="btn my-0 py-0">
+                                            <i class="ri-arrow-right-circle-line ri-3x text-gray-900" data-toggle="tooltip" title="Select"></i>
                                         </a>
                                     </div>
-                                    <div class="col-12">
-                                        <a data-toggle="modal">
-                                            <i class="ri-arrow-left-circle-line" style="font-size: 48px;" data-toggle="tooltip" title="Unselect"></i>
+                                    <div class="col-12 my-1">
+                                        <a class="btn my-0 py-0">
+                                            <i class="ri-arrow-left-circle-line ri-3x text-gray-900" data-toggle="tooltip" title="Unselect"></i>
                                         </a>
                                     </div>
                                 </div>
