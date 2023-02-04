@@ -3,14 +3,14 @@
 
 <div class="container-fluid d-block">
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
-        <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Capaian Pembelajaran</h1>
+        <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Set Tahun Ajaran</h1>
     </div>
     <div class="card shadow mb-5">
         <!-- Card Header -->
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-4">
-                <h3 class="h3 mb-0 font-weight-bold text-indigo-500">Detail Capaian Pembelajaran</h3>
-                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url(); ?>/data-cp" style="background-color: #845EF7; border-radius: 16px">
+                <h3 class="h3 mb-0 font-weight-bold text-indigo-500">Detail Tahun Ajaran</h3>
+                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url(); ?>/set-tahun_ajaran" style="background-color: #845EF7; border-radius: 16px">
                     <span class="d-flex">
                         <i class="ri-logout-box-line  mt-auto mb-auto mr-1"></i>
                         Kembali
@@ -23,16 +23,28 @@
                     <form action="" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">Kode CP</h6>
+                                <h6 class="h6 text-gray-900 font-weight-bold">Tahun Ajaran</h6>
                             </div>
-                            <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="kode_cp" name="Kode CP" value="A.1.AGM.1.1" readonly>
+                            <div class="col-md-2 mb-4">
+                                <div>
+                                    <select class="custom-select my-1 mr-sm-2" id="tahun-ajaran-mulai" disabled>
+                                        <option value="1">2022</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-1 text-center mt-3 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">s/d</h6>
+                            </div>
+                            <div class="col-md-2 mb-4">
+                                <select class="custom-select my-1 mr-sm-2" id="tahun-ajaran-selesai" disabled>
+                                    <option value="2">2023</option>
+                                </select>
                             </div>
                             <div class="col-md-4 mb-4">
-                                <h6 class="h text-gray-900 font-weight-bold">Deskripsi Capaian</h6>
+                                <h6 class="h text-gray-900 font-weight-bold">KKM</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <textarea class="form-control" readonly name="" id="" rows="8">Peserta didik mampu bersikap menjadi pendengar yang penuh perhatian. Peserta didik menunjukkan  minat pada tuturan yang didengar serta mampu memahami pesan lisan dan informasi dari media audio, teks aural (teks yang dibacakan dan/atau didengar), instruksi lisan, dan percakapan yang berkaitan dengan tujuan berkomunikasi.</textarea>
+                                <input type="text" autocomplete="off" class="form-control" id="tingkat" name="Tingkat" value="75" readonly>
                             </div>
                         </div>
                     </form>

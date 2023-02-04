@@ -64,11 +64,13 @@ $routes->get('/data-tp/form-detail', 'c_dataTP::form_detail');
 
 $routes->get('/set-tahun_ajaran', 'c_setTahunAjaran::index');
 $routes->get('/set-tahun_ajaran/form', 'c_setTahunAjaran::form');
+$routes->get('/set-tahun_ajaran/form-detail', 'c_setTahunAjaran::form_detail');
 
 $routes->get('/set-semester', 'c_setSemester::index');
 
 $routes->get('/set-guru_pelajaran', 'c_setGuruPelajaran::index');
 $routes->get('/set-guru_pelajaran/form', 'c_setGuruPelajaran::form');
+$routes->get('/set-guru_pelajaran/form-detail', 'c_setGuruPelajaran::form_detail');
 
 $routes->get('/set-guru_ekskul', 'c_setGuruEkskul::index');
 $routes->get('/set-guru_ekskul/form', 'c_setGuruEkskul::form');

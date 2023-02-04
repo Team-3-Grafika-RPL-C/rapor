@@ -13,4 +13,8 @@ class c_setTahunAjaran extends BaseController {
     {
         return view('dashboard/setting_data/form-set_tahun_ajaran');
     }
+    public function form_detail()
+    {
+        return view('dashboard/setting_data/form-set_tahun_ajaran_detail');
+    }
 }

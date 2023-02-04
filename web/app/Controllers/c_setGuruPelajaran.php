@@ -13,4 +13,8 @@ class c_setGuruPelajaran extends BaseController {
     {
         return view('dashboard/setting_data/form-set_guru_pelajaran');
     }
+    public function form_detail()
+    {
+        return view('dashboard/setting_data/form-set_guru_pelajaran_detail');
+    }
 }
