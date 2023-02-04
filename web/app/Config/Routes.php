@@ -82,6 +82,7 @@ $routes->get('/set-siswa_kelas/form', 'c_setSiswaKelas::form');
 $routes->get('/set-siswa_ekskul', 'c_setSiswaEkskul::index');
 
 $routes->get('/set-pelajaran_kelas', 'c_setPelajaranKelas::index');
+$routes->get('/set-pelajaran-kelas/form', 'c_setPelajaranKelas::form');
 
 $routes->get('/rapor-semester', 'c_raporSemester::index');
 

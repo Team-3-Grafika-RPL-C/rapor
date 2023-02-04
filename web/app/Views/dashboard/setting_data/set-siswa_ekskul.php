@@ -70,21 +70,23 @@
                         </div>
                         <div class="row justify-content-end text-right">
                             <div class="col mb-4">
-                                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px">
+                                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4 tampilkan-btn" href="#!" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px">
                                     <span class="d-flex">Tampilkan</span>
                                 </a>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body d-none">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <div class="row justify-content-end text-right">
                                         <div class="col mb-4">
-                                            <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px">
-                                            <span class="d-flex">
-                                                <i class="ri-add-line mt-auto mb-auto mr-1" style="font-size: 14px;"></i>
-                                                Tambah Siswa
-                                            </span>
+                                            <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" 
+                                            href="#!" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px"
+                                            data-toggle="modal" data-target="#data-siswa-modal">
+                                                <span class="d-flex">
+                                                    <i class="ri-add-line mt-auto mb-auto mr-1" style="font-size: 14px;"></i>
+                                                    Tambah Data
+                                                </span>
                                             </a>
                                         </div>
                                     </div>
@@ -105,15 +107,34 @@
                                             <td>Faisal Adi Prayugo</td>
                                             <td class="text-center">
                                                 <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
-                                                    <span class="d-flex justify-content">Aktif</span>
+                                                    <span class="d-flex justify-content">AKTIF</span>
                                                 </a>
                                             </td>
                                             <td class="text-center">
                                                 <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #C70A0A; border-radius: 8px">
                                                     <span class="d-flex">
-                                                        <i class="ri-close-fill mr-2"></i>
-                                                        Non Aktifkan
+                                                        NON AKTIFKAN
                                                     </span>
+                                                </a>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="" class="btn btn-danger btn-rounded" data-toggle="modal">
+                                                    <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>323423434</td>
+                                            <td>Abu Bakar As Shiddiq</td>
+                                            <td class="text-center">
+                                                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #C70A0A; border-radius: 8px">
+                                                    <span class="d-flex justify-content">NON AKTIF</span>
+                                                </a>
+                                            </td>
+                                            <td class="text-center">
+                                                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
+                                                    <span class="d-flex">AKTIFKAN</span>
                                                 </a>
                                             </td>
                                             <td class="text-center">
@@ -127,10 +148,62 @@
                             </div>
                         </div>
 </div>
-
+<!-- MODAL -->
+                    <div class="modal fade" id="data-siswa-modal" tabindex="-1" aria-labelledby="data-siswa-modalTitle" style="display: none;" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="m-0 font-weight-bold text-indigo-900">Data Siswa</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                            <div class="modal-body">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center"></th>
+                                            <th class="text-center">No</th>
+                                            <th class="text-center">NIS</th>
+                                            <th class="text-center">Nama</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                                </div>
+                                            </td>
+                                            <td>1</td>
+                                            <td>23423423</td>
+                                            <td>Faisal Adi Prayugo</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                                </div>
+                                            </td>
+                                            <td>2</td>
+                                            <td>23423322</td>
+                                            <td>Abu Bakar As Shiddiq</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <a class="btn text-light" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px">Tambahkan</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
 </div>
 <!-- /.container-fluid -->
 
 </div>
+
+<script src="<?= base_url(); ?>/js/form-set_siswa_ekskul.js"></script>
+
 <!-- End of Main Content -->
 <?= $this->endsection(); ?>                    

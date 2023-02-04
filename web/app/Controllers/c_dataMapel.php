@@ -24,6 +24,6 @@ class c_dataMapel extends BaseController {
         $data = [
             'title' => 'Rapodig - Detail Data Mapel'
         ];
-        return view('dashboard/data_umum/form-data_mapel_detail');
+        return view('dashboard/data_umum/form-data_mapel_detail', $data);
     }
 }

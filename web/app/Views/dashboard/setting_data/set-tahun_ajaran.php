@@ -39,13 +39,13 @@
                         <td>75</td>
                         <td class="text-center">
                             <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
-                                <span class="d-flex">AKTIFKAN</span>
+                                <span class="d-flex">AKTIF</span>
                             </a>
                         </td>
                         <td class="text-center">
                             <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #C70A0A; border-radius: 8px">
                                 <span class="d-flex">
-                                    NON AKTIF
+                                    NON AKTIFKAN
                                 </span>
                             </a>
                         </td>

@@ -12,4 +12,11 @@ class c_setPelajaranKelas extends BaseController {
         ];
         return view('dashboard/setting_data/set-pelajaran_kelas', $data);
     }
+    public function form()
+    {
+        $data = [
+            'title' => 'Rapodig - Tambah Pelajaran Kelas'
+        ];
+        return view('dashboard/setting_data/form-set_pelajaran_kelas', $data);
+    }
 }

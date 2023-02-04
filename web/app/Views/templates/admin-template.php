@@ -19,6 +19,8 @@
     <link href="<?= base_url(); ?>/package/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="<?= base_url(); ?>/css/rapodig.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?= base_url(); ?>/css/style.css">
+
+    <script src="<?= base_url(); ?>/package/jquery/jquery.min.js"></script>
   </head>
   <body id="page-top">
     <!-- Page Wrapper -->
@@ -197,7 +199,6 @@
     </div>
       
     <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url(); ?>/package/jquery/jquery.min.js"></script>
     <script src="<?= base_url(); ?>/package/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->

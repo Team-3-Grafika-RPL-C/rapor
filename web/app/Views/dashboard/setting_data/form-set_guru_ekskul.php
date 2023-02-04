@@ -66,12 +66,12 @@
                         </div>
                         <div class="row justify-content-end text-right">
                             <div class="col mb-4">
-                                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px">
+                                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4 tampilkan-btn" href="#!" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px">
                                     <span class="d-flex">Tampilkan</span>
                                 </a>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row add-ekskul-container d-none">
                             <div class="col-md-5">
                                 <select multiple class="form-control" id="ekskul" size="10">
                                     <option>Tari</option>
@@ -85,12 +85,12 @@
                             <div class="col-md-2 mt-auto mb-auto">
                                 <div class="d-flex flex-wrap text-center">
                                     <div class="col-12">
-                                        <a data-toggle="modal">
+                                        <a data-toggle="modal" class="add-ekskul-btn">
                                             <i class="ri-arrow-right-circle-line" style="font-size: 48px;" data-toggle="tooltip" title="Select"></i>
                                         </a>
                                     </div>
                                     <div class="col-12">
-                                        <a data-toggle="modal">
+                                        <a data-toggle="modal" class="remove-ekskul-btn">
                                             <i class="ri-arrow-left-circle-line" style="font-size: 48px;" data-toggle="tooltip" title="Unselect"></i>
                                         </a>
                                     </div>
@@ -131,4 +131,6 @@
         </div>              
     </div> -->
     
+<script src="<?= base_url(); ?>/js/form-set_guru_ekskul.js"></script>
+
 <?= $this->endsection(); ?>
