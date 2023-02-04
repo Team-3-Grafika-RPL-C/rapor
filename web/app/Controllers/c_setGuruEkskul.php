@@ -19,4 +19,11 @@ class c_setGuruEkskul extends BaseController {
         ];
         return view('dashboard/setting_data/form-set_guru_ekskul', $data);
     }
+    public function form_detail()
+    {
+        $data = [
+            'title' => 'Rapodig - Detail Guru Ekskul'
+        ];
+        return view('dashboard/setting_data/form-set_guru_ekskul_detail', $data);
+    }
 }

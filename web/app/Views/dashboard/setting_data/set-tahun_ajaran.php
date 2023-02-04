@@ -26,36 +26,35 @@
                     <tr>
                         <th class="text-center">No</th>
                         <th class="text-center">Tahun Ajaran</th>
+                        <th class="text-center">KKM</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Aktivasi</th>
-                        <th class="text-center">Action</th>
+                        <th class="text-center">ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
                         <td>2022-2023</td>
+                        <td>75</td>
                         <td class="text-center">
                             <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
-                                <span class="d-flex">Aktifkan</span>
+                                <span class="d-flex">AKTIFKAN</span>
                             </a>
                         </td>
                         <td class="text-center">
                             <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #C70A0A; border-radius: 8px">
                                 <span class="d-flex">
-                                    Non Aktif
+                                    NON AKTIF
                                 </span>
                             </a>
                         </td>
                         <td class="text-center">
-                            <a href="<?= base_url(); ?>/set-tahun_ajaran/form-detail" class="btn btn-info btn-rounded">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
                             <a href="" class="btn btn-warning btn-rounded">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
                             <a href="" class="btn btn-danger btn-rounded">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
+                                <i class="ri-delete-bin-2-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                         </td>
                     </tr>

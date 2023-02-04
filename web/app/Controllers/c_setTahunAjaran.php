@@ -21,6 +21,9 @@ class c_setTahunAjaran extends BaseController {
     }
     public function form_detail()
     {
-        return view('dashboard/setting_data/form-set_tahun_ajaran_detail');
+        $data = [
+            'title' => 'Rapodig - Detail Tahun Ajaran'
+        ];
+        return view('dashboard/setting_data/form-set_tahun_ajaran_detail', $data);
     }
 }

@@ -29,7 +29,7 @@
                         <th class="text-center">Nama Guru</th>
                         <th class="text-center">Alamat</th>
                         <th class="text-center">Aktif</th>
-                        <th class="text-center">Action</th>
+                        <th class="text-center">ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,7 +40,7 @@
                             <td>Jl. Hamid Rusdi No.12</td>
                             <td class="text-center">
                                 <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
-                                    <span class="d-flex">Aktif</span>
+                                    <span class="d-flex">AKTIF</span>
                                 </a>
                             </td>
                             <td class="text-center">
