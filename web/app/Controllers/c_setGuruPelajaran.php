@@ -15,8 +15,15 @@ class c_setGuruPelajaran extends BaseController {
     public function form()
     {
         $data = [
-            'title' => 'Rapodig - Tambah Guru Pembelajaran'
+            'title' => 'Rapodig - Tambah Guru Pelajaran'
         ];
         return view('dashboard/setting_data/form-set_guru_pelajaran', $data);
+    }
+    public function form_detail()
+    {
+        $data = [
+            'title' => 'Rapodig - Detail Guru Pelajaran'
+        ];
+        return view('dashboard/setting_data/form-set_guru_pelajaran_detail', $data);
     }
 }

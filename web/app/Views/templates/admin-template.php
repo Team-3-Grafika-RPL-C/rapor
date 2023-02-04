@@ -138,7 +138,7 @@
           </a>
           <div id="collapseRapor" class="collapse" aria-labelledby="headingRapor" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="buttons.html">Rapor Semester</a>
+              <a class="collapse-item" href="<?= base_url(); ?>/rapor-semester">Rapor Semester</a>
               <a class="collapse-item" href="cards.html">Catatan Semester</a>
               <a class="collapse-item" href="cards.html">Status Kenaikan</a>
               <a class="collapse-item" href="cards.html">Identitas Siswa</a>

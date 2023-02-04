@@ -5,13 +5,13 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Set Siswa Ekskul</h1>
+        <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Set Siswa Ekstrakurikuler</h1>
     </div>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4 mt-3">
     <div class="card-header py-3">
-        <h4 class="m-0 font-weight-bold text-indigo-900">Tabel Set Siswa Ekskul</h4>
+        <h4 class="m-0 font-weight-bold text-indigo-900">Tabel Set Siswa Ekstrakurikuler</h4>
     </div>
     <div class="mx-3">
                 <div class="container">
@@ -80,7 +80,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <div class="row justify-content-end text-right">
                                         <div class="col mb-4">
-                                            <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #464E53; border-radius: 8px">
+                                            <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px">
                                             <span class="d-flex">
                                                 <i class="ri-add-line mt-auto mb-auto mr-1" style="font-size: 14px;"></i>
                                                 Tambah Siswa
