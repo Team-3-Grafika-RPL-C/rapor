@@ -106,6 +106,10 @@ $routes->get('/rekap-nilai_ekskul', 'c_rekapNilaiEkskul::index');
 
 $routes->get('/input-presensi', 'c_inputPresensi::index');
 
+// Wali Murid
+$routes->get('/profile-sekolah', 'c_waliMurid::profile');
+$routes->get('/print-rapor', 'c_waliMurid::print');
+
 $routes->get('/test', 'c_dashboard::test');
 
 // $routes->get('/','c_login::index');

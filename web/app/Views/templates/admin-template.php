@@ -45,6 +45,18 @@
                 <span class="mt-auto mb-auto ml-2">Dashboard</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link d-flex" href="<?= base_url(); ?>/profile-sekolah">
+                <i class="ri-profile-line" style="font-size: 24px"></i>
+                <span class="mt-auto mb-auto ml-2">Profile Sekolah</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link d-flex" href="<?= base_url(); ?>/print-rapor">
+                <i class="ri-printer-line" style="font-size: 24px"></i>
+                <span class="mt-auto mb-auto ml-2">Print Rapor</span>
+            </a>
+        </li>
 
         <!-- Divider -->
         <!-- <hr class="sidebar-divider" /> -->
