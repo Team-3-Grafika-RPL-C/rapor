@@ -100,7 +100,7 @@
         <!-- <div class="sidebar-heading">Addons</div> -->
 
         <!-- Nav Item - Penilaian Collapse Menu -->
-        <!-- <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link collapsed d-flex" href="#" data-toggle="collapse" data-target="#collapsePenilaian" aria-expanded="true" aria-controls="collapsePenilaian">
             <i class="ri-draft-fill" style="font-size: 24px"></i>
             <span class="mt-auto mb-auto ml-2 mr-auto">Penilaian</span>
@@ -108,15 +108,15 @@
           <div id="collapsePenilaian" class="collapse" aria-labelledby="headingPenilaian" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Input Data</h6>
-              <a class="collapse-item" href="login.html">Input Nilai Mapel</a>
-              <a class="collapse-item" href="register.html">Input Nilai Ekskul</a>
+              <a class="collapse-item" href="<?= base_url(); ?>/input-nilai-mapel">Input Nilai Mapel</a>
+              <a class="collapse-item" href="<?= base_url(); ?>/input-nilai-ekskul">Input Nilai Ekskul</a>
               <div class="collapse-divider"></div>
               <h6 class="collapse-header">Rekap Nilai</h6>
-              <a class="collapse-item" href="404.html">Rekap Nilai</a>
-              <a class="collapse-item" href="blank.html">Rekap Nilai Ekskul</a>
+              <a class="collapse-item" href="<?= base_url(); ?>/rekap-nilai_mapel">Rekap Nilai Mapel</a>
+              <a class="collapse-item" href="<?= base_url(); ?>/rekap-nilai_ekskul">Rekap Nilai Ekskul</a>
             </div>
           </div>
-        </li> -->
+        </li>
 
         <!-- Nav Item - Presensi Collapse Menu -->
         <!-- <li class="nav-item">
