@@ -91,11 +91,13 @@ $routes->get('/input-nilai-mapel/form', 'c_inputNilaiMapel::form');
 $routes->get('/input-nilai-mapel/form-detail', 'c_inputNilaiMapel::form_detail');
 
 $routes->get('/input-nilai-ekskul', 'c_inputNilaiEkskul::index');
-$routes->get('/input-nilai-ekskul', 'c_inputNilaiEkskul::index');
+$routes->get('/input-nilai-ekskul/form', 'c_inputNilaiEkskul::form');
 
 $routes->get('/rekap-nilai_mapel', 'c_rekapNilaiMapel::index');
 
 $routes->get('/rekap-nilai_ekskul', 'c_rekapNilaiEkskul::index');
+
+$routes->get('/input-presensi', 'c_inputPresensi::index');
 
 $routes->get('/test', 'c_dashboard::test');
 

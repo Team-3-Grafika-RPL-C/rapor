@@ -119,18 +119,17 @@
         </li>
 
         <!-- Nav Item - Presensi Collapse Menu -->
-        <!-- <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link collapsed d-flex" href="#" data-toggle="collapse" data-target="#collapsePresensi" aria-expanded="true" aria-controls="collapsePresensi">
             <i class="ri-calendar-check-line" style="font-size: 24px"></i>
             <span class="mt-auto mb-auto ml-2 mr-auto">Presensi</span>
           </a>
           <div id="collapsePresensi" class="collapse" aria-labelledby="headingPresensi" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="buttons.html">Input Presensi</a>
-              <a class="collapse-item" href="cards.html">Rekap Presensi</a>
+              <a class="collapse-item" href="<?= base_url(); ?>/input-presensi">Input Presensi</a>
             </div>
           </div>
-        </li> -->
+        </li>
 
         <!-- Nav Item - Rapor Collapse Menu -->
         <li class="nav-item">
