@@ -85,6 +85,13 @@ $routes->get('/set-pelajaran_kelas', 'c_setPelajaranKelas::index');
 $routes->get('/set-pelajaran-kelas/form', 'c_setPelajaranKelas::form');
 
 $routes->get('/rapor-semester', 'c_raporSemester::index');
+$routes->get('/rapor-semester/form', 'c_raporSemester::form');
+
+$routes->get('/catatan-semester', 'c_catatanSemester::index');
+
+$routes->get('/status-kenaikan', 'c_statusKenaikan::index');
+
+$routes->get('/identitas-siswa', 'c_identitasSiswa::index');
 
 $routes->get('/test', 'c_dashboard::test');
 

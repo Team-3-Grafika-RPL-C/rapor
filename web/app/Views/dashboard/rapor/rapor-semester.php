@@ -9,34 +9,37 @@
     </div>
 
 <!-- DataTales Example -->
-<div class="card shadow mb-4 mt-3">
-    <div class="card-header py-3">
-        <h4 class="m-0 font-weight-bold text-indigo-900">Tabel Rapor Semester</h4>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card bg-indigo shadow mb-4 mt-3" data-href="<?= base_url(); ?>/rapor-semester/form" data-href="<?= base_url(); ?>/rapor-semester/form">
+            <div class="card-body">
+                <h2 class="h2 ">Kelas 1A</h2>
+                <p class="p ">Jumlah Siswa 80</p>
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center">Nama Kelas</th>
-                        <th class="text-center">Tingkat</th>
-                        <th class="text-center">Pilihan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1A</td>
-                        <td>Satu</td>
-                        <td class="text-center">
-                            <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
-                                <span class="d-flex">LIHAT RAPOR KELAS</span>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="col-md-4">
+        <div class="card bg-indigo shadow mb-4 mt-3" data-href="<?= base_url(); ?>/rapor-semester/form">
+            <div class="card-body">
+                <h2 class="h2 ">Kelas 1B</h2>
+                <p class="p ">Jumlah Siswa 80</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-indigo shadow mb-4 mt-3" data-href="<?= base_url(); ?>/rapor-semester/form">
+            <div class="card-body">
+                <h2 class="h2 ">Kelas 1C</h2>
+                <p class="p ">Jumlah Siswa 80</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-indigo shadow mb-4 mt-3" data-href="<?= base_url(); ?>/rapor-semester/form">
+            <div class="card-body">
+                <h2 class="h2 ">Kelas 2A</h2>
+                <p class="p ">Jumlah Siswa 80</p>
+            </div>
         </div>
     </div>
 </div>

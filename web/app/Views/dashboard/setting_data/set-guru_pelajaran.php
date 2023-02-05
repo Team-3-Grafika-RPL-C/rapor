@@ -24,26 +24,26 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center">NIP</th>
-                        <th class="text-center">Nama Guru</th>
-                        <th class="text-center">Alamat</th>
-                        <th class="text-center">Aktif</th>
-                        <th class="text-center">ACTION</th>
+                        <th class="col-1 my-auto text-center">No</th>
+                        <th class="col-1 my-auto text-center">NIP</th>
+                        <th class="col-3 my-auto text-center">Nama Guru</th>
+                        <th class="col-4 my-auto text-center">Alamat</th>
+                        <th class="col-1 my-auto text-center">Aktif</th>
+                        <th class="col-2 my-auto text-center">ACTION</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
                         <tr>
                             <td>1</td>
                             <td>201022029</td>
                             <td>Solikin, S.Pd</td>
                             <td>Jl. Hamid Rusdi No.12</td>
-                            <td class="text-center">
+                            <td>
                                 <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
                                     <span class="d-flex">AKTIF</span>
                                 </a>
                             </td>
-                            <td class="text-center">
+                            <td>
                                 <a href="<?= base_url(); ?>/set-guru_pelajaran/form-detail" class="btn btn-info btn-rounded">
                                     <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
                                 </a>

@@ -18,22 +18,22 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center">Semester</th>
-                        <th class="text-center">Aktif</th>
-                        <th class="text-center">Aksi</th>
+                        <th class="col-1 my-auto text-center">No</th>
+                        <th class="col-4 my-auto text-center">Semester</th>
+                        <th class="col-3 my-auto text-center">Aktif</th>
+                        <th class="col-3 my-auto text-center">Aksi</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
                         <tr>
                             <td>1</td>
                             <td>Ganjil</td>
-                            <td class="text-center">
+                            <td>
                                 <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
                                     <span class="d-flex">Aktif</span>
                                 </a>
                             </td>
-                            <td class="text-center">
+                            <td>
                                 <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #C70A0A; border-radius: 8px">
                                     <span class="d-flex">
                                         <i class="ri-delete-bin-line mr-2"></i>
@@ -45,12 +45,12 @@
                         <tr>
                             <td>2</td>
                             <td>Genap</td>
-                            <td class="text-center">
+                            <td>
                                 <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
                                     <span class="d-flex">Aktif</span>
                                 </a>
                             </td>
-                            <td class="text-center">
+                            <td>
                                 <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #C70A0A; border-radius: 8px">
                                     <span class="d-flex">
                                         <i class="ri-delete-bin-line mr-2"></i>

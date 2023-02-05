@@ -245,3 +245,15 @@ a.text-blue:hover, a.text-blue:focus {
 a.text-indigo-500:hover, a.text-indigo-500:focus {
   color: #5f3dc4 !important;
 }
+[data-href] {
+  cursor: pointer;
+  color: #fff;
+}
+[data-href]:hover {
+  background-color: #B197FC;
+  color: #360DAF;
+}
+.btn-outline-white {
+  border-color: #74838B;
+}
+

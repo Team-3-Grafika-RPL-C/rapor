@@ -4,12 +4,12 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class c_raporSemester extends BaseController {
+class c_statusKenaikan extends BaseController {
     public function index()
     {$data = [
-        'title' => 'Rapodig - Rapor Semester'
+        'title' => 'Rapodig - Status Kenaikan'
     ];
-        return view('dashboard/rapor/rapor-semester', $data);
+        return view('dashboard/rapor/status_kenaikan', $data);
     }
     public function form()
     {$data = [
