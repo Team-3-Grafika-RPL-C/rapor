@@ -5,13 +5,13 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Catatan Semester</h1>
+        <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Status Kenaikan</h1>
     </div>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4 mt-3">
     <div class="card-header py-3">
-        <h4 class="m-0 font-weight-bold text-indigo-900">Tabel Catatan Semester</h4>
+        <h4 class="m-0 font-weight-bold text-indigo-900">Tabel Status Kenaikan</h4>
     </div>
     <div class="mx-3">
                 <div class="container">
