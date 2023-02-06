@@ -46,8 +46,8 @@
                             <a href="" class="btn btn-warning btn-rounded my-1">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
+                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                             </td>
                         </tr>
@@ -64,8 +64,8 @@
                             <a href="" class="btn btn-warning btn-rounded my-1">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
+                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                             </td>
                         </tr>
@@ -82,7 +82,7 @@
                             <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                             </td>
@@ -100,7 +100,7 @@
                             <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                             </td>
@@ -118,7 +118,7 @@
                             <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                             </td>
@@ -136,7 +136,7 @@
                             <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                             </td>
@@ -154,7 +154,7 @@
                             <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                             </td>
@@ -172,7 +172,7 @@
                             <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                             </td>
@@ -190,7 +190,7 @@
                             <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                             </td>
@@ -208,13 +208,34 @@
                             <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                             </td>
                         </tr>
                     </tbody>
             </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Delete -->
+<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="alertModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content py-4">
+            <div class="modal-body">
+                <div class="container">
+                    <div class="d-flex justify-content-center">
+                        <p class="p">apakah anda yakin akan menghapus data ini?</p>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="row">
+                            <a href="" class="btn btn d-sm-inline-block text-light btn-sm shadow px-4 col-2" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">ya</a>
+                            <a href="" class="btn btn d-sm-inline-block text-dark btn-sm shadow px-4 col-2"style="min-width: 5rem; background-color: #F8F9F9;border-color:#C8CDD0; border-radius: 16px">tidak</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

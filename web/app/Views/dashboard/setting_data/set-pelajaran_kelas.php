@@ -24,18 +24,18 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center">Kelas</th>
-                        <th class="text-center">Semester</th>
-                        <th class="text-center">Mata Pelajaran</th>
+                        <th class="col-1 my-1 text-center">No</th>
+                        <th class="col-2 my-1 text-center">Kelas</th>
+                        <th class="col-4 my-1 text-center">Semester</th>
+                        <th class="col-5 my-1 text-center">Mata Pelajaran</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
                         <tr>
                             <td>1</td>
                             <td>1A</td>
                             <td>Genap</td>
-                            <td>Pendidikan Agama Islam Kelas 1<br>
+                            <td class="text-left">Pendidikan Agama Islam Kelas 1<br>
                                 Pendidikan Pancasila Kelas 1<br>
                                 Bahasa Indonesia Kelas 1<br>
                                 Matematika Kelas 1<br>
