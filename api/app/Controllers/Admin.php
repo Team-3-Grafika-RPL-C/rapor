@@ -117,11 +117,7 @@ class Admin extends ResourceController
                 'errors' => [
                     'required' => lang('Validation.required', [lang('Field.guardian_address')])
                 ]
-            ], 'class' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => lang('Validation.required', [lang('Field.class')])
-                ]
+        Development
             ]
         ])) {
             $errors_validation = $this->validation->getErrors();
@@ -168,7 +164,6 @@ class Admin extends ResourceController
         $guardian_name = $this->request->getJsonVar('guardian_name');
         $guardian_job = $this->request->getJsonVar('guardian_job');
         $guardian_address = $this->request->getJsonVar('guardian_address');
-        $class = $this->request->getJsonVar('class');
 
         $data = [
             'username' => $nis,
