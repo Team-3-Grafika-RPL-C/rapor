@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\ApiModel;
 use CodeIgniter\RESTful\ResourceController;
 
-class School extends ResourceController
+class Schools extends ResourceController
 {
     private $api_helpers, $validation;
 
@@ -34,12 +34,22 @@ class School extends ResourceController
         }
 
         $page = $_GET['page'] ?? 1;
-
         $limit = 10;
         $offset = ($limit * ($page - 1));
+        $bind_query = array($offset, $limit);
 
-        $query = "SELECT $id_query, ss.nis, ss.nisn, ss.name, ss.gender, ss.address, ss.birthplace, ss.birthdate, ss.religion, ss.father_name, ss.mother_name, ss.father_job, ss.mother_job, ss.parents_address, ss.guardian_name, ss.guardian_job, ss.guardian_address FROM school.students ss ORDER BY ss.created_date DESC OFFSET ? LIMIT ?";
-        $data = $this->api_helpers->queryGetArray($query, [$offset, $limit]);
+        $search = $this->request->getGet('search');
+        if ($search != null) {
+            $search_query = "WHERE ss.nis ilike ?, ss.nisn ilike ?, ss.name ilike ?, ss.address ilike ?, ss.father_name ilike ?, ss.mother_name ilike ?, ss.parents_address ilike ?, ss.guardian_name ilike ?, ss.guardian_address ilike ?";
+            $search = "%$search%";
+
+            array_splice($bind_query, 0, 0, array($search, $search, $search, $search, $search, $search, $search, $search, $search));
+        } else {
+            $search_query = '';
+        }
+
+        $query = "SELECT $id_query, ss.nis, ss.nisn, ss.name, ss.gender, ss.address, ss.birthplace, ss.birthdate, ss.religion, ss.father_name, ss.mother_name, ss.father_job, ss.mother_job, ss.parents_address, ss.guardian_name, ss.guardian_job, ss.guardian_address, ss.class, ss.status FROM schools.students ss $search_query ORDER BY ss.created_date DESC OFFSET ? LIMIT ?";
+        $data = $this->api_helpers->queryGetArray($query, $bind_query);
 
         $query = "SELECT COUNT(ss.id) as jml FROM school.students ss";
 
@@ -50,7 +60,7 @@ class School extends ResourceController
         return $this->respond([
             'message' => lang('Message.request_successfully'),
             'page' => $page == 0 ? 1 : $page,
-            'count' => (int)$count_list,
+            'records' => (int)$count_list,
             'data' => $data
         ]);
     }
