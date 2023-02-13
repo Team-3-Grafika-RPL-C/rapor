@@ -17,5 +17,6 @@ return [
     'guardian_job' => 'pekerjaan wali',
     'guardian_address' => 'alamat wali',
     'nip' => 'nip',
-    'password' => 'kata sandi'
+    'password' => 'kata sandi',
+    'class' => 'kelas'
 ];
