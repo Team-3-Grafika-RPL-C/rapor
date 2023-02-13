@@ -39,8 +39,8 @@ class Schools extends ResourceController
         $bind_query = array($offset, $limit);
 
         $search = $this->request->getGet('search');
-        if ($search != null) {
-            $search_query = "WHERE ss.nis ilike ?, ss.nisn ilike ?, ss.name ilike ?, ss.address ilike ?, ss.father_name ilike ?, ss.mother_name ilike ?, ss.parents_address ilike ?, ss.guardian_name ilike ?, ss.guardian_address ilike ?";
+        if ($search !== null) {
+            $search_query = "AND ss.nis ilike ? OR ss.nisn ilike ? OR ss.name ilike ? OR ss.address ilike ? OR ss.father_name ilike ? OR ss.mother_name ilike ? OR ss.parents_address ilike ? OR ss.guardian_name ilike ? OR ss.guardian_address ilike ?";
             $search = "%$search%";
 
             array_splice($bind_query, 0, 0, array($search, $search, $search, $search, $search, $search, $search, $search, $search));
@@ -48,7 +48,14 @@ class Schools extends ResourceController
             $search_query = '';
         }
 
-        $query = "SELECT $id_query, ss.nis, ss.nisn, ss.name, ss.gender, ss.address, ss.birthplace, ss.birthdate, ss.religion, ss.father_name, ss.mother_name, ss.father_job, ss.mother_job, ss.parents_address, ss.guardian_name, ss.guardian_job, ss.guardian_address, ss.class, ss.status FROM schools.students ss $search_query ORDER BY ss.created_date DESC OFFSET ? LIMIT ?";
+        $filter = $this->request->getGet('filter');
+        if ($filter !== null) {
+            $filter_query = "";
+        } else {
+            $filter = '';
+        }
+
+        $query = "SELECT $id_query, ss.nis, ss.nisn, ss.name, ss.gender, ss.address, ss.birthplace, ss.birthdate, ss.religion, ss.father_name, ss.mother_name, ss.father_job, ss.mother_job, ss.parents_address, ss.guardian_name, ss.guardian_job, ss.guardian_address, ss.class, ss.status FROM schools.students ss WHERE ss.is_deleted == FALSE $search_query $filter_query ORDER BY ss.created_date DESC OFFSET ? LIMIT ?";
         $data = $this->api_helpers->queryGetArray($query, $bind_query);
 
         $query = "SELECT COUNT(ss.id) as jml FROM school.students ss";

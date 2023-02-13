@@ -42,20 +42,20 @@
                                         <h1>Selamat Datang!</h1>
                                         <h5 class="mb-4">Silahkan masuk terlebih dahulu</h5>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="post" action="<?= base_url(); ?>/validasi-login">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user login-placeholder"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                id="exampleInputEmail" name="username" aria-describedby="emailHelp"
                                                 placeholder="Username">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user login-placeholder"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="exampleInputPassword" name="password" placeholder="Password">
                                         </div>
                                         <div class="my-5 pb-5">
-                                            <a href="<?= base_url(); ?>/dashboard" class="btn btn-user btn-block" style="background-color: #845EF7; color: white">
+                                            <button type="submit" class="btn btn-user btn-block" style="background-color: #845EF7; color: white">
                                                 Login
-                                            </a>
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
