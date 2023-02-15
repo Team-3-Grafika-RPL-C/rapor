@@ -51,6 +51,13 @@ $routes->delete('/students/(:any)', 'Admin::deleteStudent/$1');
 // --- School --- //
 $routes->get('/students', 'Schools::getStudentsList');
 
+$routes->get('/kelas', 'CKelas::index');
+$routes->get('/kelas/(:num)', 'CKelas::show/$1');
+$routes->post('/kelas', 'CKelas::create');
+$routes->put('/kelas/(:num)', 'CKelas::update/$1');
+$routes->delete('/kelas/(:num)', 'CKelas::delete/$1');
+
+
 
 /*
  * --------------------------------------------------------------------

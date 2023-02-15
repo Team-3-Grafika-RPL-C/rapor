@@ -112,8 +112,8 @@ $routes->get('/print-rapor', 'c_waliMurid::print');
 
 $routes->get('/test', 'c_dashboard::test');
 
-// $routes->get('/','c_login::index');
-$routes->post('/validasi-login', 'c_login::loginProcess');
+$routes->get('/','c_login::index');
+$routes->post('/validasi-login', 'c_login::validasi_login');
 
 /*
  * --------------------------------------------------------------------
