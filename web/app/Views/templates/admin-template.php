@@ -28,7 +28,7 @@
       <!-- Sidebar -->
       <ul class="navbar-nav bg-indigo sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url(); ?>/dashboard">
           <div class="sidebar-brand-icon">
             <img src="<?= base_url(); ?>/assets/logo-polowijen.png" alt="Logo SDN Polowijen 1 Malang" srcset="" height="45rem">
           </div>
@@ -42,19 +42,19 @@
         <li class="nav-item active">
             <a class="nav-link d-flex" href="<?= base_url(); ?>/dashboard">
                 <i class="ri-dashboard-fill" style="font-size: 24px"></i>
-                <span class="mt-auto mb-auto ml-2">Dashboard</span>
+                <span class="mt-auto mb-auto d-none d-md-block ml-2">Dashboard</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link d-flex" href="<?= base_url(); ?>/profile-sekolah">
                 <i class="ri-profile-line" style="font-size: 24px"></i>
-                <span class="mt-auto mb-auto ml-2">Profile Sekolah</span>
+                <span class="mt-auto mb-auto d-none d-md-block ml-2">Profile Sekolah</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link d-flex" href="<?= base_url(); ?>/print-rapor">
                 <i class="ri-printer-line" style="font-size: 24px"></i>
-                <span class="mt-auto mb-auto ml-2">Print Rapor</span>
+                <span class="mt-auto mb-auto d-none d-md-block ml-2">Print Rapor</span>
             </a>
         </li>
 
@@ -68,7 +68,7 @@
         <li class="nav-item">
           <a class="nav-link collapsed d-flex" href="#" data-toggle="collapse" data-target="#collapseDataUmum" aria-expanded="true" aria-controls="collapseDataUmum">
             <i class="ri-book-2-fill" style="font-size: 24px"></i>
-                <span class="mt-auto mb-auto ml-2 mr-auto">Data Umum</span>
+                <span class="mt-auto mb-auto d-none d-md-block ml-2 mr-auto">Data Umum</span>
           </a>
           <div id="collapseDataUmum" class="collapse" aria-labelledby="headingDataUmum" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -87,7 +87,7 @@
         <li class="nav-item">
           <a class="nav-link collapsed d-flex" href="#" data-toggle="collapse" data-target="#collapseSettingData" aria-expanded="true" aria-controls="collapseSettingData">
             <i class="ri-settings-2-line" style="font-size: 24px"></i>
-            <span class="mt-auto mb-auto ml-2 mr-auto">Setting Data</span>
+            <span class="mt-auto mb-auto d-none d-md-block ml-2 mr-auto">Setting Data</span>
           </a>
           <div id="collapseSettingData" class="collapse" aria-labelledby="headingSettingData" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -115,7 +115,7 @@
         <li class="nav-item">
           <a class="nav-link collapsed d-flex" href="#" data-toggle="collapse" data-target="#collapsePenilaian" aria-expanded="true" aria-controls="collapsePenilaian">
             <i class="ri-draft-fill" style="font-size: 24px"></i>
-            <span class="mt-auto mb-auto ml-2 mr-auto">Penilaian</span>
+            <span class="mt-auto mb-auto d-none d-md-block ml-2 mr-auto">Penilaian</span>
           </a>
           <div id="collapsePenilaian" class="collapse" aria-labelledby="headingPenilaian" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -134,7 +134,7 @@
         <li class="nav-item">
           <a class="nav-link collapsed d-flex" href="#" data-toggle="collapse" data-target="#collapsePresensi" aria-expanded="true" aria-controls="collapsePresensi">
             <i class="ri-calendar-check-line" style="font-size: 24px"></i>
-            <span class="mt-auto mb-auto ml-2 mr-auto">Presensi</span>
+            <span class="mt-auto mb-auto d-none d-md-block ml-2 mr-auto">Presensi</span>
           </a>
           <div id="collapsePresensi" class="collapse" aria-labelledby="headingPresensi" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -147,7 +147,7 @@
         <li class="nav-item">
           <a class="nav-link collapsed d-flex" href="#" data-toggle="collapse" data-target="#collapseRapor" aria-expanded="true" aria-controls="collapseRapor">
             <i class="ri-book-read-fill" style="font-size: 24px"></i>
-            <span class="mt-auto mb-auto ml-2 mr-auto">Rapor</span>
+            <span class="mt-auto mb-auto d-none d-md-block ml-2 mr-auto">Rapor</span>
           </a>
           <div id="collapseRapor" class="collapse" aria-labelledby="headingRapor" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -164,7 +164,7 @@
         <li class="nav-item">
           <a class="nav-link d-flex" href="tables.html">
             <i class="ri-logout-box-line" style="font-size: 24px"></i>
-            <span class="mt-auto mb-auto ml-2 mr-auto">Logout</span></a
+            <span class="mt-auto mb-auto d-none d-md-block ml-2 mr-auto">Logout</span></a
           >
         </li>
 
