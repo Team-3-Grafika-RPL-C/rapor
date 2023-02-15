@@ -43,6 +43,11 @@
                                         <h5 class="mb-4">Silahkan masuk terlebih dahulu</h5>
                                     </div>
                                     <form class="user" method="post" action="<?= base_url(); ?>/validasi-login">
+                                        <?php if(session()->getFlashData('error')) {?>
+                                            <div class="alert alert-danger">
+                                                <?php echo session()->getFlashdata('error') ?>
+                                            </div>
+                                        <?php } ?>
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user login-placeholder"
                                                 id="exampleInputEmail" name="username" aria-describedby="emailHelp"
@@ -53,7 +58,7 @@
                                                 id="exampleInputPassword" name="password" placeholder="Password">
                                         </div>
                                         <div class="my-5 pb-5">
-                                            <button type="submit" class="btn btn-user btn-block" style="background-color: #845EF7; color: white">
+                                            <button type="submit" class="btn btn-user btn-block" name="login" style="background-color: #845EF7; color: white">
                                                 Login
                                             </button>
                                         </div>
