@@ -29,12 +29,16 @@ class c_login extends BaseController
             if ($username == '' or $password == '') {
                 $err = "Masukkan username dan password terlebih dahulu";
             }
-            if ($error) {
+            else if ($error) {
                 session()->setFlashdata('error', $err);
-                return redirect()->to('/');
+                return redirect()->to(base_url() . "/");
             }
+            else {
+                return redirect()->to('/dashboard');
+            }
+        } 
         }
-    }
+}
     
 
     // public function loginProcess()
@@ -64,6 +68,5 @@ class c_login extends BaseController
     //     }
     //     return redirect()->to("/");
     // }
-}
 
 ?>
