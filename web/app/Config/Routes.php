@@ -30,7 +30,6 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->post('/validasi-login', 'Home::validasi_login');
 $routes->get('/dashboard', 'c_dashboard::index');
 
 $routes->get('/data-kelas', 'c_dataKelas::index');
@@ -114,7 +113,7 @@ $routes->get('/print-rapor', 'c_waliMurid::print');
 $routes->get('/test', 'c_dashboard::test');
 
 // $routes->get('/','c_login::index');
-// $routes->post('/', 'c_login::loginProcess');
+$routes->post('/validasi-login', 'c_login::loginProcess');
 
 /*
  * --------------------------------------------------------------------

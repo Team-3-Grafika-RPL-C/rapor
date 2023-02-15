@@ -10,7 +10,7 @@ class c_login extends BaseController
     public function __construct()
     {
         $this->client = \Config\Services::curlrequest([
-            'baseURI' => 'http://169.254.231.21/rapor/api/public/'
+            'baseURI' => 'http://localhost/rapor/web/public/'
         ]);
         $this->session = session();
     }
@@ -23,7 +23,7 @@ class c_login extends BaseController
     {
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
-
+        
         $request_client_data = [
             'username' => $username,
             'password' => $password
@@ -41,6 +41,8 @@ class c_login extends BaseController
                 $this->session->set($session_value);
                 return redirect()->to("/home");
             }
+        } else {
+            dd($response);
         }
         return redirect()->to("/");
     }

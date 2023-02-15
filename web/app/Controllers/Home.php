@@ -10,11 +10,4 @@ class Home extends BaseController
     {
         return view('login');
     }
-
-    public function validasi_login(){
-        $username = $this->request->getPost('username');
-        $password = $this->request->getPost('password');
-
-    
-    }
 }
