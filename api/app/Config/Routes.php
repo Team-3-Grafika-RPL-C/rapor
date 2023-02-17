@@ -72,6 +72,13 @@ $routes->post('/siswa', 'CSiswa::create');
 $routes->put('/siswa/(:num)', 'CSiswa::update/$1');
 $routes->delete('/siswa/(:num)', 'CSiswa::delete/$1');
 
+// --- Data Ekskul --- //
+$routes->get('/ekskul', 'CEkskul::index');
+$routes->get('/ekskul/(:num)', 'CEkskul::show/$1');
+$routes->post('/ekskul', 'CEkskul::create');
+$routes->put('/ekskul/(:num)', 'CEkskul::update/$1');
+$routes->delete('/ekskul/(:num)', 'CEkskul::delete/$1');
+
 
 
 /*
