@@ -4,10 +4,10 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 
-class CKelas extends ResourceController
+class CGuru extends ResourceController
 {
-    protected $modelName = 'App\Models\MKelas'; 
-    protected $format    = 'json';
+    protected $modelName = "App\Models\MGuru";
+    protected $format = "json";
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -16,8 +16,8 @@ class CKelas extends ResourceController
     public function index()
     {
         $data = [
-            'message' => 'Data Kelas:',
-            'data_kelas' => $this->model->orderBy('id', 'DESC')->findAll()
+            'message'   => 'Data Guru:',
+            'data_guru' => $this->model->orderBy('id', 'DESC')->findAll()
         ];
         
         return $this->respond($data, 200);
@@ -31,15 +31,14 @@ class CKelas extends ResourceController
     public function show($id = null)
     {
         $data = [
-            'message' => 'Berhasil',
-            'kelas_detail' => $this->model->find($id)
+            'message'   => 'Data Guru Detail',
+            'data_guru' => $this->model->find($id)
         ];
 
-        if ($data['kelas_detail'] == null) {
-            return $this->failNotFound('Data kelas tidak ditemukan');
-
+        if ($data['data_guru'] == null) {
+            return $this->failNotFound('Data guru tidak ditemukan');
         }
-        
+
         return $this->respond($data, 200);
     }
 
@@ -51,11 +50,10 @@ class CKelas extends ResourceController
     public function create()
     {
         $rules = $this->validate([
-            'id_base'       => 'required',
-            'class_name'    => 'required',
-            'class'         => 'required',
-            'id_teachers'   => 'required',
-            'student_count' => 'required',
+            'teacher_name'       => 'required',
+            'nip'                => 'required',
+            'address'            => 'required',
+            'gender'             => 'required'
         ]);
 
         if (!$rules) {
@@ -67,18 +65,17 @@ class CKelas extends ResourceController
         }
 
         $this->model->insert([
-            'id_base'       => esc($this->request->getVar('id_base')),
-            'class_name'    => esc($this->request->getVar('class_name')),
-            'class'         => esc($this->request->getVar('class')),
-            'id_teachers'   => esc($this->request->getVar('id_teachers')),
-            'student_count' => esc($this->request->getVar('student_count')),
+            'teacher_name'    => esc($this->request->getVar('teacher_name')),
+            'nip'             => esc($this->request->getVar('nip')),
+            'address'         => esc($this->request->getVar('address')),
+            'gender'          => esc($this->request->getVar('gender'))
         ]);
 
         $response = [
             'message' => 'Data berhasil ditambahkan'
         ];
 
-        return $this->respond($response, 200);
+        return $this->respondCreated($response);
     }
 
     /**
@@ -89,11 +86,10 @@ class CKelas extends ResourceController
     public function update($id = null)
     {
         $rules = $this->validate([
-            'id_base'       => 'required',
-            'class_name'    => 'required',
-            'class'         => 'required',
-            'id_teachers'   => 'required',
-            'student_count' => 'required',
+            'teacher_name'       => 'required',
+            'nip'                => 'required',
+            'address'            => 'required',
+            'gender'             => 'required',
         ]);
 
         if (!$rules) {
@@ -104,19 +100,18 @@ class CKelas extends ResourceController
             return $this->failValidationErrors($response);
         }
 
-        $this->model->update($id, [
-            'id_base'       => esc($this->request->getVar('id_base')),
-            'class_name'    => esc($this->request->getVar('class_name')),
-            'class'         => esc($this->request->getVar('class')),
-            'id_teachers'   => esc($this->request->getVar('id_teachers')),
-            'student_count' => esc($this->request->getVar('student_count')),
+        $this->model->update([
+            'teacher_name'    => esc($this->request->getVar('teacher_name')),
+            'nip'             => esc($this->request->getVar('nip')),
+            'address'         => esc($this->request->getVar('address')),
+            'gender'          => esc($this->request->getVar('gender')),
         ]);
 
         $response = [
             'message' => 'Data berhasil diubah'
         ];
 
-        return $this->respond($response, 200);
+        return $this->respondCreated($response);
     }
 
     /**

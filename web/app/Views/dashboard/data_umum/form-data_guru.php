@@ -38,8 +38,20 @@
                                 <h6 class="h6 text-gray-900 font-weight-bold">Alamat</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="alamat" name="alamat">
+                                <input type="text" autocomplete="off" class="form-control" id="alamat" name="Alamat">
                             </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Jenis Kelamin</h6>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 mb-4">
+                                    <input type="checkbox" autocomplete="off" class="form-control" id="gender-l" name="gender-l">
+                                </div>
+                                <div class="col-md-8 mb-4">
+                                    <input type="checkbox" autocomplete="off" class="form-control" id="gender-l" name="gender-l">
+                                </div>
+                            </div>
+                            
                         </div>
                         <div class="d-flex justify-content-end mb-3 mt-5 pt-5">
                             <button class="btn text-light mx-1" style="min-width: 6rem; background-color: #845EF7; border-radius: 8px" type="submit">Simpan</button>

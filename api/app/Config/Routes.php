@@ -51,11 +51,26 @@ $routes->delete('/students/(:any)', 'Admin::deleteStudent/$1');
 // --- School --- //
 $routes->get('/students', 'Schools::getStudentsList');
 
+// --- Data Kelas --- //
 $routes->get('/kelas', 'CKelas::index');
 $routes->get('/kelas/(:num)', 'CKelas::show/$1');
 $routes->post('/kelas', 'CKelas::create');
 $routes->put('/kelas/(:num)', 'CKelas::update/$1');
 $routes->delete('/kelas/(:num)', 'CKelas::delete/$1');
+
+// --- Data Guru --- //
+$routes->get('/guru', 'CGuru::index');
+$routes->get('/guru/(:num)', 'CGuru::show/$1');
+$routes->post('/guru', 'CGuru::create');
+$routes->put('/guru/(:num)', 'CGuru::update/$1');
+$routes->delete('/guru/(:num)', 'CGuru::delete/$1');
+
+// --- Data Siswa --- //
+$routes->get('/siswa', 'CSiswa::index');
+$routes->get('/siswa/(:num)', 'CSiswa::show/$1');
+$routes->post('/siswa', 'CSiswa::create');
+$routes->put('/siswa/(:num)', 'CSiswa::update/$1');
+$routes->delete('/siswa/(:num)', 'CSiswa::delete/$1');
 
 
 
