@@ -31,216 +31,58 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
+                    <?php 
+                    $nomer = 1;
+                    foreach ($data->data_kelas as $dat) {
+                    ?>
                     <tr>
-                        <td>1</td>
-                        <td>1A</td>
-                        <td>Satu</td>
                         <td>
-                            <a class="btn btn-info btn-rounded my-1" href="<?= base_url(); ?>/data-kelas/form-detail">
+                            <?= $nomer ?>
+                            <?php $nomer++; ?>
+                        </td>
+                        <td>
+                            <?= $dat->class_name ?>
+                        </td>
+                        <td>
+                            <?= $dat->class ?>
+                        </td>
+                        <td>
+                            <a class="btn btn-info btn-rounded my-1" href="<?= base_url(); ?>/data-kelas/form-detail/<?=$dat->id?>">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
                             </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
+                            <a class="btn btn-warning btn-rounded my-1" href="<?= base_url(); ?>/data-kelas/form-edit/<?=$dat->id?>">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete_<?= $dat->id?>">
                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>1B</td>
-                        <td>Satu</td>
-                        <td class="text-center">
-                            <a href="<?= base_url(); ?>/data-kelas/form-detail" class="btn btn-info btn-rounded my-1">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                        </td>
-                        </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>2A</td>
-                        <td>Dua</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded my-1">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>2B</td>
-                        <td>Dua</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded my-1">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>3A</td>
-                        <td>Tiga</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded my-1">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>3B</td>
-                        <td>Tiga</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded my-1">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>4A</td>
-                        <td>Empat</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded my-1">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>4B</td>
-                        <td>Empat</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded my-1">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>5A</td>
-                        <td>Lima</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded my-1">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>5B</td>
-                        <td>Lima</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded my-1">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>6B</td>
-                        <td>Enam</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded my-1">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded">
-    data-toggle="modal" data-target="#delete"                             <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>6B</td>
-                        <td>Enam</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded my-1">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                        </td>
-                    </tr>
+                    <?php
+                    } 
+                    ?>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 <!-- Modal Delete -->
-<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="alertModal" aria-hidden="true">
+
+<?php
+foreach ($data->data_kelas as $dat) {
+?>
+<div class="modal fade" id="delete_<?= $dat->id ?>" tabindex="-1" aria-labelledby="alertModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content py-4">
             <div class="modal-body">
                 <div class="container">
                     <div class="d-flex justify-content-center">
-                        <p class="p">apakah anda yakin akan menghapus data ini?</p>
+                        <p class="p">Apakah anda yakin akan menghapus data ini?</p>
                     </div>
                     <div class="d-flex justify-content-center">
                         <div class="row">
-                            <a href="" class="btn btn d-sm-inline-block text-light btn-sm shadow px-4 col-2" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">ya</a>
-                            <a href="" class="btn btn d-sm-inline-block text-dark btn-sm shadow px-4 col-2"style="min-width: 5rem; background-color: #F8F9F9;border-color:#C8CDD0; border-radius: 16px">tidak</a>
+                            <a href="<?= base_url() ?>/data-kelas/delete/<?= $dat->id ?>" class="btn btn d-sm-inline-block text-light btn-sm shadow px-4 col-2" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">Ya</a>
+                            <a class="btn btn d-sm-inline-block text-dark btn-sm shadow px-4 col-2"style="min-width: 5rem; background-color: #F8F9F9;border-color:#C8CDD0; border-radius: 16px">Tidak</a>
                         </div>
                     </div>
                 </div>
@@ -248,6 +90,9 @@
         </div>
     </div>
 </div>
+<?php
+}
+?>
 
 </div>
 <!-- /.container-fluid -->

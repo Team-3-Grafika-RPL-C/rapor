@@ -26,19 +26,22 @@
                                 <h6 class="h6 text-gray-900 font-weight-bold">Nama</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nama" name="Nama" value="Dian Retno, S.Pd" readonly>
+                                <input type="text" autocomplete="off" class="form-control" id="nama" name="Nama" 
+                                value="<?= $data->guru_detail->teacher_name ?>" readonly>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h text-gray-900 font-weight-bold">NIP</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nip" name="NIP" value="21202020202" readonly>
+                                <input type="text" autocomplete="off" class="form-control" id="nip" name="NIP" 
+                                value="<?= $data->guru_detail->nip ?>" readonly>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Alamat</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="alamat" name="alamat" value="Jl. Mawar No.11" readonly>
+                                <input type="text" autocomplete="off" class="form-control" id="alamat" name="alamat" 
+                                value="<?= $data->guru_detail->address ?>" readonly>
                             </div>
                         </div>
                     </form>
