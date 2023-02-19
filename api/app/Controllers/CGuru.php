@@ -32,10 +32,10 @@ class CGuru extends ResourceController
     {
         $data = [
             'message'   => 'Data Guru Detail',
-            'data_guru' => $this->model->find($id)
+            'guru_detail' => $this->model->find($id)
         ];
 
-        if ($data['data_guru'] == null) {
+        if ($data['guru_detail'] == null) {
             return $this->failNotFound('Data guru tidak ditemukan');
         }
 

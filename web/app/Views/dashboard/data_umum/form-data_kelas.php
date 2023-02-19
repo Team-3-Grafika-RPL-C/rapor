@@ -20,31 +20,35 @@
             <!-- Form Data Kelas -->
             <div class="mx-3">
                 <div class="container">
-                    <form action="" method="post">
+                    <form action="<?= isset($data) ? '/data-kelas/form-edit/'.$data->kelas_detail->id :'/data-kelas/form' ?>" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Nama Kelas</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nama_kelas" name="Nama Kelas">
+                                <input type="text" autocomplete="off" class="form-control" id="nama_kelas" name="nama_kelas"
+                                value="<?= isset($data) ? $data->kelas_detail->class_name : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h text-gray-900 font-weight-bold">Tingkat</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="tingkat" name="Tingkat">
+                                <input type="text" autocomplete="off" class="form-control" id="tingkat" name="tingkat"
+                                value="<?= isset($data) ? $data->kelas_detail->class : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Wali Kelas</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="wali_kelas" name="Wali Kelas">
+                                <input type="text" autocomplete="off" class="form-control" id="wali_kelas" name="wali_kelas"
+                                value="<?= isset($data) ? $data->kelas_detail->id_teachers : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Jumlah Siswa</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="number" autocomplete="off" class="form-control" id="jumlah_siswa" name="Jumlah Siswa">
+                                <input type="number" autocomplete="off" class="form-control" id="jumlah_siswa" name="jumlah_siswa"
+                                value="<?= isset($data) ? $data->kelas_detail->student_count : '' ?>">
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mb-3 mt-5 pt-5">

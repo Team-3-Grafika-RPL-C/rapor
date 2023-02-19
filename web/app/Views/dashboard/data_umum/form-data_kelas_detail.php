@@ -20,25 +20,35 @@
             <!-- Form Data Kelas -->
             <div class="mx-3">
                 <div class="container">
-                    <form action="" method="post">
+                    <form action="">
                         <div class="row">
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Nama Kelas</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nama_kelas" name="Nama Kelas" value="1A" readonly>
+                                <input type="text" autocomplete="off" class="form-control" id="nama_kelas" name="Nama Kelas" 
+                                value="<?= $data->kelas_detail->class_name ?>" readonly>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h text-gray-900 font-weight-bold">Tingkat</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="tingkat" name="Tingkat" value="Satu" readonly>
+                                <input type="text" autocomplete="off" class="form-control" id="tingkat" name="Tingkat" 
+                                value="<?= $data->kelas_detail->class ?>" readonly>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Wali Kelas</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="wali_kelas" name="Wali Kelas" value="Bayu Andika, S.Pd" readonly>
+                                <input type="text" autocomplete="off" class="form-control" id="wali_kelas" name="Wali Kelas" 
+                                value="<?= $data->kelas_detail->teacher_name ?>" readonly>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Jumlah Siswa</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <input type="number" autocomplete="off" class="form-control" id="jumlah_siswa" name="Jumlah Siswa"
+                                value="<?= $data->kelas_detail->student_count ?>" readonly>
                             </div>
                         </div>
                     </form>

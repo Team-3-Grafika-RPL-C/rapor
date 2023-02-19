@@ -8,6 +8,13 @@ class CKelas extends ResourceController
 {
     protected $modelName = 'App\Models\MKelas'; 
     protected $format    = 'json';
+
+    private $api_helpers;
+
+    public function __construct()
+    {
+        $this->api_helpers = new Api_helpers();
+    }
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -30,9 +37,11 @@ class CKelas extends ResourceController
      */
     public function show($id = null)
     {
+        $query="SELECT a.*, b.teacher_name FROM class a INNER JOIN teachers b ON a.id_teachers = b.id WHERE a.id = ?";
+        $data_kelas = $this->api_helpers->queryGetFirst($query, [$id]);
         $data = [
             'message' => 'Berhasil',
-            'kelas_detail' => $this->model->find($id)
+            'kelas_detail' => $data_kelas
         ];
 
         if ($data['kelas_detail'] == null) {

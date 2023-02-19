@@ -34,11 +34,15 @@ $routes->get('/dashboard', 'c_dashboard::index');
 
 $routes->get('/data-kelas', 'c_dataKelas::index');
 $routes->get('/data-kelas/form', 'c_dataKelas::form');
-$routes->get('/data-kelas/form-detail', 'c_dataKelas::form_detail');
+$routes->post('/data-kelas/form', 'c_dataKelas::create');
+$routes->get('/data-kelas/form-edit/(:num)', 'c_dataKelas::form_edit/$1');
+$routes->post('/data-kelas/form-edit/(:num)', 'c_dataKelas::form_edit_process/$1');
+$routes->get('/data-kelas/form-detail/(:num)', 'c_dataKelas::form_detail/$1');
+$routes->get('/data-kelas/delete/(:num)', 'c_dataKelas::delete/$1');
 
 $routes->get('/data-guru', 'c_dataGuru::index');
 $routes->get('/data-guru/form', 'c_dataGuru::form');
-$routes->get('/data-guru/form-detail', 'c_dataGuru::form_detail');
+$routes->get('/data-guru/form-detail/(:num)', 'c_dataGuru::form_detail/$1');
 
 $routes->get('/data-siswa', 'c_dataSiswa::index');
 $routes->get('/data-siswa/form', 'c_dataSiswa::form');
