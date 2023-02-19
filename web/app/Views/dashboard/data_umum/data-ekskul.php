@@ -5,7 +5,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Ekstrakurikuler</h1>
+        <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Ekskul</h1>
         <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url(); ?>/data-ekskul/form" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">
             <span class="d-flex">
                 <i class="ri-add-line mt-auto mb-auto mr-1" style="font-size: 14px;"></i>
@@ -17,7 +17,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4 mt-3">
     <div class="card-header py-3">
-        <h4 class="m-0 font-weight-bold text-indigo-900">Tabel Ekstrakurikuler</h4>
+        <h4 class="m-0 font-weight-bold text-indigo-900">Tabel Ekskul</h4>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -25,20 +25,17 @@
                 <thead>
                     <tr>
                         <th class="col-1 my-auto text-center">No</th>
-                        <th class="col-4 my-auto text-center">Ekstrakurikuler</th>
-                        <th class="col-3 my-auto text-center">KKM</th>
-                        <th class="col-4 my-auto text-center">Action</th>
+                        <th class="col-4 my-auto text-center">Ekskul</th>
+                        <th class="col-4 my-auto text-center">Keterangan</th>
+                        <th class="col-3 my-auto text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
                     <tr>
                         <td>1</td>
                         <td>TIK</td>
-                        <td>75</td>
+                        <td>Pembina: Nganu</td>
                         <td>
-                            <a href="<?= base_url(); ?>/data-ekskul/form-detail" class="btn btn-info btn-rounded my-1">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
                             <a href="" class="btn btn-warning btn-rounded my-1">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
@@ -50,11 +47,8 @@
                     <tr>
                         <td>2</td>
                         <td>Bahasa Jepang</td>
-                        <td>75</td>
-                        <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
+                        <td>Pembina: Nganu</td>
+                        <td>                            
                             <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
@@ -66,11 +60,8 @@
                     <tr>
                         <td>3</td>
                         <td>Karate</td>
-                        <td>75</td>
-                        <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
+                        <td>Pembina: Nganu</td>
+                        <td>                            
                             <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
@@ -82,11 +73,8 @@
                     <tr>
                         <td>4</td>
                         <td>Pramuka</td>
-                        <td>75</td>
-                        <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
+                        <td>Pembina: Nganu</td>
+                        <td>                            
                             <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
@@ -98,11 +86,8 @@
                     <tr>
                         <td>5</td>
                         <td>Paduan Suara</td>
-                        <td>75</td>
-                        <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
+                        <td>Pembina: Nganu</td>
+                        <td>                            
                             <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
@@ -114,11 +99,8 @@
                     <tr>
                         <td>6</td>
                         <td>Basket</td>
-                        <td>75</td>
-                        <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
+                        <td>Pembina: Nganu</td>
+                        <td>                            
                             <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
@@ -130,11 +112,8 @@
                     <tr>
                         <td>7</td>
                         <td>Paskibra</td>
-                        <td>75</td>
-                        <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
+                        <td>Pembina: Nganu</td>
+                        <td>                            
                             <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>

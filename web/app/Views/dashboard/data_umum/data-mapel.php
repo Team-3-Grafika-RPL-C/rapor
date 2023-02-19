@@ -44,8 +44,8 @@
                             <a href="" class="btn btn-warning btn-rounded my-1">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip"data-toggle="modal" data-target="#delete">
+                           <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
+                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                             </td>
                         </tr>

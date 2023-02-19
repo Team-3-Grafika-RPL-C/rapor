@@ -42,12 +42,8 @@
                             <div class="col-md-8 mb-4">
                                 <select name="Wali kelas" id="wali_kelas" class="custom-select">
                                     <option value="1">Dhanang mpd</option>
-                                    <option value="2">Sepdi Spd</option>
+                                    <option value="2">Septi Spd</option>
                                 </select>
-                            </div>
-                            <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="wali_kelas" name="wali_kelas"
-                                value="<?= isset($data) ? $data->kelas_detail->id_teachers : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Jumlah Siswa</h6>

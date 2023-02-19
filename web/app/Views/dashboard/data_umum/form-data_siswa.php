@@ -23,10 +23,10 @@
                     <form action="" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">Nama</h6>
+                                <h6 class="h6 text-gray-900 font-weight-bold">NISN</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nama" name="Nama">
+                                <input type="text" autocomplete="off" class="form-control" id="nisn" name="NISN">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h text-gray-900 font-weight-bold">NIS</h6>
@@ -35,28 +35,103 @@
                                 <input type="text" autocomplete="off" class="form-control" id="nis" name="NIS">
                             </div>
                             <div class="col-md-4 mb-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">NISN</h6>
+                                <h6 class="h6 text-gray-900 font-weight-bold">Nama</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nisn" name="NISN">
+                                <input type="text" autocomplete="off" class="form-control" id="nama" name="Nama">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Jenis Kelamin</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="jenis_kelamin" name="Jenis Kelamin">
+                                <select name="Wali kelas" id="jk" class="custom-select">
+                                    <option value="1">Laki-laki</option>
+                                    <option value="2">Perempuan</option>
+                                </select>
                             </div>
                             <div class="col-md-4 mb-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">TTL</h6>
+                                <h6 class="h6 text-gray-900 font-weight-bold">Tempat Lahir</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="ttl" name="TTL">
+                                <input type="text" autocomplete="off" class="form-control" id="tempat_lahir" name="Tempat Lahir">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Tanggal Lahir</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <input type="date" autocomplete="off" class="form-control" id="tanggal_lahir" name="Tanggal Lahir">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Agama</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <select name="Wali kelas" id="jk" class="custom-select">
+                                    <option value="1">Islam</option>
+                                    <option value="2">Kristen</option>
+                                    <option value="3">Katolik</option>
+                                    <option value="4">Hindu</option>
+                                    <option value="5">Buddha</option>
+                                    <option value="6">Konghucu</option>
+                                </select>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Alamat</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="alamat" name="Alamat">
+                            </div>
+                            
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Nama Ayah</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <input type="text" autocomplete="off" class="form-control" id="nama_ayah" name="Nama Ayah">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Pekerjaan Ayah</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <input type="text" autocomplete="off" class="form-control" id="pekerjaan_ayah" name="Pekerjaan Ayah">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Nama Ibu</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <input type="text" autocomplete="off" class="form-control" id="nama_ibu" name="Nama Ibu">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Pekerjaan Ibu</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <input type="text" autocomplete="off" class="form-control" id="pekerjaan_ibu" name="Pekerjaan Ibu">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Nama Wali</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <input type="text" autocomplete="off" class="form-control" id="nama_ibu" name="Nama Ibu">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Pekerjaan Wali</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <input type="text" autocomplete="off" class="form-control" id="pekerjaan_ibu" name="Pekerjaan Ibu">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Tingkat</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <input type="text" autocomplete="off" class="form-control" id="tingkat" name="Tingkat">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Status</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                            <select name="Wali kelas" id="wali_kelas" class="custom-select">
+                                    <option value="1">Aktif</option>
+                                    <option value="2">Alumni</option>
+                                    <option value="3">Keluar</option>
+                                </select>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mb-3 mt-5 pt-5">

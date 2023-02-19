@@ -33,25 +33,25 @@
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="mata_pelajaran" name="Mata Pelajaran">
-                            </div>
+                            <!-- </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">KKM</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="kkm" name="KKM">
-                            </div>
+                            </div> -->
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Tingkat</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="tingkat" name="Tingkat">
-                            </div>
+                            <!-- </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Tahun</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="tahun" name="Tahun">
-                            </div>
+                            </div> -->
                         </div>
                         <div class="d-flex justify-content-end mb-3 mt-5 pt-5">
                             <button class="btn text-light mx-1" style="min-width: 6rem; background-color: #845EF7; border-radius: 8px" type="submit">Simpan</button>
