@@ -60,7 +60,6 @@ class CKelas extends ResourceController
     public function create()
     {
         $rules = $this->validate([
-            'id_base'       => 'required',
             'class_name'    => 'required',
             'class'         => 'required',
             'id_teachers'   => 'required',
@@ -76,7 +75,6 @@ class CKelas extends ResourceController
         }
 
         $this->model->insert([
-            'id_base'       => esc($this->request->getVar('id_base')),
             'class_name'    => esc($this->request->getVar('class_name')),
             'class'         => esc($this->request->getVar('class')),
             'id_teachers'   => esc($this->request->getVar('id_teachers')),
@@ -98,7 +96,6 @@ class CKelas extends ResourceController
     public function update($id = null)
     {
         $rules = $this->validate([
-            'id_base'       => 'required',
             'class_name'    => 'required',
             'class'         => 'required',
             'id_teachers'   => 'required',
@@ -114,7 +111,6 @@ class CKelas extends ResourceController
         }
 
         $this->model->update($id, [
-            'id_base'       => esc($this->request->getVar('id_base')),
             'class_name'    => esc($this->request->getVar('class_name')),
             'class'         => esc($this->request->getVar('class')),
             'id_teachers'   => esc($this->request->getVar('id_teachers')),

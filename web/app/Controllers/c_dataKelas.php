@@ -64,7 +64,6 @@ class c_dataKelas extends BaseController {
         $jumlah_siswa = $this->request->getVar('jumlah_siswa');
 
         $request_client_data = [
-            'id_base'=>1,
             'class_name' => $nama_kelas,
             'class' => $tingkat,
             'id_teachers' => $wali_kelas,
@@ -102,7 +101,6 @@ class c_dataKelas extends BaseController {
         $jumlah_siswa = $this->request->getVar('jumlah_siswa');
 
         $request_client_data = [
-            'id_base'=>1,
             'class_name' => $nama_kelas,
             'class' => $tingkat,
             'id_teachers' => $wali_kelas,
