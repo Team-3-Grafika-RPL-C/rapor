@@ -79,6 +79,27 @@ $routes->post('/ekskul', 'CEkskul::create');
 $routes->put('/ekskul/(:num)', 'CEkskul::update/$1');
 $routes->delete('/ekskul/(:num)', 'CEkskul::delete/$1');
 
+// --- Data Mapel --- //
+$routes->get('/mapel', 'CMapel::index');
+$routes->get('/mapel/(:num)', 'CMapel::show/$1');
+$routes->post('/mapel', 'CMapel::create');
+$routes->put('/mapel/(:num)', 'CMapel::update/$1');
+$routes->delete('/mapel/(:num)', 'CMapel::delete/$1');
+
+// --- Data cpembelajaran --- //
+$routes->get('/cpembelajaran', 'CCPembelajaran::index');
+$routes->get('/cpembelajaran/(:num)', 'CCPembelajaran::show/$1');
+$routes->post('/cpembelajaran', 'CCPembelajaran::create');
+$routes->put('/cpembelajaran/(:num)', 'CCPembelajaran::update/$1');
+$routes->delete('/cpembelajaran/(:num)', 'CCPembelajaran::delete/$1');
+
+// --- Data cpembelajaran --- //
+$routes->get('/tpembelajaran', 'CTPembelajaran::index');
+$routes->get('/tpembelajaran/(:num)', 'CTPembelajaran::show/$1');
+$routes->post('/tpembelajaran', 'CTPembelajaran::create');
+$routes->put('/tpembelajaran/(:num)', 'CTPembelajaran::update/$1');
+$routes->delete('/tpembelajaran/(:num)', 'CTPembelajaran::delete/$1');
+
 
 
 /*
