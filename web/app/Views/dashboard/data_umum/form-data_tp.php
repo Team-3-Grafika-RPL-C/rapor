@@ -38,13 +38,21 @@
                                 <h6 class="h6 text-gray-900 font-weight-bold">Capaian Pembelajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="cp" name="Cp">
+                                <select name="Wali kelas" id="cp" class="custom-select">
+                                    <option value="1">Menguasai Separuh Eropa</option>
+                                    <option value="2">Bisa Terbang</option>
+                                    <option value="3">Memiliki Kekuatan Cosmic</option>
+                                    <option value="3">Dapat Menghalau serangan Nuklir</option>
+                                </select>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Semester</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="semester" name="Semester">
+                                <select name="Wali kelas" id="semester" class="custom-select">
+                                    <option value="1">Ganjil</option>
+                                    <option value="2">Genap</option>
+                                </select>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mb-3 mt-5 pt-5">

@@ -77,7 +77,7 @@
               <a class="collapse-item" href="<?= base_url(); ?>/data-guru">Data Guru</a>
               <a class="collapse-item" href="<?= base_url(); ?>/data-siswa">Data Siswa</a>
               <a class="collapse-item" href="<?= base_url(); ?>/data-mapel">Data Mapel</a>
-              <a class="collapse-item" href="<?= base_url(); ?>/data-ekskul">Ekstrakurikuler</a>
+              <a class="collapse-item" href="<?= base_url(); ?>/data-ekskul">Ekskul</a>
               <a class="collapse-item" href="<?= base_url(); ?>/data-cp">Capaian Pembelajaran</a>
               <a class="collapse-item" href="<?= base_url(); ?>/data-tp">Tujuan Pembelajaran</a>
             </div>

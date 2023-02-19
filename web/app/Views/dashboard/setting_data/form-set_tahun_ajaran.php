@@ -25,7 +25,7 @@
                                 <div class="col-md-4 mb-4">
                                     <h6 class="h6 text-gray-900 font-weight-bold">Tahun Ajaran</h6>
                                 </div>
-                                <div class="col-md-2 mb-4">
+                                <div class="col-md-8 mb-4">
                                     <div>
                                         <select class="custom-select my-1 mr-sm-2" id="tahun-ajaran-mulai">
                                             <option value="1">2020/2021</option>

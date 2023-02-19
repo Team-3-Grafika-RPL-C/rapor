@@ -26,7 +26,11 @@
                                 <h6 class="h text-gray-900 font-weight-bold">Guru</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="guru" name="Guru" value="Solikin, S.Pd" readonly>
+                                <select name="guru" id="guru" class="custom-select my-1 mr-sm-2">
+                                    <option value="1">Dhanang Spd.</option>
+                                    <option value="2">Esti Mpd.</option>
+                                    <option value="3">Septi Spd.</option>
+                                </select>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Kelas</h6>

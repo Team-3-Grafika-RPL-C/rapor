@@ -26,7 +26,6 @@
                     <tr>
                         <th class="col-1 my-auto text-center">No</th>
                         <th class="col-2 my-auto text-center">Tahun Ajaran</th>
-                        <th class="col-1 my-auto text-center">KKM</th>
                         <th class="col-2 my-auto text-center">Status</th>
                         <th class="col-3 my-auto text-center">Aktivasi</th>
                         <th class="col-3 my-auto text-center">ACTION</th>
@@ -36,7 +35,6 @@
                     <tr>
                         <td>1</td>
                         <td>2022-2023</td>
-                        <td>75</td>
                         <td>
                             <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
                                 <span class="d-flex">AKTIF</span>

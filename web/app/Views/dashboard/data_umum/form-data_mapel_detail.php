@@ -33,25 +33,25 @@
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="mata_pelajaran" name="Mata Pelajaran" value="Pendidikan Agama dan Budi Pekerti" readonly>
-                            </div>
+                            <!-- </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">KKM</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="kkm" name="KKM" value="75" readonly>
-                            </div>
+                            </div> -->
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Tingkat</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="tingkat" name="Tingkat" value="I" readonly>
-                            </div>
+                            <!-- </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Tahun</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="tahun" name="Tahun" value="2022-2023" readonly>
-                            </div>
+                            </div> -->
                         </div>
                     </form>
                 </div>
