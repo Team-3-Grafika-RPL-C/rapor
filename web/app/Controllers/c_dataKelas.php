@@ -33,9 +33,17 @@ class c_dataKelas extends BaseController {
     }
     public function form()
     {
+        $response = $this->client->request('GET', 'kelas-walkel');
+        $code = $response->getStatusCode();
+
+        $body_response= json_decode($response->getBody());
+
         $data = [
-            'title' => 'Rapodig - Tambah Data Kelas'
+            'title' => 'Rapodig - Tambah Data Kelas',
+            'data_teacher' => $body_response,
+            'page'=> 'create'
         ];
+
         return view('dashboard/data_umum/form-data_kelas', $data);
     }
     public function form_detail($num)
@@ -78,16 +86,18 @@ class c_dataKelas extends BaseController {
     public function form_edit($num)
     {
         $response = $this->client->request('GET', 'kelas/'.$num);
-        $code = $response->getStatusCode();
-        // if ($code = 500) {
-        //     # code...
-        // }
 
-        $body_response= json_decode($response->getBody());
+        $detail= json_decode($response->getBody());
+
+        $response = $this->client->request('GET', 'kelas-walkel');
+
+        $data_teacher= json_decode($response->getBody());
 
         $data = [
             'title' => 'Rapodig - Detail Data Kelas',
-            'data'=> $body_response
+            'data'=> $detail,
+            'data_teacher' =>$data_teacher,
+            'page'=> 'edit'
         ];
         
         return view('dashboard/data_umum/form-data_kelas', $data);
@@ -124,4 +134,5 @@ class c_dataKelas extends BaseController {
         
         return redirect()->to('/data-kelas'); 
     }
+
 }

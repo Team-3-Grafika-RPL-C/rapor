@@ -139,4 +139,21 @@ class CKelas extends ResourceController
 
         return $this->respondDeleted($response);
     }
+
+    public function option_walikelas()
+    {
+        $query = "SELECT a.id, a.teacher_name FROM teachers a";
+        $data_guru = $this->api_helpers->queryGetArray($query);
+
+        $data = [
+            'wali_kelas' => $data_guru
+        ];
+
+        if ($data['wali_kelas'] == null) {
+            return $this->failNotFound('Data kelas tidak ditemukan');
+
+        }
+
+        return $this->respond($data, 200);
+    }
 }

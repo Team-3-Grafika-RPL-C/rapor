@@ -20,29 +20,33 @@
             <!-- Form Data Kelas -->
             <div class="mx-3">
                 <div class="container">
-                    <form action="<?= isset($data) ? '/data-kelas/form-edit/'.$data->kelas_detail->id :'/data-kelas/form' ?>" method="post">
+                    <form action="<?= $page == 'edit' ? '/data-kelas/form-edit/'.$data->kelas_detail->id :'/data-kelas/form' ?>" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Nama Kelas</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="nama_kelas" name="nama_kelas"
-                                value="<?= isset($data) ? $data->kelas_detail->class_name : '' ?>">
+                                value="<?= $page == 'edit' ? $data->kelas_detail->class_name : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h text-gray-900 font-weight-bold">Tingkat</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="tingkat" name="tingkat"
-                                value="<?= isset($data) ? $data->kelas_detail->class : '' ?>">
+                                value="<?= $page == 'edit' ? $data->kelas_detail->class : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Wali Kelas</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <select name="Wali kelas" id="wali_kelas" class="custom-select">
-                                    <option value="1">Dhanang mpd</option>
-                                    <option value="2">Septi Spd</option>
+                                <select name="wali_kelas" id="wali_kelas" class="custom-select">
+                                    <?php foreach ($data_teacher->wali_kelas as $dat) { ?>
+                                    <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->kelas_detail->id_teachers?'selected':''):'' ?>>
+                                        <?= $dat->teacher_name ?>
+                                    </option>
+                                    <?php
+                                    } ?>
                                 </select>
                             </div>
                             <div class="col-md-4 mb-4">
@@ -50,7 +54,7 @@
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="number" autocomplete="off" class="form-control" id="jumlah_siswa" name="jumlah_siswa"
-                                value="<?= isset($data) ? $data->kelas_detail->student_count : '' ?>">
+                                value="<?= $page == 'edit' ? $data->kelas_detail->student_count : '' ?>">
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mb-3 mt-5 pt-5">

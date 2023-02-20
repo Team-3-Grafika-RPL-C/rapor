@@ -57,6 +57,7 @@ $routes->get('/kelas/(:num)', 'CKelas::show/$1');
 $routes->post('/kelas', 'CKelas::create');
 $routes->put('/kelas/(:num)', 'CKelas::update/$1');
 $routes->delete('/kelas/(:num)', 'CKelas::delete/$1');
+$routes->get('/kelas-walkel', 'CKelas::option_walikelas');
 
 // --- Data Guru --- //
 $routes->get('/guru', 'CGuru::index');
@@ -64,6 +65,8 @@ $routes->get('/guru/(:num)', 'CGuru::show/$1');
 $routes->post('/guru', 'CGuru::create');
 $routes->put('/guru/(:num)', 'CGuru::update/$1');
 $routes->delete('/guru/(:num)', 'CGuru::delete/$1');
+$routes->get('/guru-gender', 'CGuru::option_gender');
+
 
 // --- Data Siswa --- //
 $routes->get('/siswa', 'CSiswa::index');
@@ -78,6 +81,27 @@ $routes->get('/ekskul/(:num)', 'CEkskul::show/$1');
 $routes->post('/ekskul', 'CEkskul::create');
 $routes->put('/ekskul/(:num)', 'CEkskul::update/$1');
 $routes->delete('/ekskul/(:num)', 'CEkskul::delete/$1');
+
+// --- Data Mapel --- //
+$routes->get('/mapel', 'CMapel::index');
+$routes->get('/mapel/(:num)', 'CMapel::show/$1');
+$routes->post('/mapel', 'CMapel::create');
+$routes->put('/mapel/(:num)', 'CMapel::update/$1');
+$routes->delete('/mapel/(:num)', 'CMapel::delete/$1');
+
+// --- Data cpembelajaran --- //
+$routes->get('/cpembelajaran', 'CCPembelajaran::index');
+$routes->get('/cpembelajaran/(:num)', 'CCPembelajaran::show/$1');
+$routes->post('/cpembelajaran', 'CCPembelajaran::create');
+$routes->put('/cpembelajaran/(:num)', 'CCPembelajaran::update/$1');
+$routes->delete('/cpembelajaran/(:num)', 'CCPembelajaran::delete/$1');
+
+// --- Data cpembelajaran --- //
+$routes->get('/tpembelajaran', 'CTPembelajaran::index');
+$routes->get('/tpembelajaran/(:num)', 'CTPembelajaran::show/$1');
+$routes->post('/tpembelajaran', 'CTPembelajaran::create');
+$routes->put('/tpembelajaran/(:num)', 'CTPembelajaran::update/$1');
+$routes->delete('/tpembelajaran/(:num)', 'CTPembelajaran::delete/$1');
 
 
 
