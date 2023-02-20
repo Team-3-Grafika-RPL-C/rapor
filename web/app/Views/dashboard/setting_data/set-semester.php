@@ -30,31 +30,14 @@
                             <td>Ganjil</td>
                             <td>
                                 <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
-                                    <span class="d-flex">Aktif</span>
+                                    <span class="d-flex">AKTIF</span>
                                 </a>
                             </td>
                             <td>
                                 <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #C70A0A; border-radius: 8px">
                                     <span class="d-flex">
                                         <i class="ri-delete-bin-line mr-2"></i>
-                                        Non Aktifkan
-                                    </span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Genap</td>
-                            <td>
-                                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
-                                    <span class="d-flex">Aktif</span>
-                                </a>
-                            </td>
-                            <td>
-                                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #C70A0A; border-radius: 8px">
-                                    <span class="d-flex">
-                                        <i class="ri-delete-bin-line mr-2"></i>
-                                        Non Aktifkan
+                                        NON AKTIFKAN
                                     </span>
                                 </a>
                             </td>
