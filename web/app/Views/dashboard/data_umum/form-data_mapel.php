@@ -33,8 +33,8 @@
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="mata_pelajaran" name="Mata Pelajaran">
-                            <!-- </div>
-                            <div class="col-md-4 mb-4">
+                            </div>
+                            <!-- <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">KKM</h6>
                             </div>
                             <div class="col-md-8 mb-4">
