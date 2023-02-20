@@ -117,12 +117,13 @@ class CMapel extends ResourceController
      */
     public function delete($id = null)
     {
-        $this->model->delete($id);
+        $query = "UPDATE class SET is_deleted = 1 WHERE id=?";
+        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [
             'message' => 'Data berhasil dihapus'
         ];
 
-        return $this->respondDeleted($response);
+        return $this->respondDeleted($response);s
     }
 }
