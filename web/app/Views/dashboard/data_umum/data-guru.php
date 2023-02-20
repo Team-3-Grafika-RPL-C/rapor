@@ -50,9 +50,9 @@
                                 <?php
                                 $jk = $dat->gender;
                                 if ($jk==0) {
-                                    echo 'P';
+                                    echo 'Perempuan';
                                 } else {
-                                    echo 'L';
+                                    echo 'Laki-Laki';
                                 }
                                 ?>
                             </td>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         <div class="row">
-                            <a href="" class="btn btn d-sm-inline-block text-light btn-sm shadow px-4 col-2" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">Ya</a>
+                            <a href="<?= base_url() ?>/data-guru/delete/<?= $dat->id ?>" class="btn btn d-sm-inline-block text-light btn-sm shadow px-4 col-2" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">Ya</a>
                             <a href="" class="btn btn d-sm-inline-block text-dark btn-sm shadow px-4 col-2"style="min-width: 5rem; background-color: #F8F9F9;border-color:#C8CDD0; border-radius: 16px">Tidak</a>
                         </div>
                     </div>

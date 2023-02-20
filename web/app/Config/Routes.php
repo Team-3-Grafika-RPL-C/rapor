@@ -42,7 +42,11 @@ $routes->get('/data-kelas/delete/(:num)', 'c_dataKelas::delete/$1');
 
 $routes->get('/data-guru', 'c_dataGuru::index');
 $routes->get('/data-guru/form', 'c_dataGuru::form');
+$routes->post('/data-guru/form', 'c_dataGuru::create');
 $routes->get('/data-guru/form-detail/(:num)', 'c_dataGuru::form_detail/$1');
+$routes->get('/data-guru/form-edit/(:num)', 'c_dataGuru::form_edit/$1');
+$routes->post('/data-guru/form-edit/(:num)', 'c_dataGuru::form_edit_process/$1');
+$routes->get('/data-guru/delete/(:num)', 'c_dataGuru::delete/$1');
 
 $routes->get('/data-siswa', 'c_dataSiswa::index');
 $routes->get('/data-siswa/form', 'c_dataSiswa::form');

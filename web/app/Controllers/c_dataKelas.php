@@ -94,7 +94,7 @@ class c_dataKelas extends BaseController {
         $data_teacher= json_decode($response->getBody());
 
         $data = [
-            'title' => 'Rapodig - Detail Data Kelas',
+            'title' => 'Rapodig - Edit Data Kelas',
             'data'=> $detail,
             'data_teacher' =>$data_teacher,
             'page'=> 'edit'

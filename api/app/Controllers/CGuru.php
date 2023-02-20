@@ -138,31 +138,5 @@ class CGuru extends ResourceController
         return $this->respondDeleted($response);
     }
 
-    public function option_gender()
-    {
-        $query = "SELECT a.gender FROM teachers a";
-        $id_gender = $this->api_helpers->queryGetArray($query);
-
-        $data = [
-            'id_gender' => $id_gender,
-        ];
-
-        if ($id_gender = 1) {
-            $gender = [
-                'id_gender' => '1',
-                'gender' => 'Laki-Laki'
-            ];
-        } else {
-            $gender = [
-                'id_gender' => '2',
-                'gender' => 'Perempuan'
-            ];
-        }
-
-        $data_gender = [
-            'gender' => $gender,
-        ];
-
-        return $this->respond($data_gender, 200);
-    }
+    
 }

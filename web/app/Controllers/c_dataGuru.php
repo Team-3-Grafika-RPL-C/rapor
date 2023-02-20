@@ -46,4 +46,66 @@ class c_dataGuru extends BaseController {
 
         return view('dashboard/data_umum/form-data_guru_detail', $data);
     }
+
+    public function create()
+    {
+        $nama_guru = $this->request->getVar('nama_guru');
+        $nip = $this->request->getVar('nip');
+        $alamat = $this->request->getVar('alamat');
+        $jenis_kelamin = $this->request->getVar('jenis_kelamin');
+
+        $request_client_data = [
+            'teacher_name' => $nama_guru,
+            'nip' => $nip,
+            'address' => $alamat,
+            'gender' => $jenis_kelamin
+        ];
+
+        $response = $this->client->request('POST', 'guru', ['json'=>$request_client_data]);
+
+        return redirect()->to('/data-guru');
+    }
+
+    public function form_edit($num)
+    {
+        $response = $this->client->request('GET', 'guru/'.$num);
+        $detail = json_decode($response->getBody());
+
+        $data = [
+            'title' => 'Rapodig - Edit Data Guru',
+            'data' => $detail,
+            'page' => 'edit'
+        ];
+
+        return view('dashboard/data_umum/form-data_guru', $data);
+    }
+
+    public function form_edit_process($id)
+    {
+        $nama_guru = $this->request->getVar('nama_guru');
+        $nip = $this->request->getVar('nip');
+        $alamat = $this->request->getVar('alamat');
+        $gender = $this->request->getVar('gender');
+
+        $request_client_data = [
+            'teacher_name' => $nama_guru,
+            'nip' => $nip,
+            'address' => $alamat,
+            'gender' => $gender
+        ];
+    
+        $response = $this->client->request('PUT', 'guru/'.$id, ['json'=>$request_client_data]);
+
+        return redirect()->to('/data-guru');
+    }
+
+    public function delete($num)
+    {
+        $response = $this->client->request('DELETE', 'guru/'.$num);
+        $code = $response->getStatusCode();
+
+        $body_response= json_decode($response->getBody());
+        
+        return redirect()->to('/data-guru'); 
+    }
 }

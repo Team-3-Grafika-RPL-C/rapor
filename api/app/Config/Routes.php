@@ -65,8 +65,6 @@ $routes->get('/guru/(:num)', 'CGuru::show/$1');
 $routes->post('/guru', 'CGuru::create');
 $routes->put('/guru/(:num)', 'CGuru::update/$1');
 $routes->delete('/guru/(:num)', 'CGuru::delete/$1');
-$routes->get('/guru-gender', 'CGuru::option_gender');
-
 
 // --- Data Siswa --- //
 $routes->get('/siswa', 'CSiswa::index');

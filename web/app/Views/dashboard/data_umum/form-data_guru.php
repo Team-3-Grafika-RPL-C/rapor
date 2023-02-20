@@ -17,36 +17,36 @@
                     </span>
                 </a>
             </div>
-            <!-- Form Data Kelas -->
+            <!-- Form Data Guru -->
             <div class="mx-3">
                 <div class="container">
-                    <form action="" method="post">
+                    <form action="<?php '/data-guru/form' ?>" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Nama</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nama" name="Nama">
+                                <input type="text" autocomplete="off" class="form-control" id="nama" name="nama_guru">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h text-gray-900 font-weight-bold">NIP</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nip" name="NIP">
+                                <input type="text" autocomplete="off" class="form-control" id="nip" name="nip">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Alamat</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="alamat" name="Alamat">
+                                <input type="text" autocomplete="off" class="form-control" id="alamat" name="alamat">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Jenis Kelamin</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <select name="Jenis Kelamin" id="jk" class="custom-select">
+                                <select name="jenis_kelamin" id="jk" class="custom-select">
+                                    <option value="0">Perempuan</option>
                                     <option value="1">Laki-Laki</option>
-                                    <option value="2">Perempuan</option>
                                 </select>
                             </div>
                         </div>
