@@ -48,7 +48,7 @@
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="jenis_kelamin" name="jenis_kelamin" 
-                                value="<?= $data->guru_detail->gender ?>" readonly>
+                                value="<?= $data->guru_detail->gender == 0 ? 'Perempuan' : 'Laki-Laki' ?>" readonly>
                             </div>
                         </div>
                     </form>

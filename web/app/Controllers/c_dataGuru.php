@@ -27,8 +27,10 @@ class c_dataGuru extends BaseController {
         return view('dashboard/data_umum/data-guru', $data);
     }
     public function form()
-    {$data = [
-        'title' => 'Rapodig - Tambah Data Guru'
+    {
+        $data = [
+        'title' => 'Rapodig - Tambah Data Guru',
+        'page' => 'create'
     ];
         return view('dashboard/data_umum/form-data_guru', $data);
     }
@@ -85,13 +87,13 @@ class c_dataGuru extends BaseController {
         $nama_guru = $this->request->getVar('nama_guru');
         $nip = $this->request->getVar('nip');
         $alamat = $this->request->getVar('alamat');
-        $gender = $this->request->getVar('gender');
+        $jenis_kelamin = $this->request->getVar('jenis_kelamin');
 
         $request_client_data = [
             'teacher_name' => $nama_guru,
             'nip' => $nip,
             'address' => $alamat,
-            'gender' => $gender
+            'gender' => $jenis_kelamin
         ];
     
         $response = $this->client->request('PUT', 'guru/'.$id, ['json'=>$request_client_data]);

@@ -108,7 +108,7 @@ class CGuru extends ResourceController
             return $this->failValidationErrors($response);
         }
 
-        $this->model->update([
+        $this->model->update($id, [
             'teacher_name'    => esc($this->request->getVar('teacher_name')),
             'nip'             => esc($this->request->getVar('nip')),
             'address'         => esc($this->request->getVar('address')),
