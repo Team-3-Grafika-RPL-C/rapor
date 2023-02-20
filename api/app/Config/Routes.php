@@ -57,6 +57,7 @@ $routes->get('/kelas/(:num)', 'CKelas::show/$1');
 $routes->post('/kelas', 'CKelas::create');
 $routes->put('/kelas/(:num)', 'CKelas::update/$1');
 $routes->delete('/kelas/(:num)', 'CKelas::delete/$1');
+$routes->get('/kelas-walkel', 'CKelas::option_walikelas');
 
 // --- Data Guru --- //
 $routes->get('/guru', 'CGuru::index');
@@ -64,6 +65,8 @@ $routes->get('/guru/(:num)', 'CGuru::show/$1');
 $routes->post('/guru', 'CGuru::create');
 $routes->put('/guru/(:num)', 'CGuru::update/$1');
 $routes->delete('/guru/(:num)', 'CGuru::delete/$1');
+$routes->get('/guru-gender', 'CGuru::option_gender');
+
 
 // --- Data Siswa --- //
 $routes->get('/siswa', 'CSiswa::index');
