@@ -124,6 +124,6 @@ class CMapel extends ResourceController
             'message' => 'Data berhasil dihapus'
         ];
 
-        return $this->respondDeleted($response);s
+        return $this->respondDeleted($response);
     }
 }
