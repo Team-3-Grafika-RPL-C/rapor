@@ -17,7 +17,7 @@ class CSiswa extends ResourceController
     {
         $data = [
             'message' => 'Data Siswa:',
-            'data_kelas' => $this->model->orderBy('id', 'DESC')->findAll()
+            'data_kelas' => $this->model->where('is_deleted', 0)->orderBy('id', 'ASC')->findAll()
         ];
         
         return $this->respond($data, 200);
@@ -168,7 +168,7 @@ class CSiswa extends ResourceController
      */
     public function delete($id = null)
     {
-        $query = "UPDATE class SET is_deleted = 1 WHERE id=?";
+        $query = "UPDATE students SET is_deleted = 1 WHERE id=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [

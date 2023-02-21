@@ -18,7 +18,7 @@ class CTPembelajaran extends ResourceController
     {
         $data = [
             'message' => 'Data Tujuan Pembelajaran',
-            'data_tp' => $this->model->findAll(),
+            'data_tp' => $this->model->where('is_deleted', 0)->orderBy('id', 'ASC')->findAll(),
         ];
 
         if ($data['data_tp'] == null) {

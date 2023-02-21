@@ -25,7 +25,7 @@ class CGuru extends ResourceController
     {
         $data = [
             'message'   => 'Data Guru:',
-            'data_guru' => $this->model->orderBy('id', 'DESC')->findAll()
+            'data_guru' => $this->model->orderBy('id', 'ASC')->where('is_deleted', 0)->findAll()
         ];
         
         return $this->respond($data, 200);
@@ -129,7 +129,7 @@ class CGuru extends ResourceController
      */
     public function delete($id = null)
     {
-        $query = "UPDATE class SET is_deleted = 1 WHERE id=?";
+        $query = "UPDATE teachers SET is_deleted = 1 WHERE id=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [

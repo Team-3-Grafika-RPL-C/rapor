@@ -18,7 +18,7 @@ class CCPembelajaran extends ResourceController
     {
         $data = [
             'message' => 'Data Capaian Pembelajaran',
-            'data_cp' => $this->model->findAll()
+            'data_cp' => $this->model->orderBy('id', 'ASC')->where('is_deleted', 0)->findAll()
         ];
 
         if ($data['data_cp'] == null) {
@@ -118,7 +118,7 @@ class CCPembelajaran extends ResourceController
      */
     public function delete($id = null)
     {
-        $query = "UPDATE class SET is_deleted = 1 WHERE id=?";
+        $query = "UPDATE learning_outcomes SET is_deleted = 1 WHERE id=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [

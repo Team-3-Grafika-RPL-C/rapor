@@ -94,15 +94,25 @@ $routes->post('/cpembelajaran', 'CCPembelajaran::create');
 $routes->put('/cpembelajaran/(:num)', 'CCPembelajaran::update/$1');
 $routes->delete('/cpembelajaran/(:num)', 'CCPembelajaran::delete/$1');
 
-// --- Data cpembelajaran --- //
+// --- Data tpembelajaran --- //
 $routes->get('/tpembelajaran', 'CTPembelajaran::index');
 $routes->get('/tpembelajaran/(:num)', 'CTPembelajaran::show/$1');
 $routes->post('/tpembelajaran', 'CTPembelajaran::create');
 $routes->put('/tpembelajaran/(:num)', 'CTPembelajaran::update/$1');
 $routes->delete('/tpembelajaran/(:num)', 'CTPembelajaran::delete/$1');
 
+// --- Data Tahun Ajaran --- //
+$routes->get('/tahun-ajaran', 'CTahunAjaran::index');
+$routes->post('/tahun-ajaran', 'CTahunAjaran::create');
+$routes->put('/tahun-ajaran/(:num)', 'CTahunAjaran::update/$1');
+$routes->delete('/tahun-ajaran/(:num)', 'CTahunAjaran::delete/$1');
+$routes->post('/tahun-ajaran-active/(:num)', 'CTahunAjaran::activation/$1');
+$routes->post('/tahun-ajaran-nonactive/(:num)', 'CTahunAjaran::non_activation/$1');
 
-
+// --- Data Semester --- //
+$routes->get('/semester', 'CSemester::index');
+$routes->post('/semester-active/(:num)', 'CSemester::activation/$1');
+$routes->post('/semester-nonactive/(:num)', 'CSemester::non_activation/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
