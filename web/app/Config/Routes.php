@@ -29,7 +29,7 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+// $routes->get('/', 'Home::index');
 $routes->get('/dashboard', 'c_dashboard::index');
 
 $routes->get('/data-kelas', 'c_dataKelas::index');
