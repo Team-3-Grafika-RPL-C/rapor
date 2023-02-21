@@ -4,10 +4,10 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 
-class CCPembelajaran extends ResourceController
+class CTahunAjaran extends ResourceController
 {
-    protected $modelName = "App\Models\MCPembelajaran";
-    protected $format    = "json";
+    protected $modelName = "App\Models\MTahunAjaran";
+    protected $format = "json";
 
     private $api_helpers;
 
@@ -15,7 +15,6 @@ class CCPembelajaran extends ResourceController
     {
         $this->api_helpers = new Api_helpers();
     }
-
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -24,32 +23,9 @@ class CCPembelajaran extends ResourceController
     public function index()
     {
         $data = [
-            'message' => 'Data Capaian Pembelajaran',
-            'data_cp' => $this->model->orderBy('id', 'ASC')->where('is_deleted', 0)->findAll()
+            'message' => 'Data Tahun Ajaran:',
+            'data_tahun_ajaran' => $this->model->where('is_deleted', 0)->orderBy('id', 'ASC')->findAll()
         ];
-
-        if ($data['data_cp'] == null) {
-            return $this->failNotFound('Data Kosong');
-        }
-
-        return $this->respond($data, 200);
-    }
-
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
-    public function show($id = null)
-    {
-        $data = [
-            'message' => 'Data Capaian Pembelajaran',
-            'cp_detail' => $this->model->findAll($id)
-        ];
-
-        if ($data['cp_detail'] == null) {
-            return $this->failNotFound('Data Capaian Pembelajaran tidak ditemukan');
-        }
 
         return $this->respond($data, 200);
     }
@@ -62,8 +38,7 @@ class CCPembelajaran extends ResourceController
     public function create()
     {
         $rules = $this->validate([
-            'learning_outcome_code' => 'required',
-            'learning_outcome_description' => 'required'
+            'academic_year' => 'required'
         ]);
 
         if (!$rules) {
@@ -75,12 +50,11 @@ class CCPembelajaran extends ResourceController
         }
 
         $this->model->insert([
-            'learning_outcome_code' => esc($this->request->getVar('learning_outcome_code')),
-            'learning_outcome_description' => esc($this->request->getVar('learning_outcome_description'))
+            'academic_year' => esc($this->request->getVar('academic_year'))
         ]);
 
         $response = [
-            'message' => 'Data berhasil ditambahkan'
+            'message' => 'Data Berhasil Ditambahkan'
         ];
 
         return $this->respondCreated($response);
@@ -94,8 +68,7 @@ class CCPembelajaran extends ResourceController
     public function update($id = null)
     {
         $rules = $this->validate([
-            'learning_outcome_code' => 'required',
-            'learning_outcome_description' => 'required'
+            'academic_year' => 'required'
         ]);
 
         if (!$rules) {
@@ -107,12 +80,11 @@ class CCPembelajaran extends ResourceController
         }
 
         $this->model->update($id, [
-            'learning_outcome_code' => esc($this->request->getVar('learning_outcome_code')),
-            'learning_outcome_description' => esc($this->request->getVar('learning_outcome_description'))
+            'academic_year' => esc($this->request->getVar('academic_year'))
         ]);
 
         $response = [
-            'message' => 'Data berhasil diubah'
+            'message' => 'Data Berhasil Diubah'
         ];
 
         return $this->respondUpdated($response);
@@ -125,7 +97,7 @@ class CCPembelajaran extends ResourceController
      */
     public function delete($id = null)
     {
-        $query = "UPDATE learning_outcomes SET is_deleted = 1 WHERE id=?";
+        $query = "UPDATE academic_years SET is_deleted = 1 WHERE id=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [
@@ -134,4 +106,29 @@ class CCPembelajaran extends ResourceController
 
         return $this->respondDeleted($response);
     }
+
+    public function activation($id = null)
+    {
+        $query = "UPDATE academic_years SET is_active = 1 WHERE id=?";
+        $activate_data = $this->api_helpers->queryExecute($query, [$id]); 
+
+        $response = [
+            'message' => 'Data berhasil diaktifkan'
+        ];
+
+        return $this->respond($response, 200);
+    }
+
+    public function non_activation($id = null)
+    {
+        $query = "UPDATE academic_years SET is_active = 0 WHERE id=?";
+        $activate_data = $this->api_helpers->queryExecute($query, [$id]); 
+
+        $response = [
+            'message' => 'Data berhasil dinonaktifkan'
+        ];
+
+        return $this->respond($response, 200);
+    }
+
 }

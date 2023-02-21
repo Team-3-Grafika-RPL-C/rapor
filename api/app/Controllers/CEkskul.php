@@ -8,6 +8,13 @@ class CEkskul extends ResourceController
 {
     protected $modelName = 'App\Models\MEkskul';
     protected $format = 'json';
+
+    private $api_helpers;
+
+    public function __construct()
+    {
+        $this->api_helpers = new Api_helpers();
+    }
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -17,7 +24,7 @@ class CEkskul extends ResourceController
     {
         $data = [
             'message' => 'Data Ekstrakurikuler:',
-            'data_ekskul' => $this->model->orderBy('id', 'DESC')->findAll()
+            'data_ekskul' => $this->model->orderBy('id', 'ASC')->where('is_deleted', 0)->findAll()
         ];
 
         return $this->respond($data, 200);
@@ -60,7 +67,7 @@ class CEkskul extends ResourceController
                 'message' => $this->validator->getErrors()
             ];
 
-            return $this->failValidationError($response);
+            return $this->failValidationErrors($response);
         }
 
         $this->model->insert([
@@ -95,7 +102,7 @@ class CEkskul extends ResourceController
                 'message' => $this->validator->getErrors()
             ];
 
-            return $this->failValidationError($response);
+            return $this->failValidationErrors($response);
         }
 
         $this->model->update($id, [
@@ -118,7 +125,8 @@ class CEkskul extends ResourceController
      */
     public function delete($id = null)
     {
-        $this->model->delete($id);
+        $query = "UPDATE extracurricular SET is_deleted = 1 WHERE id=?";
+        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [
             'message' => 'Data berhasil dihapus'
