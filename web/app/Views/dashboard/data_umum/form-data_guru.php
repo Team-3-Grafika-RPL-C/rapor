@@ -17,36 +17,39 @@
                     </span>
                 </a>
             </div>
-            <!-- Form Data Kelas -->
+            <!-- Form Data Guru -->
             <div class="mx-3">
                 <div class="container">
-                    <form action="" method="post">
+                    <form action="<?= $page == 'edit' ? '/data-guru/form-edit/'.$data->guru_detail->id :'/data-guru/form' ?>" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Nama</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nama" name="Nama">
+                                <input type="text" autocomplete="off" class="form-control" id="nama" name="nama_guru"
+                                value="<?= $page == 'edit' ? $data->guru_detail->teacher_name : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h text-gray-900 font-weight-bold">NIP</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nip" name="NIP">
+                                <input type="text" autocomplete="off" class="form-control" id="nip" name="nip"
+                                value="<?= $page == 'edit' ? $data->guru_detail->nip : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Alamat</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="alamat" name="Alamat">
+                                <input type="text" autocomplete="off" class="form-control" id="alamat" name="alamat"
+                                value="<?= $page == 'edit' ? $data->guru_detail->address : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Jenis Kelamin</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <select name="Jenis Kelamin" id="jk" class="custom-select">
-                                    <option value="1">Laki-Laki</option>
-                                    <option value="2">Perempuan</option>
+                                <select name="jenis_kelamin" id="jk" class="custom-select">
+                                    <option value="0" <?= $page === "edit" ? ($data->guru_detail->gender == "0" ? "selected" : "") : "" ?>>Perempuan</option>
+                                    <option value="1" <?= $page === "edit" ? ($data->guru_detail->gender == "1" ? "selected" : "") : "" ?>>Laki-Laki</option>
                                 </select>
                             </div>
                         </div>

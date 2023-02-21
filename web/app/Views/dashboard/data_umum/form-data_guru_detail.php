@@ -43,6 +43,13 @@
                                 <input type="text" autocomplete="off" class="form-control" id="alamat" name="alamat" 
                                 value="<?= $data->guru_detail->address ?>" readonly>
                             </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Jenis Kelamin</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <input type="text" autocomplete="off" class="form-control" id="jenis_kelamin" name="jenis_kelamin" 
+                                value="<?= $data->guru_detail->gender == 0 ? 'Perempuan' : 'Laki-Laki' ?>" readonly>
+                            </div>
                         </div>
                     </form>
                 </div>

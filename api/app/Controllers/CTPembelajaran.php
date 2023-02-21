@@ -9,6 +9,13 @@ class CTPembelajaran extends ResourceController
     protected $modelName = "App\Models\MTPembelajaran";
     protected $format    = "json";
 
+    private $api_helpers;
+
+    public function __construct()
+    {
+        $this->api_helpers = new Api_helpers();
+    }
+
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -18,7 +25,7 @@ class CTPembelajaran extends ResourceController
     {
         $data = [
             'message' => 'Data Tujuan Pembelajaran',
-            'data_tp' => $this->model->findAll(),
+            'data_tp' => $this->model->where('is_deleted', 0)->orderBy('id', 'ASC')->findAll(),
         ];
 
         if ($data['data_tp'] == null) {
@@ -127,7 +134,8 @@ class CTPembelajaran extends ResourceController
      */
     public function delete($id = null)
     {
-        $this->model->delete($id);
+        $query = "UPDATE class SET is_deleted = 1 WHERE id=?";
+        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [
             'message' => 'Data berhasil dihapus'
