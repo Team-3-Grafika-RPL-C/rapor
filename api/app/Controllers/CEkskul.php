@@ -8,6 +8,13 @@ class CEkskul extends ResourceController
 {
     protected $modelName = 'App\Models\MEkskul';
     protected $format = 'json';
+
+    private $api_helpers;
+
+    public function __construct()
+    {
+        $this->api_helpers = new Api_helpers();
+    }
     /**
      * Return an array of resource objects, themselves in array format
      *

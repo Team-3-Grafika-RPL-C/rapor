@@ -113,6 +113,22 @@ $routes->post('/tahun-ajaran-nonactive/(:num)', 'CTahunAjaran::non_activation/$1
 $routes->get('/semester', 'CSemester::index');
 $routes->post('/semester-active/(:num)', 'CSemester::activation/$1');
 $routes->post('/semester-nonactive/(:num)', 'CSemester::non_activation/$1');
+
+// --- Set Guru Pelajaran --- //
+$routes->get('/guru-pelajaran', 'CGuruPelajaran::index');
+$routes->get('/guru-pelajaran/(:num)', 'CGuruPelajaran::show/$1');
+$routes->post('/guru-pelajaran', 'CGuruPelajaran::create');
+$routes->put('/guru-pelajaran/(:num)', 'CGuruPelajaran::update/$1');
+$routes->delete('/guru-pelajaran/(:num)', 'CGuruPelajaran::delete/$1');
+
+// --- Set Guru Ekskul --- //
+$routes->get('/guru-ekskul', 'CGuruEkskul::index');
+$routes->get('/guru-ekskul/(:num)', 'CGuruEkskul::show/$1');
+$routes->post('/guru-ekskul', 'CGuruEkskul::create');
+$routes->put('/guru-ekskul/(:num)', 'CGuruEkskul::update/$1');
+$routes->delete('/guru-ekskul/(:num)', 'CGuruEkskul::delete/$1');
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
