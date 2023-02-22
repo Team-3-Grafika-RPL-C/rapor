@@ -67,20 +67,11 @@
                                             <td>2</td>
                                             <td>0</td>
                                             <td class="text-center">
-                                                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="#!" style="min-width: 5rem; background-color: #21976B; border-radius: 8px" data-toggle="modal" data-target="#data-siswa-modal">
+                                                <a class="btn btn-info d-sm-inline-block text-light btn-sm shadow px-4 mb-2" href="#!" style="min-width: 5rem; border-radius: 8px" data-toggle="modal" data-target="#data-siswa-modal">
                                                     <span class="d-flex">Input Presensi</span>
                                                 </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Mikasa Ackerman</td>
-                                            <td>0</td>
-                                            <td>1</td>
-                                            <td>0</td>
-                                            <td class="text-center">
-                                                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
-                                                    <span class="d-flex">Input Presensi</span>
+                                                <a class="btn btn-warning d-sm-inline-block text-light btn-sm shadow px-4" href="#!" style="min-width: 5rem; border-radius: 8px" data-toggle="modal" data-target="#data-siswa-modal">
+                                                    <span class="d-flex">Ubah Presensi</span>
                                                 </a>
                                             </td>
                                         </tr>
