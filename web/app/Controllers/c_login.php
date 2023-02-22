@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use Tests\Support\Entity\User;
 
 class c_login extends BaseController
 {
@@ -56,32 +55,3 @@ class c_login extends BaseController
         return redirect()->to('');
     }
 }
-    
-
-    // public function loginProcess()
-    // {
-    //     $username = $this->request->getPost('username');
-    //     $password = $this->request->getPost('password');
-        
-    //     $request_client_data = [
-    //         'username' => $username,
-    //         'password' => $password
-    //     ];
-    //     $response = $this->client->request('POST', 'login', ['json' => $request_client_data]);
-    //     $code = $response->getStatusCode();
-    //     if ($code == 200) {
-    //         $body_response = json_decode($response->getBody());
-    //         $message = $body_response->message;
-    //         if ($message == 'valid') {
-    //             $session_value = [
-    //                 'is_logged' => true,
-    //                 'token_log' => $body_response->token
-    //             ];
-    //             $this->session->set($session_value);
-    //             return redirect()->to("/home");
-    //         }
-    //     } else {
-    //         dd($response);
-    //     }
-    //     return redirect()->to("/");
-    // }
