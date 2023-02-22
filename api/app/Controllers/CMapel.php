@@ -39,7 +39,7 @@ class CMapel extends ResourceController
     {
         $data = [
             'message' => 'Berhasil',
-            'mapel_detail' => $this->model->findAll($id)
+            'mapel_detail' => $this->model->find($id)
         ];
 
         if ($data == null) {

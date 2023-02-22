@@ -103,4 +103,19 @@ class CSiswaKelas extends ResourceController
 
         return $this->respondCreated($response);
     }
+
+    public function data_siswa_kelas()
+    {
+        $id_academic_year = $this->request->getVar('id_academic_year');
+        $id_class = $this->request->getVar('id_class');
+
+        $query = "SELECT DISTINCT
+        b.nis,
+        b.student_name
+        FROM class_students a
+        INNER JOIN students b ON a.id_students = b.id
+        WHERE 
+        a.id_academic_year = ? AND a.id_class = ? ";
+        $data_siswa_kelas = $this->api_helpers->queryGetArray($query, [$id_academic_year, $id_class]);
+    }
 }

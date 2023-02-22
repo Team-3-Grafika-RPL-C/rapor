@@ -48,18 +48,29 @@ $routes->get('/data-guru/form-edit/(:num)', 'c_dataGuru::form_edit/$1', ['filter
 $routes->post('/data-guru/form-edit/(:num)', 'c_dataGuru::form_edit_process/$1', ['filter'=>'AuthAdmin']);
 $routes->get('/data-guru/delete/(:num)', 'c_dataGuru::delete/$1', ['filter'=>'AuthAdmin']);
 
-$routes->get('/data-siswa', 'c_dataSiswa::index', ['filter'=>'AuthAdmin'], ['filter'=>'AuthAdmin']);
-$routes->get('/data-siswa/form', 'c_dataSiswa::form', ['filter'=>'AuthAdmin'], ['filter'=>'AuthAdmin']);
+$routes->get('/data-siswa', 'c_dataSiswa::index', ['filter'=>'AuthAdmin']);
+$routes->get('/data-siswa/form', 'c_dataSiswa::form', ['filter'=>'AuthAdmin']);
+$routes->post('/data-siswa/form', 'c_dataSiswa::create', ['filter'=>'AuthAdmin']);
 $routes->get('/data-siswa/form-detail', 'c_dataSiswa::form_detail', ['filter'=>'AuthAdmin'], ['filter'=>'AuthAdmin']);
+$routes->get('/data-siswa/form-edit/(:num)', 'c_dataSiswa::form_edit/$1', ['filter'=>'AuthAdmin']);
+$routes->post('/data-siswa/form-edit/(:num)', 'c_dataSiswa::form_edit_process/$1', ['filter'=>'AuthAdmin']);
+$routes->get('/data-siswa/delete/(:num)', 'c_dataSiswa::delete/$1', ['filter'=>'AuthAdmin']);
 
 $routes->get('/data-mapel', 'c_dataMapel::index', ['filter'=>'AuthAdmin']);
 $routes->get('/data-mapel/form', 'c_dataMapel::form', ['filter'=>'AuthAdmin']);
+$routes->post('/data-mapel/form', 'c_dataMapel::create', ['filter'=>'AuthAdmin']);
 $routes->get('/data-mapel/form-detail', 'c_dataMapel::form_detail', ['filter'=>'AuthAdmin']);
+$routes->get('/data-mapel/form-edit/(:num)', 'c_dataMapel::form_edit/$1', ['filter'=>'AuthAdmin']);
+$routes->post('/data-mapel/form-edit/(:num)', 'c_dataMapel::form_edit_process/$1', ['filter'=>'AuthAdmin']);
+$routes->get('/data-mapel/delete/(:num)', 'c_dataMapel::delete/$1', ['filter'=>'AuthAdmin']);
 
 
 $routes->get('/data-ekskul', 'c_dataEkskul::index', ['filter'=>'AuthAdmin']);
 $routes->get('/data-ekskul/form', 'c_dataEkskul::form', ['filter'=>'AuthAdmin']);
 $routes->get('/data-ekskul/form-detail', 'c_dataEkskul::form_detail', ['filter'=>'AuthAdmin']);
+$routes->get('/data-ekskul/form-edit/(:num)', 'c_dataEkskul::form_edit/$1', ['filter'=>'AuthAdmin']);
+$routes->post('/data-ekskul/form-edit/(:num)', 'c_dataEkskul::form_edit_process/$1', ['filter'=>'AuthAdmin']);
+$routes->get('/data-ekskul/delete/(:num)', 'c_dataEkskul::delete/$1', ['filter'=>'AuthAdmin']);
 
 $routes->get('/data-cp', 'c_dataCP::index', ['filter'=>'AuthAdmin']);
 $routes->get('/data-cp/form', 'c_dataCP::form', ['filter'=>'AuthAdmin']);
@@ -120,8 +131,8 @@ $routes->get('/print-rapor', 'c_waliMurid::print', ['filter'=>'AuthUser']);
 
 $routes->get('/test', 'c_dashboard::test', ['filter'=>'AuthUser']);
 
-$routes->get('/','c_login::index', ['filter'=>'AuthUser']);
-$routes->post('/validasi-login', 'c_login::validasi_login');
+$routes->get('/','c_login::index', ['filter'=>'Login']);
+$routes->post('/validasi-login', 'c_login::validasi_login', ['filter'=>'Login']);
 
 /*
  * --------------------------------------------------------------------

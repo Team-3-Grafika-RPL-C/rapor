@@ -32,16 +32,26 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
+                        <?php 
+                        $nomer = 1;
+                        foreach ($data->data_mapel as $dat) {
+                        ?>
                         <tr>
-                            <td>1</td>
-                            <td>GRF-1987</td>
-                            <td>Pendidikan Agama dan Budi Pekerti</td>
-                            <td>I</td>
                             <td>
-                            <a href="<?= base_url(); ?>/data-mapel/form-detail" class="btn btn-info btn-rounded my-1">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
+                                <?= $nomer ?>
+                                <?php $nomer++ ?>
+                            </td>
+                            <td>
+                                <?= $dat->subject_code ?>
+                            </td>
+                            <td>
+                                <?= $dat->subject_name ?>
+                            </td>
+                            <td>
+                                <?= $dat->class ?>
+                            </td>
+                            <td>
+                            <a href="<?=base_url(); ?>/data-mapel/form-edit/<?=$dat->id ?>" class="btn btn-warning btn-rounded my-1">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
@@ -49,142 +59,9 @@
                             </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>GRF-1988</td>
-                            <td>Pendidikan Pancasila</td>
-                            <td>I</td>
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>GRF-1989</td>
-                            <td>Bahasa Indonesia</td>
-                            <td>I</td>                            
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>GRF-1990</td>
-                            <td>Matematika</td>
-                            <td>I</td>                            
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>GRF-1991</td>
-                            <td>Ilmu Pengetahuan Alam dan Sosial</td>
-                            <td>I</td>                            
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>GRF-1992</td>
-                            <td>Pendidikan Jasmani Olahraga dan Kesehatan</td>
-                            <td>I</td>                            
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>GRF-1993</td>
-                            <td>Seni dan Budaya</td>
-                            <td>I</td>                            
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>GRF-1994</td>
-                            <td>Bahasa Inggris</td>
-                            <td>I</td>                            
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>GRF-1991</td>
-                            <td>Bahasa Jawa</td>
-                            <td>I</td>                            
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
+                        <?php
+                        }
+                        ?>
                     </tbody>
             </table>
         </div>
@@ -192,18 +69,21 @@
 </div>
 
 <!-- Modal Delete -->
+<?php
+foreach ($data->data_mapel as $dat) {
+?>
 <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="alertModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content py-4">
             <div class="modal-body">
                 <div class="container">
                     <div class="d-flex justify-content-center">
-                        <p class="p">apakah anda yakin akan menghapus data ini?</p>
+                        <p class="p">Apakah anda yakin akan menghapus data ini?</p>
                     </div>
                     <div class="d-flex justify-content-center">
                         <div class="row">
-                            <a href="" class="btn btn d-sm-inline-block text-light btn-sm shadow px-4 col-2" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">ya</a>
-                            <a href="" class="btn btn d-sm-inline-block text-dark btn-sm shadow px-4 col-2"style="min-width: 5rem; background-color: #F8F9F9;border-color:#C8CDD0; border-radius: 16px">tidak</a>
+                            <a href="<?= base_url() ?>/data-mapel/delete/<?= $dat->id ?>" class="btn btn d-sm-inline-block text-light btn-sm shadow px-4 col-2" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">Ya</a>
+                            <a href="" class="btn btn d-sm-inline-block text-dark btn-sm shadow px-4 col-2"style="min-width: 5rem; background-color: #F8F9F9;border-color:#C8CDD0; border-radius: 16px">Tidak</a>
                         </div>
                     </div>
                 </div>
@@ -211,7 +91,9 @@
         </div>
     </div>
 </div>
-
+<?php
+}
+?>
 </div>
 <!-- /.container-fluid -->
 

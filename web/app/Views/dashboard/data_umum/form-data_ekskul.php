@@ -26,19 +26,14 @@
                                 <h6 class="h6 text-gray-900 font-weight-bold">Ekstrakurikuler</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="ekstrakurikuler" name="Ekstrakurikuler">
+                                <input type="text" autocomplete="off" class="form-control" id="ekstrakurikuler" name="ekstrakurikuler"
+                                value = " <?= $page == 'edit' ? $data->detail_ekskul->extracurricular_name : '' ?>">
                             </div>
-                            <!-- <div class="col-md-4 mb-4">
-                                <h6 class="h text-gray-900 font-weight-bold">KKM</h6>
-                            </div>
-                            <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="kkm" name="KKM">
-                            </div> -->
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Keterangan</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="keterangan" name="Keterangan">
+                                <textarea autocomplete="off" class="form-control" id="keterangan" rows="5" name="keterangan"><?= $page == 'edit' ? $data->detail_ekskul->description : '' ?></textarea>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mb-3 mt-5 pt-5">

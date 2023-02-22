@@ -138,17 +138,21 @@ $routes->put('/pelajaran-kelas/(:num)', 'CPelajaranKelas::update/$1');
 $routes->delete('/pelajaran-kelas/(:num)', 'CPelajaranKelas::delete/$1');
 
 // --- Set Siswa Kelas--- //
-$routes->get('/option-kelas', 'CSiswaKelas::option_kelas');
-$routes->get('/option-tahun', 'CSiswaKelas::option_tahun');
+$routes->get('/siswa-option-kelas', 'CSiswaKelas::option_kelas');
+$routes->get('/siswa-option-tahun', 'CSiswaKelas::option_tahun');
+$routes->get('/data-siswa-kelas', 'CSiswaKelas::data_siswa_kelas');
 $routes->post('/save-noabsen/(:num)', 'CSiswaKelas::save_noabsen');
 
 // --- Presensi--- //
 $routes->post('/presensi', 'CPresensi::create');
 $routes->put('/presensi/(:num)', 'CPresensi::update/$1');
-$routes->get('/option_kelas', 'CPresensi::option_kelas');
+$routes->get('/presensi-option-kelas', 'CPresensi::option_kelas');
 
 // --- Rapor Semester --- //
 $routes->get('/rapor', 'CRaporSemester::index');
+$routes->get('/rapor-option-semester', 'CRaporSemester::option_semester');
+$routes->get('/rapor-option-tahun', 'CRaporSemester::option_tahun');
+$routes->get('/rapor-option-siswa', 'CRaporSemester::option_siswa');
 
 
 /*
