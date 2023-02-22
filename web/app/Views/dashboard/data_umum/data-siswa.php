@@ -33,17 +33,39 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
+                        <?php
+                        $nomer = 1;
+                        foreach ($data->data_siswa as $dat) {
+                        ?>
                         <tr>
-                            <td>1</td>
-                            <td>Riska Nur Rohma</td>
-                            <td>32321</td>
-                            <td>0012345678</td>
-                            <td>Perempuan</td>
                             <td>
-                            <a href="<?= base_url(); ?>/data-siswa/form-detail" class="btn btn-info btn-rounded my-1">
+                                <?= $nomer ?>
+                                <?php $nomer++; ?>
+                            </td>
+                            <td>
+                                <?= $dat->student_name ?>
+                            </td>
+                            <td>
+                                <?= $dat->nis ?>
+                            </td>
+                            <td>
+                                <?= $dat->nisn ?>
+                            </td>
+                            <td>
+                            <?php
+                                $jk = $dat->gender;
+                                if ($jk==0) {
+                                    echo 'Perempuan';
+                                } else {
+                                    echo 'Laki-Laki';
+                                }
+                                ?>
+                            </td>
+                            <td>
+                            <a href="<?= base_url(); ?>/data-siswa/form-detail/<?=$dat->id?>" class="btn btn-info btn-rounded my-1">
                                 <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
                             </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
+                            <a href="<?= base_url(); ?>/data-siswa/form-edit/<?=$dat->id?>" class="btn btn-warning btn-rounded my-1">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
                             <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
@@ -51,168 +73,7 @@
                             </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Didan Barania</td>
-                            <td>32322</td>
-                            <td>0012345679</td>
-                            <td>Perempuan</td>
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                 <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Fikri Noviansyah</td>
-                            <td>32322</td>
-                            <td>0012345679</td>
-                            <td>Laki-Laki</td>
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Rafi Ahmad</td>
-                            <td>32322</td>
-                            <td>0012345679</td>
-                            <td>Laki-Laki</td>
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Dikta</td>
-                            <td>32322</td>
-                            <td>0012345679</td>
-                            <td>Perempuan</td>
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Livi Renata</td>
-                            <td>32322</td>
-                            <td>0012345679</td>
-                            <td>Perempuan</td>
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>Eric Rafliansyah</td>
-                            <td>32322</td>
-                            <td>0012345679</td>
-                            <td>Laki-Laki</td>
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>Firda Gheitsa</td>
-                            <td>32322</td>
-                            <td>0012345679</td>
-                            <td>Perempuan</td>
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>Elsa Devita</td>
-                            <td>32322</td>
-                            <td>0012345679</td>
-                            <td>Perempuan</td>
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>Didan Barania</td>
-                            <td>32322</td>
-                            <td>0012345679</td>
-                            <td>Perempuan</td>
-                            <td>
-                            <a href="" class="btn btn-info btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                            </td>
-                        </tr>
+                        <?php } ?>
                     </tbody>
             </table>
         </div>
@@ -226,12 +87,12 @@
             <div class="modal-body">
                 <div class="container">
                     <div class="d-flex justify-content-center">
-                        <p class="p">apakah anda yakin akan menghapus data ini?</p>
+                        <p class="p">Apakah anda yakin akan menghapus data ini?</p>
                     </div>
                     <div class="d-flex justify-content-center">
                         <div class="row">
-                            <a href="" class="btn btn d-sm-inline-block text-light btn-sm shadow px-4 col-2" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">ya</a>
-                            <a href="" class="btn btn d-sm-inline-block text-dark btn-sm shadow px-4 col-2"style="min-width: 5rem; background-color: #F8F9F9;border-color:#C8CDD0; border-radius: 16px">tidak</a>
+                            <a href="<?= base_url() ?>/data-siswa/delete/<?= $dat->id ?>" class="btn btn d-sm-inline-block text-light btn-sm shadow px-4 col-2" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">Ya</a>
+                            <a href="" class="btn btn d-sm-inline-block text-dark btn-sm shadow px-4 col-2"style="min-width: 5rem; background-color: #F8F9F9;border-color:#C8CDD0; border-radius: 16px">Tidak</a>
                         </div>
                     </div>
                 </div>

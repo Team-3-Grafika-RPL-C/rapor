@@ -36,33 +36,39 @@ class CRaporSemester extends ResourceController
 
     }
 
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
-    public function create()
+    public function option_tahun()
     {
-        //
+        $query = "SELECT DISTINCT a.id, a.academic_year FROM academic_years a WHERE a.is_deleted = 0";
+        $data_tahun = $this->api_helpers->queryGetArray($query);
+
+        $option_tahun = [
+            'data_tahun' => $data_tahun
+        ];
+
+        return $this->respond($option_tahun, 200);
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
-    public function update($id = null)
+    public function option_semester()
     {
-        //
+        $query = "SELECT DISTINCT a.id, a.semester FROM semesters a WHERE a.is_deleted = 0";
+        $data_semester = $this->api_helpers->queryGetArray($query);
+
+        $option_semester = [
+            'data_semester' => $data_semester
+        ];
+
+        return $this->respond($option_semester, 200);
     }
 
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
-    public function delete($id = null)
+    public function option_siswa()
     {
-        //
+        $query = "SELECT DISTINCT a.id, a.student_name FROM students a WHERE a.is_deleted = 0";
+        $data_siswa = $this->api_helpers->queryGetArray($query);
+
+        $option_siswa = [
+            'data_siswa' => $data_siswa
+        ];
+
+        return $this->respond($option_siswa, 200);
     }
 }

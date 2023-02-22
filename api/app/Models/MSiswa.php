@@ -9,7 +9,7 @@ class MSiswa extends Model
     protected $table            = 'students';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['nis', 'student_name', 'gender', 'address', 'birthdate', 'birthplace', 'religion', 'father_name', 'mother_name', 'father_job', 'mother_job', 'parent_address', 'guardian_name', 'guardian_job', 'guardian_address', 'class', 'status'];
+    protected $allowedFields    = ['nisn', 'nis', 'student_name', 'gender', 'address', 'birthdate', 'birthplace', 'religion', 'father_name', 'mother_name', 'father_job', 'mother_job', 'parent_address', 'guardian_name', 'guardian_job', 'guardian_address', 'class', 'status'];
 
     //Dates
     protected $useTimestamps = true;

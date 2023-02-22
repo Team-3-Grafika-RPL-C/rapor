@@ -50,21 +50,30 @@ $routes->get('/data-guru/delete/(:num)', 'c_dataGuru::delete/$1');
 
 $routes->get('/data-siswa', 'c_dataSiswa::index');
 $routes->get('/data-siswa/form', 'c_dataSiswa::form');
-$routes->get('/data-siswa/form-detail', 'c_dataSiswa::form_detail');
+$routes->post('/data-siswa/form', 'c_dataSiswa::create');
+$routes->get('/data-siswa/form-detail/(:num)', 'c_dataSiswa::form_detail/$1');
+$routes->get('/data-siswa/form-edit/(:num)', 'c_dataSiswa::form_edit/$1');
+$routes->post('/data-siswa/form-edit/(:num)', 'c_dataSiswa::form_edit_process/$1');
+$routes->get('/data-siswa/delete/(:num)', 'c_dataSiswa::delete/$1');
 
 $routes->get('/data-mapel', 'c_dataMapel::index');
 $routes->get('/data-mapel/form', 'c_dataMapel::form');
-$routes->get('/data-mapel/form-detail', 'c_dataMapel::form_detail');
+$routes->post('/data-mapel/form', 'c_dataMapel::create');
+$routes->post('/data-mapel/form', 'c_dataMapel::create');
+$routes->get('/data-mapel/form-edit/(:num)', 'c_dataMapel::form_edit/$1');
+$routes->post('/data-mapel/form-edit/(:num)', 'c_dataMapel::form_edit_process/$1');
+$routes->get('/data-mapel/delete/(:num)', 'c_dataMapel::delete/$1');
 
 
 $routes->get('/data-ekskul', 'c_dataEkskul::index');
 $routes->get('/data-ekskul/form', 'c_dataEkskul::form');
-$routes->get('/data-ekskul/form-detail', 'c_dataEkskul::form_detail');
+$routes->get('/data-ekskul/form-edit/(:num)', 'c_dataEkskul::form_edit/$1');
+$routes->post('/data-ekskul/form-edit/(:num)', 'c_dataEkskul::form_edit_process/$1');
+$routes->get('/data-ekskul/delete/(:num)', 'c_dataEkskul::delete/$1');
 
 $routes->get('/data-cp', 'c_dataCP::index');
 $routes->get('/data-cp/form', 'c_dataCP::form');
 $routes->get('/data-cp/form-detail', 'c_dataCP::form_detail');
-
 
 $routes->get('/data-tp', 'c_dataTP::index');
 $routes->get('/data-tp/form', 'c_dataTP::form');

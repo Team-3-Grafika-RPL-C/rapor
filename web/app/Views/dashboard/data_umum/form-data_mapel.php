@@ -26,34 +26,24 @@
                                 <h6 class="h6 text-gray-900 font-weight-bold">Kode Mapel</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="kode_mapel" name="Kode Mapel">
+                                <input type="text" autocomplete="off" class="form-control" id="kode_mapel" name="kode_mapel"
+                                value="<?= $page == 'edit' ?$data->mapel_detail->subject_code : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h text-gray-900 font-weight-bold">Mata Pelajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="mata_pelajaran" name="Mata Pelajaran">
+                                <input type="text" autocomplete="off" class="form-control" id="mata_pelajaran" name="mata_pelajaran"
+                                value="<?= $page == 'edit' ?$data->mapel_detail->subject_name : '' ?>">
                             </div>
-                            <!-- <div class="col-md-4 mb-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">KKM</h6>
-                            </div>
-                            <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="kkm" name="KKM">
-                            </div> -->
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Tingkat</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="tingkat" name="Tingkat">
-                            <!-- </div>
-                            <div class="col-md-4 mb-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">Tahun</h6>
-                            </div>
-                            <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="tahun" name="Tahun">
-                            </div> -->
+                                <input type="text" autocomplete="off" class="form-control" id="tingkat" name="tingkat"
+                                value="<?= $page == 'edit' ?$data->mapel_detail->class : '' ?>">
                         </div>
-                        <div class="d-flex justify-content-end mb-3 mt-5 pt-5">
+                        <div class="d-flex justify-content-end mb-3 mt-5 pt-5 ml-auto">
                             <button class="btn text-light mx-1" style="min-width: 6rem; background-color: #845EF7; border-radius: 8px" type="submit">Simpan</button>
                             <a href="<?= base_url(); ?>/data-mapel" class="btn ms-1 text-gray-900" data-toggle="modal" data-target="#cancel" style="min-width: 6rem; background-color: #ECEEEF; border-radius: 8px">Batal</a>
                         </div>

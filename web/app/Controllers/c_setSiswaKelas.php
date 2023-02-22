@@ -17,11 +17,12 @@ class c_setSiswaKelas extends BaseController {
 
     public function index()
     {
-        $response_kelas = $this->client->request('GET', 'option-kelas');
-        $response_tahun = $this->client->request('GET', 'option-tahun');
-
+        $response_kelas = $this->client->request('GET', 'siswa-option-kelas');
         $body_response_kelas = json_decode($response_kelas->getBody());
+
+        $response_tahun = $this->client->request('GET', 'siswa-option-tahun');
         $body_response_tahun = json_decode($response_tahun->getBody());
+
         $data = [
             'title' => 'Rapodig - Set Siswa Kelas',
             'option_kelas' => $body_response_kelas,
