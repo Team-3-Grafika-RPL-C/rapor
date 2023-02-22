@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Filters\AuthUser;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -21,6 +22,9 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'AuthUser'      => \App\Filters\AuthUser::class,
+        'AuthTeacher'   => \App\Filters\AuthTeacher::class,
+        'AuthAdmin'     => \App\Filters\AuthAdmin::class
     ];
 
     /**

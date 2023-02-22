@@ -30,97 +30,97 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
-$routes->get('/dashboard', 'c_dashboard::index');
+$routes->get('/dashboard', 'c_dashboard::index', ['filter'=>'AuthTeacher']);
 
-$routes->get('/data-kelas', 'c_dataKelas::index');
-$routes->get('/data-kelas/form', 'c_dataKelas::form');
-$routes->post('/data-kelas/form', 'c_dataKelas::create');
-$routes->get('/data-kelas/form-edit/(:num)', 'c_dataKelas::form_edit/$1');
-$routes->post('/data-kelas/form-edit/(:num)', 'c_dataKelas::form_edit_process/$1');
-$routes->get('/data-kelas/form-detail/(:num)', 'c_dataKelas::form_detail/$1');
-$routes->get('/data-kelas/delete/(:num)', 'c_dataKelas::delete/$1');
+$routes->get('/data-kelas', 'c_dataKelas::index', ['filter'=>'AuthAdmin']);
+$routes->get('/data-kelas/form', 'c_dataKelas::form', ['filter'=>'AuthAdmin']);
+$routes->post('/data-kelas/form', 'c_dataKelas::create', ['filter'=>'AuthAdmin']);
+$routes->get('/data-kelas/form-edit/(:num)', 'c_dataKelas::form_edit/$1', ['filter'=>'AuthAdmin']);
+$routes->post('/data-kelas/form-edit/(:num)', 'c_dataKelas::form_edit_process/$1', ['filter'=>'AuthAdmin']);
+$routes->get('/data-kelas/form-detail/(:num)', 'c_dataKelas::form_detail/$1', ['filter'=>'AuthAdmin']);
+$routes->get('/data-kelas/delete/(:num)', 'c_dataKelas::delete/$1', ['filter'=>'AuthAdmin']);
 
-$routes->get('/data-guru', 'c_dataGuru::index');
-$routes->get('/data-guru/form', 'c_dataGuru::form');
-$routes->post('/data-guru/form', 'c_dataGuru::create');
-$routes->get('/data-guru/form-detail/(:num)', 'c_dataGuru::form_detail/$1');
-$routes->get('/data-guru/form-edit/(:num)', 'c_dataGuru::form_edit/$1');
-$routes->post('/data-guru/form-edit/(:num)', 'c_dataGuru::form_edit_process/$1');
-$routes->get('/data-guru/delete/(:num)', 'c_dataGuru::delete/$1');
+$routes->get('/data-guru', 'c_dataGuru::index', ['filter'=>'AuthAdmin']);
+$routes->get('/data-guru/form', 'c_dataGuru::form', ['filter'=>'AuthAdmin']);
+$routes->post('/data-guru/form', 'c_dataGuru::create', ['filter'=>'AuthAdmin']);
+$routes->get('/data-guru/form-detail/(:num)', 'c_dataGuru::form_detail/$1', ['filter'=>'AuthAdmin']);
+$routes->get('/data-guru/form-edit/(:num)', 'c_dataGuru::form_edit/$1', ['filter'=>'AuthAdmin']);
+$routes->post('/data-guru/form-edit/(:num)', 'c_dataGuru::form_edit_process/$1', ['filter'=>'AuthAdmin']);
+$routes->get('/data-guru/delete/(:num)', 'c_dataGuru::delete/$1', ['filter'=>'AuthAdmin']);
 
-$routes->get('/data-siswa', 'c_dataSiswa::index');
-$routes->get('/data-siswa/form', 'c_dataSiswa::form');
-$routes->get('/data-siswa/form-detail', 'c_dataSiswa::form_detail');
+$routes->get('/data-siswa', 'c_dataSiswa::index', ['filter'=>'AuthAdmin'], ['filter'=>'AuthAdmin']);
+$routes->get('/data-siswa/form', 'c_dataSiswa::form', ['filter'=>'AuthAdmin'], ['filter'=>'AuthAdmin']);
+$routes->get('/data-siswa/form-detail', 'c_dataSiswa::form_detail', ['filter'=>'AuthAdmin'], ['filter'=>'AuthAdmin']);
 
-$routes->get('/data-mapel', 'c_dataMapel::index');
-$routes->get('/data-mapel/form', 'c_dataMapel::form');
-$routes->get('/data-mapel/form-detail', 'c_dataMapel::form_detail');
-
-
-$routes->get('/data-ekskul', 'c_dataEkskul::index');
-$routes->get('/data-ekskul/form', 'c_dataEkskul::form');
-$routes->get('/data-ekskul/form-detail', 'c_dataEkskul::form_detail');
-
-$routes->get('/data-cp', 'c_dataCP::index');
-$routes->get('/data-cp/form', 'c_dataCP::form');
-$routes->get('/data-cp/form-detail', 'c_dataCP::form_detail');
+$routes->get('/data-mapel', 'c_dataMapel::index', ['filter'=>'AuthAdmin']);
+$routes->get('/data-mapel/form', 'c_dataMapel::form', ['filter'=>'AuthAdmin']);
+$routes->get('/data-mapel/form-detail', 'c_dataMapel::form_detail', ['filter'=>'AuthAdmin']);
 
 
-$routes->get('/data-tp', 'c_dataTP::index');
-$routes->get('/data-tp/form', 'c_dataTP::form');
-$routes->get('/data-tp/form-detail', 'c_dataTP::form_detail');
+$routes->get('/data-ekskul', 'c_dataEkskul::index', ['filter'=>'AuthAdmin']);
+$routes->get('/data-ekskul/form', 'c_dataEkskul::form', ['filter'=>'AuthAdmin']);
+$routes->get('/data-ekskul/form-detail', 'c_dataEkskul::form_detail', ['filter'=>'AuthAdmin']);
 
-$routes->get('/set-tahun_ajaran', 'c_setTahunAjaran::index');
-$routes->get('/set-tahun_ajaran/form', 'c_setTahunAjaran::form');
-$routes->get('/set-tahun_ajaran/form-detail', 'c_setTahunAjaran::form_detail');
+$routes->get('/data-cp', 'c_dataCP::index', ['filter'=>'AuthAdmin']);
+$routes->get('/data-cp/form', 'c_dataCP::form', ['filter'=>'AuthAdmin']);
+$routes->get('/data-cp/form-detail', 'c_dataCP::form_detail', ['filter'=>'AuthAdmin']);
 
-$routes->get('/set-semester', 'c_setSemester::index');
 
-$routes->get('/set-guru_pelajaran', 'c_setGuruPelajaran::index');
-$routes->get('/set-guru_pelajaran/form', 'c_setGuruPelajaran::form');
-$routes->get('/set-guru_pelajaran/form-detail', 'c_setGuruPelajaran::form_detail');
+$routes->get('/data-tp', 'c_dataTP::index', ['filter'=>'AuthAdmin']);
+$routes->get('/data-tp/form', 'c_dataTP::form', ['filter'=>'AuthAdmin']);
+$routes->get('/data-tp/form-detail', 'c_dataTP::form_detail', ['filter'=>'AuthAdmin']);
 
-$routes->get('/set-guru_ekskul', 'c_setGuruEkskul::index');
-$routes->get('/set-guru_ekskul/form', 'c_setGuruEkskul::form');
-$routes->get('/set-guru_ekskul/form-detail', 'c_setGuruEkskul::form_detail');
+$routes->get('/set-tahun_ajaran', 'c_setTahunAjaran::index', ['filter'=>'AuthAdmin']);
+$routes->get('/set-tahun_ajaran/form', 'c_setTahunAjaran::form', ['filter'=>'AuthAdmin']);
+$routes->get('/set-tahun_ajaran/form-detail', 'c_setTahunAjaran::form_detail', ['filter'=>'AuthAdmin']);
 
-$routes->get('/set-siswa_kelas', 'c_setSiswaKelas::index');
-$routes->get('/set-siswa_kelas/form', 'c_setSiswaKelas::form');
+$routes->get('/set-semester', 'c_setSemester::index', ['filter'=>'AuthAdmin']);
 
-$routes->get('/set-siswa_ekskul', 'c_setSiswaEkskul::index');
+$routes->get('/set-guru_pelajaran', 'c_setGuruPelajaran::index', ['filter'=>'AuthAdmin']);
+$routes->get('/set-guru_pelajaran/form', 'c_setGuruPelajaran::form', ['filter'=>'AuthAdmin']);
+$routes->get('/set-guru_pelajaran/form-detail', 'c_setGuruPelajaran::form_detail', ['filter'=>'AuthAdmin']);
 
-$routes->get('/set-pelajaran_kelas', 'c_setPelajaranKelas::index');
-$routes->get('/set-pelajaran-kelas/form', 'c_setPelajaranKelas::form');
+$routes->get('/set-guru_ekskul', 'c_setGuruEkskul::index', ['filter'=>'AuthAdmin']);
+$routes->get('/set-guru_ekskul/form', 'c_setGuruEkskul::form', ['filter'=>'AuthAdmin']);
+$routes->get('/set-guru_ekskul/form-detail', 'c_setGuruEkskul::form_detail', ['filter'=>'AuthAdmin']);
 
-$routes->get('/rapor-semester', 'c_raporSemester::index');
-$routes->get('/rapor-semester/form', 'c_raporSemester::form');
+$routes->get('/set-siswa_kelas', 'c_setSiswaKelas::index', ['filter'=>'AuthAdmin']);
+$routes->get('/set-siswa_kelas/form', 'c_setSiswaKelas::form', ['filter'=>'AuthAdmin']);
 
-$routes->get('/catatan-semester', 'c_catatanSemester::index');
+$routes->get('/set-siswa_ekskul', 'c_setSiswaEkskul::index', ['filter'=>'AuthAdmin']);
 
-$routes->get('/status-kenaikan', 'c_statusKenaikan::index');
+$routes->get('/set-pelajaran_kelas', 'c_setPelajaranKelas::index', ['filter'=>'AuthAdmin']);
+$routes->get('/set-pelajaran-kelas/form', 'c_setPelajaranKelas::form', ['filter'=>'AuthAdmin']);
 
-$routes->get('/identitas-siswa', 'c_identitasSiswa::index');
+$routes->get('/rapor-semester', 'c_raporSemester::index', ['filter'=>'AuthTeacher']);
+$routes->get('/rapor-semester/form', 'c_raporSemester::form', ['filter'=>'AuthTeacher']);
 
-$routes->get('/input-nilai-mapel', 'c_inputNilaiMapel::index');
-$routes->get('/input-nilai-mapel/form', 'c_inputNilaiMapel::form');
-$routes->get('/input-nilai-mapel/form-detail', 'c_inputNilaiMapel::form_detail');
+$routes->get('/catatan-semester', 'c_catatanSemester::index', ['filter'=>'AuthTeacher']);
 
-$routes->get('/input-nilai-ekskul', 'c_inputNilaiEkskul::index');
-$routes->get('/input-nilai-ekskul/form', 'c_inputNilaiEkskul::form');
+$routes->get('/status-kenaikan', 'c_statusKenaikan::index', ['filter'=>'AuthAdmin']);
 
-$routes->get('/rekap-nilai_mapel', 'c_rekapNilaiMapel::index');
+$routes->get('/identitas-siswa', 'c_identitasSiswa::index', ['filter'=>'AuthAdmin']);
 
-$routes->get('/rekap-nilai_ekskul', 'c_rekapNilaiEkskul::index');
+$routes->get('/input-nilai-mapel', 'c_inputNilaiMapel::index', ['filter'=>'AuthTeacher']);
+$routes->get('/input-nilai-mapel/form', 'c_inputNilaiMapel::form', ['filter'=>'AuthTeacher']);
+$routes->get('/input-nilai-mapel/form-detail', 'c_inputNilaiMapel::form_detail', ['filter'=>'AuthTeacher']);
 
-$routes->get('/input-presensi', 'c_inputPresensi::index');
+$routes->get('/input-nilai-ekskul', 'c_inputNilaiEkskul::index', ['filter'=>'AuthTeacher']);
+$routes->get('/input-nilai-ekskul/form', 'c_inputNilaiEkskul::form', ['filter'=>'AuthTeacher']);
+
+$routes->get('/rekap-nilai_mapel', 'c_rekapNilaiMapel::index', ['filter'=>'AuthTeacher']);
+
+$routes->get('/rekap-nilai_ekskul', 'c_rekapNilaiEkskul::index', ['filter'=>'AuthTeacher']);
+
+$routes->get('/input-presensi', 'c_inputPresensi::index', ['filter'=>'AuthTeacher']);
 
 // Wali Murid
-$routes->get('/profile-sekolah', 'c_waliMurid::profile');
-$routes->get('/print-rapor', 'c_waliMurid::print');
+$routes->get('/profile-sekolah', 'c_waliMurid::profile', ['filter'=>'AuthUser']);
+$routes->get('/print-rapor', 'c_waliMurid::print', ['filter'=>'AuthUser']);
 
-$routes->get('/test', 'c_dashboard::test');
+$routes->get('/test', 'c_dashboard::test', ['filter'=>'AuthUser']);
 
-$routes->get('/','c_login::index');
+$routes->get('/','c_login::index', ['filter'=>'AuthUser']);
 $routes->post('/validasi-login', 'c_login::validasi_login');
 
 /*
