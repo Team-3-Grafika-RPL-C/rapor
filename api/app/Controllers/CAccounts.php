@@ -6,6 +6,8 @@ use CodeIgniter\RESTful\ResourceController;
 
 class CAccounts extends ResourceController
 {
+    protected $helpers = ['Helpers'];
+
     protected $modelName = "App\Models\MTPembelajaran";
     protected $format = "json";
 
@@ -14,7 +16,6 @@ class CAccounts extends ResourceController
     public function __construct()
     {
         $this->api_helpers = new Api_helpers();
-        helper('Helpers');
     }
 
     public function login()
