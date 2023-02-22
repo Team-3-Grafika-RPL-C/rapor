@@ -4,10 +4,10 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 
-class CGuruEkskul extends ResourceController
+class CPelajaranKelas extends ResourceController
 {
-    protected $modelName = 'App\Models\MGuruEkskul';
-    protected $format = 'json';
+    protected $modelName = 'App\Models\MPelajaranKelas'; 
+    protected $format    = 'json';
 
     private $api_helpers;
 
@@ -23,38 +23,22 @@ class CGuruEkskul extends ResourceController
     public function index()
     {
         $query = "SELECT DISTINCT
-        a.id_teacher,
-        b.teacher_name,
         a.id_class,
         c.class_name,
-        a.id_academic_year,
-        d.academic_year
-        FROM extracurricular_teacher a
-        INNER JOIN teachers b ON a.id_teacher = b.id
+        a.id_subject,
+        e.subject_name
+        a.id_class,
+        b.class_name
+        FROM class_subject a
         INNER JOIN class c ON a.id_class = c.id 
-        INNER JOIN academic_years d ON a.id_academic_year = d.id
-        INNER JOIN extracurricular e ON a.id_extracurricular = e.id 
+        INNER JOIN subjects e ON a.id_subject = e.id 
+        INNER JOIN class b ON a.id_class = b.id 
         WHERE a.is_deleted = 0";
-        $guru_ekskul = $this->api_helpers->queryGetArray($query);
+        $pelajaran_kelas = $this->api_helpers->queryGetArray($query);
 
         $data = [
-            'message' => 'Set Guru Ekskul:',
-            'guru_ekskul' => $guru_ekskul
-        ];
-
-        return $this->respond($data, 200);
-    }
-
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
-    public function show($id = null)
-    {
-        $data = [
-            'message' => 'Detail Guru Ekstrakurikuler:',
-            'detail_guru_ekstrakurikuler' => $this->model->find($id)
+            'message' => 'Set Guru Pelajaran:',
+            'pelajaran_kelas' => $pelajaran_kelas
         ];
 
         return $this->respond($data, 200);
@@ -68,10 +52,9 @@ class CGuruEkskul extends ResourceController
     public function create()
     {
         $rules = $this->validate([
-            'id_teacher' => 'required',
             'id_class' => 'required',
-            'id_academic_year' => 'required',
-            'id_extracurricular' => 'required'
+            'id_semester' => 'required',
+            'id_subject' => 'required'
         ]);
 
         if (!$rules) {
@@ -83,10 +66,9 @@ class CGuruEkskul extends ResourceController
         }
 
         $this->model->insert([
-            'id_teacher' => esc($this->request->getVar('id_teacher')),
             'id_class' => esc($this->request->getVar('id_class')),
-            'id_academic_year' => esc($this->request->getVar('id_academic_year')),
-            'id_extracurricular' => esc($this->request->getVar('id_extracurricular')),
+            'id_semester' => esc($this->request->getVar('id_semester')),
+            'id_subject' => esc($this->request->getVar('id_subject')),
         ]);
 
         $response = [
@@ -104,10 +86,9 @@ class CGuruEkskul extends ResourceController
     public function update($id = null)
     {
         $rules = $this->validate([
-            'id_teacher' => 'required',
             'id_class' => 'required',
-            'id_academic_year' => 'required',
-            'id_extracurricular' => 'required'
+            'id_semester' => 'required',
+            'id_subject' => 'required'
         ]);
 
         if (!$rules) {
@@ -119,10 +100,9 @@ class CGuruEkskul extends ResourceController
         }
 
         $this->model->update($id, [
-            'id_teacher' => esc($this->request->getVar('id_teacher')),
             'id_class' => esc($this->request->getVar('id_class')),
-            'id_academic_year' => esc($this->request->getVar('id_academic_year')),
-            'id_extracurricular' => esc($this->request->getVar('id_extracurricular')),
+            'id_semester' => esc($this->request->getVar('id_semester')),
+            'id_subject' => esc($this->request->getVar('id_subject')),
         ]);
 
         $response = [
@@ -139,7 +119,7 @@ class CGuruEkskul extends ResourceController
      */
     public function delete($id = null)
     {
-        $query = "UPDATE extracurricular_teacher SET is_deleted = 1 WHERE id=?";
+        $query = "UPDATE class_subject SET is_deleted = 1 WHERE id=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [

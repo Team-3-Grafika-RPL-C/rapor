@@ -23,18 +23,11 @@
                             <div class="col-md-8 mb-4 mt-4">
                                 <div>
                                     <select class="custom-select my-1 mr-sm-2" id="kelas">
-                                        <option value="1">1A</option>
-                                        <option value="2">1B</option>
-                                        <option value="3">2A</option>
-                                        <option value="4">2B</option>
-                                        <option value="1">31</option>
-                                        <option value="2">3B</option>
-                                        <option value="3">4A</option>
-                                        <option value="4">4B</option>
-                                        <option value="1">5A</option>
-                                        <option value="2">5B</option>
-                                        <option value="3">6A</option>
-                                        <option value="4">6B</option>
+                                        <?php foreach ($option_kelas->data_kelas as $ok) { ?>
+                                            <option value="<?= $ok->id ?>">
+                                                <?= $ok->class_name ?>
+                                            </option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -44,10 +37,11 @@
                             <div class="col-md-8 mb-4">
                                 <div>
                                     <select class="custom-select my-1 mr-sm-2" id="tahun">
-                                        <option value="1">2022-2023</option>
-                                        <option value="2">2021-2022</option>
-                                        <option value="3">2020-2021</option>
-                                        <option value="4">2019-2020</option>
+                                        <?php foreach ($option_tahun->data_tahun as $ot) { ?>
+                                            <option value="<?= $ot->id ?>">
+                                                <?= $ot->academic_year ?>
+                                            </option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -90,7 +84,7 @@
                                             <td>23423423</td>
                                             <td>Rosalia Shelly Wulandari</td>
                                             <td class="d-flex justify-content-center">
-                                                <input type="text" style="width: 50px;" autocomplete="off" class="form-control" id="no_absen" name="No Absen">
+                                                <input type="text" style="width: 50px;" autocomplete="off" class="form-control" id="no_absen" name="no_absen">
                                             </td>
                                             </td>
                                             <td class="text-center">
