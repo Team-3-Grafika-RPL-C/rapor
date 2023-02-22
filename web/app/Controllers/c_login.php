@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Controllers;
 
@@ -7,37 +7,54 @@ use Tests\Support\Entity\User;
 
 class c_login extends BaseController
 {
-    // public function __construct()
-    // {
-    //     $this->client = \Config\Services::curlrequest([
-    //         'baseURI' => 'http://localhost/rapor/web/public/'
-    //     ]);
-    //     $this->session = session();
-    // }
+    private $client;
+    public function __construct()
+    {
+        $this->client = \Config\Services::curlrequest([
+            'baseURI' => 'http://localhost/rapor/api/public/'
+        ]);
+    }
 
-    public function index(){
+    public function index()
+    {
         return view('login');
     }
 
-    public function validasi_login(){
-        $model_account = new \App\Models\m_account();
-        $login = $this->request->getPost('login');
-        if ($login) {
-            $username = $this->request->getPost('username');
-            $password = $this->request->getPost('password');
+    public function validasi_login()
+    {
+        $username = $this->request->getPost('username');
+        $password = $this->request->getPost('password');
 
-            if ($username == '' or $password == '') {
-                $err = "Masukkan username dan password terlebih dahulu";
+        $request_client_data = [
+            'username' => $username,
+            'password' => $password
+        ];
+
+        $request = $this->client->request('POST', '/login', ['json' => $request_client_data]);
+
+        if ($request->getStatusCode() !== 200) {
+            if ($request->getStatusCode() === 401) {
+                return redirect()->back()->withInput()->with('errors', json_decode($request->getBody())->errors);
             }
-            else if ($error) {
-                session()->setFlashdata('error', $err);
-                return redirect()->to(base_url() . "/");
-            }
-            else {
-                return redirect()->to('/dashboard');
-            }
-        } 
+            return redirect()->back()->withInput();
         }
+
+        $result = json_decode($request->getBody());
+        $session_data = [
+            'id' => $result->id,
+            'is_teacher' => $result->is_teacher == 1 ? true : false,
+            'is_admin' => $result->id_admin == 1 ? true : false
+        ];
+
+        $session = session();
+        $session->set($session_data);
+        session_write_close();
+
+        if ($result->is_teacher == 1 || $result->is_admin == 1) {
+            return redirect()->to('/dashboard');
+        }
+        return redirect()->to('');
+    }
 }
     
 
@@ -68,5 +85,3 @@ class c_login extends BaseController
     //     }
     //     return redirect()->to("/");
     // }
-
-?>

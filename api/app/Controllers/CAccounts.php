@@ -20,12 +20,12 @@ class CAccounts extends ResourceController
     public function login()
     {
         $rule = $this->validate([
-            'username'=>'required',
-            'password'=>'required'
+            'username' => 'required',
+            'password' => 'required'
         ]);
-        if(!$rule){
+        if (!$rule) {
             $response = [
-                'message'=> $this->validator->getErrors()
+                'errors' => $this->validator->getErrors()
             ];
 
             return $this->failValidationErrors($response);
@@ -37,20 +37,13 @@ class CAccounts extends ResourceController
         $query = "SELECT id, is_teacher, is_admin as num FROM account WHERE username = ? and password = ? and is_deleted = False";
         $result = $this->api_helpers->queryGetArray($query, [$username, passwordHash($password)]);
 
-        if($result===null||count($result)!=1){
+        if ($result === null || count($result) != 1) {
             return $this->failUnauthorized();
         }
 
-        $session_data = [
-            'id' => $result[0]['id'],
-            'is_teacher' => $result[0]['is_teacher'] == 1 ? true : false,
-            'is_admin' => $result[0]['id_admin'] == 1 ? true : false
-        ];
-        
-        $session = session();
-        $session->set($session_data);
-        session_write_close();
-
-        return $this->respond(['message'=>'login success']);
+        return $this->respond([
+            'message' => 'login success',
+            'data' => $result[0]
+        ]);
     }
 }

@@ -40,16 +40,19 @@ $routes->get('/', 'Home::index');
 // ----- API ----- //
 
 // --- Account --- //
-$routes->post('/login/user', 'Accounts::loginUser');
-$routes->post('/login/admin', 'Accounts::loginAdmin');
+// $routes->post('/login/user', 'Accounts::loginUser');
+// $routes->post('/login/admin', 'Accounts::loginAdmin');
 
 // --- Admin --- //
-$routes->post('/students', 'Admin::addStudent');
-$routes->put('/students/(:any)', 'Admin::updateStudent/$1');
-$routes->delete('/students/(:any)', 'Admin::deleteStudent/$1');
+// $routes->post('/students', 'Admin::addStudent');
+// $routes->put('/students/(:any)', 'Admin::updateStudent/$1');
+// $routes->delete('/students/(:any)', 'Admin::deleteStudent/$1');
 
 // --- School --- //
-$routes->get('/students', 'Schools::getStudentsList');
+// $routes->get('/students', 'Schools::getStudentsList');
+
+// --- Account --- //
+$routes->post('/login', 'CAccounts::login');
 
 // --- Data Kelas --- //
 $routes->get('/kelas', 'CKelas::index');
