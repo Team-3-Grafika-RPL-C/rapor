@@ -67,7 +67,7 @@ class CEkskul extends ResourceController
                 'message' => $this->validator->getErrors()
             ];
 
-            return $this->failValidationError($response);
+            return $this->failValidationErrors($response);
         }
 
         $this->model->insert([
@@ -102,7 +102,7 @@ class CEkskul extends ResourceController
                 'message' => $this->validator->getErrors()
             ];
 
-            return $this->failValidationError($response);
+            return $this->failValidationErrors($response);
         }
 
         $this->model->update($id, [
