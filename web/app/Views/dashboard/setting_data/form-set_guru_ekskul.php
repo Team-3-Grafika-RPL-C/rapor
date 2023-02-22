@@ -26,7 +26,11 @@
                                 <h6 class="h text-gray-900 font-weight-bold">Guru</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="guru" name="Guru" value="Justin Bieber" readonly>
+                                <select name="guru" id="guru" class="custom-select my-1 mr-sm-2">
+                                    <option value="1">Dhanang Spd.</option>
+                                    <option value="2">Esti Mpd.</option>
+                                    <option value="3">Septi Spd.</option>
+                                </select>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Kelas</h6>
@@ -62,48 +66,27 @@
                                     </select>
                                 </div>
                             </div>
-                            
-                        </div>
-                        <div class="row justify-content-end text-right">
-                            <div class="col mb-4">
-                                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4 tampilkan-btn" href="#!" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px">
-                                    <span class="d-flex">Tampilkan</span>
-                                </a>
+                            <div class="col-md-4 mb-2">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Mata pelajaran</h6>
                             </div>
-                        </div>
-                        <div class="row add-ekskul-container d-none">
-                            <div class="col-md-5">
-                                <select multiple class="form-control" id="ekskul" size="10">
-                                    <option>Tari</option>
-                                    <option>Pramuka</option>
-                                    <option>Basket</option>
-                                    <option>Olimpiade</option>
-                                    <option>TIK</option>
-                                    <option>Paskibra</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2 mt-auto mb-auto">
-                                <div class="d-flex flex-wrap text-center">
-                                    <div class="col-12">
-                                        <a data-toggle="modal" class="add-ekskul-btn">
-                                            <i class="ri-arrow-right-circle-line" style="font-size: 48px;" data-toggle="tooltip" title="Select"></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-12">
-                                        <a data-toggle="modal" class="remove-ekskul-btn">
-                                            <i class="ri-arrow-left-circle-line" style="font-size: 48px;" data-toggle="tooltip" title="Unselect"></i>
-                                        </a>
-                                    </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="my-1">
+                                    <input type="checkbox" id="Basket" name="Basket" value="Bike">
+                                    <label for="Basket"> Basket</label>
+                                </div>
+                                <div class="my-1">
+                                    <input type="checkbox" id="Paskibra" name="Paskibra" value="Car">
+                                    <label for="Paskibra">Paskibra</label>
+                                </div>
+                                <div class="my-1">
+                                    <input type="checkbox" id="Futsal" name="Futsal" value="Boat">
+                                    <label for="Futsal">Futsal</label>
                                 </div>
                             </div>
-                            <div class="col-md-5">
-                                <select multiple class="form-control" id="selected_ekskul" size="10">
-                                </select>
-                            </div>
-                            <div class="d-flex justify-content-end mb-3 mt- pt-5">
+                            <div class="col-12 d-flex justify-content-end mb-3 pt-5">
                                 <button class="btn text-light mx-1" style="min-width: 6rem; background-color: #845EF7; border-radius: 8px" type="submit">Simpan</button>
-                            </div>
-                        </div>
+                            </div>                            
+                        </div>                        
                     </form>
                 </div>
             </div>            

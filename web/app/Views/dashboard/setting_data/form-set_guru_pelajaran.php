@@ -66,53 +66,27 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row justify-content-end text-right">
-                            <div class="col mb-4">
-                                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4 tampilkan-btn" href="#!" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px">
-                                    <span class="d-flex">Tampilkan</span>
-                                </a>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Mata pelajaran</h6>
                             </div>
-                        </div>
-                        <div class="row add-mapel-container d-none">
-                            <div class="col-md-5">
-                                <select multiple class="form-control" id="mapel_ajaran" size="8">
-                                    <option>Pendidikan Agama dan Budi Pekerti</option>
-                                    <option>Pendidikan Pancasila</option>
-                                    <option>Bahasa Indonesia</option>
-                                    <option>Matematika</option>
-                                    <option>Ilmu Pengetahuan Alam dan Sosial</option>
-                                    <option>Pendidikan Jasmani Olahraga dan Kesehatan</option>
-                                    <option>Seni Musik</option>
-                                    <option>Seni Teater</option>
-                                    <option>Seni Tari</option>
-                                    <option>Seni Rupa</option>
-                                    <option>Bahasa Inggris</option>
-                                    <option>Bahasa Jawa</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2 mt-auto mb-auto">
-                                <div class="d-flex flex-wrap text-center">
-                                    <div class="col-12">
-                                        <a data-toggle="modal" class="add-pelajaran-btn">
-                                            <i class="ri-arrow-right-circle-line" style="font-size: 48px;" data-toggle="tooltip" title="Select"></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-12">
-                                        <a data-toggle="modal" class="remove-pelajaran-btn">
-                                            <i class="ri-arrow-left-circle-line" style="font-size: 48px;" data-toggle="tooltip" title="Unselect"></i>
-                                        </a>
-                                    </div>
+                            <div class="col-md-6 mb-2">
+                                <div class="my-1">
+                                    <input type="checkbox" id="Agama" name="Agama" value="Bike">
+                                    <label for="Agama"> Agama</label>
+                                </div>
+                                <div class="my-1">
+                                    <input type="checkbox" id="BI" name="BI" value="Car">
+                                    <label for="BI">BI</label>
+                                </div>
+                                <div class="my-1">
+                                    <input type="checkbox" id="Matematika" name="Matematika" value="Boat">
+                                    <label for="Matematika">Matematika</label>
                                 </div>
                             </div>
-                            <div class="col-md-5">
-                                <select multiple class="form-control" id="selected_mapel_ajaran" size="8">
-                                </select>
-                            </div>
-                            <div class="d-flex justify-content-end mb-3 mt- pt-5">
+                            <div class="col-12 d-flex justify-content-end mb-3 pt-5">
                                 <button class="btn text-light mx-1" style="min-width: 6rem; background-color: #845EF7; border-radius: 8px" type="submit">Simpan</button>
-                            </div>
-                        </div>
+                            </div> 
+                        </div>                        
                     </form>
                 </div>
             </div>            

@@ -38,13 +38,18 @@
                                 <h6 class="h6 text-gray-900 font-weight-bold">Capaian Pembelajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <textarea autocomplete="off" class="form-control" id="cp" name="CP" rows="5"></textarea>
+                                <select class="custom-select my-1 mr-sm-2" id="cp">
+                                        <option value="1">Bisa menghentikan perang nuklir</option>
+                                        <option value="2">Menguasai setengah eropa</option>
+                                        <option value="3">Masuk kelas seni</option>
+                                        <option value="4">Dapat mengendalikan manusia</option>
+                                    </select>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Tujuan Pembelajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <textarea autocomplete="off" class="form-control" id="tp" name="TP" rows="2"></textarea>
+                                <textarea autocomplete="off" class="form-control" id="tp" name="TP" rows="5"></textarea>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Nilai</h6>
@@ -53,7 +58,7 @@
                                 <input type="text" autocomplete="off" class="form-control" id="nilai" name="Nilai">
                             </div>
                         </div>
-                        <div class="d-flex justify-content-end mb-3 mt-5 pt-5">
+                        <div class="d-flex justify-content-end mb-3 mt-3 pt-5">
                             <button class="btn text-light mx-1" style="min-width: 6rem; background-color: #845EF7; border-radius: 8px" type="submit">Simpan</button>
                             <a href="<?= base_url(); ?>/data-siswa" class="btn ms-1 text-gray-900" data-toggle="modal" data-target="#cancel" style="min-width: 6rem; background-color: #ECEEEF; border-radius: 8px">Batal</a>
                         </div>

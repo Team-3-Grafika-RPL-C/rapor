@@ -110,6 +110,18 @@
                                         <input type="text" autocomplete="off" class="form-control" id="nama-siswa" name="Nama Siswa" value="Anya Forgerr" readonly>
                                     </div>
                                     <div class="col-md-4 mb-4">
+                                        <h6 class="h6 text-gray-900 font-weight-bold">Kelas</h6>
+                                    </div>
+                                    <div class="col-md-8 mb-4">
+                                        <input type="text" autocomplete="off" class="form-control" id="Kelas" name="Kelas" value="1A" readonly>
+                                    </div>
+                                    <div class="col-md-4 mb-4">
+                                        <h6 class="h6 text-gray-900 font-weight-bold">Tahun Pelajaran</h6>
+                                    </div>
+                                    <div class="col-md-8 mb-4">
+                                        <input type="text" autocomplete="off" class="form-control" id="Tahun-pelajaran" name="Tahun Pelajaran" value="2023" readonly>
+                                    </div>
+                                    <div class="col-md-4 mb-4">
                                         <h6 class="h text-gray-900 font-weight-bold">Sakit (Hari)</h6>
                                     </div>
                                     <div class="col-md-8 mb-4">
