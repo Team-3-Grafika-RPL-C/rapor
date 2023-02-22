@@ -27,7 +27,7 @@ class Login implements FilterInterface
     {
         $session = session();
         if ($session->has('id') && $session->has('is_teacher') && $session->has('is_admin')) {
-            if($session->get('is_admin')||$session->get('is_teacher')){
+            if ($session->get('is_admin') || $session->get('is_teacher')) {
                 return redirect()->to('/dashboard')->with('message', 'Kamu sudah login');
             }
             return redirect()->to('profile-sekolah');
