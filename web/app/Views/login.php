@@ -52,9 +52,9 @@
                                             <input type="text" class="form-control form-control-user login-placeholder" id="exampleInputEmail" name="username" aria-describedby="emailHelp" placeholder="Username" value="<?= old('username') ?>">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user login-placeholder" id="exampleInputPassword" name="password" placeholder="Password " value="<?= old('password') ?>>
+                                            <input type="password" class="form-control form-control-user login-placeholder" id="exampleInputPassword" name="password" placeholder="Password" value="<?= old('password') ?>">
                                         </div>
-                                        <div class=" my-5 pb-5">
+                                        <div class="my-5 pb-5">
                                             <button type="submit" class="btn btn-user btn-block" name="login" style="background-color: #845EF7; color: white">
                                                 Login
                                             </button>

@@ -8,7 +8,7 @@ class CAccounts extends ResourceController
 {
     protected $helpers = ['Helpers'];
 
-    protected $modelName = "App\Models\MTPembelajaran";
+    protected $modelName = "App\Models\MAccounts";
     protected $format = "json";
 
     private $api_helpers;
