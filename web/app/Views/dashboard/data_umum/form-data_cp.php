@@ -20,19 +20,21 @@
             <!-- Form Data Kelas -->
             <div class="mx-3">
                 <div class="container">
-                    <form action="" method="post">
+                    <form action="<?= $page == 'edit' ? '/data-cp/form-edit/'.$data->cp_detail->id : '/data-cp/form' ?>" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Kode CP</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="kode_cp" name="Kode CP">
+                                <input type="text" autocomplete="off" class="form-control" id="kode_cp" name="kode_cp"
+                                value="<?= $page == 'edit' ? $data->cp_detail->learning_outcome_code : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h text-gray-900 font-weight-bold">Deskripsi Capaian</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="capaian_pembelajaran" name="Capaian Pembelajaran">
+                                <input type="text" autocomplete="off" class="form-control" id="cp" name="cp"
+                                value="<?= $page == 'edit' ? $data->cp_detail->learning_outcome_description : '' ?>">
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mb-3 mt-5 pt-5">

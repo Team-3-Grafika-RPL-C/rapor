@@ -117,5 +117,12 @@ class CSiswaKelas extends ResourceController
         WHERE 
         a.id_academic_year = ? AND a.id_class = ? ";
         $data_siswa_kelas = $this->api_helpers->queryGetArray($query, [$id_academic_year, $id_class]);
+
+        $data_kelas = [
+            'data_siswa' => $data_siswa_kelas 
+        ];
+
+        return $this->respond($data_kelas, 200);
+
     }
 }

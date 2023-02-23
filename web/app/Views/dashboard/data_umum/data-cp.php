@@ -31,13 +31,22 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
+                    <?php 
+                    $nomer = 1;
+                    foreach ($data->data_cp as $dat) {
+                    ?>
                     <tr>
-                        <td>1</td>
-                        <td>A.1.AGM.1.1</td>
-                        <?php $your_text = "Peserta didik mampu mengenal dirinya sebagai pribadi yang di sayang Allah." ?>
-                        <td><?= $your_text ?></td>
                         <td>
-                            <a href="" class="btn btn-warning btn-rounded my-1">
+                            <?= $nomer ?>
+                            <?php $nomer++ ?>
+                        </td>
+                        <td>
+                            <?= $dat->learning_outcome_code ?>
+                        </td>
+                        <?php $deskripsi_cp = $dat->learning_outcome_description ?>
+                        <td><?= $deskripsi_cp ?></td>
+                        <td>
+                            <a href="<?= base_url(); ?>/data-cp/form-edit/<?=$dat->id?>" class="btn btn-warning btn-rounded my-1">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
                             <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete" >             
@@ -45,32 +54,8 @@
                             </a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>A.1.IND.1.1</td>
-                        <td><?= $your_text ?></td>
-                        <td>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>A.1.ING.1.1</td>
-                        <td><?= $your_text ?></td>
-                        <td>
-                            <a href="" class="btn btn-warning btn-rounded my-1" data-toggle="modal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
-                                <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
-                            </a>
-                        </td>
-                    </tr>
+                    <?php
+                    }?>
                 </tbody>
             </table>
         </div>
@@ -84,12 +69,12 @@
             <div class="modal-body">
                 <div class="container">
                     <div class="d-flex justify-content-center">
-                        <p class="p">apakah anda yakin akan menghapus data ini?</p>
+                        <p class="p">Apakah anda yakin akan menghapus data ini?</p>
                     </div>
                     <div class="d-flex justify-content-center">
                         <div class="row">
-                            <a href="" class="btn btn d-sm-inline-block text-light btn-sm shadow px-4 col-2" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">ya</a>
-                            <a href="" class="btn btn d-sm-inline-block text-dark btn-sm shadow px-4 col-2"style="min-width: 5rem; background-color: #F8F9F9;border-color:#C8CDD0; border-radius: 16px">tidak</a>
+                            <a href="<?= base_url() ?>/data-cp/delete/<?= $dat->id ?>" class="btn btn d-sm-inline-block text-light btn-sm shadow px-4 col-2" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">Ya</a>
+                            <a href="" class="btn btn d-sm-inline-block text-dark btn-sm shadow px-4 col-2"style="min-width: 5rem; background-color: #F8F9F9;border-color:#C8CDD0; border-radius: 16px">Tidak</a>
                         </div>
                     </div>
                 </div>

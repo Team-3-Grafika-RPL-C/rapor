@@ -24,7 +24,7 @@ class CSiswa extends ResourceController
     {
         $data = [
             'message' => 'Data Siswa:',
-            'data_siswa' => $this->model->where('is_deleted', 0)->orderBy('id', 'ASC')->findAll()
+            'data_siswa' => $this->model->where('is_deleted', 0)->orderBy('id', 'DESC')->findAll()
         ];
         
         return $this->respond($data, 200);
