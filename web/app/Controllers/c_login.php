@@ -52,6 +52,6 @@ class c_login extends BaseController
         if ($result->is_teacher == 1 || $result->is_admin == 1) {
             return redirect()->to('/dashboard');
         }
-        return redirect()->to('');
+        return redirect()->to('profile-sekolah');
     }
 }
