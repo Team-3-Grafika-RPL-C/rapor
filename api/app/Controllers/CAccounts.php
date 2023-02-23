@@ -35,7 +35,7 @@ class CAccounts extends ResourceController
         $username = $this->request->getJsonVar('username');
         $password = $this->request->getJsonVar('password');
 
-        $query = "SELECT id, is_teacher, is_admin as num FROM account WHERE username = ? and password = ? and is_deleted = False";
+        $query = "SELECT id, is_teacher, is_admin as num FROM account WHERE username = ? AND password = ? AND is_deleted = 0";
         $result = $this->api_helpers->queryGetArray($query, [$username, passwordHash($password)]);
 
         if ($result === null || count($result) != 1) {
