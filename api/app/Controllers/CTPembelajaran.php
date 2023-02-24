@@ -42,9 +42,12 @@ class CTPembelajaran extends ResourceController
      */
     public function show($id = null)
     {
+        $query = "SELECT a.*, b.learning_outcome_description, c.semester FROM learning_purposes a INNER JOIN learning_outcomes b ON a.id_learning_outcome = b.id INNER JOIN semesters c ON a.id_semester = c.id WHERE a.id = ?";
+        $data_tp = $this->api_helpers->queryGetFirst($query, [$id]);
+
         $data = [
             'message' => 'Data Tujuan Pembelajaran',
-            'tp_detail' => $this->model->findAll($id)
+            'tp_detail' => $data_tp
         ];
 
         if ($data['tp_detail'] == null) {
@@ -134,7 +137,7 @@ class CTPembelajaran extends ResourceController
      */
     public function delete($id = null)
     {
-        $query = "UPDATE class SET is_deleted = 1 WHERE id=?";
+        $query = "UPDATE learning_purposes SET is_deleted = 1 WHERE id=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [
@@ -142,5 +145,39 @@ class CTPembelajaran extends ResourceController
         ];
 
         return $this->respondDeleted($response);
+    }
+
+    public function option_cp()
+    {
+        $query = "SELECT a.id, a.learning_outcome_description FROM learning_outcomes a WHERE a.is_deleted = 0";
+        $data_cp = $this->api_helpers->queryGetArray($query);
+
+        $data = [
+            'cp' => $data_cp
+        ];
+
+        if ($data['cp'] == null) {
+            return $this->failNotFound('Data CP tidak ditemukan');
+
+        }
+
+        return $this->respond($data, 200);
+    }
+
+    public function option_semester()
+    {
+        $query = "SELECT a.id, a.semester FROM semesters a WHERE a.is_deleted = 0";
+        $data_semester = $this->api_helpers->queryGetArray($query);
+
+        $data = [
+            'semester' => $data_semester
+        ];
+
+        if ($data['semester'] == null) {
+            return $this->failNotFound('Data semester tidak ditemukan');
+
+        }
+
+        return $this->respond($data, 200);
     }
 }

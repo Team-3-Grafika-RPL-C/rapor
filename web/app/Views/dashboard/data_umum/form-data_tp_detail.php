@@ -26,25 +26,29 @@
                                 <h6 class="h6 text-gray-900 font-weight-bold">Kode</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="kode" name="Kode" value="A.1.AGM.1.1.1" disabled>
+                                <input type="text" autocomplete="off" class="form-control" id="kode" name="Kode" 
+                                value="<?= $data->tp_detail->learning_purpose_code ?>" disabled>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h text-gray-900 font-weight-bold">Deskripsi <br> Tujuan Pembelajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="deskripsi" name="Deskripsi" value="Mengetahui rukun iman dan rukun islam" disabled>
+                                <input type="text" autocomplete="off" class="form-control" id="deskripsi" name="Deskripsi" 
+                                value="<?= $data->tp_detail->learning_purpose_description ?>" disabled>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Capaian Pembelajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="cp" name="Cp" value="Agama" disabled>
+                                <input type="text" autocomplete="off" class="form-control" id="cp" name="Cp" 
+                                value="<?= $data->tp_detail->learning_outcome_description ?>" disabled>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Semester</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="semester" name="Semester" value="Ganjil" disabled>
+                                <input type="text" autocomplete="off" class="form-control" id="semester" name="Semester" 
+                                value="<?= $data->tp_detail->semester ?>" disabled>
                             </div>
                         </div>
                     </form>

@@ -86,14 +86,18 @@ $routes->get('/data-ekskul/form-edit/(:num)', 'c_dataEkskul::form_edit/$1', ['fi
 $routes->post('/data-ekskul/form-edit/(:num)', 'c_dataEkskul::form_edit_process/$1', ['filter' => 'AuthAdmin']);
 $routes->get('/data-ekskul/delete/(:num)', 'c_dataEkskul::delete/$1', ['filter' => 'AuthAdmin']);
 
-$routes->get('/data-cp', 'c_dataCP::index', ['filter' => 'AuthAdmin']);
-$routes->get('/data-cp/form', 'c_dataCP::form', ['filter' => 'AuthAdmin']);
-$routes->get('/data-cp/form-detail', 'c_dataCP::form_detail', ['filter' => 'AuthAdmin']);
+// $routes->get('/data-cp', 'c_dataCP::index', ['filter' => 'AuthAdmin']);
+// $routes->get('/data-cp/form', 'c_dataCP::form', ['filter' => 'AuthAdmin']);
+// $routes->get('/data-cp/form-detail', 'c_dataCP::form_detail', ['filter' => 'AuthAdmin']);
 
 
 $routes->get('/data-tp', 'c_dataTP::index', ['filter' => 'AuthAdmin']);
 $routes->get('/data-tp/form', 'c_dataTP::form', ['filter' => 'AuthAdmin']);
-$routes->get('/data-tp/form-detail', 'c_dataTP::form_detail', ['filter' => 'AuthAdmin']);
+$routes->get('/data-tp/form-detail/(:num)', 'c_dataTP::form_detail/$1', ['filter' => 'AuthAdmin']);
+$routes->post('/data-tp/form', 'c_dataTP::create', ['filter' => 'AuthAdmin']);
+$routes->get('/data-tp/form-edit/(:num)', 'c_dataTP::form_edit/$1', ['filter' => 'AuthAdmin']);
+$routes->post('/data-tp/form-edit/(:num)', 'c_dataTP::form_edit_process/$1', ['filter' => 'AuthAdmin']);
+$routes->get('/data-tp/delete/(:num)', 'c_dataTP::delete/$1', ['filter' => 'AuthAdmin']);
 
 $routes->get('/set-tahun_ajaran', 'c_setTahunAjaran::index', ['filter' => 'AuthAdmin']);
 $routes->get('/set-tahun_ajaran/form', 'c_setTahunAjaran::form', ['filter' => 'AuthAdmin']);

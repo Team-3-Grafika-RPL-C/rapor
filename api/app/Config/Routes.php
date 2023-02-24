@@ -103,6 +103,9 @@ $routes->get('/tpembelajaran/(:num)', 'CTPembelajaran::show/$1');
 $routes->post('/tpembelajaran', 'CTPembelajaran::create');
 $routes->put('/tpembelajaran/(:num)', 'CTPembelajaran::update/$1');
 $routes->delete('/tpembelajaran/(:num)', 'CTPembelajaran::delete/$1');
+$routes->get('/tp-semester', 'CTPembelajaran::option_semester');
+$routes->get('/tp-cp', 'CTPembelajaran::option_cp');
+
 
 // --- Data Tahun Ajaran --- //
 $routes->get('/tahun-ajaran', 'CTahunAjaran::index');

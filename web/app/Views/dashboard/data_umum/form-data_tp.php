@@ -20,38 +20,48 @@
             <!-- Form Data Kelas -->
             <div class="mx-3">
                 <div class="container">
-                    <form action="" method="post">
+                    <form action="<?= $page == 'edit' ? '/data-tp/form-edit/'.$data->tp_detail->id :'/data-tp/form' ?>" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Kode</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="kode" name="Kode">
+                                <input type="text" autocomplete="off" class="form-control" id="kode_tp" name="kode_tp"
+                                value = "<?= $page == 'edit' ? $data->tp_detail->learning_purpose_code : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h text-gray-900 font-weight-bold">Deskripsi <br> Tujuan Pembelajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="deskripsi" name="Deskripsi">
+                                <input type="text" autocomplete="off" class="form-control" id="tp" name="tp"
+                                value = "<?= $page == 'edit' ? $data->tp_detail->learning_purpose_description : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Capaian Pembelajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <select name="Wali kelas" id="cp" class="custom-select">
-                                    <option value="1">Menguasai Separuh Eropa</option>
-                                    <option value="2">Bisa Terbang</option>
-                                    <option value="3">Memiliki Kekuatan Cosmic</option>
-                                    <option value="3">Dapat Menghalau serangan Nuklir</option>
+                                <select name="cp" id="cp" class="custom-select">
+                                    <?php foreach ($data_cp->cp as $dat) { ?>
+                                    <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->tp_detail->id_learning_outcome ?'selected' :'') :'' ?>>
+                                        <?= $dat->learning_outcome_description ?>
+                                    </option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Semester</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <select name="Wali kelas" id="semester" class="custom-select">
-                                    <option value="1">Ganjil</option>
-                                    <option value="2">Genap</option>
+                                <select name="semester" id="semester" class="custom-select">
+                                    <?php foreach ($data_semester->semester as $dat) {?>
+                                    <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->tp_detail->id_semester ?'selected' :'') :'' ?>>
+                                        <?= $dat->semester ?>
+                                    </option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -64,26 +74,5 @@
             </div>            
         </div>
     </div>
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="cancel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-            </div>
-        </div>
-        </div>              
-    </div> -->
     
 <?= $this->endsection(); ?>
