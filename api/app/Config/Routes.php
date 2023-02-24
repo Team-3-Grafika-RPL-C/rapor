@@ -143,6 +143,10 @@ $routes->get('/siswa-option-tahun', 'CSiswaKelas::option_tahun');
 $routes->get('/data-siswa-kelas', 'CSiswaKelas::data_siswa_kelas');
 $routes->post('/save-noabsen/(:num)', 'CSiswaKelas::save_noabsen');
 
+// --- Set Siswa Ekskul--- //
+$routes->get('/ekskul-option-ekskul', 'CSiswaEkskul::option_ekskul');
+$routes->get('/data-siswa-kelas', 'CSiswaEkskul::data_siswa_ekskul');
+
 // --- Presensi--- //
 $routes->post('/presensi', 'CPresensi::create');
 $routes->put('/presensi/(:num)', 'CPresensi::update/$1');

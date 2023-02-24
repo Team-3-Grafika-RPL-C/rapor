@@ -125,4 +125,5 @@ class CSiswaKelas extends ResourceController
         return $this->respond($data_kelas, 200);
 
     }
+
 }

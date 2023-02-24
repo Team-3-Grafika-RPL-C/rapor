@@ -28,8 +28,10 @@ class c_login extends BaseController
             'username' => $username,
             'password' => $password
         ];
-
-        $request = $this->client->request('POST', '/login', ['json' => $request_client_data]);
+        $request = $this->client->request('POST', 'login', [
+            'json' => $request_client_data,
+            'http_errors' => false
+        ]);
 
         if ($request->getStatusCode() !== 200) {
             if ($request->getStatusCode() === 401) {
@@ -38,11 +40,11 @@ class c_login extends BaseController
             return redirect()->back()->withInput();
         }
 
-        $result = json_decode($request->getBody());
+        $result = json_decode($request->getBody())->data;
         $session_data = [
             'id' => $result->id,
             'is_teacher' => $result->is_teacher == 1 ? true : false,
-            'is_admin' => $result->id_admin == 1 ? true : false
+            'is_admin' => $result->is_admin == 1 ? true : false
         ];
 
         $session = session();
@@ -53,5 +55,12 @@ class c_login extends BaseController
             return redirect()->to('/dashboard');
         }
         return redirect()->to('profile-sekolah');
+    }
+
+    public function logout()
+    {
+        $session = session();
+        $session->destroy();
+        return redirect()->to('/');
     }
 }
