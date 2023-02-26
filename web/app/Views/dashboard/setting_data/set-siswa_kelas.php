@@ -54,6 +54,7 @@
                                 </a>
                             </div>
                         </div>
+                        <input type="hidden" id="base_url_js" value="<?= base_url() ?>">
                         <div class="card-body d-none">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -74,36 +75,13 @@
                                             <th class="text-center">No</th>
                                             <th class="text-center">NIS</th>
                                             <th class="text-center">Nama</th>
-                                            <th class="text-center">No Absen</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>23423423</td>
-                                            <td>Rosalia Shelly Wulandari</td>
-                                            <td class="d-flex justify-content-center">
-                                                <input type="text" style="width: 50px;" autocomplete="off" class="form-control" id="no_absen" name="no_absen">
-                                            </td>
-                                            </td>
-                                            <td class="text-center">
-                                                <a href="" class="btn btn-info btn-rounded">
-                                                    <i class="ri-information-fill" title="Detail"></i>
-                                                </a>
-                                                <a href="" class="btn btn-warning btn-rounded">
-                                                    <i class="ri-pencil-fill" title="Edit"></i>
-                                                </a>
-                                                <a href="" class="btn btn-danger btn-rounded">
-                                                    <i class="ri-delete-bin-7-fill" title="Delete"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                    <tbody id="tbody-table">
+                                        
                                     </tbody>
                                 </table>
-                            </div>
-                            <div class="d-flex justify-content-start mb-3 mt- pt-5">
-                                <button class="btn text-light mx-1" style="min-width: 6rem; background-color: #845EF7; border-radius: 8px" type="submit">Simpan No Absen</button>
                             </div>
                         </div>
                     </div>
@@ -120,6 +98,9 @@
                                     </button>
                                 </div>
                             <div class="modal-body">
+                                <form action="/set-siswa_kelas" method="post">
+                                    <input type="hidden" id="input_tahun" name="id_academic_year" />
+                                    <input type="hidden" id="input_kelas" name="id_class" />
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -130,33 +111,37 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php 
+                                        $nomer = 1;
+                                        foreach ($siswa->siswa as $dat) { ?>
                                         <tr>
                                             <td class="text-center">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                                    <input class="form-check-input" type="checkbox" value="<?= $dat->id ?>" id="flexCheckChecked" name="id_students[]">
                                                 </div>
                                             </td>
-                                            <td>1</td>
-                                            <td>23423423</td>
-                                            <td>Rosalia Shelly Wulandari</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                                </div>
+                                            <td>
+                                                <?= $nomer ?>
+                                                <?php $nomer++ ?>
                                             </td>
-                                            <td>2</td>
-                                            <td>23423322</td>
-                                            <td>Vira Alfita Yunia</td>
+                                            <td>
+                                                <?= $dat->nis ?>
+                                            </td>
+                                            <td>
+                                                <?= $dat->student_name ?>
+                                            </td>
                                         </tr>
+                                        <?php
+                                        } ?>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="modal-footer">
-                                <a class="btn text-light" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px">Tambahkan</a>
+                                <button type="submit" class="btn text-light" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px">Tambahkan</button>
                             </div>
+                            </form>
                             </div>
+
                         </div>
                     </div>
                                         

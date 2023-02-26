@@ -32,7 +32,7 @@ class CSiswaKelas extends ResourceController
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -79,31 +79,6 @@ class CSiswaKelas extends ResourceController
         return $this->respond($option_tahun, 200);
     }
 
-    public function save_noabsen()
-    {
-        // $rules = $this->validate([
-        //     'number_order' => 'required'
-        // ]);
-
-        // if (!$rules) {
-        //     $response = [
-        //         'message' => $this->validator->getErrors()
-        //     ];
-
-        //     return $this->failValidationErrors($response);
-        // }
-
-        $this->model->insert([
-            'number_order' => esc($this->request->getVar('number_order'))
-        ]);
-
-        $response = [
-            'message' => 'No absen berhasil disimpan'
-        ];
-
-        return $this->respondCreated($response);
-    }
-
     public function data_siswa_kelas()
     {
         $id_academic_year = $this->request->getVar('id_academic_year');
@@ -126,4 +101,49 @@ class CSiswaKelas extends ResourceController
 
     }
 
+    public function data_siswa()
+    {
+        $query = "SELECT DISTINCT
+        a.id,
+        a.nis,
+        a.student_name
+        FROM students a
+        INNER JOIN class_students b ON b.id_students != a.id
+        WHERE
+        a.is_deleted = 0";
+        $data_siswa = $this->api_helpers->queryGetArray($query);
+
+        $data_siswa = [
+            'siswa' => $data_siswa
+        ];
+
+        return $this->respond($data_siswa, 200);
+    }
+    public function insert()
+    {
+        $rules = $this->validate([
+            'id_students' => 'required'
+        ]);
+
+        if (!$rules) {
+            $response = [
+                'message' => $this->validator->getErrors()
+            ];
+        }
+
+        $id_academic_year = $this->request->getVar('id_academic_year');
+        $id_class = $this->request->getVar('id_class');
+
+        $this->model->insert([
+            'id_students' => esc($this->request->getVar('id_students')),
+            'id_academic_year' => esc($this->request->getVar('id_academic_year')),
+            'id_class' => esc($this->request->getVar('id_class')),
+        ]);
+
+        $response = [
+            'message' => 'Data berhasil ditambahkan'
+        ];
+
+        return $this->respondCreated($response);
+    }
 }

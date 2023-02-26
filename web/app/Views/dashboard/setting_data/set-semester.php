@@ -25,23 +25,55 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
+                    <?php
+                    $nomer = 1;
+                    foreach ($data->data_semester as $dat) {
+                    ?>
                         <tr>
-                            <td>1</td>
-                            <td>Ganjil</td>
                             <td>
-                                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
-                                    <span class="d-flex">AKTIF</span>
-                                </a>
+                                <?= $nomer ?>
+                                <?php $nomer++ ?>
                             </td>
                             <td>
-                                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #C70A0A; border-radius: 8px">
+                                <?= $dat->semester ?>
+                            </td>
+                            <td>
+                                <?= $dat->is_active == 1
+                                ?
+                                '<a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
+                                    <span class="d-flex">AKTIF</span>
+                                </a>'
+                                :
+                                '<a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #C70A0A; border-radius: 8px">
+                                <span class="d-flex">NON AKTIF</span>
+                                </a>'
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                if ($dat->is_active == 1) { ?>
+                                    <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url() ?>/nonactive-semester/<?= $dat->id ?>" style="min-width: 5rem; background-color: #C70A0A; border-radius: 8px">
                                     <span class="d-flex">
-                                        <i class="ri-delete-bin-line mr-2"></i>
+                                        <i class="ri-check-line mr-2"></i>
                                         NON AKTIFKAN
                                     </span>
-                                </a>
+                                    </a>
+                                <?php
+                                } else { ?>
+                                    <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url() ?>/nonactive-semester/<?= $dat->id ?>" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
+                                    <span class="d-flex">
+                                        <i class="ri-check-line mr-2"></i>
+                                        AKTIFKAN
+                                    </span>
+                                    </a>
+                                <?php
+                                }?>
+                                
                             </td>
                         </tr>
+                    <?php
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>

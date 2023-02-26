@@ -109,11 +109,14 @@ $routes->get('/tp-cp', 'CTPembelajaran::option_cp');
 
 // --- Data Tahun Ajaran --- //
 $routes->get('/tahun-ajaran', 'CTahunAjaran::index');
+$routes->get('/tahun-ajaran/(:num)', 'CTahunAjaran::show/$1');
 $routes->post('/tahun-ajaran', 'CTahunAjaran::create');
 $routes->put('/tahun-ajaran/(:num)', 'CTahunAjaran::update/$1');
 $routes->delete('/tahun-ajaran/(:num)', 'CTahunAjaran::delete/$1');
 $routes->post('/tahun-ajaran-active/(:num)', 'CTahunAjaran::activation/$1');
 $routes->post('/tahun-ajaran-nonactive/(:num)', 'CTahunAjaran::non_activation/$1');
+$routes->get('/option-tahun', 'CTahunAjaran::option_tahun');
+
 
 // --- Data Semester --- //
 $routes->get('/semester', 'CSemester::index');
@@ -121,11 +124,16 @@ $routes->post('/semester-active/(:num)', 'CSemester::activation/$1');
 $routes->post('/semester-nonactive/(:num)', 'CSemester::non_activation/$1');
 
 // --- Set Guru Pelajaran --- //
-$routes->get('/guru-pelajaran', 'CPelajaranKelas::index');
+$routes->get('/guru-pelajaran', 'CGuruPelajaran::index');
 $routes->get('/guru-pelajaran/(:num)', 'CGuruPelajaran::show/$1');
 $routes->post('/guru-pelajaran', 'CGuruPelajaran::create');
 $routes->put('/guru-pelajaran/(:num)', 'CGuruPelajaran::update/$1');
 $routes->delete('/guru-pelajaran/(:num)', 'CGuruPelajaran::delete/$1');
+$routes->get('/gp-option-guru', 'CGuruPelajaran::option_guru');
+$routes->get('/gp-option-kelas', 'CGuruPelajaran::option_kelas');
+$routes->get('/gp-option-tahun', 'CGuruPelajaran::option_tahun');
+$routes->get('/gp-data-mapel', 'CGuruPelajaran::data_mapel');
+
 
 // --- Set Guru Ekskul --- //
 $routes->get('/guru-ekskul', 'CGuruEkskul::index');
@@ -142,8 +150,10 @@ $routes->delete('/pelajaran-kelas/(:num)', 'CPelajaranKelas::delete/$1');
 
 // --- Set Siswa Kelas--- //
 $routes->get('/siswa-option-kelas', 'CSiswaKelas::option_kelas');
+$routes->post('/siswa-kelas', 'CSiswaKelas::insert');
 $routes->get('/siswa-option-tahun', 'CSiswaKelas::option_tahun');
-$routes->get('/data-siswa-kelas', 'CSiswaKelas::data_siswa_kelas');
+$routes->post('/data-siswa-kelas', 'CSiswaKelas::data_siswa_kelas');
+$routes->get('/siswa-kelas', 'CSiswaKelas::data_siswa');
 $routes->post('/save-noabsen/(:num)', 'CSiswaKelas::save_noabsen');
 
 // --- Set Siswa Ekskul--- //

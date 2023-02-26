@@ -100,12 +100,19 @@ $routes->post('/data-tp/form-edit/(:num)', 'c_dataTP::form_edit_process/$1', ['f
 $routes->get('/data-tp/delete/(:num)', 'c_dataTP::delete/$1', ['filter' => 'AuthAdmin']);
 
 $routes->get('/set-tahun_ajaran', 'c_setTahunAjaran::index', ['filter' => 'AuthAdmin']);
+$routes->post('/active-tahun_ajaran/(:num)', 'c_setTahunAjaran::set_aktif/$1', ['filter' => 'AuthAdmin']);
+$routes->post('/nonactive-tahun_ajaran/(:num)', 'c_setTahunAjaran::set_nonaktif/$1', ['filter' => 'AuthAdmin']);
 $routes->get('/set-tahun_ajaran/form', 'c_setTahunAjaran::form', ['filter' => 'AuthAdmin']);
 $routes->get('/set-tahun_ajaran/form-detail', 'c_setTahunAjaran::form_detail', ['filter' => 'AuthAdmin']);
+$routes->get('/set-tahun_ajaran/delete/(:num)', 'c_setTahunAjaran::delete/$1', ['filter' => 'AuthAdmin']);
+
 
 $routes->get('/set-semester', 'c_setSemester::index', ['filter' => 'AuthAdmin']);
+$routes->get('/active-semester/(:num)', 'c_setSemester::set_aktif/$1', ['filter' => 'AuthAdmin']);
+$routes->get('/nonactive-semester/(:num)', 'c_setSemester::set_nonaktif/$1', ['filter' => 'AuthAdmin']);
 
 $routes->get('/set-guru_pelajaran', 'c_setGuruPelajaran::index', ['filter' => 'AuthAdmin']);
+$routes->post('/set-guru_pelajaran', 'c_setGuruPelajaran::insert', ['filter' => 'AuthAdmin']);
 $routes->get('/set-guru_pelajaran/form', 'c_setGuruPelajaran::form', ['filter' => 'AuthAdmin']);
 $routes->get('/set-guru_pelajaran/form-detail', 'c_setGuruPelajaran::form_detail', ['filter' => 'AuthAdmin']);
 
@@ -114,6 +121,8 @@ $routes->get('/set-guru_ekskul/form', 'c_setGuruEkskul::form', ['filter' => 'Aut
 $routes->get('/set-guru_ekskul/form-detail', 'c_setGuruEkskul::form_detail', ['filter' => 'AuthAdmin']);
 
 $routes->get('/set-siswa_kelas', 'c_setSiswaKelas::index', ['filter' => 'AuthAdmin']);
+$routes->post('/set-siswa_kelas', 'c_setSiswaKelas::insert', ['filter' => 'AuthAdmin']);
+$routes->post('/data-siswa-kelas', 'c_setSiswaKelas::getSiswaKelas', ['filter' => 'AuthAdmin']);
 $routes->get('/set-siswa_kelas/form', 'c_setSiswaKelas::form', ['filter' => 'AuthAdmin']);
 
 $routes->get('/set-siswa_ekskul', 'c_setSiswaEkskul::index', ['filter' => 'AuthAdmin']);

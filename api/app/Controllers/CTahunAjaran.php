@@ -31,6 +31,21 @@ class CTahunAjaran extends ResourceController
     }
 
     /**
+     * Return an array of resource objects, themselves in array format
+     *
+     * @return mixed
+     */
+    public function show($id = null)
+    {
+        $data = [
+            'message' => 'Detail Tahun Ajaran:',
+            'detail_tahun_ajaran' => $this->model->where('is_deleted', 0)->find($id)
+        ];
+
+        return $this->respond($data, 200);
+    }
+
+    /**
      * Create a new resource object, from "posted" parameters
      *
      * @return mixed
@@ -126,6 +141,17 @@ class CTahunAjaran extends ResourceController
 
         $response = [
             'message' => 'Data berhasil dinonaktifkan'
+        ];
+
+        return $this->respond($response, 200);
+    }
+
+    public function option_tahun()
+    {
+        $data = date('y');
+
+        $response = [
+            'tahun' => $data
         ];
 
         return $this->respond($response, 200);

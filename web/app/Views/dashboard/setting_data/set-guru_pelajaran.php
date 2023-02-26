@@ -25,23 +25,30 @@
                 <thead>
                     <tr>
                         <th class="col-1 my-auto text-center">No</th>
-                        <th class="col-1 my-auto text-center">NIP</th>
                         <th class="col-3 my-auto text-center">Nama Guru</th>
-                        <th class="col-4 my-auto text-center">Alamat</th>
-                        <th class="col-1 my-auto text-center">Aktif</th>
+                        <th class="col-1 my-auto text-center">Kelas</th>
+                        <th class="col-4 my-auto text-center">Tahun Pelajaran</th>
                         <th class="col-2 my-auto text-center">ACTION</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
+                    <?php
+                    $nomer = 1;
+                    foreach ($data->guru_pelajaran as $dat) {
+                    ?>
                         <tr>
-                            <td>1</td>
-                            <td>201022029</td>
-                            <td>Solikin, S.Pd</td>
-                            <td>Jl. Hamid Rusdi No.12</td>
                             <td>
-                                <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
-                                    <span class="d-flex">AKTIF</span>
-                                </a>
+                                <?= $nomer ?>
+                                <?php $nomer++ ?>
+                            </td>
+                            <td>
+                                <?= $dat->teacher_name ?>
+                            </td>
+                            <td>
+                                <?= $dat->class_name ?>
+                            </td>
+                            <td>
+                                <?= $dat->academic_year ?>
                             </td>
                             <td>
                                 <a href="<?= base_url(); ?>/set-guru_pelajaran/form-detail" class="btn btn-info btn-rounded">
@@ -55,6 +62,9 @@
                                 </a>
                             </td>
                         </tr>
+                    <?php
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
