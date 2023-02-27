@@ -10,7 +10,7 @@ class c_login extends BaseController
     public function __construct()
     {
         $this->client = \Config\Services::curlrequest([
-            'baseURI' => 'http://localhost/rapor/api/public/'
+            'baseURI' => baseURI_api
         ]);
     }
 

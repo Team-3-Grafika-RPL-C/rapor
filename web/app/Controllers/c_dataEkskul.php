@@ -6,12 +6,12 @@ use App\Controllers\BaseController;
 
 class c_dataEkskul extends BaseController {
     
-    public $client;
+    public $client, $session;
 
     public function __construct()
     {
         $this->client = \Config\Services::curlrequest([
-            'baseURI' => 'http://localhost/rapor/api/public/'
+            'baseURI' => baseURI_api
         ]);
         $this->session = session();
     }
