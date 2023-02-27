@@ -27,8 +27,8 @@
                             </div>
                             <div class="col-md-8 mb-4">
                                 <select name="guru" id="guru" class="custom-select my-1 mr-sm-2">
-                                    <?php foreach ($data_guru->guru as $dat) { ?>
-                                        <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_pelajaran_detail ?'selected' :'') :'' ?>>
+                                    <?php foreach ($option_guru->guru as $dat) { ?>
+                                        <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_pelajaran_detail->id_teacher ?'selected' :'') :'' ?>>
                                             <?= $dat->teacher_name ?>
                                         </option>
                                     <?php 
@@ -41,8 +41,8 @@
                             <div class="col-md-8 mb-4">
                                 <div>
                                     <select class="custom-select my-1 mr-sm-2" id="kelas" name="kelas">
-                                        <?php foreach ($data_kelas->data_kelas as $dat) { ?>
-                                            <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_pelajaran_detail ?'selected' :'') :'' ?>>
+                                        <?php foreach ($option_kelas->data_kelas as $dat) { ?>
+                                            <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_pelajaran_detail->id_class ?'selected' :'') :'' ?>>
                                                 <?= $dat->class_name ?>
                                             </option>
                                         <?php
@@ -57,8 +57,8 @@
                             <div class="col-md-8 mb-4">
                                 <div>
                                     <select class="custom-select my-1 mr-sm-2" id="tahun" name="tahun">
-                                        <?php foreach ($data_tahun->data_tahun as $dat) { ?>
-                                            <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_pelajaran_detail ?'selected' :'') :'' ?>>
+                                        <?php foreach ($option_tahun->data_tahun as $dat) { ?>
+                                            <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_pelajaran_detail->id_class ?'selected' :'') :'' ?>>
                                                 <?= $dat->academic_year ?>
                                             </option>
                                         <?php
@@ -72,7 +72,7 @@
                             <div class="col-md-8 mb-4">
                                 <select multiple class="form-control" id="mapel" name="mapel[]" size="10">
                                     <?php foreach ($data_mapel->data_mapel as $dat) { ?>
-                                    <option value="<?= $dat->id ?>" >
+                                    <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_pelajaran_detail->id_subject ?'selected' :'') :'' ?>>
                                         <?= $dat->mapel ?>
                                     </option>
                                     <?php

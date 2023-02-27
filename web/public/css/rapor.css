@@ -1,0 +1,12 @@
+body{
+    font-family: Arial, sans-serif, Tahoma;
+}
+h1, h2, h3, h4, .h1, .h2, .h3, .h4{
+    font-family: Tahoma;
+    font-weight: bolder;
+}
+
+h1, .h1 .judul{
+    font-size: 28px;
+    line-height: 28px;
+}

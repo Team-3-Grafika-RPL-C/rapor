@@ -36,14 +36,6 @@ class c_setSiswaKelas extends BaseController {
         return view('dashboard/setting_data/set-siswa_kelas', $data);
     }
 
-    public function form()
-    {
-        $data = [
-            'title' => 'Rapodig - Tambah Siswa Kelas'
-        ];
-        return view('dashboard/setting_data/form-set_siswa_kelas', $data);
-    }
-
     public function getSiswaKelas()
     {
         $id_class = $this->request->getVar('id_class');
@@ -75,6 +67,16 @@ class c_setSiswaKelas extends BaseController {
         }
 
         return redirect()->to('/set-siswa_kelas');
+    }
+
+    public function delete($id)
+    {
+        $response = $this->client->request('DELETE', 'siswa-kelas/'.$id);
+        $code = $response->getStatusCode();
+
+        $body_response= json_decode($response->getBody());
+        
+        return redirect()->to('/set-siswa_kelas'); 
     }
 
 }

@@ -29,14 +29,11 @@ class CGuruPelajaran extends ResourceController
         a.id_class,
         c.class_name,
         a.id_academic_year,
-        d.academic_year,
-        a.id_subject,
-        e.subject_name
+        d.academic_year
         FROM teacher_subject a
         INNER JOIN teachers b ON a.id_teacher = b.id
         INNER JOIN class c ON a.id_class = c.id 
         INNER JOIN academic_years d ON a.id_academic_year = d.id
-        INNER JOIN subjects e ON a.id_subject = e.id 
         WHERE a.is_deleted = 0";
         $guru_pelajaran = $this->api_helpers->queryGetArray($query);
 
@@ -55,9 +52,27 @@ class CGuruPelajaran extends ResourceController
      */
     public function show($id = null)
     {
+        $query = "SELECT
+        a.id,
+        a.id_teacher,
+        b.teacher_name,
+        a.id_class,
+        c.class_name,
+        a.id_academic_year,
+        d.academic_year,
+        a.id_subject,
+        CONCAT_WS(' Kelas ', e.subject_name, e.class) as subject_name
+        FROM teacher_subject a
+        INNER JOIN teachers b ON a.id_teacher = b.id
+        INNER JOIN class c ON a.id_class = c.id 
+        INNER JOIN academic_years d ON a.id_academic_year = d.id
+        INNER JOIN subjects e ON a.id_subject = e.id
+        WHERE a.id = ?";
+        $guru_pelajaran = $this->api_helpers->queryGetFirst($query, [$id]);
+
         $data = [
             'message' => 'Detail Guru Pelajaran:',
-            'guru_pelajaran_detail' => $this->model->find($id)
+            'guru_pelajaran_detail' => $guru_pelajaran
         ];
 
         return $this->respond($data, 200);

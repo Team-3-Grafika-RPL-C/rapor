@@ -45,15 +45,6 @@ class CSiswaEkskul extends ResourceController
         //
     }
 
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
-    public function delete($id = null)
-    {
-        //
-    }
 
     public function option_ekskul()
     {
@@ -75,7 +66,7 @@ class CSiswaEkskul extends ResourceController
         b.nis,
         b.student_name
         FROM extracurricular_students a
-        INNER JOIN students b ON a.id_students = b.id
+        INNER JOIN students b ON a.id_student = b.id
         WHERE 
         a.id_extracurricular = ? ";
         $data_siswa_ekskul = $this->api_helpers->queryGetArray($query, [$id_extracurricular]);
@@ -88,4 +79,62 @@ class CSiswaEkskul extends ResourceController
 
     }
 
+    public function data_siswa()
+    {
+        $query = "SELECT DISTINCT
+        a.id,
+        a.nis,
+        a.student_name
+        FROM students a
+        LEFT JOIN extracurricular_students b ON b.id_student = a.id
+        WHERE
+        a.is_deleted = 0 AND
+        b.is_deleted = 0 AND
+        b.id_student IS NULL";
+        $data_siswa = $this->api_helpers->queryGetArray($query);
+
+        $data_siswa = [
+            'siswa' => $data_siswa
+        ];
+
+        return $this->respond($data_siswa, 200);
+    }
+
+    public function insert()
+    {
+        $rules = $this->validate([
+            'id_student' => 'required'
+        ]);
+
+        if (!$rules) {
+            $response = [
+                'message' => $this->validator->getErrors()
+            ];
+        }
+
+        $id_extracurricular = $this->request->getVar('id_extra$id_extracurricular');
+
+        $this->model->insert([
+            'id_student' => esc($this->request->getVar('id_student')),
+            'id_extracurricular' => esc($this->request->getVar('id_extracurricular')),
+        ]);
+
+        $response = [
+            'message' => 'Data berhasil ditambahkan'
+        ];
+
+        return $this->respondCreated($response);
+    }
+    
+    public function delete($id = null)
+    {
+        $query = "UPDATE extracurricular_students SET is_deleted = 1 WHERE id=?";
+        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
+
+        $response = [
+            'message' => 'Data berhasil dihapus'
+        ];
+
+        return $this->respondDeleted($response);
+    }
 }

@@ -34,13 +34,7 @@ function retrieveDataSiswa(){
                         <td>${value.nis}</td>
                         <td>${value.student_name}</td>
                         <td class="text-center">
-                            <a href="" class="btn btn-info btn-rounded">
-                                <i class="ri-information-fill" title="Detail"></i>
-                            </a>
-                            <a href="" class="btn btn-warning btn-rounded">
-                                <i class="ri-pencil-fill" title="Edit"></i>
-                            </a>
-                            <a href="" class="btn btn-danger btn-rounded">
+                            <a href="<?= base_url() ?>/set-siswa_kelas/delete/<?= $dat->id ?>" class="btn btn-danger btn-rounded">
                                 <i class="ri-delete-bin-7-fill" title="Delete"></i>
                             </a>
                         </td>
