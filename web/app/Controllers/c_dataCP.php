@@ -5,10 +5,11 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 
 class c_dataCP extends BaseController {
+    private $client, $session;
     public function __construct()
     {
         $this->client = \Config\Services::curlrequest([
-            'baseURI' => 'http://localhost/rapor/api/public/'
+            'baseURI' => baseURI_api
         ]);
         $this->session = session();
     }
