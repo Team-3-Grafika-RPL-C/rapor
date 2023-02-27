@@ -9,7 +9,7 @@ class MTPembelajaran extends Model
     protected $table            = 'learning_purposes';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['learning_purpose_code', 'learning_purpose_name', 'id_learning_outcome','id_semester'];
+    protected $allowedFields    = ['learning_purpose_code', 'learning_purpose_description', 'id_learning_outcome','id_semester'];
 
     //Dates
     protected $useTimestamps = true;

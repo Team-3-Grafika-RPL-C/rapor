@@ -6,6 +6,8 @@ use CodeIgniter\RESTful\ResourceController;
 
 class CAccounts extends ResourceController
 {
+    protected $helpers = ['Helpers'];
+
     protected $modelName = "App\Models\MTPembelajaran";
     protected $format = "json";
 
@@ -14,7 +16,6 @@ class CAccounts extends ResourceController
     public function __construct()
     {
         $this->api_helpers = new Api_helpers();
-        helper('Helpers');
     }
 
     public function login()
@@ -34,11 +35,16 @@ class CAccounts extends ResourceController
         $username = $this->request->getJsonVar('username');
         $password = $this->request->getJsonVar('password');
 
-        $query = "SELECT id, is_teacher, is_admin as num FROM account WHERE username = ? and password = ? and is_deleted = False";
+
+        $query = "SELECT id, is_teacher, is_admin FROM account WHERE username = ? and password = ? and is_deleted = 0";
         $result = $this->api_helpers->queryGetArray($query, [$username, passwordHash($password)]);
 
+
         if ($result === null || count($result) != 1) {
-            return $this->failUnauthorized();
+            return $this->respond([
+                'message'=>'login failed',
+                'errors'=>'incorrect'
+            ], 401);
         }
 
         return $this->respond([

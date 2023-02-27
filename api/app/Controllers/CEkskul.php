@@ -39,10 +39,10 @@ class CEkskul extends ResourceController
     {
         $data = [
             'message' => 'Data Ekstrakurikuler:',
-            'data_ekskul' => $this->model->find($id)
+            'detail_ekskul' => $this->model->find($id)
         ];
 
-        if ($data['data_ekskul'] == null) {
+        if ($data['detail_ekskul'] == null) {
             return $this->failNotFound('Data ekskul tidak ditemukan');
         }
 
@@ -58,7 +58,6 @@ class CEkskul extends ResourceController
     {
         $rules = $this->validate([
             'extracurricular_name' => 'required',
-            'minimal_score'        => 'required',
             'description'          => 'required'
         ]);
 
@@ -72,7 +71,6 @@ class CEkskul extends ResourceController
 
         $this->model->insert([
             'extracurricular_name'  => esc($this->request->getVar('extracurricular_name')),
-            'minimal_score'         => esc($this->request->getVar('minimal_score')),
             'description'           => esc($this->request->getVar('description')),
         ]);
 
@@ -93,7 +91,6 @@ class CEkskul extends ResourceController
     {
         $rules = $this->validate([
             'extracurricular_name' => 'required',
-            'minimal_score'        => 'required',
             'description'          => 'required'
         ]);
 
@@ -107,7 +104,6 @@ class CEkskul extends ResourceController
 
         $this->model->update($id, [
             'extracurricular_name'  => esc($this->request->getVar('extracurricular_name')),
-            'minimal_score'         => esc($this->request->getVar('minimal_score')),
             'description'           => esc($this->request->getVar('description')),
         ]);
 

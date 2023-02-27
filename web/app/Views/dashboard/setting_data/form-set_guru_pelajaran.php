@@ -20,16 +20,19 @@
             <!-- Form Data Kelas -->
             <div class="mx-3">
                 <div class="container">
-                    <form action="" method="post">
+                    <form action="/set-guru_pelajaran" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
                                 <h6 class="h text-gray-900 font-weight-bold">Guru</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <select name="guru" id="guru" class="custom-select my-1 mr-sm-2">
-                                    <option value="1">Dhanang Spd.</option>
-                                    <option value="2">Esti Mpd.</option>
-                                    <option value="3">Septi Spd.</option>
+                                    <?php foreach ($option_guru->guru as $dat) { ?>
+                                        <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_pelajaran_detail->id_teacher ?'selected' :'') :'' ?>>
+                                            <?= $dat->teacher_name ?>
+                                        </option>
+                                    <?php 
+                                    } ?>
                                 </select>
                             </div>
                             <div class="col-md-4 mb-4">
@@ -37,19 +40,14 @@
                             </div>
                             <div class="col-md-8 mb-4">
                                 <div>
-                                    <select class="custom-select my-1 mr-sm-2" id="kelas">
-                                        <option value="1">1A</option>
-                                        <option value="2">1B</option>
-                                        <option value="3">2A</option>
-                                        <option value="4">2B</option>
-                                        <option value="1">31</option>
-                                        <option value="2">3B</option>
-                                        <option value="3">4A</option>
-                                        <option value="4">4B</option>
-                                        <option value="1">5A</option>
-                                        <option value="2">5B</option>
-                                        <option value="3">6A</option>
-                                        <option value="4">6B</option>
+                                    <select class="custom-select my-1 mr-sm-2" id="kelas" name="kelas">
+                                        <?php foreach ($option_kelas->data_kelas as $dat) { ?>
+                                            <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_pelajaran_detail->id_class ?'selected' :'') :'' ?>>
+                                                <?= $dat->class_name ?>
+                                            </option>
+                                        <?php
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -58,15 +56,51 @@
                             </div>
                             <div class="col-md-8 mb-4">
                                 <div>
-                                    <select class="custom-select my-1 mr-sm-2" id="tahun">
-                                        <option value="1">2022-2023</option>
-                                        <option value="2">2021-2022</option>
-                                        <option value="3">2020-2021</option>
-                                        <option value="4">2019-2020</option>
+                                    <select class="custom-select my-1 mr-sm-2" id="tahun" name="tahun">
+                                        <?php foreach ($option_tahun->data_tahun as $dat) { ?>
+                                            <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_pelajaran_detail->id_class ?'selected' :'') :'' ?>>
+                                                <?= $dat->academic_year ?>
+                                            </option>
+                                        <?php
+                                        } ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Mata Pelajaran</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <select multiple class="form-control" id="mapel" name="mapel[]" size="10">
+                                    <?php foreach ($data_mapel->data_mapel as $dat) { ?>
+                                    <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_pelajaran_detail->id_subject ?'selected' :'') :'' ?>>
+                                        <?= $dat->mapel ?>
+                                    </option>
+                                    <?php
+                                    } ?>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        
+                            <!-- <div class="col-md-2 mt-auto mb-auto">
+                                <div class="d-flex flex-wrap text-center">
+                                    <div class="col-12">
+                                        <a data-toggle="modal" class="add-mapel-btn">
+                                            <i class="ri-arrow-right-circle-line" style="font-size: 48px;" data-toggle="tooltip" title="Select"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-12">
+                                        <a data-toggle="modal" class="remove-mapel-btn">
+                                            <i class="ri-arrow-left-circle-line" style="font-size: 48px;" data-toggle="tooltip" title="Unselect"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <select multiple class="form-control" id="selected_mapel" size="10">
+                                </select>
+                            </div> -->
+                            <!-- <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Mata pelajaran</h6>
                             </div>
                             <div class="col-md-6 mb-2">
@@ -82,7 +116,7 @@
                                     <input type="checkbox" id="Matematika" name="Matematika" value="Boat">
                                     <label for="Matematika">Matematika</label>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-12 d-flex justify-content-end mb-3 pt-5">
                                 <button class="btn text-light mx-1" style="min-width: 6rem; background-color: #845EF7; border-radius: 8px" type="submit">Simpan</button>
                             </div> 
@@ -92,28 +126,6 @@
             </div>            
         </div>
     </div>
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="cancel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-            </div>
-        </div>
-        </div>              
-    </div> -->
-
 <script src="<?= base_url(); ?>/js/form-set_guru_pelajaran.js"></script>
     
 <?= $this->endsection(); ?>

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Rapodig - Login</title>  
+    <title>Rapodig - Login</title>
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="<?= base_url(); ?>/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -43,19 +43,16 @@
                                         <h5 class="mb-4">Silahkan masuk terlebih dahulu</h5>
                                     </div>
                                     <form class="user" method="post" action="<?= base_url(); ?>/validasi-login">
-                                        <?php if(session()->getFlashData('error')) {?>
+                                        <?php if (session()->getFlashData('error')) { ?>
                                             <div class="alert alert-danger">
                                                 <?php echo session()->getFlashdata('error') ?>
                                             </div>
                                         <?php } ?>
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user login-placeholder"
-                                                id="exampleInputEmail" name="username" aria-describedby="emailHelp"
-                                                placeholder="Username" value="<?= old('username') ?>">
+                                            <input type="text" class="form-control form-control-user login-placeholder" id="exampleInputEmail" name="username" aria-describedby="emailHelp" placeholder="Username" value="<?= old('username') ?>">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user login-placeholder"
-                                                id="exampleInputPassword" name="password" placeholder="Password " value="<?= old('password') ?>>
+                                            <input type="password" class="form-control form-control-user login-placeholder" id="exampleInputPassword" name="password" placeholder="Password" value="<?= old('password') ?>">
                                         </div>
                                         <div class="my-5 pb-5">
                                             <button type="submit" class="btn btn-user btn-block" name="login" style="background-color: #845EF7; color: white">

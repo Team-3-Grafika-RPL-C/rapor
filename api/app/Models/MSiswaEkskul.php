@@ -4,12 +4,12 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MSiswa extends Model
+class MSiswaEkskul extends Model
 {
-    protected $table            = 'students';
+    protected $table            = 'extracurricular_students';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['nisn', 'nis', 'student_name', 'gender', 'address', 'birthdate', 'birthplace', 'religion', 'father_name', 'mother_name', 'father_job', 'mother_job', 'parent_address', 'guardian_name', 'guardian_job', 'guardian_address', 'class', 'status'];
+    protected $allowedFields    = ['id_extracurricular', 'id_student'];
 
     //Dates
     protected $useTimestamps = true;

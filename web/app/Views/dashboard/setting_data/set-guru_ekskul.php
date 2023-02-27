@@ -27,19 +27,27 @@
                         <th class="text-center">No</th>
                         <th class="text-center">Nama Guru</th>
                         <th class="text-center">Alamat</th>
-                        <th class="text-center">Status</th>
+                        <th class="text-center">Tahun Ajaran</th>
                         <th class="text-center">ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php 
+                    $nomer = 1;
+                    foreach ($data->guru_ekskul as $dat) {?>
                     <tr>
-                        <td>1</td>
-                        <td>Justin Bieber</td>
-                        <td>Jl. Mergosono Gg 3</td>
-                        <td class="text-center">
-                            <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
-                                <span class="d-flex">Aktif</span>
-                            </a>
+                        <td>
+                            <?= $nomer ?>
+                            <?php $nomer++ ?>
+                        </td>
+                        <td>
+                            <?= $dat->teacher_name ?>
+                        </td>
+                        <td>
+                            <?= $dat->address ?>
+                        </td>
+                        <td>
+                            <?= $dat->academic_year ?>
                         </td>
                         <td class="text-center">
                                 <a href="<?= base_url(); ?>/set-guru_ekskul/form-detail" class="btn btn-info btn-rounded">
@@ -53,6 +61,8 @@
                                 </a>
                         </td>
                     </tr>
+                    <?php 
+                    }?>
                 </tbody>
             </table>
         </div>

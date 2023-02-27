@@ -143,7 +143,7 @@ class CKelas extends ResourceController
 
     public function option_walikelas()
     {
-        $query = "SELECT a.id, a.teacher_name FROM teachers a";
+        $query = "SELECT a.id, a.teacher_name FROM teachers a WHERE a.is_deleted = 0";
         $data_guru = $this->api_helpers->queryGetArray($query);
 
         $data = [

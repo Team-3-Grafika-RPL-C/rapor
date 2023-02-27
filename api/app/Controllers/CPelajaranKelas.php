@@ -26,7 +26,7 @@ class CPelajaranKelas extends ResourceController
         a.id_class,
         c.class_name,
         a.id_subject,
-        e.subject_name
+        e.subject_name,
         a.id_class,
         b.class_name
         FROM class_subject a

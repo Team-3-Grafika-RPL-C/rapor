@@ -40,22 +40,22 @@
         <hr class="sidebar-divider my-0" />
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
+        <li class="nav-item <?= (session()->get('is_admin') || session()->get('is_teacher')) ?'' : 'd-none' ?>">
             <a class="nav-link d-md-flex" href="<?= base_url(); ?>/dashboard">
                 <i class="ri-dashboard-fill" style="font-size: 24px"></i>
                 <span class="my-auto ml-2">Dashboard</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <?= (session()->get('is_admin')||session()->get('is_teacher'))?'d-none': '' ?>">
             <a class="nav-link d-md-flex" href="<?= base_url(); ?>/profile-sekolah">
                 <i class="ri-profile-line" style="font-size: 24px"></i>
                 <span class="my-auto ml-2">Profile Sekolah</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <?= (session()->get('is_admin')||session()->get('is_teacher'))?'d-none': '' ?>">
             <a class="nav-link d-md-flex" href="<?= base_url(); ?>/print-rapor">
                 <i class="ri-printer-line" style="font-size: 24px"></i>
-                <span class="my-auto ml-2">Print Rapor</span>
+                <span class="my-auto ml-2">Hasil Rapor</span>
             </a>
         </li>
 
@@ -66,7 +66,7 @@
         <!-- <div class="sidebar-heading">Interface</div> -->
 
         <!-- Nav Item - Data Umum Collapse Menu  -->
-        <li class="nav-item">
+        <li class="nav-item <?= session()->get('is_admin')?'': 'd-none' ?>">
           <a class="nav-link collapsed d-md-flex" href="#" data-toggle="collapse" data-target="#collapseDataUmum" aria-expanded="true" aria-controls="collapseDataUmum">
             <i class="ri-book-2-fill" style="font-size: 24px"></i>
                 <span class="my-auto ml-2 mr-auto">Data Umum</span>
@@ -85,7 +85,7 @@
         </li>
 
         <!-- Nav Item - Setting Data Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item <?= session()->get('is_admin') ?'' : 'd-none' ?>">
           <a class="nav-link collapsed d-md-flex" href="#" data-toggle="collapse" data-target="#collapseSettingData" aria-expanded="true" aria-controls="collapseSettingData">
             <i class="ri-settings-2-line" style="font-size: 24px"></i>
             <span class="my-auto ml-2 mr-auto">Setting Data</span>
@@ -113,7 +113,7 @@
         <!-- <div class="sidebar-heading">Addons</div> -->
 
         <!-- Nav Item - Penilaian Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item <?= session()->get('is_teacher') ?'' :'d-none' ?>">
           <a class="nav-link collapsed d-md-flex" href="#" data-toggle="collapse" data-target="#collapsePenilaian" aria-expanded="true" aria-controls="collapsePenilaian">
             <i class="ri-draft-fill" style="font-size: 24px"></i>
             <span class="my-auto ml-2 mr-auto">Penilaian</span>
@@ -132,7 +132,7 @@
         </li>
 
         <!-- Nav Item - Presensi Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item <?= session()->get('is_teacher') ?'' :'d-none' ?>">
             <a class="nav-link d-md-flex" href="<?= base_url(); ?>/input-presensi">
                 <i class="ri-calendar-check-line" style="font-size: 24px"></i>
                 <span class="my-auto ml-2">Presensi</span>
@@ -140,7 +140,7 @@
         </li>
 
         <!-- Nav Item - Rapor Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item <?= session()->get('is_admin') ?'' :'d-none' ?>">
           <a class="nav-link collapsed d-md-flex" href="#" data-toggle="collapse" data-target="#collapseRapor" aria-expanded="true" aria-controls="collapseRapor">
             <i class="ri-book-read-fill" style="font-size: 24px"></i>
             <span class="my-auto ml-2 mr-auto">Rapor</span>
@@ -158,7 +158,7 @@
 
         <!-- Nav Item - Logout -->
         <li class="nav-item">
-          <a class="nav-link d-md-flex" href="tables.html">
+          <a class="nav-link d-md-flex" href="<?= base_url(); ?>/logout">
             <i class="ri-logout-box-line" style="font-size: 24px"></i>
             <span class="my-auto ml-2 mr-auto">Logout</span></a
           >

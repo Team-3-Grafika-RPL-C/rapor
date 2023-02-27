@@ -4,12 +4,12 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MSiswa extends Model
+class MAccounts extends Model
 {
-    protected $table            = 'students';
+    protected $table            = 'account';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['nisn', 'nis', 'student_name', 'gender', 'address', 'birthdate', 'birthplace', 'religion', 'father_name', 'mother_name', 'father_job', 'mother_job', 'parent_address', 'guardian_name', 'guardian_job', 'guardian_address', 'class', 'status'];
+    protected $allowedFields    = ['username', 'password', 'is_admin', 'is_teacher'];
 
     //Dates
     protected $useTimestamps = true;

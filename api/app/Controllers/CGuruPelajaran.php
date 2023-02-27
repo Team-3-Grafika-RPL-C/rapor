@@ -23,19 +23,17 @@ class CGuruPelajaran extends ResourceController
     public function index()
     {
         $query = "SELECT DISTINCT
+        a.id,
         a.id_teacher,
         b.teacher_name,
         a.id_class,
         c.class_name,
         a.id_academic_year,
-        d.academic_year,
-        a.id_subject,
-        e.subject_name
+        d.academic_year
         FROM teacher_subject a
         INNER JOIN teachers b ON a.id_teacher = b.id
         INNER JOIN class c ON a.id_class = c.id 
         INNER JOIN academic_years d ON a.id_academic_year = d.id
-        INNER JOIN subjects e ON a.id_subject = e.id 
         WHERE a.is_deleted = 0";
         $guru_pelajaran = $this->api_helpers->queryGetArray($query);
 
@@ -54,9 +52,27 @@ class CGuruPelajaran extends ResourceController
      */
     public function show($id = null)
     {
+        $query = "SELECT
+        a.id,
+        a.id_teacher,
+        b.teacher_name,
+        a.id_class,
+        c.class_name,
+        a.id_academic_year,
+        d.academic_year,
+        a.id_subject,
+        CONCAT_WS(' Kelas ', e.subject_name, e.class) as subject_name
+        FROM teacher_subject a
+        INNER JOIN teachers b ON a.id_teacher = b.id
+        INNER JOIN class c ON a.id_class = c.id 
+        INNER JOIN academic_years d ON a.id_academic_year = d.id
+        INNER JOIN subjects e ON a.id_subject = e.id
+        WHERE a.id = ?";
+        $guru_pelajaran = $this->api_helpers->queryGetFirst($query, [$id]);
+
         $data = [
             'message' => 'Detail Guru Pelajaran:',
-            'detail_guru_pelajaran' => $this->model->find($id)
+            'guru_pelajaran_detail' => $guru_pelajaran
         ];
 
         return $this->respond($data, 200);
@@ -149,5 +165,53 @@ class CGuruPelajaran extends ResourceController
         ];
 
         return $this->respondDeleted($response);
+    }
+    public function option_guru()
+    {
+        $query = "SELECT a.id, a.teacher_name FROM teachers a WHERE a.is_deleted = 0";
+        $data_guru = $this->api_helpers->queryGetArray($query);
+
+        $data = [
+            'guru' => $data_guru
+        ];
+
+        return $this->respond($data, 200);
+    }
+    public function option_kelas()
+    {
+        $query = "SELECT DISTINCT a.id, a.class_name FROM class a WHERE a.is_deleted = 0";
+        $data_kelas = $this->api_helpers->queryGetArray($query);
+
+        $option_kelas = [
+            'data_kelas' => $data_kelas
+        ];
+
+        return $this->respond($option_kelas, 200);
+    }
+    public function option_tahun()
+    {
+        $query = "SELECT DISTINCT a.id, a.academic_year FROM academic_years a WHERE a.is_deleted = 0";
+        $data_tahun = $this->api_helpers->queryGetArray($query);
+
+        $option_tahun = [
+            'data_tahun' => $data_tahun
+        ];
+
+        return $this->respond($option_tahun, 200);
+    }
+    public function data_mapel()
+    {
+        $query = "SELECT
+        a.id,
+        CONCAT_WS(' Kelas ', a.subject_name, a.class) as mapel
+        FROM subjects a
+        WHERE a.is_deleted = 0";
+        $data_mapel = $this->api_helpers->queryGetArray($query);
+
+        $mapel = [
+            'data_mapel' => $data_mapel
+        ];
+
+        return $this->respond($mapel, 200);
     }
 }

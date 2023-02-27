@@ -26,37 +26,31 @@
                                 <h6 class="h text-gray-900 font-weight-bold">Guru</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="guru" name="Guru" value="Solikin, S.Pd" readonly>
+                                <input type="text" autocomplete="off" class="form-control" id="guru" name="guru" 
+                                value="<?= $data->guru_pelajaran_detail->teacher_name ?>" readonly>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Kelas</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <div>
-                                    <select class="custom-select my-1 mr-sm-2" id="kelas" disabled>
-                                        <option value="1">1A</option>
-                                    </select>
-                                </div>
+                                <input type="text" autocomplete="off" class="form-control" id="kelas" name="kelas" 
+                                value="<?= $data->guru_pelajaran_detail->class_name ?>" readonly>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Tahun</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <div>
-                                    <select class="custom-select my-1 mr-sm-2" id="tahun" disabled>
-                                        <option value="1">2022-2023</option>
-                                    </select>
-                                </div>
+                                <input type="text" autocomplete="off" class="form-control" id="tahun" name="tahun" 
+                                value="<?= $data->guru_pelajaran_detail->academic_year ?>" readonly>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Mapel Ajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <select multiple class="form-control" id="selected_mapel_ajaran" size="8" disabled>
-                                    <option>Pendidikan Pancasila</option>
-                                    <option>Bahasa Indonesia</option>
-                                    <option>Matematika</option>
-                                    <option>Ilmu Pengetahuan Alam dan Sosial</option>
+                                <select multiple class="form-control" id="mapel_ajaran" size="8" disabled>
+                                    <option value="<?=$data->guru_pelajaran_detail->id_subject?> selected">
+                                        <?= $data->guru_pelajaran_detail->subject_name ?>
+                                    </option>
                                 </select>
                             </div>
                         </div>

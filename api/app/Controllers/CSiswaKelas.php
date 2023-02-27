@@ -15,45 +15,6 @@ class CSiswaKelas extends ResourceController
     {
         $this->api_helpers = new Api_helpers();
     }
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
-    public function update($id = null)
-    {
-        //
-    }
-
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
-    public function delete($id = null)
-    {
-        //
-    }
 
     public function option_kelas()
     {
@@ -69,7 +30,7 @@ class CSiswaKelas extends ResourceController
 
     public function option_tahun()
     {
-        $query = "SELECT DISTINCT a.id, a.academic_year FROM academic_years a WHERE a.is_deleted = 0";
+        $query = "SELECT DISTINCT a.id, a.academic_year FROM academic_years a WHERE a.is_deleted = 0 AND a.is_active=1";
         $data_tahun = $this->api_helpers->queryGetArray($query);
 
         $option_tahun = [
@@ -79,28 +40,85 @@ class CSiswaKelas extends ResourceController
         return $this->respond($option_tahun, 200);
     }
 
-    public function save_noabsen()
+    public function data_siswa_kelas()
     {
-        // $rules = $this->validate([
-        //     'number_order' => 'required'
-        // ]);
+        $id_academic_year = $this->request->getVar('id_academic_year');
+        $id_class = $this->request->getVar('id_class');
 
-        // if (!$rules) {
-        //     $response = [
-        //         'message' => $this->validator->getErrors()
-        //     ];
+        $query = "SELECT DISTINCT
+        b.nis,
+        b.student_name
+        FROM class_students a
+        INNER JOIN students b ON a.id_students = b.id
+        WHERE 
+        a.id_academic_year = ? AND a.id_class = ? ";
+        $data_siswa_kelas = $this->api_helpers->queryGetArray($query, [$id_academic_year, $id_class]);
 
-        //     return $this->failValidationErrors($response);
-        // }
+        $data_kelas = [
+            'data_siswa' => $data_siswa_kelas 
+        ];
+
+        return $this->respond($data_kelas, 200);
+
+    }
+
+    public function data_siswa()
+    {
+        $query = "SELECT DISTINCT
+        a.id,
+        a.nis,
+        a.student_name
+        FROM students a
+        LEFT JOIN class_students b ON b.id_students = a.id
+        WHERE
+        a.is_deleted = 0 AND
+        b.is_deleted = 0 AND
+        b.id_students IS NULL";
+        $data_siswa = $this->api_helpers->queryGetArray($query);
+
+        $data_siswa = [
+            'siswa' => $data_siswa
+        ];
+
+        return $this->respond($data_siswa, 200);
+    }
+    public function insert()
+    {
+        $rules = $this->validate([
+            'id_students' => 'required'
+        ]);
+
+        if (!$rules) {
+            $response = [
+                'message' => $this->validator->getErrors()
+            ];
+        }
+
+        $id_academic_year = $this->request->getVar('id_academic_year');
+        $id_class = $this->request->getVar('id_class');
 
         $this->model->insert([
-            'number_order' => esc($this->request->getVar('number_order'))
+            'id_students' => esc($this->request->getVar('id_students')),
+            'id_academic_year' => esc($this->request->getVar('id_academic_year')),
+            'id_class' => esc($this->request->getVar('id_class')),
         ]);
 
         $response = [
-            'message' => 'No absen berhasil disimpan'
+            'message' => 'Data berhasil ditambahkan'
         ];
 
         return $this->respondCreated($response);
+    }
+
+    public function delete($id = null)
+    {
+        $query = "UPDATE class_students SET is_deleted = 1 WHERE id=?";
+        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
+
+        $response = [
+            'message' => 'Data berhasil dihapus'
+        ];
+
+        return $this->respondDeleted($response);
     }
 }

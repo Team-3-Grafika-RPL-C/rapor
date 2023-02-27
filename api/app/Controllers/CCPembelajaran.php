@@ -44,7 +44,7 @@ class CCPembelajaran extends ResourceController
     {
         $data = [
             'message' => 'Data Capaian Pembelajaran',
-            'cp_detail' => $this->model->findAll($id)
+            'cp_detail' => $this->model->find($id)
         ];
 
         if ($data['cp_detail'] == null) {

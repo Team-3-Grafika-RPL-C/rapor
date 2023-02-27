@@ -103,14 +103,20 @@ $routes->get('/tpembelajaran/(:num)', 'CTPembelajaran::show/$1');
 $routes->post('/tpembelajaran', 'CTPembelajaran::create');
 $routes->put('/tpembelajaran/(:num)', 'CTPembelajaran::update/$1');
 $routes->delete('/tpembelajaran/(:num)', 'CTPembelajaran::delete/$1');
+$routes->get('/tp-semester', 'CTPembelajaran::option_semester');
+$routes->get('/tp-cp', 'CTPembelajaran::option_cp');
+
 
 // --- Data Tahun Ajaran --- //
 $routes->get('/tahun-ajaran', 'CTahunAjaran::index');
+$routes->get('/tahun-ajaran/(:num)', 'CTahunAjaran::show/$1');
 $routes->post('/tahun-ajaran', 'CTahunAjaran::create');
 $routes->put('/tahun-ajaran/(:num)', 'CTahunAjaran::update/$1');
 $routes->delete('/tahun-ajaran/(:num)', 'CTahunAjaran::delete/$1');
 $routes->post('/tahun-ajaran-active/(:num)', 'CTahunAjaran::activation/$1');
 $routes->post('/tahun-ajaran-nonactive/(:num)', 'CTahunAjaran::non_activation/$1');
+$routes->get('/option-tahun', 'CTahunAjaran::option_tahun');
+
 
 // --- Data Semester --- //
 $routes->get('/semester', 'CSemester::index');
@@ -118,11 +124,17 @@ $routes->post('/semester-active/(:num)', 'CSemester::activation/$1');
 $routes->post('/semester-nonactive/(:num)', 'CSemester::non_activation/$1');
 
 // --- Set Guru Pelajaran --- //
-$routes->get('/guru-pelajaran', 'CPelajaranKelas::index');
+$routes->get('/guru-pelajaran', 'CGuruPelajaran::index');
 $routes->get('/guru-pelajaran/(:num)', 'CGuruPelajaran::show/$1');
 $routes->post('/guru-pelajaran', 'CGuruPelajaran::create');
+$routes->post('/guru-pelajaran-detail', 'CGuruPelajaranDetail::create_detail');
 $routes->put('/guru-pelajaran/(:num)', 'CGuruPelajaran::update/$1');
 $routes->delete('/guru-pelajaran/(:num)', 'CGuruPelajaran::delete/$1');
+$routes->get('/gp-option-guru', 'CGuruPelajaran::option_guru');
+$routes->get('/gp-option-kelas', 'CGuruPelajaran::option_kelas');
+$routes->get('/gp-option-tahun', 'CGuruPelajaran::option_tahun');
+$routes->get('/gp-data-mapel', 'CGuruPelajaran::data_mapel');
+
 
 // --- Set Guru Ekskul --- //
 $routes->get('/guru-ekskul', 'CGuruEkskul::index');
@@ -130,6 +142,11 @@ $routes->get('/guru-ekskul/(:num)', 'CGuruEkskul::show/$1');
 $routes->post('/guru-ekskul', 'CGuruEkskul::create');
 $routes->put('/guru-ekskul/(:num)', 'CGuruEkskul::update/$1');
 $routes->delete('/guru-ekskul/(:num)', 'CGuruEkskul::delete/$1');
+$routes->get('/ge-option-guru', 'CGuruEkskul::option_guru');
+$routes->get('/ge-option-tahun', 'CGuruEkskul::option_tahun');
+$routes->get('/ge-data-ekskul', 'CGuruEkskul::data_ekskul');
+
+
 
 // --- Set Pelajaran Kelas--- //
 $routes->get('/pelajaran-kelas', 'CPelajaranKelas::index');
@@ -138,17 +155,32 @@ $routes->put('/pelajaran-kelas/(:num)', 'CPelajaranKelas::update/$1');
 $routes->delete('/pelajaran-kelas/(:num)', 'CPelajaranKelas::delete/$1');
 
 // --- Set Siswa Kelas--- //
-$routes->get('/option-kelas', 'CSiswaKelas::option_kelas');
-$routes->get('/option-tahun', 'CSiswaKelas::option_tahun');
+$routes->get('/siswa-option-kelas', 'CSiswaKelas::option_kelas');
+$routes->post('/siswa-kelas', 'CSiswaKelas::insert');
+$routes->get('/siswa-option-tahun', 'CSiswaKelas::option_tahun');
+$routes->post('/data-siswa-kelas', 'CSiswaKelas::data_siswa_kelas');
+$routes->get('/siswa-kelas', 'CSiswaKelas::data_siswa');
+$routes->delete('/siswa-kelas/(:num)', 'CSiswaKelas::delete/$1');
 $routes->post('/save-noabsen/(:num)', 'CSiswaKelas::save_noabsen');
+
+// --- Set Siswa Ekskul--- //
+$routes->get('/eks-option-ekskul', 'CSiswaEkskul::option_ekskul');
+$routes->post('/siswa-ekskul', 'CSiswaEkskul::insert');
+$routes->post('/data-siswa-ekskul', 'CSiswaEkskul::data_siswa_ekskul');
+$routes->get('/siswa-ekskul', 'CSiswaEkskul::data_siswa');
+$routes->delete('/siswa-ekskul/(:num)', 'CSiswaEkskul::delete/$1');
+
 
 // --- Presensi--- //
 $routes->post('/presensi', 'CPresensi::create');
 $routes->put('/presensi/(:num)', 'CPresensi::update/$1');
-$routes->get('/option_kelas', 'CPresensi::option_kelas');
+$routes->get('/presensi-option-kelas', 'CPresensi::option_kelas');
 
 // --- Rapor Semester --- //
 $routes->get('/rapor', 'CRaporSemester::index');
+$routes->get('/rapor-option-semester', 'CRaporSemester::option_semester');
+$routes->get('/rapor-option-tahun', 'CRaporSemester::option_tahun');
+$routes->get('/rapor-option-siswa', 'CRaporSemester::option_siswa');
 
 
 /*

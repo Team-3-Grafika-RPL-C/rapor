@@ -32,24 +32,40 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
+                    <?php
+                    $nomer = 1;
+                    foreach ($data->data_tahun_ajaran as $dat) {
+                    ?>
                     <tr>
-                        <td>1</td>
-                        <td>2022-2023</td>
                         <td>
-                            <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
-                                <span class="d-flex">AKTIF</span>
-                            </a>
+                            <?= $nomer ?>
+                            <?php $nomer++ ?>
                         </td>
                         <td>
-                            <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #C70A0A; border-radius: 8px">
+                            <?= $dat->academic_year ?>
+                        </td>
+                        <td>
+                            <?= $dat->is_active == 1
+                            ?
+                            '<a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
+                                <span class="d-flex">AKTIF</span>
+                            </a>'
+                            :
+                            '<a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #C70A0A; border-radius: 8px">
+                                <span class="d-flex">NON AKTIF</span>
+                            </a>'
+                            ?>
+                        </td>
+                        <td>
+                            <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url() ?><?= $dat->is_active == 1 ?'/nonactive-tahun_ajaran/':'/active-tahun_ajaran/'?><?= $dat->id ?>" style="min-width: 5rem; background-color: <?= $dat->is_active == 1 ?'#C70A0A':'#21976B'?>; border-radius: 8px">
                                 <span class="d-flex">
-                                    <i class="ri-delete-bin-line mr-2"></i>
-                                    NON AKTIFKAN
+                                    <i class="mr-2 <?= $dat->is_active == 1 ?'ri-close-line':'ri-check-line'?>"></i>
+                                    <?= $dat->is_active == 1 ?'NON AKTIFKAN':'AKTIFKAN'?>
                                 </span>
                             </a>
                         </td>
                         <td>
-                            <a href="" class="btn btn-warning btn-rounded">
+                            <a href="<?= base_url(); ?>/set-tahun_ajaran/form-edit/<?=$dat->id?>" class="btn btn-warning btn-rounded">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
                             <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#delete">
@@ -57,6 +73,9 @@
                             </a>
                         </td>
                     </tr>
+                    <?php
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -69,12 +88,12 @@
             <div class="modal-body">
                 <div class="container">
                     <div class="d-flex justify-content-center">
-                        <p class="p">apakah anda yakin akan menghapus data ini?</p>
+                        <p class="p">Apakah anda yakin akan menghapus data ini?</p>
                     </div>
                     <div class="d-flex justify-content-center">
                         <div class="row">
-                            <a href="" class="btn btn d-sm-inline-block text-light btn-sm shadow px-4 col-2" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">ya</a>
-                            <a href="" class="btn btn d-sm-inline-block text-dark btn-sm shadow px-4 col-2"style="min-width: 5rem; background-color: #F8F9F9;border-color:#C8CDD0; border-radius: 16px">tidak</a>
+                            <a href="<?= base_url() ?>/set-tahun_ajaran/delete/<?= $dat->id ?>" class="btn btn d-sm-inline-block text-light btn-sm shadow px-4 col-2" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">Ya</a>
+                            <a href="" class="btn btn d-sm-inline-block text-dark btn-sm shadow px-4 col-2"style="min-width: 5rem; background-color: #F8F9F9;border-color:#C8CDD0; border-radius: 16px">Tidak</a>
                         </div>
                     </div>
                 </div>

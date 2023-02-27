@@ -9,7 +9,7 @@ class MEkskul extends Model
     protected $table            = 'extracurricular';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['extracurricular_name', 'minimal_score', 'description'];
+    protected $allowedFields    = ['extracurricular_name', 'description'];
 
     //Dates
     protected $useTimestamps = true;

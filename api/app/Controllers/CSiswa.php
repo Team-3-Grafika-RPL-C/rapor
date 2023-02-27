@@ -24,7 +24,7 @@ class CSiswa extends ResourceController
     {
         $data = [
             'message' => 'Data Siswa:',
-            'data_kelas' => $this->model->where('is_deleted', 0)->orderBy('id', 'ASC')->findAll()
+            'data_siswa' => $this->model->where('is_deleted', 0)->orderBy('id', 'DESC')->findAll()
         ];
         
         return $this->respond($data, 200);
@@ -59,6 +59,7 @@ class CSiswa extends ResourceController
     {
         $rules = $this->validate([
             'nis'       => 'required',
+            'nisn'       => 'required',
             'student_name'    => 'required',
             'gender'         => 'required',
             'address'   => 'required',
@@ -84,6 +85,7 @@ class CSiswa extends ResourceController
 
         $this->model->insert([
             'nis'       => esc($this->request->getVar('nis')),
+            'nisn'       => esc($this->request->getVar('nisn')),
             'student_name'    => esc($this->request->getVar('student_name')),
             'gender'         => esc($this->request->getVar('gender')),
             'address'   => esc($this->request->getVar('address')),
@@ -118,6 +120,7 @@ class CSiswa extends ResourceController
     {
         $rules = $this->validate([
             'nis'               => 'required',
+            'nisn'               => 'required',
             'student_name'      => 'required',
             'gender'            => 'required',
             'address'           => 'required',
@@ -143,6 +146,7 @@ class CSiswa extends ResourceController
 
         $this->model->update($id, [
             'nis'               => esc($this->request->getVar('nis')),
+            'nisn'               => esc($this->request->getVar('nisn')),
             'student_name'      => esc($this->request->getVar('student_name')),
             'gender'            => esc($this->request->getVar('gender')),
             'address'           => esc($this->request->getVar('address')),

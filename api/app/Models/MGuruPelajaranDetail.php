@@ -4,12 +4,12 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MSiswa extends Model
+class MGuruPelajaranDetail extends Model
 {
-    protected $table            = 'students';
+    protected $table            = 'teacher_subject_detail';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['nisn', 'nis', 'student_name', 'gender', 'address', 'birthdate', 'birthplace', 'religion', 'father_name', 'mother_name', 'father_job', 'mother_job', 'parent_address', 'guardian_name', 'guardian_job', 'guardian_address', 'class', 'status'];
+    protected $allowedFields    = ['id_teacher_subject', 'id_subject'];
 
     //Dates
     protected $useTimestamps = true;
