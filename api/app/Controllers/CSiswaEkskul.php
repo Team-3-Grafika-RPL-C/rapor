@@ -89,7 +89,6 @@ class CSiswaEkskul extends ResourceController
         LEFT JOIN extracurricular_students b ON b.id_student = a.id
         WHERE
         a.is_deleted = 0 AND
-        b.is_deleted = 0 AND
         b.id_student IS NULL";
         $data_siswa = $this->api_helpers->queryGetArray($query);
 

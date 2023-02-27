@@ -132,6 +132,7 @@ $routes->get('/set-siswa_kelas/form', 'c_setSiswaKelas::form', ['filter' => 'Aut
 $routes->get('/set-siswa_kelas/delete/(:num)', 'c_setSiswaKelas::delete/$1', ['filter' => 'AuthAdmin']);
 
 $routes->get('/set-siswa_ekskul', 'c_setSiswaEkskul::index', ['filter' => 'AuthAdmin']);
+$routes->post('/data-siswa-ekskul', 'c_setSiswaEkskul::getSiswaEkskul', ['filter' => 'AuthAdmin']);
 
 $routes->get('/set-pelajaran_kelas', 'c_setPelajaranKelas::index', ['filter' => 'AuthAdmin']);
 $routes->get('/set-pelajaran-kelas/form', 'c_setPelajaranKelas::form', ['filter' => 'AuthAdmin']);

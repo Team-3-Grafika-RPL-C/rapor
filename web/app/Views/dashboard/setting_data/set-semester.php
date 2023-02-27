@@ -54,7 +54,7 @@
                                 if ($dat->is_active == 1) { ?>
                                     <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url() ?>/nonactive-semester/<?= $dat->id ?>" style="min-width: 5rem; background-color: #C70A0A; border-radius: 8px">
                                     <span class="d-flex">
-                                        <i class="ri-check-line mr-2"></i>
+                                        <i class="ri-close-line mr-2"></i>
                                         NON AKTIFKAN
                                     </span>
                                     </a>

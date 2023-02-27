@@ -127,6 +127,7 @@ $routes->post('/semester-nonactive/(:num)', 'CSemester::non_activation/$1');
 $routes->get('/guru-pelajaran', 'CGuruPelajaran::index');
 $routes->get('/guru-pelajaran/(:num)', 'CGuruPelajaran::show/$1');
 $routes->post('/guru-pelajaran', 'CGuruPelajaran::create');
+$routes->post('/guru-pelajaran-detail', 'CGuruPelajaranDetail::create_detail');
 $routes->put('/guru-pelajaran/(:num)', 'CGuruPelajaran::update/$1');
 $routes->delete('/guru-pelajaran/(:num)', 'CGuruPelajaran::delete/$1');
 $routes->get('/gp-option-guru', 'CGuruPelajaran::option_guru');

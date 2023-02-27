@@ -57,22 +57,12 @@
                             ?>
                         </td>
                         <td>
-                            
-                            <!-- ? -->
                             <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url() ?><?= $dat->is_active == 1 ?'/nonactive-tahun_ajaran/':'/active-tahun_ajaran/'?><?= $dat->id ?>" style="min-width: 5rem; background-color: <?= $dat->is_active == 1 ?'#C70A0A':'#21976B'?>; border-radius: 8px">
                                 <span class="d-flex">
                                     <i class="mr-2 <?= $dat->is_active == 1 ?'ri-close-line':'ri-check-line'?>"></i>
                                     <?= $dat->is_active == 1 ?'NON AKTIFKAN':'AKTIFKAN'?>
                                 </span>
                             </a>
-                            <!-- :
-                            '<a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url() ?>/nonactive-tahun_ajaran/<?= $dat->id ?>" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
-                                <span class="d-flex">
-                                    <i class="ri-check-line mr-2"></i>
-                                    AKTIFKAN
-                                </span>
-                            </a>'
-                            ?> -->
                         </td>
                         <td>
                             <a href="<?= base_url(); ?>/set-tahun_ajaran/form-edit/<?=$dat->id?>" class="btn btn-warning btn-rounded">
