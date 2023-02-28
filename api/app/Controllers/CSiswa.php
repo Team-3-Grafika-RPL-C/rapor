@@ -24,6 +24,7 @@ class CSiswa extends ResourceController
      */
     public function index()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $data = [
             'message' => 'Data Siswa:',
             'data_siswa' => $this->model->where('is_deleted', 0)->orderBy('id', 'DESC')->findAll()
@@ -39,6 +40,7 @@ class CSiswa extends ResourceController
      */
     public function show($id = null)
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $data = [
             'message' => 'Berhasil',
             'siswa_detail' => $this->model->find($id)
@@ -58,6 +60,10 @@ class CSiswa extends ResourceController
      */
     public function create()
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
         $rules = $this->validate([
             'nis' => 'required|numeric',
             'nisn' => 'required|numeric',
@@ -131,9 +137,13 @@ class CSiswa extends ResourceController
      */
     public function update($id = null)
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
         $rules = $this->validate([
             'nis'               => 'required',
-            'nisn'               => 'required',
+            'nisn'              => 'required',
             'student_name'      => 'required',
             'gender'            => 'required',
             'address'           => 'required',
@@ -159,7 +169,7 @@ class CSiswa extends ResourceController
 
         $this->model->update($id, [
             'nis'               => esc($this->request->getVar('nis')),
-            'nisn'               => esc($this->request->getVar('nisn')),
+            'nisn'              => esc($this->request->getVar('nisn')),
             'student_name'      => esc($this->request->getVar('student_name')),
             'gender'            => esc($this->request->getVar('gender')),
             'address'           => esc($this->request->getVar('address')),
@@ -192,6 +202,10 @@ class CSiswa extends ResourceController
      */
     public function delete($id = null)
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
         $query = "UPDATE students SET is_deleted = 1 WHERE id=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 

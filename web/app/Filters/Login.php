@@ -26,7 +26,7 @@ class Login implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         $session = session();
-        if ($session->has('id') && $session->has('is_teacher') && $session->has('is_admin')) {
+        if ($session->has('id') && $session->has('is_teacher') && $session->has('is_admin') && $session->has('username')) {
             if ($session->get('is_admin') || $session->get('is_teacher')) {
                 return redirect()->to('/dashboard')->with('message', 'Kamu sudah login');
             }

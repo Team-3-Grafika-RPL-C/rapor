@@ -22,6 +22,7 @@ class CPelajaranKelas extends ResourceController
      */
     public function index()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $query = "SELECT DISTINCT
 		a.id,
         a.id_class,
@@ -44,6 +45,7 @@ class CPelajaranKelas extends ResourceController
 
     public function show($id= null)
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $query = "SELECT DISTINCT
 		a.id,
         b.id as id_detail,
@@ -77,6 +79,10 @@ class CPelajaranKelas extends ResourceController
      */
     public function create()
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
         $rules = $this->validate([
             'id_class' => 'required',
             'id_semester' => 'required',
@@ -87,7 +93,7 @@ class CPelajaranKelas extends ResourceController
                 'message' => $this->validator->getErrors()
             ];
 
-            return $this->failValidationError($response);
+            return $this->failValidationErrors($response);
         }
 
         $this->model->insert([
@@ -109,6 +115,10 @@ class CPelajaranKelas extends ResourceController
      */
     public function update($id = null)
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
         $rules = $this->validate([
             'id_class' => 'required',
             'id_semester' => 'required',
@@ -120,7 +130,7 @@ class CPelajaranKelas extends ResourceController
                 'message' => $this->validator->getErrors()
             ];
 
-            return $this->failValidationError($response);
+            return $this->failValidationErrors($response);
         }
 
         $this->model->update($id, [
@@ -143,8 +153,12 @@ class CPelajaranKelas extends ResourceController
      */
     public function delete($id = null)
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
         $query = "UPDATE class_subject SET is_deleted = 1 WHERE id=?";
-        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
+        $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [
             'message' => 'Data berhasil dihapus'

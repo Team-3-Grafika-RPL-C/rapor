@@ -83,8 +83,8 @@ class c_setGuruEkskul extends BaseController
     }
     public function form_detail($num)
     {
-        $response = $this->client->request('GET', 'guru-ekskul/'.$num);
-        $body_response= json_decode($response->getBody());
+        $response = $this->client->request('GET', 'guru-ekskul/' . $num);
+        $body_response = json_decode($response->getBody());
 
         $data = [
             'title' => 'Rapodig - Detail Guru Ekskul',
@@ -158,22 +158,22 @@ class c_setGuruEkskul extends BaseController
         $id_extracurricular = $this->request->getVar('ekskul');
 
         $request_client_data = [
-                'id_extracurricular' => $id_extracurricular,
-                'id_academic_year' => $id_academic_year,
-                'teacher_name' => $teacher_name,
+            'id_extracurricular' => $id_extracurricular,
+            'id_academic_year' => $id_academic_year,
+            'teacher_name' => $teacher_name,
         ];
 
-            $response = $this->client->request('POST', 'guru-ekskul', [
-                'json' => $request_client_data,
-                'headers' => [
-                    'Authorization' => 'Bearer ' . session()->get('token')
-                ],
-                'http_errors' => false
-            ]);
-            if ($response->getStatusCode() !== 200) {
-                return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
-            }
+        $response = $this->client->request('POST', 'guru-ekskul', [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
         }
+
 
         return redirect()->to('/set-guru_ekskul');
     }
@@ -185,22 +185,22 @@ class c_setGuruEkskul extends BaseController
         $id_extracurricular = $this->request->getVar('ekskul');
 
         $request_client_data = [
-                'id_extracurricular' => $id_extracurricular,
-                'id_academic_year' => $id_academic_year,
-                'teacher_name' => $teacher_name,
+            'id_extracurricular' => $id_extracurricular,
+            'id_academic_year' => $id_academic_year,
+            'teacher_name' => $teacher_name,
         ];
 
-            $response = $this->client->request('PUT', 'guru-ekskul/' . $id, [
-                'json' => $request_client_data,
-                'headers' => [
-                    'Authorization' => 'Bearer ' . session()->get('token')
-                ],
-                'http_errors' => false
-            ]);
-            if ($response->getStatusCode() !== 200) {
-                return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
-            }
+        $response = $this->client->request('PUT', 'guru-ekskul/' . $id, [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
         }
+
 
         return redirect()->to('/set-guru_ekskul');
     }

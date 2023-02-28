@@ -18,6 +18,10 @@ class CPelajaranKelasDetail extends ResourceController
 
     public function create_detail()
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
         $id_subject = $this->request->getVar('id_subject');
         $id_class_subject = $this->request->getVar('id_class_subject');
 
