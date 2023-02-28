@@ -4,8 +4,9 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class c_dataGuru extends BaseController {
-    private $client,$session;
+class c_dataGuru extends BaseController
+{
+    private $client, $session;
     public function __construct()
     {
         $this->client = \Config\Services::curlrequest([
@@ -15,37 +16,57 @@ class c_dataGuru extends BaseController {
     }
     public function index()
     {
-        $response = $this->client->request('GET', 'guru');
-        $code = $response->getStatusCode();
-
-        $body_response = json_decode($response->getBody());
+        $response = $this->client->request('GET', 'guru', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
         $data = [
             'title' => 'Rapodig - Data Guru',
-            'data' => $body_response
         ];
-        
+
+        $code = $response->getStatusCode();
+
+        $response_body = json_decode($response->getBody());
+        if ($code === 200) {
+            $data['data'] = $response_body;
+        } else {
+            $data['data_err'] = $response_body;
+        }
+
         return view('dashboard/data_umum/data-guru', $data);
     }
     public function form()
     {
         $data = [
-        'title' => 'Rapodig - Tambah Data Guru',
-        'page' => 'create'
-    ];
+            'title' => 'Rapodig - Tambah Data Guru',
+            'page' => 'create'
+        ];
         return view('dashboard/data_umum/form-data_guru', $data);
     }
     public function form_detail($num)
     {
-        $response = $this->client->request('GET', 'guru/'.$num);
-        $code = $response->getStatusCode();
+        $response = $this->client->request('GET', 'guru/' . $num, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
-        $body_response = json_decode($response->getBody());
+        $code = $response->getStatusCode();
+        $response_body = json_decode($response->getBody());
 
         $data = [
-        'title' => 'Rapodig - Detail Data Guru',
-        'data' => $body_response
+            'title' => 'Rapodig - Detail Data Guru',
         ];
+
+        if ($code === 200) {
+            $data['data'] = $response_body;
+        } else {
+            $data['data_err'] = $response_body;
+        }
 
         return view('dashboard/data_umum/form-data_guru_detail', $data);
     }
@@ -64,21 +85,40 @@ class c_dataGuru extends BaseController {
             'gender' => $jenis_kelamin
         ];
 
-        $response = $this->client->request('POST', 'guru', ['json'=>$request_client_data]);
+        $response = $this->client->request('POST', 'guru', [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ]
+        ]);
+
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
+        }
 
         return redirect()->to('/data-guru');
     }
 
     public function form_edit($num)
     {
-        $response = $this->client->request('GET', 'guru/'.$num);
-        $detail = json_decode($response->getBody());
+        $response = $this->client->request('GET', 'guru/' . $num, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
         $data = [
             'title' => 'Rapodig - Edit Data Guru',
-            'data' => $detail,
             'page' => 'edit'
         ];
+
+        $response_body = json_decode($response->getBody());
+        if ($response->getStatusCode() === 200) {
+            $data['data'] = $response_body;
+        } else {
+            $data['data_err'] = $response_body;
+        }
 
         return view('dashboard/data_umum/form-data_guru', $data);
     }
@@ -96,19 +136,36 @@ class c_dataGuru extends BaseController {
             'address' => $alamat,
             'gender' => $jenis_kelamin
         ];
-    
-        $response = $this->client->request('PUT', 'guru/'.$id, ['json'=>$request_client_data]);
+
+        $response = $this->client->request('PUT', 'guru/' . $id, [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->with('data_err', json_decode($response->getBody()));
+        }
 
         return redirect()->to('/data-guru');
     }
 
     public function delete($num)
     {
-        $response = $this->client->request('DELETE', 'guru/'.$num);
+        $response = $this->client->request('DELETE', 'guru/' . $num, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
         $code = $response->getStatusCode();
 
-        $body_response= json_decode($response->getBody());
-        
-        return redirect()->to('/data-guru'); 
+        if ($code !== 200) {
+            return redirect()->back()->with('data_err', json_decode($response->getBody()));
+        }
+
+        return redirect()->to('/data-guru');
     }
 }

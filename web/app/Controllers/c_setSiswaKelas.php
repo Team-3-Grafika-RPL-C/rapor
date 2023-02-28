@@ -4,7 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class c_setSiswaKelas extends BaseController {
+class c_setSiswaKelas extends BaseController
+{
     public $client, $session;
 
     public function __construct()
@@ -17,21 +18,45 @@ class c_setSiswaKelas extends BaseController {
 
     public function index()
     {
-        $response_kelas = $this->client->request('GET', 'siswa-option-kelas');
-        $body_response_kelas = json_decode($response_kelas->getBody());
-
-        $response_tahun = $this->client->request('GET', 'siswa-option-tahun');
-        $body_response_tahun = json_decode($response_tahun->getBody());
-
-        $response_siswa = $this->client->request('GET', 'siswa-kelas');
-        $body_response_siswa = json_decode($response_siswa->getBody());
-
         $data = [
             'title' => 'Rapodig - Set Siswa Kelas',
-            'option_kelas' => $body_response_kelas,
-            'option_tahun' => $body_response_tahun,
-            'siswa' => $body_response_siswa
         ];
+
+        $response_kelas = $this->client->request('GET', 'siswa-option-kelas', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response_kelas->getStatusCode() === 200) {
+            $data['option_kelas'] = json_decode($response_kelas->getBody());
+        } else {
+            $data['data_err'] = json_decode($response_kelas->getBody());
+        }
+
+        $response_tahun = $this->client->request('GET', 'siswa-option-tahun', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response_tahun->getStatusCode() === 200) {
+            $data['option_tahun'] = json_decode($response_tahun->getBody());
+        } else {
+            $data['data_err'] = json_decode($response_tahun->getBody());
+        }
+
+        $response_siswa = $this->client->request('GET', 'siswa-kelas', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response_siswa->getStatusCode()) {
+            $data['siswa'] = json_decode($response_siswa->getBody());
+        } else {
+            $data['data_err'] = json_decode($response_siswa->getBody());
+        }
 
         return view('dashboard/setting_data/set-siswa_kelas', $data);
     }
@@ -43,10 +68,21 @@ class c_setSiswaKelas extends BaseController {
 
         $request_client_data = [
             'id_class' => $id_class,
-            'id_academic_year'=> $id_academic_year
+            'id_academic_year' => $id_academic_year
         ];
 
-        $response = $this->client->request('POST', 'data-siswa-kelas', ['json'=>$request_client_data]);
+        $response = $this->client->request('POST', 'data-siswa-kelas', [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
+        }
+
         echo $response->getBody();
     }
 
@@ -63,7 +99,10 @@ class c_setSiswaKelas extends BaseController {
                 'id_class' => $id_class,
             ];
 
-             $response = $this->client->request('POST', 'siswa-kelas', ['json'=>$request_client_data]);
+            $response = $this->client->request('POST', 'siswa-kelas', ['json' => $request_client_data]);
+            if ($response->getStatusCode() !== 200) {
+                return redirect()->back()->withInput()->with('data_err', $response->getBody());
+            }
         }
 
         return redirect()->to('/set-siswa_kelas');
@@ -71,12 +110,14 @@ class c_setSiswaKelas extends BaseController {
 
     public function delete($id)
     {
-        $response = $this->client->request('DELETE', 'siswa-kelas/'.$id);
+        $response = $this->client->request('DELETE', 'siswa-kelas/' . $id);
+
         $code = $response->getStatusCode();
+        if ($code !== 200) {
+            $body_response = json_decode($response->getBody());
+            return redirect()->back()->with('data_err', $body_response);
+        }
 
-        $body_response= json_decode($response->getBody());
-        
-        return redirect()->to('/set-siswa_kelas'); 
+        return redirect()->to('/set-siswa_kelas');
     }
-
 }
