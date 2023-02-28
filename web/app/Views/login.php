@@ -17,7 +17,6 @@
 </head>
 
 <body class="bg-indigo o-hidden">
-
     <div class="container">
 
         <!-- Outer Row -->

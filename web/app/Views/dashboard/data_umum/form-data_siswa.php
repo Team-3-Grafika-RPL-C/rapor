@@ -20,138 +20,122 @@
             <!-- Form Data Kelas -->
             <div class="mx-3">
                 <div class="container">
-                    <form action="<?= $page == 'edit' ? '/data-siswa/form-edit/'.$data->siswa_detail->id :'/data-siswa/form' ?>" method="post">
+                    <form action="<?= $page == 'edit' ? '/data-siswa/form-edit/' . $data->siswa_detail->id : '/data-siswa/form' ?>" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">NISN</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nisn" name="nisn"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->nisn : '' ?>">
+                                <input type="text" autocomplete="off" class="form-control" id="nisn" name="nisn" value="<?= old('nisn') ?? ($page == 'edit' ? $data->siswa_detail->nisn : '') ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h text-gray-900 font-weight-bold">NIS</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nis" name="nis"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->nis : '' ?>">
+                                <input type="text" autocomplete="off" class="form-control" id="nis" name="nis" value="<?= old('nis') ?? ($page == 'edit' ? $data->siswa_detail->nis : '') ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Nama</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nama" name="nama"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->student_name : '' ?>">
+                                <input type="text" autocomplete="off" class="form-control" id="nama" name="nama" value="<?= old('nisn') ?? ($page == 'edit' ? $data->siswa_detail->student_name : '') ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Jenis Kelamin</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <select name="jenis_kelamin" id="jk" class="custom-select">
-                                    <option value="0" <?= $page === "edit" ? ($data->siswa_detail->gender == "0" ? "selected" : "") : "" ?>>Perempuan</option>
-                                    <option value="1" <?= $page === "edit" ? ($data->siswa_detail->gender == "1" ? "selected" : "") : "" ?>>Laki-Laki</option>
+                                    <option value="0" <?= old('nisn') === 0 ? 'selected' : ($page === "edit" ? ($data->siswa_detail->gender == "0" ? "selected" : "") : "") ?>>Perempuan</option>
+                                    <option value="1" <?= old('nisn') === 1 ? 'selected' : ($page === "edit" ? ($data->siswa_detail->gender == "1" ? "selected" : "") : "") ?>>Laki-Laki</option>
                                 </select>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Tempat Lahir</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="tempat_lahir" name="tempat_lahir"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->birthplace : '' ?>">
+                                <input type="text" autocomplete="off" class="form-control" id="tempat_lahir" name="tempat_lahir" value="<?= old('tempat_lahir') ?? ($page == 'edit' ? $data->siswa_detail->birthplace : '') ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Tanggal Lahir</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="date" autocomplete="off" class="form-control" id="tanggal_lahir" name="tanggal_lahir"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->birthdate : '' ?>">
+                                <input type="date" autocomplete="off" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="<?= old('tanggal_lahir') ?? ($page == 'edit' ? $data->siswa_detail->birthdate : '') ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Agama</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="agama" name="agama"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->religion : '' ?>">
+                                <input type="text" autocomplete="off" class="form-control" id="agama" name="agama" value="<?= old('agama') ?? ($page == 'edit' ? $data->siswa_detail->religion : '') ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Alamat</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="alamat" name="alamat"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->address : '' ?>">
+                                <input type="text" autocomplete="off" class="form-control" id="alamat" name="alamat" value="<?= old('alamat') ?? ($page == 'edit' ? $data->siswa_detail->address : '') ?>">
                             </div>
-                            
+
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Nama Ayah</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nama_ayah" name="nama_ayah"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->father_name : '' ?>">
+                                <input type="text" autocomplete="off" class="form-control" id="nama_ayah" name="nama_ayah" value="<?= old('nama_ayah') ?? ($page == 'edit' ? $data->siswa_detail->father_name : '') ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Pekerjaan Ayah</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="pekerjaan_ayah" name="pekerjaan_ayah"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->father_job : '' ?>">
+                                <input type="text" autocomplete="off" class="form-control" id="pekerjaan_ayah" name="pekerjaan_ayah" value="<?= old('pekerjaan_ayah') ?? ($page == 'edit' ? $data->siswa_detail->father_job : '') ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Nama Ibu</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nama_ibu" name="nama_ibu"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->mother_name : '' ?>">
+                                <input type="text" autocomplete="off" class="form-control" id="nama_ibu" name="nama_ibu" value="<?= old('nama_ibu') ?? ($page == 'edit' ? $data->siswa_detail->mother_name : '') ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Pekerjaan Ibu</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->mother_job : '' ?>">
+                                <input type="text" autocomplete="off" class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu" value="<?= old('pekerjaan_ibu') ?? ($page == 'edit' ? $data->siswa_detail->mother_job : '') ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Alamat Orang Tua</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="alamat_ortu" name="alamat_ortu"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->parent_address : '' ?>">
+                                <input type="text" autocomplete="off" class="form-control" id="alamat_ortu" name="alamat_ortu" value="<?= old('alamat_ortu') ?? ($page == 'edit' ? $data->siswa_detail->parent_address : '') ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Nama Wali</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="nama_wali" name="nama_wali"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->guardian_name : '' ?>">
+                                <input type="text" autocomplete="off" class="form-control" id="nama_wali" name="nama_wali" value="<?= old('nama_wali') ?? ($page == 'edit' ? $data->siswa_detail->guardian_name : '') ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Pekerjaan Wali</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="pekerjaan_wali" name="pekerjaan_wali"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->guardian_job : '' ?>">
+                                <input type="text" autocomplete="off" class="form-control" id="pekerjaan_wali" name="pekerjaan_wali" value="<?= old('pekerjaan_wali') ?? ($page == 'edit' ? $data->siswa_detail->guardian_job : '') ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Alamat Wali</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="alamat_wali" name="alamat_wali"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->guardian_address : '' ?>">
+                                <input type="text" autocomplete="off" class="form-control" id="alamat_wali" name="alamat_wali" value="<?= old('alamat_wali') ?? ($page == 'edit' ? $data->siswa_detail->guardian_address : '') ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Tingkat</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="tingkat" name="tingkat"
-                                value="<?= $page == 'edit' ? $data->siswa_detail->class : '' ?>">
+                                <input type="text" autocomplete="off" class="form-control" id="tingkat" name="tingkat" value="<?= old('tingkat') ?? ($page == 'edit' ? $data->siswa_detail->class : '') ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Status</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                            <select name="status" id="status" class="custom-select">
-                                    <option value="1" <?= $page === "edit" ? ($data->siswa_detail->status == "1" ? "selected" : "") : "" ?>>Aktif</option>
-                                    <option value="2" <?= $page === "edit" ? ($data->siswa_detail->status == "2" ? "selected" : "") : "" ?>>Alumni</option>
-                                    <option value="3" <?= $page === "edit" ? ($data->siswa_detail->status == "3" ? "selected" : "") : "" ?>>Keluar</option>
+                                <select name="status" id="status" class="custom-select">
+                                    <option value=1 <?= old('nisn') === 1 ? 'selected' : ($page === "edit" ? ($data->siswa_detail->status == "1" ? "selected" : "") : "selected") ?>>Aktif</option>
+                                    <option value=2 <?= old('nisn') === 2 ? 'selected' : ($page === "edit" ? ($data->siswa_detail->status == "2" ? "selected" : "") : "") ?>>Alumni</option>
+                                    <option value=3 <?= old('nisn') === 3 ? 'selected' : ($page === "edit" ? ($data->siswa_detail->status == "3" ? "selected" : "") : "") ?>>Keluar</option>
                                 </select>
                             </div>
                         </div>
@@ -161,7 +145,7 @@
                         </div>
                     </form>
                 </div>
-            </div>            
+            </div>
         </div>
     </div>
     <!-- Modal -->
@@ -185,5 +169,5 @@
         </div>
         </div>              
     </div> -->
-    
-<?= $this->endsection(); ?>
+
+    <?= $this->endsection(); ?>

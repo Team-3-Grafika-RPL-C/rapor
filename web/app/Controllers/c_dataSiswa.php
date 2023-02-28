@@ -4,7 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class c_dataSiswa extends BaseController {
+class c_dataSiswa extends BaseController
+{
     private $client, $session;
     public function __construct()
     {
@@ -38,8 +39,14 @@ class c_dataSiswa extends BaseController {
     }
     public function form_detail($num)
     {
-        $response = $this->client->request('GET', 'siswa/'.$num);
+        $response = $this->client->request('GET', 'siswa/' . $num, [
+            'http_errors' => false
+        ]);
         $code = $response->getStatusCode();
+
+        if($code!=200){
+            return redirect()->back()->withInput()->with('data_back', json_decode($response->getBody()));
+        }
 
         $body_response = json_decode($response->getBody());
         $data = [
@@ -91,15 +98,14 @@ class c_dataSiswa extends BaseController {
             'status' => $status,
         ];
 
-        $response = $this->client->request('POST', 'siswa', ['json'=> $request_client_data]);
+        $response = $this->client->request('POST', 'siswa', ['json' => $request_client_data]);
 
         return redirect()->to('/data-siswa');
-
     }
 
     public function form_edit($num)
     {
-        $response = $this->client->request('GET', 'siswa/'.$num);
+        $response = $this->client->request('GET', 'siswa/' . $num);
         $detail = json_decode($response->getBody());
 
         $data = [
@@ -153,7 +159,7 @@ class c_dataSiswa extends BaseController {
             'status' => $status,
         ];
 
-        $response = $this->client->request('PUT', 'siswa/'.$id, ['json'=> $request_client_data]);
+        $response = $this->client->request('PUT', 'siswa/' . $id, ['json' => $request_client_data]);
 
         return redirect()->to('/data-siswa');
     }
@@ -162,8 +168,8 @@ class c_dataSiswa extends BaseController {
     {
         $response = $this->client->request('DELETE', 'siswa/'.$num);
 
-        $body_response= json_decode($response->getBody());
-        
-        return redirect()->to('/data-siswa'); 
+        $body_response = json_decode($response->getBody());
+
+        return redirect()->to('/data-siswa');
     }
 }
