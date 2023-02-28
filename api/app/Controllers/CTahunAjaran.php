@@ -147,6 +147,8 @@ class CTahunAjaran extends ResourceController
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
+        $query = "UPDATE academic_years SET is_active = 0 WHERE is_active=1";
+        $nonactivate_data = $this->api_helpers->queryExecute($query, [$id]); 
 
         $query = "UPDATE academic_years SET is_active = 1 WHERE id=?";
         $activate_data = $this->api_helpers->queryExecute($query, [$id]); 
