@@ -197,12 +197,20 @@ class c_setGuruPelajaran extends BaseController
         $id_academic_year = $this->request->getVar('tahun');
         $id_subject = $this->request->getVar('mapel');
 
+        $request_client_data = [
+            'id_academic_year' => $id_academic_year,
+            'id_class' => $id_class,
+            'id_teacher' => $id_teacher,
+        ];
+
+        $response = $this->client->request('POST', 'guru-pelajaran', ['json'=>$request_client_data]);
+        $body_response = json_decode($response->getBody());
+
+
         foreach ($id_subject as $key => $value) {
-            $request_client_data = [
+            $request_client_data_detail = [
                 'id_subject' => $value,
-                'id_academic_year' => $id_academic_year,
-                'id_class' => $id_class,
-                'id_teacher' => $id_teacher,
+                'id_teacher_subject' => $body_response->data
             ];
 
             $response = $this->client->request('POST', 'guru-pelajaran', [

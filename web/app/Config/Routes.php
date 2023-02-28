@@ -51,7 +51,7 @@ $routes->get('/data-guru/delete/(:num)', 'c_dataGuru::delete/$1', ['filter' => '
 $routes->get('/data-siswa', 'c_dataSiswa::index', ['filter' => 'AuthAdmin']);
 $routes->get('/data-siswa/form', 'c_dataSiswa::form', ['filter' => 'AuthAdmin']);
 $routes->post('/data-siswa/form', 'c_dataSiswa::create', ['filter' => 'AuthAdmin']);
-$routes->get('/data-siswa/form-detail/(:num)', 'c_dataSiswa::form_detail/$1', ['filter' => 'AuthAdmin'], ['filter' => 'AuthAdmin']);
+$routes->get('/data-siswa/form-detail/(:num)', 'c_dataSiswa::form_detail/$1', ['filter' => 'AuthAdmin']);
 $routes->get('/data-siswa/form-edit/(:num)', 'c_dataSiswa::form_edit/$1', ['filter' => 'AuthAdmin']);
 $routes->post('/data-siswa/form-edit/(:num)', 'c_dataSiswa::form_edit_process/$1', ['filter' => 'AuthAdmin']);
 $routes->get('/data-siswa/delete/(:num)', 'c_dataSiswa::delete/$1', ['filter' => 'AuthAdmin']);
@@ -122,8 +122,14 @@ $routes->get('/set-guru_pelajaran/delete/(:num)', 'c_setGuruPelajaran::delete/$1
 
 
 $routes->get('/set-guru_ekskul', 'c_setGuruEkskul::index', ['filter' => 'AuthAdmin']);
+$routes->post('/set-guru_ekskul/form', 'c_setGuruEkskul::insert', ['filter' => 'AuthAdmin']);
 $routes->get('/set-guru_ekskul/form', 'c_setGuruEkskul::form', ['filter' => 'AuthAdmin']);
-$routes->get('/set-guru_ekskul/form-detail', 'c_setGuruEkskul::form_detail', ['filter' => 'AuthAdmin']);
+$routes->get('/set-guru_ekskul/form-edit/(:num)', 'c_setGuruEkskul::form_edit/$1', ['filter' => 'AuthAdmin']);
+$routes->post('/set-guru_ekskul/form-edit/(:num)', 'c_setGuruEkskul::form_edit_process/$1', ['filter' => 'AuthAdmin']);
+$routes->get('/set-guru_ekskul/form-detail/(:num)', 'c_setGuruEkskul::form_detail/$1', ['filter' => 'AuthAdmin']);
+$routes->get('/set-guru_ekskul/form', 'c_setGuruEkskul::form', ['filter' => 'AuthAdmin']);
+$routes->get('/set-guru_ekskul/delete/(:num)', 'c_setGuruEkskul::delete/$1', ['filter' => 'AuthAdmin']);
+
 
 $routes->get('/set-siswa_kelas', 'c_setSiswaKelas::index', ['filter' => 'AuthAdmin']);
 $routes->post('/set-siswa_kelas', 'c_setSiswaKelas::insert', ['filter' => 'AuthAdmin']);
@@ -136,6 +142,7 @@ $routes->post('/data-siswa-ekskul', 'c_setSiswaEkskul::getSiswaEkskul', ['filter
 
 $routes->get('/set-pelajaran_kelas', 'c_setPelajaranKelas::index', ['filter' => 'AuthAdmin']);
 $routes->get('/set-pelajaran-kelas/form', 'c_setPelajaranKelas::form', ['filter' => 'AuthAdmin']);
+$routes->get('/set-pelajaran_kelas/form-detail/(:num)', 'c_setPelajaranKelas::form_detail/$1', ['filter' => 'AuthAdmin']);
 
 $routes->get('/rapor-semester', 'c_raporSemester::index', ['filter' => 'AuthTeacher']);
 $routes->get('/rapor-semester/form', 'c_raporSemester::form', ['filter' => 'AuthTeacher']);

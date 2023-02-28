@@ -26,7 +26,7 @@
                     <tr>
                         <th class="text-center">No</th>
                         <th class="text-center">Nama Guru</th>
-                        <th class="text-center">Alamat</th>
+                        <th class="text-center">Ekskul</th>
                         <th class="text-center">Tahun Ajaran</th>
                         <th class="text-center">ACTION</th>
                     </tr>
@@ -44,16 +44,16 @@
                             <?= $dat->teacher_name ?>
                         </td>
                         <td>
-                            <?= $dat->address ?>
+                            <?= $dat->extracurricular_name ?>
                         </td>
                         <td>
                             <?= $dat->academic_year ?>
                         </td>
                         <td class="text-center">
-                                <a href="<?= base_url(); ?>/set-guru_ekskul/form-detail" class="btn btn-info btn-rounded">
+                                <a href="<?= base_url(); ?>/set-guru_ekskul/form-detail/<?=$dat->id?>" class="btn btn-info btn-rounded">
                                     <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
                                 </a>
-                                <a href="" class="btn btn-warning btn-rounded">
+                                <a href="<?= base_url(); ?>/set-guru_ekskul/form-edit/<?=$dat->id?>" class="btn btn-warning btn-rounded">
                                     <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                                 </a>
                                 <a href="" class="btn btn-danger btn-rounded"data-toggle="modal" data-target="#delete">
@@ -79,7 +79,7 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         <div class="row">
-                            <a href="" class="btn btn d-sm-inline-block text-light btn-sm shadow px-4 col-2" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">ya</a>
+                            <a href="<?= base_url() ?>/set-guru_ekskul/delete/<?= $dat->id ?>" class="btn btn d-sm-inline-block text-light btn-sm shadow px-4 col-2" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">ya</a>
                             <a href="" class="btn btn d-sm-inline-block text-dark btn-sm shadow px-4 col-2"style="min-width: 5rem; background-color: #F8F9F9;border-color:#C8CDD0; border-radius: 16px">tidak</a>
                         </div>
                     </div>

@@ -4,12 +4,12 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MGuruEkskul extends Model
+class MPelajaranKelasDetail extends Model
 {
-    protected $table            = 'extracurricular_teacher';
+    protected $table            = 'class_subject_detail';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['teacher_name', 'id_academic_year', 'id_extracurricular'];
+    protected $allowedFields    = ['id_class_subject', 'id_subject'];
 
     //Dates
     protected $useTimestamps = true;

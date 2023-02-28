@@ -27,20 +27,38 @@
                         <th class="col-1 my-1 text-center">No</th>
                         <th class="col-2 my-1 text-center">Kelas</th>
                         <th class="col-4 my-1 text-center">Semester</th>
-                        <th class="col-5 my-1 text-center">Mata Pelajaran</th>
+                        <th class="col-4 my-1 text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
+                    <?php 
+                    $nomer = 1;
+                    foreach ($data->pelajaran_kelas as $dat) { ?>
                         <tr>
-                            <td>1</td>
-                            <td>1A</td>
-                            <td>Genap</td>
-                            <td class="text-left">Pendidikan Agama Islam Kelas 1<br>
-                                Pendidikan Pancasila Kelas 1<br>
-                                Bahasa Indonesia Kelas 1<br>
-                                Matematika Kelas 1<br>
+                            <td>
+                                <?= $nomer ?>
+                                <?php $nomer++ ?>
                             </td>
+                            <td>
+                                <?= $dat->class_name ?>
+                            </td>
+                            <td>
+                                <?= $dat->semester ?>
+                            </td>
+                            <td class="text-center">
+                                <a href="<?= base_url(); ?>/set-pelajaran_kelas/form-detail/<?=$dat->id?>" class="btn btn-info btn-rounded">
+                                    <i class="ri-information-fill" data-toggle="tooltip" title="Detail"></i>
+                                </a>
+                                <a href="" class="btn btn-warning btn-rounded">
+                                    <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
+                                </a>
+                                <a href="" class="btn btn-danger btn-rounded"data-toggle="modal" data-target="#delete">
+                                    <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
+                                </a>
+                        </td>
                         </tr>
+                    <?php
+                    } ?>
                 </tbody>
             </table>
         </div>

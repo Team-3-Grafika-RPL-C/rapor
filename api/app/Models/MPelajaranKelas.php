@@ -9,7 +9,7 @@ class MPelajaranKelas extends Model
     protected $table            = 'class_subject';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['id_class', 'id_semester', 'id_subject'];
+    protected $allowedFields    = ['id_class', 'id_semester'];
 
     //Dates
     protected $useTimestamps = true;

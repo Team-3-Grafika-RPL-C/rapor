@@ -81,10 +81,14 @@ class c_setGuruEkskul extends BaseController
 
         return view('dashboard/setting_data/form-set_guru_ekskul', $data);
     }
-    public function form_detail()
+    public function form_detail($num)
     {
+        $response = $this->client->request('GET', 'guru-ekskul/'.$num);
+        $body_response= json_decode($response->getBody());
+
         $data = [
-            'title' => 'Rapodig - Detail Guru Ekskul'
+            'title' => 'Rapodig - Detail Guru Ekskul',
+            'data' => $body_response
         ];
         return view('dashboard/setting_data/form-set_guru_ekskul_detail', $data);
     }
@@ -149,16 +153,15 @@ class c_setGuruEkskul extends BaseController
 
     public function insert()
     {
-        $id_teacher = $this->request->getVar('guru');
+        $teacher_name = $this->request->getVar('guru');
         $id_academic_year = $this->request->getVar('tahun');
         $id_extracurricular = $this->request->getVar('ekskul');
 
-        foreach ($id_extracurricular as $key => $value) {
-            $request_client_data = [
-                'id_extracurricular' => $value,
+        $request_client_data = [
+                'id_extracurricular' => $id_extracurricular,
                 'id_academic_year' => $id_academic_year,
-                'id_teacher' => $id_teacher,
-            ];
+                'teacher_name' => $teacher_name,
+        ];
 
             $response = $this->client->request('POST', 'guru-ekskul', [
                 'json' => $request_client_data,
@@ -177,16 +180,15 @@ class c_setGuruEkskul extends BaseController
 
     public function form_edit_process($id)
     {
-        $id_teacher = $this->request->getVar('guru');
+        $teacher_name = $this->request->getVar('guru');
         $id_academic_year = $this->request->getVar('tahun');
         $id_extracurricular = $this->request->getVar('ekskul');
 
-        foreach ($id_extracurricular as $key => $value) {
-            $request_client_data = [
-                'id_extracurricular' => $value,
+        $request_client_data = [
+                'id_extracurricular' => $id_extracurricular,
                 'id_academic_year' => $id_academic_year,
-                'id_teacher' => $id_teacher,
-            ];
+                'teacher_name' => $teacher_name,
+        ];
 
             $response = $this->client->request('PUT', 'guru-ekskul/' . $id, [
                 'json' => $request_client_data,

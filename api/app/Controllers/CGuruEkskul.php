@@ -24,13 +24,12 @@ class CGuruEkskul extends ResourceController
     {
         $query = "SELECT DISTINCT
         a.id,
-        a.id_teacher,
-        b.teacher_name,
-        b.address,
+        a.teacher_name,
         a.id_academic_year,
-        d.academic_year
+        d.academic_year,
+        a.id_extracurricular,
+        e.extracurricular_name
         FROM extracurricular_teacher a
-        INNER JOIN teachers b ON a.id_teacher = b.id
         INNER JOIN academic_years d ON a.id_academic_year = d.id
         INNER JOIN extracurricular e ON a.id_extracurricular = e.id 
         WHERE a.is_deleted = 0";
@@ -51,9 +50,12 @@ class CGuruEkskul extends ResourceController
      */
     public function show($id = null)
     {
+        $query = "SELECT a.*, b.extracurricular_name, c.academic_year FROM extracurricular_teacher a INNER JOIN extracurricular b ON a.id_extracurricular = b.id INNER JOIN academic_years c ON a.id_academic_year = c.id WHERE a.id = ?";
+        $data_guru_ekskul = $this->api_helpers->queryGetFirst($query, [$id]);
+
         $data = [
             'message' => 'Detail Guru Ekskul:',
-            'guru_ekskul_detail' => $this->model->find($id)
+            'guru_ekskul_detail' => $data_guru_ekskul
         ];
 
         return $this->respond($data, 200);
@@ -67,8 +69,7 @@ class CGuruEkskul extends ResourceController
     public function create()
     {
         $rules = $this->validate([
-            'id_teacher' => 'required',
-            'id_class' => 'required',
+            'teacher_name' => 'required',
             'id_academic_year' => 'required',
             'id_extracurricular' => 'required'
         ]);
@@ -82,8 +83,7 @@ class CGuruEkskul extends ResourceController
         }
 
         $this->model->insert([
-            'id_teacher' => esc($this->request->getVar('id_teacher')),
-            'id_class' => esc($this->request->getVar('id_class')),
+            'teacher_name' => esc($this->request->getVar('teacher_name')),
             'id_academic_year' => esc($this->request->getVar('id_academic_year')),
             'id_extracurricular' => esc($this->request->getVar('id_extracurricular')),
         ]);
@@ -103,8 +103,7 @@ class CGuruEkskul extends ResourceController
     public function update($id = null)
     {
         $rules = $this->validate([
-            'id_teacher' => 'required',
-            'id_class' => 'required',
+            'teacher_name' => 'required',
             'id_academic_year' => 'required',
             'id_extracurricular' => 'required'
         ]);
@@ -114,12 +113,11 @@ class CGuruEkskul extends ResourceController
                 'message' => $this->validator->getErrors()
             ];
 
-            return $this->failValidationError($response);
+            return $this->failValidationErrors($response);
         }
 
         $this->model->update($id, [
-            'id_teacher' => esc($this->request->getVar('id_teacher')),
-            'id_class' => esc($this->request->getVar('id_class')),
+            'teacher_name' => esc($this->request->getVar('teacher_name')),
             'id_academic_year' => esc($this->request->getVar('id_academic_year')),
             'id_extracurricular' => esc($this->request->getVar('id_extracurricular')),
         ]);
@@ -128,7 +126,7 @@ class CGuruEkskul extends ResourceController
             'message' => 'Data berhasil diubah'
         ];
 
-        return  $this->respondUpdated($response);
+        return  $this->respond($response, 200);
     }
 
     /**

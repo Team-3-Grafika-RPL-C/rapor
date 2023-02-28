@@ -58,7 +58,7 @@
                                 <div>
                                     <select class="custom-select my-1 mr-sm-2" id="tahun" name="tahun">
                                         <?php foreach ($option_tahun->data_tahun as $dat) { ?>
-                                            <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_pelajaran_detail->id_class ?'selected' :'') :'' ?>>
+                                            <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_pelajaran_detail->id_academic_year ?'selected' :'') :'' ?>>
                                                 <?= $dat->academic_year ?>
                                             </option>
                                         <?php

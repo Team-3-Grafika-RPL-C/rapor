@@ -26,33 +26,55 @@
                                 <h6 class="h text-gray-900 font-weight-bold">Guru</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="guru" name="guru" 
-                                value="<?= $data->guru_pelajaran_detail->teacher_name ?>" readonly>
+                                <select class="custom-select my-1 mr-sm-2" id="guru" name="guru" disabled>
+                                    <?php foreach ($data->guru_pelajaran_detail as $dat) { ?>
+                                    <option value="<?= $dat->id_teacher ?>">
+                                        <?= $dat->teacher_name ?>
+                                    </option>
+                                    <?php
+                                    }?>
+                                </select>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Kelas</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="kelas" name="kelas" 
-                                value="<?= $data->guru_pelajaran_detail->class_name ?>" readonly>
+                                <select class="custom-select my-1 mr-sm-2" id="kelas" name="kelas" disabled>
+                                    <?php foreach ($data->guru_pelajaran_detail as $dat) { ?>
+                                    <option value="<?= $dat->id_class ?>">
+                                        <?= $dat->class_name ?>
+                                    </option>
+                                    <?php
+                                    }?>
+                                </select>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Tahun</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="tahun" name="tahun" 
-                                value="<?= $data->guru_pelajaran_detail->academic_year ?>" readonly>
+                                <select class="custom-select my-1 mr-sm-2" id="tahun" name="tahun" disabled>
+                                    <?php foreach ($data->guru_pelajaran_detail as $dat) { ?>
+                                    <option value="<?= $dat->id_academic_year ?>">
+                                        <?= $dat->academic_year ?>
+                                    </option>
+                                    <?php
+                                    }?>
+                                </select>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Mapel Ajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <select multiple class="form-control" id="mapel_ajaran" size="8" disabled>
-                                    <option value="<?=$data->guru_pelajaran_detail->id_subject?> selected">
-                                        <?= $data->guru_pelajaran_detail->subject_name ?>
+                                    <?php foreach ($data->guru_pelajaran_detail as $dat) { ?>
+                                    <option value="<?= $dat->id_subject ?>">
+                                        <?= $dat->subject_name ?>
                                     </option>
+                                    <?php
+                                    }?>
                                 </select>
                             </div>
+                        
                         </div>
                         </div>
                     </form>

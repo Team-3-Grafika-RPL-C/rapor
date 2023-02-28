@@ -54,21 +54,26 @@ class CGuruPelajaran extends ResourceController
     {
         $query = "SELECT
         a.id,
+        b.id as id_detail,
         a.id_teacher,
-        b.teacher_name,
+        c.teacher_name,
         a.id_class,
-        c.class_name,
+        d.class_name,
         a.id_academic_year,
-        d.academic_year,
-        a.id_subject,
-        CONCAT_WS(' Kelas ', e.subject_name, e.class) as subject_name
+        e.academic_year,
+        b.id_subject,
+        CONCAT_WS(' Kelas ', f.subject_name, d.class) as subject_name
         FROM teacher_subject a
-        INNER JOIN teachers b ON a.id_teacher = b.id
-        INNER JOIN class c ON a.id_class = c.id 
-        INNER JOIN academic_years d ON a.id_academic_year = d.id
-        INNER JOIN subjects e ON a.id_subject = e.id
-        WHERE a.id = ?";
-        $guru_pelajaran = $this->api_helpers->queryGetFirst($query, [$id]);
+        LEFT JOIN teacher_subject_detail b ON b.id_teacher_subject = a.id
+        INNER JOIN teachers c ON a.id_teacher = c.id
+        INNER JOIN class d ON a.id_teacher = d.id
+        INNER JOIN academic_years e ON a.id_academic_year = e.id
+        LEFT JOIN subjects f ON b.id_subject = f.id
+        WHERE 
+        a.is_deleted = 0 AND
+        b.is_deleted = 0 AND
+        a.id = ?";
+        $guru_pelajaran = $this->api_helpers->queryGetArray($query, [$id]);
 
         $data = [
             'message' => 'Detail Guru Pelajaran:',
@@ -77,6 +82,7 @@ class CGuruPelajaran extends ResourceController
 
         return $this->respond($data, 200);
     }
+    
 
     /**
      * Create a new resource object, from "posted" parameters
@@ -89,7 +95,6 @@ class CGuruPelajaran extends ResourceController
             'id_teacher' => 'required',
             'id_class' => 'required',
             'id_academic_year' => 'required',
-            'id_subject' => 'required'
         ]);
 
         if (!$rules) {
@@ -100,15 +105,15 @@ class CGuruPelajaran extends ResourceController
             return $this->failValidationError($response);
         }
 
-        $this->model->insert([
+        $data = $this->model->insert([
             'id_teacher' => esc($this->request->getVar('id_teacher')),
             'id_class' => esc($this->request->getVar('id_class')),
             'id_academic_year' => esc($this->request->getVar('id_academic_year')),
-            'id_subject' => esc($this->request->getVar('id_subject')),
         ]);
 
         $response = [
-            'message' => 'Data berhasil disimpan'
+            'message' => 'Data berhasil disimpan',
+            'data' => $data
         ];
 
         return  $this->respondCreated($response);
@@ -125,7 +130,6 @@ class CGuruPelajaran extends ResourceController
             'id_teacher' => 'required',
             'id_class' => 'required',
             'id_academic_year' => 'required',
-            'id_subject' => 'required'
         ]);
 
         if (!$rules) {
@@ -140,7 +144,6 @@ class CGuruPelajaran extends ResourceController
             'id_teacher' => esc($this->request->getVar('id_teacher')),
             'id_class' => esc($this->request->getVar('id_class')),
             'id_academic_year' => esc($this->request->getVar('id_academic_year')),
-            'id_subject' => esc($this->request->getVar('id_subject')),
         ]);
 
         $response = [
@@ -158,6 +161,9 @@ class CGuruPelajaran extends ResourceController
     public function delete($id = null)
     {
         $query = "UPDATE teacher_subject SET is_deleted = 1 WHERE id=?";
+        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
+
+        $query = "UPDATE teacher_subject_detail SET is_deleted = 1 WHERE id_teacher_subject=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [
