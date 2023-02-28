@@ -1,8 +1,8 @@
 // d-none set
 $('.tampilkan-btn').click(() => {
-    if($('.iframe').hasClass('d-none')){
-        $('.iframe').removeClass('d-none')
+    if($('.card').hasClass('d-none')){
+        $('.card').removeClass('d-none')
     }else{
-        $('.iframe').addClass('d-none')
+        $('.card').addClass('d-none')
     }
 })
