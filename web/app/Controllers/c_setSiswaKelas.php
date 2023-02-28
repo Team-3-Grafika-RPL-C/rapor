@@ -46,7 +46,13 @@ class c_setSiswaKelas extends BaseController {
             'id_academic_year'=> $id_academic_year
         ];
 
-        $response = $this->client->request('POST', 'data-siswa-kelas', ['json'=>$request_client_data]);
+        $response = $this->client->request(
+            'POST', 
+            'data-siswa-kelas', [
+                'json' => $request_client_data,
+                'http_errors' => false
+            ]);
+
         echo $response->getBody();
     }
 

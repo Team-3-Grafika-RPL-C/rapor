@@ -126,6 +126,7 @@ $routes->post('/semester-nonactive/(:num)', 'CSemester::non_activation/$1');
 // --- Set Guru Pelajaran --- //
 $routes->get('/guru-pelajaran', 'CGuruPelajaran::index');
 $routes->get('/guru-pelajaran/(:num)', 'CGuruPelajaran::show/$1');
+$routes->get('/guru-pelajaran-detail/(:num)', 'CGuruPelajaran::show_detail/$1');
 $routes->post('/guru-pelajaran', 'CGuruPelajaran::create');
 $routes->post('/guru-pelajaran-detail', 'CGuruPelajaranDetail::create_detail');
 $routes->put('/guru-pelajaran/(:num)', 'CGuruPelajaran::update/$1');
@@ -150,9 +151,15 @@ $routes->get('/ge-data-ekskul', 'CGuruEkskul::data_ekskul');
 
 // --- Set Pelajaran Kelas--- //
 $routes->get('/pelajaran-kelas', 'CPelajaranKelas::index');
+$routes->get('/pelajaran-kelas/(:num)', 'CPelajaranKelas::show/$1');
 $routes->post('/pelajaran-kelas', 'CPelajaranKelas::create');
-$routes->put('/pelajaran-kelas/(:num)', 'CPelajaranKelas::update/$1');
+$routes->post('/pelajaran-kelas-detail', 'CPelajaranKelasDetail::create_detail');
 $routes->delete('/pelajaran-kelas/(:num)', 'CPelajaranKelas::delete/$1');
+$routes->get('/pk-option-kelas', 'CPelajaranKelas::option_kelas');
+$routes->get('/pk-option-semester', 'CPelajaranKelas::option_semester');
+$routes->get('/pk-data-mapel', 'CPelajaranKelas::data_mapel');
+
+
 
 // --- Set Siswa Kelas--- //
 $routes->get('/siswa-option-kelas', 'CSiswaKelas::option_kelas');

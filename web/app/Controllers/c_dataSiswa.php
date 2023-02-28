@@ -161,7 +161,6 @@ class c_dataSiswa extends BaseController {
     public function delete($num)
     {
         $response = $this->client->request('DELETE', 'siswa/'.$num);
-        $code = $response->getStatusCode();
 
         $body_response= json_decode($response->getBody());
         

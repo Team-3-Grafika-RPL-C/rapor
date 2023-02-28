@@ -119,7 +119,7 @@
                                 </table>
                             </div>
                             <div class="modal-footer">
-                                <a class="btn text-light" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px">Tambahkan</a>
+                                <button type="submit" class="btn text-light" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px">Tambahkan</button>
                             </div>
                             </div>
                         </div>

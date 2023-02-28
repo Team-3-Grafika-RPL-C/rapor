@@ -23,26 +23,52 @@ class CPelajaranKelas extends ResourceController
     public function index()
     {
         $query = "SELECT DISTINCT
+		a.id,
         a.id_class,
-        c.class_name,
-        a.id_subject,
-        e.subject_name,
-        a.id_class,
-        b.class_name
+        b.class_name,
+        a.id_semester,
+        d.semester
         FROM class_subject a
-        INNER JOIN class c ON a.id_class = c.id 
-        INNER JOIN subjects e ON a.id_subject = e.id 
         INNER JOIN class b ON a.id_class = b.id 
+        INNER JOIN semesters d ON a.id_semester = d.id 
         WHERE a.is_deleted = 0";
         $pelajaran_kelas = $this->api_helpers->queryGetArray($query);
 
         $data = [
-            'message' => 'Set Guru Pelajaran:',
+            'message' => 'Set Pelajaran Kelas:',
             'pelajaran_kelas' => $pelajaran_kelas
         ];
 
         return $this->respond($data, 200);
     }
+
+    public function show($id= null)
+    {
+        $query = "SELECT DISTINCT
+		a.id,
+        b.id as id_detail,
+        a.id_class,
+        d.class_name,
+        a.id_semester,
+        e.semester,
+        b.id_subject,
+        CONCAT_WS(' Kelas ', c.subject_name, d.class) as subject_name
+        FROM class_subject a
+        LEFT JOIN class_subject_detail b ON a.id = b.id_class_subject
+        LEFT JOIN subjects c ON c.id = b.id_subject
+        INNER JOIN class d ON d.id = a.id_class
+        INNER JOIN semesters e ON e.id = a.id_semester
+        WHERE a.id= ?";
+        $pelajaran_kelas_detail = $this->api_helpers->queryGetArray($query, [$id]);
+
+        $data = [
+            'message' => 'Set Pelajaran Kelas Detail:',
+            'pelajaran_kelas_detail' => $pelajaran_kelas_detail
+        ];
+
+        return $this->respond($data, 200);
+    }
+
 
     /**
      * Create a new resource object, from "posted" parameters
@@ -54,7 +80,6 @@ class CPelajaranKelas extends ResourceController
         $rules = $this->validate([
             'id_class' => 'required',
             'id_semester' => 'required',
-            'id_subject' => 'required'
         ]);
 
         if (!$rules) {
@@ -68,7 +93,6 @@ class CPelajaranKelas extends ResourceController
         $this->model->insert([
             'id_class' => esc($this->request->getVar('id_class')),
             'id_semester' => esc($this->request->getVar('id_semester')),
-            'id_subject' => esc($this->request->getVar('id_subject')),
         ]);
 
         $response = [
@@ -127,5 +151,45 @@ class CPelajaranKelas extends ResourceController
         ];
 
         return $this->respondDeleted($response);
+    }
+
+    public function option_kelas()
+    {
+        $query = "SELECT DISTINCT a.id, a.class_name FROM class a WHERE a.is_deleted = 0";
+        $data_kelas = $this->api_helpers->queryGetArray($query);
+
+        $option_kelas = [
+            'data_kelas' => $data_kelas
+        ];
+
+        return $this->respond($option_kelas, 200);
+    }
+
+    public function option_semester()
+    {
+        $query = "SELECT DISTINCT a.id, a.semester FROM semesters a WHERE a.is_deleted = 0 AND a.is_active = 1 ";
+        $data_semester = $this->api_helpers->queryGetArray($query);
+
+        $option_semester = [
+            'data_semester' => $data_semester
+        ];
+
+        return $this->respond($option_semester, 200);
+    }
+
+    public function data_mapel()
+    {
+        $query = "SELECT
+        a.id,
+        CONCAT_WS(' Kelas ', a.subject_name, a.class) as subject_name
+        FROM subjects a
+        WHERE a.is_deleted = 0";
+        $data_mapel = $this->api_helpers->queryGetArray($query);
+
+        $mapel = [
+            'data_mapel' => $data_mapel
+        ];
+
+        return $this->respond($mapel, 200);
     }
 }
