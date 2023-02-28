@@ -34,6 +34,7 @@ class c_login extends BaseController
         ]);
 
         if ($request->getStatusCode() !== 200) {
+            dd($request->getBody());
             if ($request->getStatusCode() === 401) {
                 return redirect()->back()->withInput()->with('errors', json_decode($request->getBody())->errors);
             }
@@ -41,6 +42,7 @@ class c_login extends BaseController
         }
 
         $result = json_decode($request->getBody())->data;
+        
         $session_data = [
             'id' => $result->id,
             'is_teacher' => $result->is_teacher == 1 ? true : false,
