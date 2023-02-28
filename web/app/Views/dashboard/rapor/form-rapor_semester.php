@@ -20,9 +20,6 @@
                     <a class="btn d-sm-inline-block text-light btn-sm shadow px-4 my-1 tampilkan-btn" href="#!" style="min-width: 5rem; background-color: #1C7ED6; border-radius: 8px">
                         <span class="d-flex">Data Rapor</span>
                     </a>
-                    <a class="btn d-sm-inline-block text-light btn-sm shadow px-4 my-1" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
-                        <span class="d-flex">Format Rapor</span>
-                    </a>
                     <a class="btn d-sm-inline-block text-light btn-sm shadow px-4my-1 " href="<?= base_url(); ?>/rapor-semester" style="background-color: #845EF7; border-radius: 8px">
                         <span class="d-flex">
                             <i class="ri-logout-box-line  mt-auto mb-auto mr-1"></i>
@@ -435,39 +432,7 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
-            
-            <h2 class="h2 judul text-gray-900" style="font-weight:600; margin-bottom:1px;">
-                <font face="Arial" size="1">E. PRESTASI</font>
-            </h2>
-            <table class="table table-bordered text-gray-900" style="margin-bottom: 20px; width:100%; border-collapse: collapse">
-                <thead>
-                    <tr>
-                        <th class="td-border td-padding th-style" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3; width:3%">
-                            <font face="Arial" size="2">NO</font>
-                        </th>
-                        <th class="td-border td-padding th-style" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3; width:25%">
-                            <font face="Arial" size="2">Jenis Prestasi</font>
-                        </th>
-                        <th class="td-border td-padding th-style" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3; width:72%">
-                            <font face="Arial" size="2">Keterangan</font>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">1</font>
-                        </td>
-                        <td class="td-border td-padding" style="vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">Menguasai Setengah Eropa</font>
-                        </td>
-                        <td class="td-border td-padding" style="vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">Ananda sangat hebat walau pernah ditolak di kelas seni ananda tidak gampang menyerah dan akhir nya dapat menguasai setengah dari benua Eropa.</font>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            </table>                        
 
             <!-- Ketidak hadiran -->
             <h2 class="h2 judul text-gray-900" style="font-weight:600; margin-bottom:1px;">

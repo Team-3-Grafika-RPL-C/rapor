@@ -2,11 +2,12 @@
 
 namespace App\Filters;
 
+use App\Controllers\Api_helpers;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class AuthAdmin implements FilterInterface
+class Authorizing implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.
@@ -25,13 +26,35 @@ class AuthAdmin implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        $session = session();
-        if (!($session->has('token') && $session->has('is_teacher') && $session->has('is_admin'))) {
-            return redirect()->to('/')->with('message', 'Anda Belum Login');
+        $api_helpers = new Api_helpers();
+        $authorization = $request->getHeader("Authorization");
+        $token = null;
+
+        if (!empty($authorization)) {
+            if (preg_match('/Bearer\s(\S+)/', $authorization, $matches)) {
+                $token = $matches[1];
+            }
         }
 
-        if (!$session->get('is_admin')) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        if (is_null($token) || empty($token)) {
+            $response = service('response');
+            $response->setHeader('Content-Type', 'application/json');
+            $response->setBody(json_encode([
+                'message' => 'Access Denied'
+            ]));
+            $response->setStatusCode(401);
+            return $response;
+        }
+
+        $query = "SELECT count(id) AS num FROM account WHERE token = ?";
+        if ($api_helpers->queryGetFirst($query, [$token])['num'] != 1) {
+            $response = service('response');
+            $response->setHeader('Content-Type', 'application/json');
+            $response->setBody(json_encode([
+                'message' => 'Wrong Auth'
+            ]));
+            $response->setStatusCode(401);
+            return $response;
         }
     }
 

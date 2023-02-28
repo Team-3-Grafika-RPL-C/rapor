@@ -4,7 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class c_dataMapel extends BaseController {
+class c_dataMapel extends BaseController
+{
     public $client, $session;
 
     public function __construct()
@@ -16,13 +17,23 @@ class c_dataMapel extends BaseController {
     }
     public function index()
     {
-        $response = $this->client->request('GET', 'mapel');
+        $response = $this->client->request('GET', 'mapel', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
-        $body_response = json_decode($response->getBody());
         $data = [
             'title' => 'Rapodig - Data Mapel',
-            'data' => $body_response
         ];
+
+        $response_body = json_decode($response->getBody());
+        if ($response->getStatusCode() === 200) {
+            $data['data'] = $response_body;
+        } else {
+            $data['data'] = $response_body;
+        }
 
         return view('dashboard/data_umum/data-mapel', $data);
     }
@@ -34,7 +45,7 @@ class c_dataMapel extends BaseController {
         ];
         return view('dashboard/data_umum/form-data_mapel', $data);
     }
-    
+
     public function create()
     {
         $kode_mapel = $this->request->getVar('kode_mapel');
@@ -47,26 +58,43 @@ class c_dataMapel extends BaseController {
             'class' => $tingkat,
         ];
 
-        $response = $this->client->request('POST', 'mapel', ['json'=>$request_client_data]);
+        $response = $this->client->request('POST', 'mapel', [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
-       return redirect()->to('/data-mapel');
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
+        }
 
+        return redirect()->to('/data-mapel');
     }
 
     public function form_edit($num)
     {
-        $response = $this->client->request('GET', 'mapel/'.$num);
-
-        $detail = json_decode($response->getBody());
+        $response = $this->client->request('GET', 'mapel/' . $num, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
         $data = [
             'title' => 'Rapodig - Edit Data Mapel',
-            'data' => $detail,
             'page' => 'edit'
         ];
 
-        return view('dashboard/data_umum/form-data_mapel', $data);
+        $response_body = json_decode($response->getBody());
+        if ($response->getStatusCode() === 200) {
+            $data['data'] = $response_body;
+        } else {
+            $data['data_err'] = $response_body;
+        }
 
+        return view('dashboard/data_umum/form-data_mapel', $data);
     }
 
     public function form_edit_process($id)
@@ -81,16 +109,34 @@ class c_dataMapel extends BaseController {
             'class' => $tingkat,
         ];
 
-        $response = $this->client->request('PUT', 'mapel/'.$id, ['json'=>$request_client_data]);
+        $response = $this->client->request('PUT', 'mapel/' . $id, [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
-       return redirect()->to('/data-mapel');
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
+        }
+
+        return redirect()->to('/data-mapel');
     }
 
     public function delete($num)
     {
-        $response = $this->client->request('DELETE', 'mapel/'.$num);
+        $response = $this->client->request('DELETE', 'mapel/' . $num, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
-        return redirect()->to('/data-mapel'); 
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->with('data_err', json_decode($response->getBody()));
+        }
 
+        return redirect()->to('/data-mapel');
     }
 }

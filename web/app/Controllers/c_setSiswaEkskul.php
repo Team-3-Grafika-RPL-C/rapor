@@ -4,7 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class c_setSiswaEkskul extends BaseController {
+class c_setSiswaEkskul extends BaseController
+{
     public $client, $session;
 
     public function __construct()
@@ -17,17 +18,34 @@ class c_setSiswaEkskul extends BaseController {
 
     public function index()
     {
-        $option_ekskul = $this->client->request('GET', 'eks-option-ekskul');
-        $body_response_ekskul = json_decode($option_ekskul->getBody()); 
-
-        $response_siswa = $this->client->request('GET', 'siswa-ekskul');
-        $body_response_siswa = json_decode($response_siswa->getBody());
-
         $data = [
-            'title' => 'Rapodig - Set Siswa Ekskul',
-            'option_ekskul' => $body_response_ekskul,
-            'siswa' => $body_response_siswa
+            'title' => 'Rapodig - Set Siswa Ekskul'
         ];
+
+        $option_ekskul = $this->client->request('GET', 'eks-option-ekskul', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($option_ekskul->getStatusCode() === 200) {
+            $data['option_eskul'] = json_decode($option_ekskul->getBody());
+        } else {
+            $data['data_err'] = json_decode($option_ekskul->getBody());
+        }
+
+        $response_siswa = $this->client->request('GET', 'siswa-ekskul', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response_siswa->getStatusCode() === 200) {
+            $data['siswa'] = json_decode($response_siswa->getBody());
+        } else {
+            $data['siswa'] = json_decode($response_siswa->getBody());
+        }
+
         return view('dashboard/setting_data/set-siswa_ekskul', $data);
     }
 
@@ -39,7 +57,14 @@ class c_setSiswaEkskul extends BaseController {
             'id_extracurricular' => $id_extracurricular,
         ];
 
-        $response = $this->client->request('POST', 'data-siswa-ekskul', ['json'=>$request_client_data]);
+        $response = $this->client->request('POST', 'data-siswa-ekskul', [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+
         echo $response->getBody();
     }
 
@@ -54,7 +79,16 @@ class c_setSiswaEkskul extends BaseController {
                 'id_extracurricular' => $id_extracurricular,
             ];
 
-             $response = $this->client->request('POST', 'siswa-ekskul', ['json'=>$request_client_data]);
+            $response = $this->client->request('POST', 'siswa-ekskul', [
+                'json' => $request_client_data,
+                'headers' => [
+                    'Authorization' => 'Bearer ' . session()->get('token')
+                ],
+                'http_errors' => false
+            ]);
+            if ($response->getStatusCode() !== 200) {
+                return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
+            }
         }
 
         return redirect()->to('/set-siswa_ekskul');
@@ -62,11 +96,19 @@ class c_setSiswaEkskul extends BaseController {
 
     public function delete($id)
     {
-        $response = $this->client->request('DELETE', 'siswa-ekskul/'.$id);
-        $code = $response->getStatusCode();
+        $response = $this->client->request('DELETE', 'siswa-ekskul/' . $id, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
-        $body_response= json_decode($response->getBody());
-        
-        return redirect()->to('/set-siswa_ekskul'); 
+        $code = $response->getStatusCode();
+        if ($code !== 200) {
+            $body_response = json_decode($response->getBody());
+            return redirect()->back()->with('data_err', $body_response);
+        }
+
+        return redirect()->to('/set-siswa_ekskul');
     }
 }

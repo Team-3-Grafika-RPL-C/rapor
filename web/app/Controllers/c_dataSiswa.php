@@ -17,15 +17,24 @@ class c_dataSiswa extends BaseController
 
     public function index()
     {
-        $response = $this->client->request('GET', 'siswa');
-        $code = $response->getStatusCode();
-
-        $body_response = json_decode($response->getBody());
+        $response = $this->client->request('GET', 'siswa', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
         $data = [
             'title' => 'Rapodig - Data Siswa',
-            'data' => $body_response
         ];
+
+        $code = $response->getStatusCode();
+        $response_body = json_decode($response->getBody());
+        if ($code === 200) {
+            $data['data'] = $response_body;
+        } else {
+            $data['data_err'] = $response_body;
+        }
 
         return view('dashboard/data_umum/data-siswa', $data);
     }
@@ -40,19 +49,24 @@ class c_dataSiswa extends BaseController
     public function form_detail($num)
     {
         $response = $this->client->request('GET', 'siswa/' . $num, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
             'http_errors' => false
         ]);
-        $code = $response->getStatusCode();
 
-        if($code!=200){
-            return redirect()->back()->withInput()->with('data_back', json_decode($response->getBody()));
-        }
-
-        $body_response = json_decode($response->getBody());
         $data = [
             'title' => 'Rapodig - Detail Data Siswa',
-            'data' => $body_response
         ];
+
+        $code = $response->getStatusCode();
+        $response_body = json_decode($response->getBody());
+        if ($code === 200) {
+            $data['data'] = $response_body;
+        } else {
+            $data['data_err'] = $response_body;
+        }
+
         return view('dashboard/data_umum/form-data_siswa_detail', $data);
     }
 
@@ -98,21 +112,41 @@ class c_dataSiswa extends BaseController
             'status' => $status,
         ];
 
-        $response = $this->client->request('POST', 'siswa', ['json' => $request_client_data]);
+        $response = $this->client->request('POST', 'siswa', [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
+        }
 
         return redirect()->to('/data-siswa');
     }
 
     public function form_edit($num)
     {
-        $response = $this->client->request('GET', 'siswa/' . $num);
-        $detail = json_decode($response->getBody());
+        $response = $this->client->request('GET', 'siswa/' . $num, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
         $data = [
             'title' => 'Rapodig - Edit Data Siswa',
-            'data' => $detail,
             'page' => 'edit'
         ];
+
+        $detail = json_decode($response->getBody());
+        if ($response->getStatusCode() === 200) {
+            $data['data'] = $detail;
+        } else {
+            $data['data_err'] = $detail;
+        }
 
         return view('dashboard/data_umum/form-data_siswa', $data);
     }
@@ -159,16 +193,33 @@ class c_dataSiswa extends BaseController
             'status' => $status,
         ];
 
-        $response = $this->client->request('PUT', 'siswa/' . $id, ['json' => $request_client_data]);
+        $response = $this->client->request('PUT', 'siswa/' . $id, [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
+        }
 
         return redirect()->to('/data-siswa');
     }
 
     public function delete($num)
     {
-        $response = $this->client->request('DELETE', 'siswa/'.$num);
+        $response = $this->client->request('DELETE', 'siswa/' . $num, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
-        $body_response = json_decode($response->getBody());
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->with('data_err', json_decode($response->getBody()));
+        }
 
         return redirect()->to('/data-siswa');
     }

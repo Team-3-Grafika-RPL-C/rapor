@@ -4,8 +4,9 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class c_dataEkskul extends BaseController {
-    
+class c_dataEkskul extends BaseController
+{
+
     public $client, $session;
 
     public function __construct()
@@ -18,14 +19,24 @@ class c_dataEkskul extends BaseController {
 
     public function index()
     {
-        $response = $this->client->request('GET', 'ekskul');
-        $code = $response->getStatusCode();
+        $response = $this->client->request('GET', 'ekskul', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
-        $body_response= json_decode($response->getBody());
         $data = [
-            'title' => 'Rapodig - Data Ekskul',
-            'data' => $body_response
+            'title' => 'Rapodig - Data Ekskul'
         ];
+
+        $body_response = json_decode($response->getBody());
+        if ($response->getStatusCode() === 200) {
+            $data['data'] = $body_response;
+        } else {
+            $data['data_err'] = $body_response;
+        }
+
         return view('dashboard/data_umum/data-ekskul', $data);
     }
     public function form()
@@ -37,36 +48,53 @@ class c_dataEkskul extends BaseController {
         ];
         return view('dashboard/data_umum/form-data_ekskul', $data);
     }
-    
+
     public function create()
     {
-       $ekstrakurikuler = $this->request->getVar('ekstrakurikuler');
-       $keterangan = $this->request->getVar('keterangan');
+        $ekstrakurikuler = $this->request->getVar('ekstrakurikuler');
+        $keterangan = $this->request->getVar('keterangan');
 
-       $request_client_data = [
+        $request_client_data = [
             'extracurricular_name' => $ekstrakurikuler,
             'description' => $keterangan
-       ];
+        ];
 
-       $response = $this->client->request('POST', 'ekskul', ['json'=>$request_client_data]);
-       
-       return redirect()->to('/data-ekskul');
+        $response = $this->client->request('POST', 'ekskul', [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ]
+        ]);
+
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
+        }
+
+        return redirect()->to('/data-ekskul');
     }
 
     public function form_edit($num)
     {
-        $response = $this->client->request('GET', 'ekskul/'.$num);
-
-        $detail = json_decode($response->getBody());
+        $response = $this->client->request('GET', 'ekskul/' . $num, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
         $data = [
             'title' => 'Rapodig - Edit Data Ekskul',
-            'data' => $detail,
             'page' => 'edit'
         ];
 
-        return view('dashboard/data_umum/form-data_ekskul', $data);
+        $response_body = json_decode($response->getBody());
+        if ($response->getStatusCode() === 200) {
+            $data['data'] = $response_body;
+        } else {
+            $data['data_err'] = $response_body;
+        }
 
+        return view('dashboard/data_umum/form-data_ekskul', $data);
     }
 
     public function form_edit_process($id)
@@ -75,21 +103,37 @@ class c_dataEkskul extends BaseController {
         $keterangan = $this->request->getVar('keterangan');
 
         $request_client_data = [
-                'extracurricular_name' => $ekstrakurikuler,
-                'description' => $keterangan
+            'extracurricular_name' => $ekstrakurikuler,
+            'description' => $keterangan
         ];
 
-        $response = $this->client->request('PUT', 'ekskul/'.$id, ['json'=>$request_client_data]);
-       
-       return redirect()->to('/data-ekskul');
+        $response = $this->client->request('PUT', 'ekskul/' . $id, [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
+        }
+
+        return redirect()->to('/data-ekskul');
     }
 
     public function delete($num)
     {
-        $response = $this->client->request('DELETE', 'ekskul/'.$num);
+        $response = $this->client->request('DELETE', 'ekskul/' . $num, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ]
+        ]);
+        if ($response->getStatusCode() !== 200) {
+            $body_response = json_decode($response->getBody());
+            return redirect()->back()->with('data_err', $body_response);
+        }
 
-        $body_response = json_decode($response->getBody());
-
-        return redirect()->to('/data-ekskul'); 
+        return redirect()->to('/data-ekskul');
     }
 }

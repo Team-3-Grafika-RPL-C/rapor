@@ -4,7 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class c_dataTP extends BaseController {
+class c_dataTP extends BaseController
+{
     private $client, $session;
     public function __construct()
     {
@@ -16,45 +17,80 @@ class c_dataTP extends BaseController {
 
     public function index()
     {
-        $response = $this->client->request('GET', 'tpembelajaran');
-
-        $body_response = json_decode($response->getBody());
+        $response = $this->client->request('GET', 'tpembelajaran', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
         $data = [
             'title' => 'Rapodig - Data Tujuan Pembelajaran',
-            'data' => $body_response
         ];
-        
+
+        $response_body = json_decode($response->getBody());
+        if ($response->getStatusCode() === 200) {
+            $data['data'] = $response_body;
+        } else {
+            $data["data_err"] = $response_body;
+        }
+
         return view('dashboard/data_umum/data-tp', $data);
     }
     public function form()
     {
-        $response = $this->client->request('GET', 'tp-cp');
-        $data_cp = json_decode($response->getBody());
-
-        $reponse = $this->client->request('GET', 'tp-semester');
-        $data_semester = json_decode($response->getBody());
-
         $data = [
             'title' => 'Rapodig - Tambah Tujuan Pembelajaran',
             'page' => 'create',
-            'data_cp' => $data_cp,
-            'data_semester' => $data_semester,
         ];
+
+        $response = $this->client->request('GET', 'tp-cp', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() === 200) {
+            $data['data_cp'] = json_decode($response->getBody());
+        } else {
+            $data['data_err'] = json_decode($response->getBody());
+        }
+
+        $response = $this->client->request('GET', 'tp-semester', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() === 200) {
+            $data['data_semester'] = json_decode($response->getBody());
+        } else {
+            $data['data_err'] = json_decode($response->getBody());
+        }
+
         return view('dashboard/data_umum/form-data_tp', $data);
     }
-    
+
     public function form_detail($num)
     {
-        $response = $this->client->request('GET', 'tpembelajaran/'.$num);
-
-        $body_response= json_decode($response->getBody());
+        $response = $this->client->request('GET', 'tpembelajaran/' . $num, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
         $data = [
             'title' => 'Rapodig - Detail Tujuan Pembelajaran',
-            'data'=> $body_response
         ];
-        
+
+        $response_body = json_decode($response->getBody());
+        if ($response->getStatusCode() === 200) {
+            $data['data'] = $response_body;
+        } else {
+            $data['data_err'] = $response_body;
+        }
+
         return view('dashboard/data_umum/form-data_tp_detail', $data);
     }
 
@@ -72,32 +108,64 @@ class c_dataTP extends BaseController {
             'id_semester' => $semester,
         ];
 
-        $response = $this->client->request('POST', 'tpembelajaran', ['json'=>$request_client_data]);
+        $response = $this->client->request('POST', 'tpembelajaran', [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
+        }
 
         return redirect()->to('/data-tp');
     }
 
     public function form_edit($id)
     {
-        $response = $this->client->request('GET', 'tpembelajaran/'.$id);
-        $detail = json_decode($response->getBody());
-
-        $response = $this->client->request('GET', 'tp-semester');
-        $data_semester = json_decode($response->getBody());
-
-        $response = $this->client->request('GET', 'tp-cp');
-        $data_cp = json_decode($response->getBody());
-
         $data = [
             'title' => 'Rapodig - Edit Data Tujuan Pembelajaran',
-            'data' => $detail,
-            'data_semester' => $data_semester,
-            'data_cp' => $data_cp,
             'page' => 'edit'
         ];
-        
-        return view('dashboard/data_umum/form-data_tp', $data);
 
+        $response = $this->client->request('GET', 'tpembelajaran/' . $id, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() === 200) {
+            $data['detail'] = json_decode($response->getBody());
+        } else {
+            $data['data_err'] = json_decode($response->getBody());
+        }
+
+        $response = $this->client->request('GET', 'tp-semester', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() === 200) {
+            $data['data_semester'] = json_decode($response->getBody());
+        } else {
+            $data['data_err'] = json_decode($response->getBody());
+        }
+
+        $response = $this->client->request('GET', 'tp-cp', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() === 200) {
+            $data['data_cp'] = json_decode($response->getBody());
+        } else {
+            $data['data_err'] = json_decode($response->getBody());
+        }
+        return view('dashboard/data_umum/form-data_tp', $data);
     }
 
     public function form_edit_process($id)
@@ -114,15 +182,33 @@ class c_dataTP extends BaseController {
             'id_semester' => $semester,
         ];
 
-        $response = $this->client->request('PUT', 'tpembelajaran/'.$id, ['json'=>$request_client_data]);
+        $response = $this->client->request('PUT', 'tpembelajaran/' . $id, [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
+        }
 
         return redirect()->to('/data-tp');
     }
 
     public function delete($id)
     {
-        $response = $this->client->request('DELETE', 'tpembelajaran/'.$id);
-        $body_response = json_decode($response->getBody());
+        $response = $this->client->request('DELETE', 'tpembelajaran/' . $id, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() !== 200) {
+            $response_body = json_decode($response->getBody());
+            return redirect()->back()->with('data_err', $response_body);
+        }
 
         return redirect()->to('/data-tp');
     }
