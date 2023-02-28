@@ -27,31 +27,13 @@
                             </div>
                             <div class="col-md-8 mb-4">
                                 <select name="guru" id="guru" class="custom-select my-1 mr-sm-2">
-                                    <option value="1">Dhanang Spd.</option>
-                                    <option value="2">Esti Mpd.</option>
-                                    <option value="3">Septi Spd.</option>
+                                    <?php foreach ($option_guru->guru as $dat) { ?>
+                                        <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_ekskul_detail->id_teacher ?'selected' :'') :'' ?>>
+                                            <?= $dat->teacher_name ?>
+                                        </option>
+                                    <?php 
+                                    } ?>
                                 </select>
-                            </div>
-                            <div class="col-md-4 mb-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">Kelas</h6>
-                            </div>
-                            <div class="col-md-8 mb-4">
-                                <div>
-                                    <select class="custom-select my-1 mr-sm-2" id="kelas">
-                                        <option value="1">1A</option>
-                                        <option value="2">1B</option>
-                                        <option value="3">2A</option>
-                                        <option value="4">2B</option>
-                                        <option value="1">31</option>
-                                        <option value="2">3B</option>
-                                        <option value="3">4A</option>
-                                        <option value="4">4B</option>
-                                        <option value="1">5A</option>
-                                        <option value="2">5B</option>
-                                        <option value="3">6A</option>
-                                        <option value="4">6B</option>
-                                    </select>
-                                </div>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Tahun</h6>
@@ -59,29 +41,27 @@
                             <div class="col-md-8 mb-4">
                                 <div>
                                     <select class="custom-select my-1 mr-sm-2" id="tahun">
-                                        <option value="1">2022-2023</option>
-                                        <option value="2">2021-2022</option>
-                                        <option value="3">2020-2021</option>
-                                        <option value="4">2019-2020</option>
+                                        <?php foreach ($option_tahun->data_tahun as $dat) { ?>
+                                            <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_ekskul_detail->id_academic_year ?'selected' :'') :'' ?>>
+                                                <?= $dat->academic_year ?>
+                                            </option>
+                                        <?php
+                                        } ?>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-2">
-                                <h6 class="h6 text-gray-900 font-weight-bold">Mata pelajaran</h6>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Ekstrakurikuler</h6>
                             </div>
-                            <div class="col-md-6 mb-4">
-                                <div class="my-1">
-                                    <input type="checkbox" id="Basket" name="Basket" value="Bike">
-                                    <label for="Basket"> Basket</label>
-                                </div>
-                                <div class="my-1">
-                                    <input type="checkbox" id="Paskibra" name="Paskibra" value="Car">
-                                    <label for="Paskibra">Paskibra</label>
-                                </div>
-                                <div class="my-1">
-                                    <input type="checkbox" id="Futsal" name="Futsal" value="Boat">
-                                    <label for="Futsal">Futsal</label>
-                                </div>
+                            <div class="col-md-8 mb-4">
+                                <select multiple class="form-control" id="ekskul" name="ekskul[]" size="10">
+                                    <?php foreach ($data_ekskul->data_ekskul as $dat) { ?>
+                                    <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_ekskul_detail->id_extracurricular ?'selected' :'') :'' ?>>
+                                        <?= $dat->extracurricular_name ?>
+                                    </option>
+                                    <?php
+                                    } ?>
+                                </select>
                             </div>
                             <div class="col-12 d-flex justify-content-end mb-3 pt-5">
                                 <button class="btn text-light mx-1" style="min-width: 6rem; background-color: #845EF7; border-radius: 8px" type="submit">Simpan</button>

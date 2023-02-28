@@ -127,6 +127,7 @@ $routes->post('/semester-nonactive/(:num)', 'CSemester::non_activation/$1');
 $routes->get('/guru-pelajaran', 'CGuruPelajaran::index');
 $routes->get('/guru-pelajaran/(:num)', 'CGuruPelajaran::show/$1');
 $routes->post('/guru-pelajaran', 'CGuruPelajaran::create');
+$routes->post('/guru-pelajaran-detail', 'CGuruPelajaranDetail::create_detail');
 $routes->put('/guru-pelajaran/(:num)', 'CGuruPelajaran::update/$1');
 $routes->delete('/guru-pelajaran/(:num)', 'CGuruPelajaran::delete/$1');
 $routes->get('/gp-option-guru', 'CGuruPelajaran::option_guru');
@@ -141,6 +142,11 @@ $routes->get('/guru-ekskul/(:num)', 'CGuruEkskul::show/$1');
 $routes->post('/guru-ekskul', 'CGuruEkskul::create');
 $routes->put('/guru-ekskul/(:num)', 'CGuruEkskul::update/$1');
 $routes->delete('/guru-ekskul/(:num)', 'CGuruEkskul::delete/$1');
+$routes->get('/ge-option-guru', 'CGuruEkskul::option_guru');
+$routes->get('/ge-option-tahun', 'CGuruEkskul::option_tahun');
+$routes->get('/ge-data-ekskul', 'CGuruEkskul::data_ekskul');
+
+
 
 // --- Set Pelajaran Kelas--- //
 $routes->get('/pelajaran-kelas', 'CPelajaranKelas::index');
@@ -154,11 +160,16 @@ $routes->post('/siswa-kelas', 'CSiswaKelas::insert');
 $routes->get('/siswa-option-tahun', 'CSiswaKelas::option_tahun');
 $routes->post('/data-siswa-kelas', 'CSiswaKelas::data_siswa_kelas');
 $routes->get('/siswa-kelas', 'CSiswaKelas::data_siswa');
+$routes->delete('/siswa-kelas/(:num)', 'CSiswaKelas::delete/$1');
 $routes->post('/save-noabsen/(:num)', 'CSiswaKelas::save_noabsen');
 
 // --- Set Siswa Ekskul--- //
-$routes->get('/ekskul-option-ekskul', 'CSiswaEkskul::option_ekskul');
-$routes->get('/data-siswa-kelas', 'CSiswaEkskul::data_siswa_ekskul');
+$routes->get('/eks-option-ekskul', 'CSiswaEkskul::option_ekskul');
+$routes->post('/siswa-ekskul', 'CSiswaEkskul::insert');
+$routes->post('/data-siswa-ekskul', 'CSiswaEkskul::data_siswa_ekskul');
+$routes->get('/siswa-ekskul', 'CSiswaEkskul::data_siswa');
+$routes->delete('/siswa-ekskul/(:num)', 'CSiswaEkskul::delete/$1');
+
 
 // --- Presensi--- //
 $routes->post('/presensi', 'CPresensi::create');

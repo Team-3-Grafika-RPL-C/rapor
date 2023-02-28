@@ -47,7 +47,7 @@
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="jenis_kelamin" name="Jenis Kelamin" 
-                                value="<?= $data->siswa_detail->gender === 0 ? ("P") : ("L")?>" readonly>
+                                value="<?= $data->siswa_detail->gender == 0 ? ("Perempuan") : ("Laki-Laki")?>" readonly>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Tempat Lahir</h6>
@@ -109,7 +109,8 @@
                                 <h6 class="h6 text-gray-900 font-weight-bold">Alamat Orang Tua</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <input type="text" autocomplete="off" class="form-control" id="alamat_orang_tua" name="Alamat Orang Tua" value="Jl. Naik Turun" readonly>
+                                <input type="text" autocomplete="off" class="form-control" id="alamat_orang_tua" name="Alamat Orang Tua" 
+                                value="<?= $data->siswa_detail->parent_address ?>" readonly>
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Nama Wali</h6>

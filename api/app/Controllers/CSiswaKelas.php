@@ -15,45 +15,6 @@ class CSiswaKelas extends ResourceController
     {
         $this->api_helpers = new Api_helpers();
     }
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
-    public function create()
-    {
-        
-    }
-
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
-    public function update($id = null)
-    {
-        //
-    }
-
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
-    public function delete($id = null)
-    {
-        //
-    }
 
     public function option_kelas()
     {
@@ -69,7 +30,7 @@ class CSiswaKelas extends ResourceController
 
     public function option_tahun()
     {
-        $query = "SELECT DISTINCT a.id, a.academic_year FROM academic_years a WHERE a.is_deleted = 0";
+        $query = "SELECT DISTINCT a.id, a.academic_year FROM academic_years a WHERE a.is_deleted = 0 AND a.is_active=1";
         $data_tahun = $this->api_helpers->queryGetArray($query);
 
         $option_tahun = [
@@ -108,9 +69,11 @@ class CSiswaKelas extends ResourceController
         a.nis,
         a.student_name
         FROM students a
-        INNER JOIN class_students b ON b.id_students != a.id
+        LEFT JOIN class_students b ON b.id_students = a.id
         WHERE
-        a.is_deleted = 0";
+        a.is_deleted = 0 AND
+        b.is_deleted = 0 AND
+        b.id_students IS NULL";
         $data_siswa = $this->api_helpers->queryGetArray($query);
 
         $data_siswa = [
@@ -145,5 +108,17 @@ class CSiswaKelas extends ResourceController
         ];
 
         return $this->respondCreated($response);
+    }
+
+    public function delete($id = null)
+    {
+        $query = "UPDATE class_students SET is_deleted = 1 WHERE id=?";
+        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
+
+        $response = [
+            'message' => 'Data berhasil dihapus'
+        ];
+
+        return $this->respondDeleted($response);
     }
 }

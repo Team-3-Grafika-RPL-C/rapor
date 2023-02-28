@@ -17,4 +17,8 @@ class c_waliMurid extends BaseController {
     ];
         return view('dashboard/wali_murid/print_rapor', $data);
     }
+    public function rapor()
+    {
+        return view('dashboard/rapor/layout-rapor.php');
+    }
 }

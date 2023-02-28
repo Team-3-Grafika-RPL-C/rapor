@@ -28,16 +28,48 @@ class c_setTahunAjaran extends BaseController {
     public function form()
     {
         $data = [
-            'title' => 'Rapodig - Tambah Tahun Ajaran'
+            'title' => 'Rapodig - Tambah Tahun Ajaran',
+            'page' => 'create'
         ];
         return view('dashboard/setting_data/form-set_tahun_ajaran', $data);
     }
-    public function form_edit()
+    public function create()
     {
-        $data = [
-            'title' => 'Rapodig - Edit Tahun Ajaran'
+        $tahun_ajaran = $this->request->getVar('tahun_ajaran');
+
+        $request_client_data = [
+            'academic_year' => $tahun_ajaran,
         ];
-        return view('dashboard/setting_data/edit-tahun_ajaran', $data);
+
+        $response = $this->client->request('POST', 'tahun-ajaran', ['json'=>$request_client_data]);
+
+       return redirect()->to('/set-tahun_ajaran');
+
+    }
+    public function form_edit($id)
+    {
+        $response = $this->client->request('GET', 'tahun-ajaran/'.$id);
+        $detail= json_decode($response->getBody());
+
+        $data = [
+            'title' => 'Rapodig - Edit Tahun Ajaran',
+            'data' => $detail,
+            'page' => 'edit'
+        ];
+        return view('dashboard/setting_data/form-set_tahun_ajaran', $data);
+    }
+    public function form_edit_process($id)
+    {
+        $tahun_ajaran = $this->request->getVar('tahun_ajaran');
+
+        $request_client_data = [
+            'academic_year' => $tahun_ajaran,
+        ];
+
+        $response = $this->client->request('PUT', 'tahun-ajaran/'.$id, ['json'=>$request_client_data]);
+
+       return redirect()->to('/set-tahun_ajaran');
+
     }
     public function set_aktif($id = null)
     {
