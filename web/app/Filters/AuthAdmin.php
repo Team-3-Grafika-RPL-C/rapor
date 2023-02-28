@@ -27,7 +27,6 @@ class AuthAdmin implements FilterInterface
     {
         $session = session();
         if (!($session->has('id') && $session->has('is_teacher') && $session->has('is_admin'))) {
-            $session->destroy();
             return redirect()->to('/')->with('message', 'Anda Belum Login');
         }
 
