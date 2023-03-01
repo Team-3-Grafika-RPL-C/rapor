@@ -15,7 +15,7 @@
     </div>
     <div class="mx-3">
                 <div class="container">
-                    <form action="" method="post">
+                    <form action="" method="POST">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between my-4">
@@ -47,29 +47,55 @@
                                     </span>
                                 </a>
                                 </div>
-                            </div>       
-                            <div class="col-md-6 my-4">
-                                <div class="container d-none">
-                                    <textarea class="form-control" name="catatan" id="" style="min-height: 6rem" placeholder="Masukkan catatan"></textarea>
-                                    <div class="d-flex justify-content-center">
-                                        <button class="btn d-sm-inline-block text-light btn-sm shadow d-flex my-1 px-4 my-1" href="" style="min-width: 24rem; background-color: #21976B; border-radius: 8px">
-                                            <span>Tambahkan Catatan</span>
-                                        </button>
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <button class="btn d-sm-inline-block text-light btn-sm shadow d-flex my-1 px-4 my-1" href="" style="min-width: 24rem; background-color: #F42929; border-radius: 8px">
-                                            <span>Hapus Semua Catatan</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>       
+                            </div>                                       
                         </div>
                         <div class="row justify-content-end text-right">
                             <div class="col mb-4">
                                 
                             </div>
                         </div>
-                        <div class="container d-none">
+</div>
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<div class="card shadow mb-4 mt-3">    
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="col-1 my-auto text-center">No</th>
+                        <th class="col-1 my-auto text-center">NIS</th>
+                        <th class="col-2 my-auto text-center">Nama</th>                        
+                        <th class="col-7 my-auto text-center">Catatan Wali Kelas</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">                    
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            23423423
+                        </td>
+                        <td>
+                            Faisal Adi Prayugo
+                        </td>
+                        <td>
+                         <textarea class="form-control" name="" id="" cols="67" rows="3"></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="container row justify-content-center">
+                <a class="btn d-sm-inline-block text-light btn-sm px-3 my-2" href="#!" style="min-width: 45rem; background-color: #845EF7; border-radius: 8px" data-toggle="modal" data-target="#data-siswa-modal"><span>Simpan</span></a>
+                <a class="btn d-sm-inline-block text-gray-900 btn-sm px-3 my-2" href="#!" style="min-width: 45rem; background-color: #ECEEEF; border-radius: 8px" data-toggle="modal" data-target="#data-siswa-modal"><span>Batal</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+                        <!-- <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">                                    
@@ -108,12 +134,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-</div>
-</div>
-<!-- /.container-fluid -->
-
-</div>
+                        </div> -->
 
 <script src="<?= base_url(); ?>/js/ctt-semester.js"></script>
 
