@@ -91,24 +91,12 @@ class Api_helpers extends ResourceController
         }
 
         if (is_null($token) || empty($token)) {
-            $response = service('response');
-            $response->setHeader('Content-Type', 'application/json');
-            $response->setBody(json_encode([
-                'message' => 'Access Denied'
-            ]));
-            $response->setStatusCode(401);
-            return $response;
+            return false;
         }
 
         $query = "SELECT count(id) AS num FROM account WHERE token = ?";
         if ($this->queryGetFirst($query, [$token])['num'] != 1) {
-            $response = service('response');
-            $response->setHeader('Content-Type', 'application/json');
-            $response->setBody(json_encode([
-                'message' => 'Wrong Auth'
-            ]));
-            $response->setStatusCode(401);
-            return $response;
+            return false;
         }
 
         return $token;

@@ -19,6 +19,9 @@ class CGuruPelajaranDetail extends ResourceController
     public function create_detail()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -39,6 +42,13 @@ class CGuruPelajaranDetail extends ResourceController
 
     public function delete_detail($id)
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
         $id_subject = $this->request->getVar('id_subject');
         $id_teacher_subject = $this->request->getVar('id_teacher_subject');
 

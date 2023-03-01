@@ -48,7 +48,10 @@ class CSiswaEkskul extends ResourceController
 
     public function option_ekskul()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         
         $query = "SELECT DISTINCT a.id, a.extracurricular_name FROM extracurricular a WHERE a.is_deleted = 0";
         $data_ekskul = $this->api_helpers->queryGetArray($query);
@@ -62,7 +65,10 @@ class CSiswaEkskul extends ResourceController
 
     public function data_siswa_ekskul()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
 
         $id_extracurricular = $this->request->getVar('id_extracurricular');
 
@@ -85,7 +91,10 @@ class CSiswaEkskul extends ResourceController
 
     public function data_siswa()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
 
         $query = "SELECT DISTINCT
         a.id,
@@ -108,6 +117,9 @@ class CSiswaEkskul extends ResourceController
     public function insert()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -139,6 +151,9 @@ class CSiswaEkskul extends ResourceController
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }

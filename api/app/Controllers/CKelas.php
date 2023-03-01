@@ -22,7 +22,10 @@ class CKelas extends ResourceController
      */
     public function index()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $data = [
             'message' => 'Data Kelas:',
             'data_kelas' => $this->model->orderBy('id', 'ASC')->where('is_deleted', 0)->findAll()
@@ -38,7 +41,10 @@ class CKelas extends ResourceController
      */
     public function show($id = null)
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $query="SELECT a.*, b.teacher_name FROM class a INNER JOIN teachers b ON a.id_teachers = b.id WHERE a.id = ?";
         $data_kelas = $this->api_helpers->queryGetFirst($query, [$id]);
         $data = [
@@ -62,6 +68,9 @@ class CKelas extends ResourceController
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -102,6 +111,9 @@ class CKelas extends ResourceController
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -142,6 +154,9 @@ class CKelas extends ResourceController
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -157,7 +172,10 @@ class CKelas extends ResourceController
 
     public function option_walikelas()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $query = "SELECT a.id, a.teacher_name FROM teachers a WHERE a.is_deleted = 0";
         $data_guru = $this->api_helpers->queryGetArray($query);
 

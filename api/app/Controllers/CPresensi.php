@@ -77,6 +77,9 @@ class CPresensi extends ResourceController
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!($this->api_helpers->isAdmin($token)||$this->api_helpers->isTeacher($token))) {
             return $this->failForbidden('not admin');
         }
@@ -115,7 +118,10 @@ class CPresensi extends ResourceController
 
     public function option_kelas()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $query = "SELECT DISTINCT a.id, a.class_name FROM class a WHERE a.is_deleted = 0";
         $data_kelas = $this->api_helpers->queryGetArray($query);
 

@@ -22,7 +22,10 @@ class CRaporSemester extends ResourceController
      */
     public function index()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $query = "SELECT b.id, b.class_name, COUNT(a.id_students) as student_count
                   FROM class_students a
                   INNER JOIN class b ON a.id_class = b.id
@@ -51,7 +54,10 @@ class CRaporSemester extends ResourceController
 
     public function option_siswa()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $query = "SELECT DISTINCT a.id, a.student_name FROM students a WHERE a.is_deleted = 0";
         $data_siswa = $this->api_helpers->queryGetArray($query);
 
@@ -64,7 +70,10 @@ class CRaporSemester extends ResourceController
 
     public function get_profil($id)
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $query = "SELECT
                     a.id,
                     b.student_name,
@@ -88,7 +97,10 @@ class CRaporSemester extends ResourceController
 
     public function get_nilai($id)
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $query = "SELECT
                     a.id_subjects,
                     b.subject_name,
@@ -112,7 +124,10 @@ class CRaporSemester extends ResourceController
 
     public function get_nilai_ekskul($id)
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $query = "SELECT
                     a.id,
                     a.id_extracurricular,
@@ -137,7 +152,10 @@ class CRaporSemester extends ResourceController
 
     public function get_catatan($id)
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $query = "SELECT
                     a.id,
                     a.id_students,
@@ -157,7 +175,10 @@ class CRaporSemester extends ResourceController
 
     public function get_presensi($id)
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $query = "SELECT
                     a.id,
                     a.id_students,

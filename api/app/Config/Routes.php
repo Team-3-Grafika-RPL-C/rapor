@@ -197,6 +197,9 @@ $routes->get('/rapor-nilai-ekskul/(:num)', 'CRaporSemester::get_nilai_ekskul/$1'
 $routes->get('/rapor-catatan/(:num)', 'CRaporSemester::get_catatan/$1');
 $routes->get('/rapor-presensi/(:num)', 'CRaporSemester::get_presensi/$1');
 
+// --- Nilai --- //
+$routes->get('/score', 'CScore::index');
+
 
 /*
  * --------------------------------------------------------------------
