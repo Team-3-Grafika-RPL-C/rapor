@@ -19,7 +19,6 @@
             </div>
             <!-- Form Data Kelas -->
             <div class="mx-3">
-                <div class="container">
                     <form action="" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
@@ -40,13 +39,18 @@
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="nilai" name="Nilai">
                             </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Deskripsi</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <textarea class="form-control" name="desc" id="desc" cols="30" rows="5"></textarea>
+                            </div>
                         </div>
-                        <div class="d-flex justify-content-end mb-3 mt-5 pt-5">
+                        <div class="d-flex justify-content-end mb-3 mt-3 pt-2">
                             <button class="btn text-light mx-1" style="min-width: 6rem; background-color: #845EF7; border-radius: 8px" type="submit">Simpan</button>
                             <a href="<?= base_url(); ?>/data-siswa" class="btn ms-1 text-gray-900" data-toggle="modal" data-target="#cancel" style="min-width: 6rem; background-color: #ECEEEF; border-radius: 8px">Batal</a>
                         </div>
                     </form>
-                </div>
             </div>            
         </div>
     </div>
