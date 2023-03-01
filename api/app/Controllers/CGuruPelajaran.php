@@ -56,13 +56,34 @@ class CGuruPelajaran extends ResourceController
         $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $query = "SELECT
         a.id,
-        b.id as id_detail,
         a.id_teacher,
         c.teacher_name,
         a.id_class,
         d.class_name,
         a.id_academic_year,
-        e.academic_year,
+        e.academic_year
+        FROM teacher_subject a
+        INNER JOIN teachers c ON a.id_teacher = c.id
+        INNER JOIN class d ON a.id_teacher = d.id
+        INNER JOIN academic_years e ON a.id_academic_year = e.id
+        WHERE 
+        a.is_deleted = 0 AND
+        a.id = ?";
+        $guru_pelajaran = $this->api_helpers->queryGetArray($query, [$id]);
+
+        $data = [
+            'message' => 'Detail Guru Pelajaran:',
+            'guru_pelajaran' => $guru_pelajaran
+        ];
+
+        return $this->respond($data, 200);
+    }
+
+    public function show_detail($id = null)
+    {
+        $query = "SELECT
+        a.id as id_parent,
+        b.id as id_detail,
         b.id_subject,
         CONCAT_WS(' Kelas ', f.subject_name, d.class) as subject_name
         FROM teacher_subject a
@@ -78,13 +99,12 @@ class CGuruPelajaran extends ResourceController
         $guru_pelajaran = $this->api_helpers->queryGetArray($query, [$id]);
 
         $data = [
-            'message' => 'Detail Guru Pelajaran:',
+            'message' => 'Detail Guru Pelajaran (Detail):',
             'guru_pelajaran_detail' => $guru_pelajaran
         ];
 
         return $this->respond($data, 200);
     }
-    
 
     /**
      * Create a new resource object, from "posted" parameters

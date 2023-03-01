@@ -118,6 +118,7 @@ $routes->post('/set-guru_pelajaran', 'c_setGuruPelajaran::insert', ['filter' => 
 $routes->get('/set-guru_pelajaran/form', 'c_setGuruPelajaran::form', ['filter' => 'AuthAdmin']);
 $routes->get('/set-guru_pelajaran/form-detail/(:num)', 'c_setGuruPelajaran::form_detail/$1', ['filter' => 'AuthAdmin']);
 $routes->get('/set-guru_pelajaran/form-edit/(:num)', 'c_setGuruPelajaran::form_edit/$1', ['filter' => 'AuthAdmin']);
+$routes->post('/set-guru_pelajaran/form-edit/(:num)', 'c_setGuruPelajaran::form_edit_process/$1', ['filter' => 'AuthAdmin']);
 $routes->get('/set-guru_pelajaran/delete/(:num)', 'c_setGuruPelajaran::delete/$1', ['filter' => 'AuthAdmin']);
 
 
@@ -139,6 +140,7 @@ $routes->get('/set-siswa_kelas/delete/(:num)', 'c_setSiswaKelas::delete/$1', ['f
 
 $routes->get('/set-siswa_ekskul', 'c_setSiswaEkskul::index', ['filter' => 'AuthAdmin']);
 $routes->post('/data-siswa-ekskul', 'c_setSiswaEkskul::getSiswaEkskul', ['filter' => 'AuthAdmin']);
+$routes->post('/set-siswa_ekskul', 'c_setSiswaEkskul::insert', ['filter' => 'AuthAdmin']);
 
 $routes->get('/set-pelajaran_kelas', 'c_setPelajaranKelas::index', ['filter' => 'AuthAdmin']);
 $routes->get('/set-pelajaran-kelas/form', 'c_setPelajaranKelas::form', ['filter' => 'AuthAdmin']);

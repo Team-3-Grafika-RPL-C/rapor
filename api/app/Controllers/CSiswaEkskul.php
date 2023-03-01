@@ -122,7 +122,7 @@ class CSiswaEkskul extends ResourceController
             ];
         }
 
-        $id_extracurricular = $this->request->getVar('id_extra$id_extracurricular');
+        $id_extracurricular = $this->request->getVar('id_extracurricular');
 
         $this->model->insert([
             'id_student' => esc($this->request->getVar('id_student')),

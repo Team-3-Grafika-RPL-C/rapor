@@ -117,6 +117,22 @@ class c_setGuruPelajaran extends BaseController
             $data['data_err'] = $response_body;
         }
 
+        $response = $this->client->request('GET', 'guru-pelajaran-detail/' . $id, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+
+        $response_body = json_decode($response->getBody());
+        if ($response->getStatusCode() === 200) {
+            $data['detail'] = $response_body;
+        } else {
+            $data['data_err'] = $response_body;
+        }
+
+        // dd($data);
+
         return view('dashboard/setting_data/form-set_guru_pelajaran_detail', $data);
     }
 
@@ -134,7 +150,26 @@ class c_setGuruPelajaran extends BaseController
             'http_errors' => false
         ]);
         if ($response->getStatusCode() === 200) {
+            $data['guru_pelajaran'] = json_decode($response->getBody());
+        } else {
+            $data['data_err'] = json_decode($response->getBody());
+        }
+
+        $response = $this->client->request('GET', 'guru-pelajaran-detail/' . $id, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() === 200) {
             $data['detail'] = json_decode($response->getBody());
+            $array_detail= [];
+    
+            foreach ($data['detail']->guru_pelajaran_detail as $key => $value) {
+                array_push($array_detail, $value->id_subject);
+            }
+            $data['detail_id'] = $array_detail;
+
         } else {
             $data['data_err'] = json_decode($response->getBody());
         }
@@ -203,7 +238,13 @@ class c_setGuruPelajaran extends BaseController
             'id_teacher' => $id_teacher,
         ];
 
-        $response = $this->client->request('POST', 'guru-pelajaran', ['json'=>$request_client_data]);
+        $response = $this->client->request('POST', 'guru-pelajaran', [
+            'json'=>$request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
         $body_response = json_decode($response->getBody());
 
 
@@ -213,14 +254,15 @@ class c_setGuruPelajaran extends BaseController
                 'id_teacher_subject' => $body_response->data
             ];
 
-            $response = $this->client->request('POST', 'guru-pelajaran', [
-                'json' => $request_client_data,
+            $response = $this->client->request('POST', 'guru-pelajaran-detail', [
+                'json' => $request_client_data_detail,
                 'headers' => [
                     'Authorization' => 'Bearer ' . session()->get('token')
                 ],
                 'http_errors' => false
             ]);
-            if ($response->getStatusCode() !== 200) {
+
+            if ($response->getStatusCode() != 201) {
                 return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
             }
         }
@@ -235,23 +277,51 @@ class c_setGuruPelajaran extends BaseController
         $id_academic_year = $this->request->getVar('tahun');
         $id_subject = $this->request->getVar('mapel');
 
+        $request_client_data = [
+            'id_academic_year' => $id_academic_year,
+            'id_class' => $id_class,
+            'id_teacher' => $id_teacher,
+        ];
+
+        $response = $this->client->request('PUT', 'guru-pelajaran/' . $id, [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() != 200) {
+            return redirect()->back()->withInput()->with('data_errr', json_decode($response->getBody()));
+        }
+
+        // Hapus
+        $response = $this->client->request('DELETE', 'guru-pelajaran-detail/' . $id, [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() != 200) {
+            return redirect()->back()->withInput()->with('data_errr', json_decode($response->getBody()));
+        }
+
+        // Insert
         foreach ($id_subject as $key => $value) {
-            $request_client_data = [
+            $request_client_data_detail = [
                 'id_subject' => $value,
-                'id_academic_year' => $id_academic_year,
-                'id_class' => $id_class,
-                'id_teacher' => $id_teacher,
+                'id_teacher_subject' => $id
             ];
 
-            $response = $this->client->request('PUT', 'guru-pelajaran/' . $id, [
-                'json' => $request_client_data,
+            $response = $this->client->request('POST', 'guru-pelajaran-detail', [
+                'json' => $request_client_data_detail,
                 'headers' => [
                     'Authorization' => 'Bearer ' . session()->get('token')
                 ],
                 'http_errors' => false
             ]);
-            if ($response->getStatusCode() !== 200) {
-                return redirect()->back()->withInput()->with('data_errr', json_decode($response->getBody()));
+            if ($response->getStatusCode() != 201) {
+                return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
             }
         }
 
