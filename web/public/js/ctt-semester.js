@@ -1,8 +1,8 @@
 // d-none set
 $('.tampilkan-btn').click(() => {
-    if($('.container').hasClass('d-none')){
-        $('.container').removeClass('d-none')
+    if($('.none').hasClass('d-none')){
+        $('.none').removeClass('d-none')
     }else{
-        $('.container').addClass('d-none')
+        $('.none').addClass('d-none')
     }
 })
