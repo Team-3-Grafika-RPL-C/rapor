@@ -154,7 +154,6 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="<?= base_url(); ?>/rapor-semester">Rapor Semester</a>
             <a class="collapse-item" href="<?= base_url(); ?>/catatan-semester">Catatan Semester</a>
-            <a class="collapse-item" href="<?= base_url(); ?>/status-kenaikan">Status Kenaikan</a>
             <!-- <a class="collapse-item" href="<?= base_url(); ?>/identitas-siswa">Identitas Siswa</a>
               <a class="collapse-item" href="cards.html">Pindah Sekolah</a> -->
           </div>
