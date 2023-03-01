@@ -38,12 +38,7 @@
                                 <h6 class="h6 text-gray-900 font-weight-bold">Capaian Pembelajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
-                                <select class="custom-select my-1 mr-sm-2" id="cp">
-                                        <option value="1">Bisa menghentikan perang nuklir</option>
-                                        <option value="2">Menguasai setengah eropa</option>
-                                        <option value="3">Masuk kelas seni</option>
-                                        <option value="4">Dapat mengendalikan manusia</option>
-                                    </select>
+                                <input type="text" autocomplete="off" class="form-control" id="capaian_pembelajaran" name="Capaian Pembelajaran">                                    
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Tujuan Pembelajaran</h6>
