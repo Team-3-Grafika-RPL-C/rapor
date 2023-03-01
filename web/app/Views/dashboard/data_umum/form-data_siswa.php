@@ -20,7 +20,7 @@
             <!-- Form Data Kelas -->
             <div class="mx-3">
                 <div class="container">
-                    <form action="<?= $page == 'edit' ? '/data-siswa/form-edit/' . $data->siswa_detail->id : '/data-siswa/form' ?>" method="post">
+                    <form action="<?= base_url();?><?= $page == 'edit' ? '/data-siswa/form-edit/' . $data->siswa_detail->id : '/data-siswa/form' ?>" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">NISN</h6>
