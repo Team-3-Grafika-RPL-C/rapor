@@ -9,6 +9,7 @@
   <meta name="author" content="" />
 
   <title><?= $title; ?></title>
+  <!-- Icon title -->
   <link rel="icon" href="<?= base_url(); ?>/assets/logo-polowijen.png" type="image/x-icon">
 
   <!-- Custom fonts for this template-->
