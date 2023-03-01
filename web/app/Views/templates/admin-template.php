@@ -204,6 +204,9 @@
       
       </div>
     </div>
+    <footer class="main-footer">
+      <strong>Copyright &copy;Rapodig</strong>
+    </footer>
       
     <!-- Bootstrap core JavaScript-->
     <script src="<?= base_url(); ?>/package/bootstrap/js/bootstrap.bundle.min.js"></script>
