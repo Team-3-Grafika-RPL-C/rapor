@@ -91,8 +91,7 @@ class c_dataGuru extends BaseController
                 'Authorization' => 'Bearer ' . session()->get('token')
             ]
         ]);
-
-        if ($response->getStatusCode() !== 200) {
+        if ($response->getStatusCode() !== 201) {
             return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
         }
 

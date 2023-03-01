@@ -151,7 +151,7 @@ $routes->post('/set-pelajaran_kelas/form-edit/(:num)', 'c_setPelajaranKelas::for
 $routes->get('/set-pelajaran_kelas/delete/(:num)', 'c_setPelajaranKelas::delete/$1', ['filter' => 'AuthAdmin']);
 
 $routes->get('/rapor-semester', 'c_raporSemester::index', ['filter' => 'AuthTeacher']);
-$routes->get('/rapor-semester/form', 'c_raporSemester::form', ['filter' => 'AuthTeacher']);
+$routes->get('/rapor-semester/form/(:num)', 'c_raporSemester::form/$id', ['filter' => 'AuthTeacher']);
 
 $routes->get('/catatan-semester', 'c_catatanSemester::index', ['filter' => 'AuthTeacher']);
 

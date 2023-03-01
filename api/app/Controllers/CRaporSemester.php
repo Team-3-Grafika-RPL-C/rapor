@@ -23,7 +23,7 @@ class CRaporSemester extends ResourceController
     public function index()
     {
         $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
-        $query = "SELECT b.id, b.class_name, COUNT(a.id_students) as student_count
+        $query = "SELECT a.id_class, b.class_name, COUNT(a.id_students) as student_count
                   FROM class_students a
                   INNER JOIN class b ON a.id_class = b.id
                   GROUP BY a.id_class";
@@ -49,11 +49,18 @@ class CRaporSemester extends ResourceController
     //     return $this->respond($option_tahun, 200);
     // }
 
-    public function option_siswa()
+    public function option_siswa($id)
     {
         $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
-        $query = "SELECT DISTINCT a.id, a.student_name FROM students a WHERE a.is_deleted = 0";
-        $data_siswa = $this->api_helpers->queryGetArray($query);
+        $query = "SELECT DISTINCT 
+                    a.id,
+                    a.id_students,
+                    b.student_name
+                    FROM class_students a
+                    LEFT JOIN students b ON a.id_students = b.id
+                    WHERE
+                    a.id_class = ?";
+        $data_siswa = $this->api_helpers->queryGetArray($query, [$id]);
 
         $option_siswa = [
             'data_siswa' => $data_siswa

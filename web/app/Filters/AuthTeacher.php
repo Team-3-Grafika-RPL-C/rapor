@@ -27,7 +27,7 @@ class AuthTeacher implements FilterInterface
     {
         $session = session();
         if (!($session->has('token') && $session->has('is_teacher') && $session->has('is_admin') && $session->has('username'))) {
-            return redirect()->to('/')->with('message', 'Anda Belum Login');
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
 
         if (!($session->get('is_teacher') || $session->get('is_admin'))) {
