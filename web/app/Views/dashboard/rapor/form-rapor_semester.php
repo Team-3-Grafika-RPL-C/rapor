@@ -15,6 +15,7 @@
     <div class="mx-3">
         <div class="container">
             <h4 class="m-0 font-weight-bold text-indigo-900 mt-3">Form Rapor Semester</h4>
+            <input type="hidden" id="base_url" value="<?=base_url()?>" />
             <div class="row justify-content-end text-right">
                 <div class="col mb-4">
                     <a class="btn d-sm-inline-block text-light btn-sm shadow px-4 my-1 tampilkan-btn" href="#!" style="min-width: 5rem; background-color: #1C7ED6; border-radius: 8px">
@@ -31,6 +32,9 @@
             <form action="" method="post">
                 <div class="row">
                     <div class="col-md-6 my-4 d-flex justify-content-between">
+                        <label class="control-label col-md-3 font-weight-bold text-gray-900">Tahun Ajaran</label>
+                        <div class="col-md-9">
+                    <!-- <div class="col-md-6 my-4 d-flex justify-content-between">
                         <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Tahun Ajaran</label>
                         <div class="col-xs-2 col-lg-9">
                             <select id="inputState" class="form-control">
@@ -41,19 +45,17 @@
                                 <option>2023</option>
                             </select>
                         </div>
-                    </div>                
+                    </div>                 -->
                     <div class="col-md-6 my-4 d-flex justify-content-between">
-                        <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Siswa</label>
-                        <div class="col-xs-2 col-lg-9">
+                        <label class="control-label col-md-3 font-weight-bold text-gray-900">Siswa</label>
+                        <div class="col-md-9">
                             <select id="inputState" class="form-control">
-                                <option>Muhammad Sumbul</option>
-                                <option>Khidir Karawita</option>
-                                <option>Vira Alfita</option>
-                                <option>Bagaskara adhi pradana</option>
-                                <option>Eric Rafliansah</option>
-                                <option>Adinda Mirza Devina</option>
-                                <option>Yudha Pratama</option>
-                                <option>Yudha Pratama</option>
+                                <?php foreach ($siswa->data_siswa as $dat) {?>
+                                    <option value="<?=$dat->id?>">
+                                    <?= $dat->student_name ?>
+                                    </option>
+                                <?php
+                                } ?>
                             </select>
                         </div>
                     </div>
@@ -115,7 +117,7 @@
                                         </td>
                                         <td style="width:80%; text-align:left;">
                                             <font face="Arial" size="2">:
-                                                <span>Muhammad Sumbul</span>
+                                                <span id="nama-siswa">-</span>
                                             </font> 
                                         </td>
                                     </tr>
@@ -125,7 +127,7 @@
                                         </td>
                                         <td style="width:80%; text-align:left;">
                                             <font face="Arial" size="2">:
-                                                <span>004624</span>
+                                                <span id="nis">-</span>
                                             </font> 
                                         </td>
                                     </tr>
@@ -135,7 +137,7 @@
                                         </td>
                                         <td style="width:80%; text-align:left;">
                                             <font face="Arial" size="2">:
-                                                <span>231412502</span>
+                                                <span id="nisn">-</span>
                                             </font> 
                                         </td>
                                     </tr>
@@ -145,27 +147,7 @@
                                         </td>
                                         <td style="width:80%; text-align:left;">
                                             <font face="Arial" size="2">:
-                                                <span>1A</span>
-                                            </font> 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:20%; text-align:left; font-weight:600; padding-bottom:7px;" class="th-style">
-                                            <font face="Arial" size="2">No absen</font>
-                                        </td>
-                                        <td style="width:80%; text-align:left;">
-                                            <font face="Arial" size="2">:
-                                                <span>05</span>
-                                            </font> 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:20%; text-align:left; font-weight:600; padding-bottom:7px;" class="th-style">
-                                            <font face="Arial" size="2">Semester</font>
-                                        </td>
-                                        <td style="width:80%; text-align:left;">
-                                            <font face="Arial" size="2">:
-                                                <span>II (Genap)</span>
+                                                <span id="kelas">-</span>
                                             </font> 
                                         </td>
                                     </tr>
@@ -175,7 +157,7 @@
                                         </td>
                                         <td style="width:80%; text-align:left;">
                                             <font face="Arial" size="2">:
-                                                <span>2022/2023</span>
+                                                <span id="tahun-ajaran">-</span>
                                             </font> 
                                         </td>
                                     </tr>
@@ -217,156 +199,8 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="text-gray-900">
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">1</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">Pendidikan Agama dan Budi Pekerti</font>
-                        </td>
-                        <td class="td-padding" style="border: 1px solid #000; text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">90</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:left; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">
-                                Ananda Sumbul SANGAT BAIK dalam mengenal dirinya sebagai pribadi yang dicintai Tuhan dan memahami cara menjaga dan  merawat anggota tubuh dengan baik.                                
-                                Ananda Sumbul BAIK dalam mengenal anggota tubuh yang dimilikinya sebagai anugerah Allah dan menggunakannya dengan baik sesuai dengan fungsinya.
-                            </font>
-                        </td>
-                    </tr>
-                    <tr class="text-gray-900">
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">2</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">Pendidikan Pancasila</font>
-                        </td>
-                        <td class="td-padding" style="border: 1px solid #000; text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2" style=" font-weight: 800;">69</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:left; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">
-                                Ananda Sumbul CUKUP BAIK dalam mengidentifikasi aturan yang ada di sekolah dan di rumah.                                
-                                Ananda Sumbul CUKUP dalam mengidentifikasi sikap mematuhi peraturan dan sikap tidak mematuhi peraturan di lingkungan keluarga dan di sekolah.
-                            </font>
-                        </td>
-                    </tr>
-                    <tr class="text-gray-900">
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">3</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">Bahasa Indonesia</font>
-                        </td>
-                        <td class="td-padding" style="border: 1px solid #000; text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">88</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:left; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">
-                                Ananda Sumbul CUKUP dalam bersikap menjadi pendengar yang penuh perhatian, membaca kata-kata yang dikenalinya sehari-hari dengan fasih, memaknai kosakata baru dari teks yang dibaca atau tayangan yang dipirsa dengan bantuan ilustrasi dan menulis kalimat sederhana.                                
-                            </font>
-                        </td>
-                    </tr>
-                    <tr class="text-gray-900">
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">4</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">Matematika</font>
-                        </td>
-                        <td class="td-padding" style="border: 1px solid #000; text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">86</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:left; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">
-                                Ananda Sumbul BAIK dalam mengidentifikasi ciri-ciri benda yang ada di sekitarnya. .
-                                Ananda Sumubl CUKUP dalam mengenal dan menunjukkan anggota tubuh serta jumlahnya, mengidentifikasi fungsi dari anggota tubuhnya dan memahami cara merawat anggota tubuh dengan benar.
-                            </font>
-                        </td>
-                    </tr>
-                    <tr class="text-gray-900">
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">5</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">Pendidikan Jasmani</font>
-                        </td>
-                        <td class="td-padding" style="border: 1px solid #000; text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">98</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:left; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">
-                                Ananda Sumbul SANGAT BAIK dalam menunjukkan kemampuan dalam menirukan aktivitas pola gerak dasar.
-                            </font>
-                        </td>
-                    </tr>
-                    <tr class="text-gray-900">
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">6</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">Ilmu Pengetahuan Alam dan Sosial</font>
-                        </td>
-                        <td class="td-padding" style="border: 1px solid #000; text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">88</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:left; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">
-                                Ananda Alicia BAIK dalam mengidentifikasi ciri-ciri benda yang ada di sekitarnya.
-                                Ananda Alicia CUKUP dalam mengenal dan menunjukkan anggota tubuh serta jumlahnya, mengidentifikasi fungsi dari anggota tubuhnya dan memahami cara merawat anggota tubuh dengan benar. 
-                            </font>
-                        </td>
-                    </tr>
-                    <tr class="text-gray-900">
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">7</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">Seni</font>
-                        </td>
-                        <td class="td-padding" style="border: 1px solid #000; text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">90</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:left; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">
-                                Ananda Alicia SANGAT BAIK dalam menggambar imajinasi.
-                            </font>
-                        </td>
-                    </tr>
-                    <tr class="text-gray-900">
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">8</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">Bahasa Inggris</font>
-                        </td>
-                        <td class="td-padding" style="border: 1px solid #000; text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">70</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:left; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">
-                                Ananda Alicia CUKUP BAIK dalam berinteraksi dalam situasi sosial dan kelas seperti berkenalan, memberikan informasi diri dengan kalimat sederhana.
-                            </font>
-                        </td>
-                    </tr>
-                    <tr class="text-gray-900">
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">8</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">Bahasa Jawa</font>
-                        </td>
-                        <td class="td-padding" style="border: 1px solid #000; text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">86</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:left; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">
-                            Ananda Alicia CUKUP BAIK dalam menyimak  bunyi huruf, suku kata, dan kata tentang nama- nama anggota tubuh dan kata kerja dalam ragam bahasa ngoko dan krama.
-                            Ananda Alicia CUKUP BAIK dalam memahami informasi dari bacaan dan tayangan yang dibaca dan dipirsa tentang diri  sendiri  dan  lingkungan  terdekat (keluarga, sekolah  dan  masyarakat).
-                            </font>
-                        </td>
-                    </tr>
+                <tbody id="nilai-tabel">
+                    
                 </tbody>
             </table>
             <!-- Ekstrakurikuler -->
@@ -382,25 +216,16 @@
                         <th class="td-border td-padding th-style" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3; width:20%;">
                             <font face="Arial" size="2">Ekstrakurikuler</font>
                         </th>
+                        <th class="td-border td-padding th-style" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3; width:20%;">
+                            <font face="Arial" size="2">Predikat</font>
+                        </th>
                         <th class="td-border td-padding th-style" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3; width:36%;">
                             <font face="Arial" size="2">Keterangan</font>
                         </th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="text-gray-900">
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">1</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">Karate</font>
-                        </td>
-                        <td class="td-border td-padding" style="text-align:left; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">
-                                Ananda Sumbul SANGAT BAIK dalam menghafal tiap gerakan dasar karate.                                
-                            </font>
-                        </td>
-                    </tr>                    
+                <tbody id="nilai-ekskul-tabel">
+                           
                 </tbody>
             </table>
             <!-- Saran-Saran -->
@@ -411,7 +236,7 @@
                 <tbody>
                     <tr class="text-gray-900">
                         <td class="td-border td-padding th-style" style="text-align:left; vertical-align:middle; height:85px; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">Perlu di tingkatkan prestasinya yaa</font>
+                            <font face="Arial" size="2" id="saran"></font>
                         </td>
                     </tr>
                 </tbody>
@@ -425,7 +250,7 @@
                 <tbody class="text-gray-900">
                     <tr>
                         <th colspan="2" class="td-border td-padding th-style" style="text-align:center; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">Abesensi</font>
+                            <font face="Arial" size="2">Absensi</font>
                         </th>
                     </tr>
                     <tr>
@@ -433,7 +258,7 @@
                             <font face="Arial" size="2">Sakit</font>
                         </td>
                         <td class="td-border td-padding" style="text-align:center; width:70px; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">0 hari</font>
+                            <font face="Arial" size="2" id="sakit">-</font>
                         </td>
                     </tr>
                     <tr>
@@ -441,7 +266,7 @@
                             <font face="Arial" size="2">Izin</font>
                         </td>
                         <td class="td-border td-padding" style="text-align:center; width:70px; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">3 hari</font>
+                            <font face="Arial" size="2" id="izin">-</font>
                         </td>
                     </tr>
                     <tr>
@@ -449,7 +274,7 @@
                             <font face="Arial" size="2">Tanpa Keterangan</font>
                         </td>
                         <td class="td-border td-padding" style="text-align:center; width:70px; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2">1 hari</font>
+                            <font face="Arial" size="2" id="alpha">-</font>
                         </td>
                     </tr>
                 </tbody>
@@ -475,17 +300,12 @@
                         <td style="text-align:center; height:100px; vertical-align:bottom; font-weight:bold; text-decoration: underline">
                             <font face="Arial" size="2">Adinda Mirza Devina, S.pd</font>
                         </td>
-                        <td style="text-align:center; height:100px; vertical-align:bottom; font-weight:bold; text-decoration: underline">
-                            <font face="Arial" size="2">Eric Rafliansah, S.pd</font>
-                        </td>
+                        <td style="text-align:center; height:100px; vertical-align:bottom;">_____________________________</td>
                     </tr>
                 </tbody>
             </table>
     </div>
 </div>
-<!-- <div class="iframe d-none">
-    <iframe src="<?= base_url(); ?>/assets/pdf/Format Rapor Semester.pdf" frameborder="0" scrolling="auto" height="100%" width="100%" id="pdf" style="min-height: 147rem"></iframe>
-</div> -->
 <!-- MODAL -->
 <div class="modal fade" id="data-siswa-modal" tabindex="-1" aria-labelledby="data-siswa-modalTitle" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">

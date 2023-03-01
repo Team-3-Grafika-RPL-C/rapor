@@ -189,8 +189,7 @@ $routes->get('/presensi-option-kelas', 'CPresensi::option_kelas');
 
 // --- Rapor Semester --- //
 $routes->get('/rapor', 'CRaporSemester::index');
-$routes->get('/rapor-option-tahun', 'CRaporSemester::option_tahun');
-$routes->get('/rapor-option-siswa', 'CRaporSemester::option_siswa');
+$routes->get('/rapor-option-siswa/(:num)', 'CRaporSemester::option_siswa/$1');
 $routes->get('/rapor-profil/(:num)', 'CRaporSemester::get_profil/$1');
 $routes->get('/rapor-nilai/(:num)', 'CRaporSemester::get_nilai/$1');
 $routes->get('/rapor-nilai-ekskul/(:num)', 'CRaporSemester::get_nilai_ekskul/$1');
@@ -199,6 +198,13 @@ $routes->get('/rapor-presensi/(:num)', 'CRaporSemester::get_presensi/$1');
 
 // --- Nilai --- //
 $routes->get('/score', 'CScore::index');
+
+// --- Presensi--- //
+$routes->post('/data-catatan-semester', 'CCatatanSemester::data_siswa');
+$routes->get('/cs-option-kelas', 'CCatatanSemester::option_kelas');
+$routes->get('/cs-option-tahun', 'CCatatanSemester::option_tahun');
+$routes->post('/catatan-semester', 'CCatatanSemester::insert');
+$routes->put('/catatan-semester/(:num)', 'CCatatanSemester::update/$1');
 
 
 /*

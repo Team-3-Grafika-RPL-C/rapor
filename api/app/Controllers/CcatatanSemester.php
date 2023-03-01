@@ -3,7 +3,7 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 
-class CcatatanSemester extends ResourceController{
+class CCatatanSemester extends ResourceController{
     protected $modelName = 'App\Models\MSiswaKelas';
     protected $format = 'json';
 
@@ -59,19 +59,20 @@ class CcatatanSemester extends ResourceController{
         $id_class = $this->request->getVar('id_class');
 
         $query = "SELECT DISTINCT
+        a.id,
         b.nis,
         b.student_name
         FROM class_students a
         INNER JOIN students b ON a.id_students = b.id
         WHERE 
-        a.id_academic_year = ? AND a.id_class = ? ";
+        a.id_academic_year = ? AND a.id_class = ? AND a.is_deleted = 0 AND b.is_deleted = 0";
         $data_siswa = $this->api_helpers->queryGetArray($query, [$id_academic_year, $id_class]);
 
         $data = [
             'data_siswa' => $data_siswa 
         ];
 
-        return $this->respond($data, 200);
+        return $this->respond($data_siswa, 200);
 
     }
 
@@ -94,6 +95,24 @@ class CcatatanSemester extends ResourceController{
         ];
 
         return  $this->respondCreated($response);
+    }
+
+    public function update($id = null)
+    {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
+
+        $this->model->update($id, [
+            'notes' => esc($this->request->getVar('notes')),
+        ]);
+
+        $response = [
+            'message' => 'Data berhasil diubah'
+        ];
+
+        return  $this->respondUpdated($response);
     }
 
 }

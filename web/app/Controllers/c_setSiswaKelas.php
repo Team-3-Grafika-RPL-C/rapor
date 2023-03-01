@@ -115,7 +115,12 @@ class c_setSiswaKelas extends BaseController
 
     public function delete($id)
     {
-        $response = $this->client->request('DELETE', 'siswa-kelas/' . $id);
+        $response = $this->client->request('DELETE', 'siswa-kelas/' . $id, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
         $code = $response->getStatusCode();
         if ($code !== 200) {

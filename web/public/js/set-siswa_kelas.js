@@ -1,3 +1,5 @@
+const BASE_URL = $('#base_url').val();
+
 $('.tampilkan-btn').click(() => {
     retrieveDataSiswa();
 
@@ -12,10 +14,9 @@ $('#kelas, #tahun').change(() => {
     retrieveDataSiswa();
 })
 
-
 function retrieveDataSiswa(){
     $.ajax({
-        url: "https://2813-103-165-41-34.ap.ngrok.io/data-siswa-kelas",
+        url: BASE_URL+"/data-siswa-kelas",
         method: "post",
         data: {
             id_academic_year: $('#tahun').val(),
@@ -34,7 +35,7 @@ function retrieveDataSiswa(){
                         <td>${value.nis}</td>
                         <td>${value.student_name}</td>
                         <td class="text-center">
-                            <a href="<?= base_url() ?>/set-siswa_kelas/delete/<?= $dat->id ?>" class="btn btn-danger btn-rounded">
+                            <a href="${BASE_URL}/set-siswa_kelas/delete/${value.id}" class="btn btn-danger btn-rounded">
                                 <i class="ri-delete-bin-7-fill" title="Delete"></i>
                             </a>
                         </td>

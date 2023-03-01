@@ -12,7 +12,7 @@
 <div class="row">
     <?php foreach ($data->kelas_siswa as $dat) {?>
     <div class="col-md-4">
-        <div class="card bg-indigo shadow mb-4 mt-3" data-href="<?= base_url(); ?>/rapor-semester/form" data-href="<?= base_url(); ?>/rapor-semester/form">
+        <div class="card bg-indigo shadow mb-4 mt-3" data-href="<?= base_url(); ?>/rapor-semester/form/<?=$dat->id?>">
             <div class="card-body">
                 <h2 class="h2 ">
                     Kelas <?=$dat->class_name?>

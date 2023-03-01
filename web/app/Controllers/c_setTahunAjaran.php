@@ -62,7 +62,7 @@ class c_setTahunAjaran extends BaseController
             'http_errors' => false
         ]);
 
-        if ($response->getStatusCode() !== 200) {
+        if ($response->getStatusCode() !== 201) {
             return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
         }
 
