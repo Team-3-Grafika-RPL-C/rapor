@@ -151,26 +151,6 @@
                                             </font> 
                                         </td>
                                     </tr>
-                                    <!-- <tr>
-                                        <td style="width:20%; text-align:left; font-weight:600; padding-bottom:7px;" class="th-style">
-                                            <font face="Arial" size="2">No absen</font>
-                                        </td>
-                                        <td style="width:80%; text-align:left;">
-                                            <font face="Arial" size="2">:
-                                                <span>05</span>
-                                            </font> 
-                                        </td>
-                                    </tr> -->
-                                    <!-- <tr>
-                                        <td style="width:20%; text-align:left; font-weight:600; padding-bottom:7px;" class="th-style">
-                                            <font face="Arial" size="2">Semester</font>
-                                        </td>
-                                        <td style="width:80%; text-align:left;">
-                                            <font face="Arial" size="2">:
-                                                <span>II (Genap)</span>
-                                            </font> 
-                                        </td>
-                                    </tr> -->
                                     <tr>
                                         <td style="width:20%; text-align:left; font-weight:600; padding-bottom:7px;" class="th-style">
                                             <font face="Arial" size="2">Tahun Ajaran</font>
@@ -326,9 +306,6 @@
             </table>
     </div>
 </div>
-<!-- <div class="iframe d-none">
-    <iframe src="<?= base_url(); ?>/assets/pdf/Format Rapor Semester.pdf" frameborder="0" scrolling="auto" height="100%" width="100%" id="pdf" style="min-height: 147rem"></iframe>
-</div> -->
 <!-- MODAL -->
 <div class="modal fade" id="data-siswa-modal" tabindex="-1" aria-labelledby="data-siswa-modalTitle" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
