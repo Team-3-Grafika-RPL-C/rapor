@@ -208,11 +208,20 @@
 
         <?= $this->renderSection('conten'); ?>
 
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright &copy; Rapodig</span>
+            </div>
+          </div>
+        </footer>        
+        
+      </div>
+      <!-- End of Content Wrapper -->
+      </div>
+      <!-- End of Page Wrapper -->
       </div>
     </div>
-    <footer class="main-footer">
-      <strong>Copyright &copy;Rapodig</strong>
-    </footer>
       
 
     <!-- Bootstrap core JavaScript-->
