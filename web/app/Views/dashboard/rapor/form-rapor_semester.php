@@ -31,6 +31,9 @@
             </div>
             <form action="" method="post">
                 <div class="row">
+                    <div class="col-md-6 my-4 d-flex justify-content-between">
+                        <label class="control-label col-md-3 font-weight-bold text-gray-900">Tahun Ajaran</label>
+                        <div class="col-md-9">
                     <!-- <div class="col-md-6 my-4 d-flex justify-content-between">
                         <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Tahun Ajaran</label>
                         <div class="col-xs-2 col-lg-9">
@@ -44,8 +47,8 @@
                         </div>
                     </div>                 -->
                     <div class="col-md-6 my-4 d-flex justify-content-between">
-                        <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Siswa</label>
-                        <div class="col-xs-2 col-lg-9">
+                        <label class="control-label col-md-3 font-weight-bold text-gray-900">Siswa</label>
+                        <div class="col-md-9">
                             <select id="inputState" class="form-control">
                                 <?php foreach ($siswa->data_siswa as $dat) {?>
                                     <option value="<?=$dat->id?>">
