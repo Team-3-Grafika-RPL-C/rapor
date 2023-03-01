@@ -9,7 +9,7 @@ class MSiswaKelas extends Model
     protected $table            = 'class_students';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['id_class', 'id_academic_year', 'id_students', 'number_order', 'number_of_sick', 'number_of_permit', 'number_of_absents'];
+    protected $allowedFields    = ['id_class','notes', 'id_academic_year', 'id_students', 'number_order', 'number_of_sick', 'number_of_permit', 'number_of_absents'];
 
     //Dates
     protected $useTimestamps = true;

@@ -10,38 +10,20 @@
 
 <!-- DataTales Example -->
 <div class="row">
+    <?php foreach ($data->kelas_siswa as $dat) {?>
     <div class="col-md-4">
         <div class="card bg-indigo shadow mb-4 mt-3" data-href="<?= base_url(); ?>/rapor-semester/form" data-href="<?= base_url(); ?>/rapor-semester/form">
             <div class="card-body">
-                <h2 class="h2 ">Kelas 1A</h2>
-                <p class="p ">Jumlah Siswa 80</p>
+                <h2 class="h2 ">
+                    Kelas <?=$dat->class_name?>
+                </h2>
+                <p class="p ">
+                    Jumlah Siswa <?=$dat->student_count?></p>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="card bg-indigo shadow mb-4 mt-3" data-href="<?= base_url(); ?>/rapor-semester/form">
-            <div class="card-body">
-                <h2 class="h2 ">Kelas 1B</h2>
-                <p class="p ">Jumlah Siswa 80</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card bg-indigo shadow mb-4 mt-3" data-href="<?= base_url(); ?>/rapor-semester/form">
-            <div class="card-body">
-                <h2 class="h2 ">Kelas 1C</h2>
-                <p class="p ">Jumlah Siswa 80</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card bg-indigo shadow mb-4 mt-3" data-href="<?= base_url(); ?>/rapor-semester/form">
-            <div class="card-body">
-                <h2 class="h2 ">Kelas 2A</h2>
-                <p class="p ">Jumlah Siswa 80</p>
-            </div>
-        </div>
-    </div>
+    <?php
+    } ?>
 </div>
 
 </div>
