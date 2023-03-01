@@ -155,7 +155,7 @@ $routes->get('/rapor-semester/form', 'c_raporSemester::form', ['filter' => 'Auth
 
 $routes->get('/catatan-semester', 'c_catatanSemester::index', ['filter' => 'AuthTeacher']);
 
-$routes->get('/status-kenaikan', 'c_statusKenaikan::index', ['filter' => 'AuthAdmin']);
+// $routes->get('/status-kenaikan', 'c_statusKenaikan::index', ['filter' => 'AuthAdmin']);
 
 $routes->get('/identitas-siswa', 'c_identitasSiswa::index', ['filter' => 'AuthAdmin']);
 

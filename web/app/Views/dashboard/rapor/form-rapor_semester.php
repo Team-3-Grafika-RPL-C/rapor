@@ -56,30 +56,13 @@
                                 <option>Yudha Pratama</option>
                             </select>
                         </div>
-                    </div>                
-                    <div class="col-md-6 my-4 d-flex justify-content-between">
-                        <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Semester</label>
-                        <div class="col-xs-2 col-lg-9">
-                            <select id="inputState" class="form-control">
-                                <option>Ganjil</option>
-                                <option>Genap</option>
-                            </select>
-                        </div>
-                    </div>                
-                    <div class="col-md-6 my-4 d-flex justify-content-between">
-                        <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Tanggal Penerima</label>
-                        <div class="col-xs-2 col-lg-9">
-                            <div class="md-form md-outline input-with-post-icon datepicker">
-                                <input placeholder="Select date" type="date" id="example" class="form-control">
-                            </div>
-                        </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<div class="card d-none">
+<div class="card none d-none">
     <div class="card-body">
             <table style="width: 100%">
                 <tbody>
