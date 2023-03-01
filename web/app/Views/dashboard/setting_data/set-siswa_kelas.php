@@ -12,6 +12,7 @@
 <div class="card shadow mb-4 mt-3">
     <div class="card-header py-3">
         <h4 class="m-0 font-weight-bold text-indigo-900">Tabel Set Siswa Kelas</h4>
+        <input type="hidden" id="base_url" value="<?=base_url()?>" />
     </div>
     <div class="mx-3">
                 <div class="container">

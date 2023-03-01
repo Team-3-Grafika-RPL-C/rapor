@@ -23,10 +23,14 @@ class CRaporSemester extends ResourceController
     public function index()
     {
         $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
-        $query = "SELECT a.id_class, b.class_name, COUNT(a.id_students) as student_count
-                  FROM class_students a
-                  INNER JOIN class b ON a.id_class = b.id
-                  GROUP BY a.id_class";
+        $query = "SELECT
+                    a.id,
+                    a.class_name,
+                    COUNT(b.id_students) as student_count
+                    FROM class a
+                    LEFT JOIN class_students b ON a.id = b.id_class
+                    WHERE a.is_deleted = 0
+                    GROUP BY a.id";
         $kelas_siswa = $this->api_helpers->queryGetArray($query);
 
         $data = [

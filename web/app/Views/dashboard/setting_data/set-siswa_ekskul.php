@@ -6,6 +6,7 @@
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h1 mb-0 text-gray-900 font-weight-bold">Set Siswa Ekstrakurikuler</h1>
+        <input type="hidden" id="base_url" value="<?=base_url()?>" />
     </div>
 
 <!-- DataTales Example -->

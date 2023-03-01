@@ -39,18 +39,6 @@ class c_raporSemester extends BaseController {
     }
     public function form($id)
     {
-        $response = $this->client->request('GET', 'rapor-option-siswa/'.$id, [
-            'headers' => [
-                'Authorization' => 'Bearer ' . session()->get('token')
-            ],
-            'http_errors' => false
-        ]);
-        if ($response->getStatusCode() === 200) {
-            $data['siswa'] = json_decode($response->getBody());
-        } else {
-            $data['data_err'] = json_decode($response->getBody());
-        }
-
         $data = [
             'title' => 'Rapodig - Form Rapor Semester'
         ];
@@ -69,4 +57,6 @@ class c_raporSemester extends BaseController {
 
         return view('dashboard/rapor/form-rapor_semester', $data);
     }
+
+    
 }

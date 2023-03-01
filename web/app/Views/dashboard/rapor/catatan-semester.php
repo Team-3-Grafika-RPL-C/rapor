@@ -43,7 +43,7 @@
                                 <a class="btn d-sm-inline-block text-light btn-sm shadow px-4 tampilkan-btn" href="#!" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px">
                                     <span class="d-flex">
                                         <i class="ri-search-line mt-auto mb-auto mr-1"></i>
-                                        <p class="d-none d-sm-block mt-auto mb-auto">Cari</p>
+                                        <p class="d-sm-block mt-auto mb-auto">Cari</p>
                                     </span>
                                 </a>
                                 </div>
@@ -59,7 +59,7 @@
 <!-- /.container-fluid -->
 
 </div>
-<div class="card shadow mb-4 mt-3">    
+<div class="card shadow mb-4 mt-3 d-none">    
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

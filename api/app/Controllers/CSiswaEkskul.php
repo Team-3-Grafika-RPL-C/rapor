@@ -67,6 +67,7 @@ class CSiswaEkskul extends ResourceController
         $id_extracurricular = $this->request->getVar('id_extracurricular');
 
         $query = "SELECT DISTINCT
+        a.id,
         b.nis,
         b.student_name
         FROM extracurricular_students a
@@ -143,8 +144,7 @@ class CSiswaEkskul extends ResourceController
             return $this->failForbidden('not admin');
         }
 
-        $query = "UPDATE extracurricular_students SET is_deleted = 1 WHERE id=?";
-        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
+        $query = $this->model->delete($id);
 
         $response = [
             'message' => 'Data berhasil dihapus'
