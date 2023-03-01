@@ -153,8 +153,11 @@ $routes->get('/ge-data-ekskul', 'CGuruEkskul::data_ekskul');
 // --- Set Pelajaran Kelas--- //
 $routes->get('/pelajaran-kelas', 'CPelajaranKelas::index');
 $routes->get('/pelajaran-kelas/(:num)', 'CPelajaranKelas::show/$1');
+$routes->get('/pelajaran-kelas-detail/(:num)', 'CPelajaranKelas::show_detail/$1');
 $routes->post('/pelajaran-kelas', 'CPelajaranKelas::create');
 $routes->post('/pelajaran-kelas-detail', 'CPelajaranKelasDetail::create_detail');
+$routes->delete('/pelajaran-kelas-detail/(:num)', 'CPelajaranKelasDetail::delete_detail/$1');
+$routes->put('/pelajaran-kelas/(:num)', 'CPelajaranKelas::update/$1');
 $routes->delete('/pelajaran-kelas/(:num)', 'CPelajaranKelas::delete/$1');
 $routes->get('/pk-option-kelas', 'CPelajaranKelas::option_kelas');
 $routes->get('/pk-option-semester', 'CPelajaranKelas::option_semester');

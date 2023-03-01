@@ -48,24 +48,45 @@ class CPelajaranKelas extends ResourceController
         $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $query = "SELECT DISTINCT
 		a.id,
-        b.id as id_detail,
         a.id_class,
         d.class_name,
         a.id_semester,
-        e.semester,
-        b.id_subject,
-        CONCAT_WS(' Kelas ', c.subject_name, d.class) as subject_name
+        e.semester
         FROM class_subject a
-        LEFT JOIN class_subject_detail b ON a.id = b.id_class_subject
-        LEFT JOIN subjects c ON c.id = b.id_subject
         INNER JOIN class d ON d.id = a.id_class
         INNER JOIN semesters e ON e.id = a.id_semester
-        WHERE a.id= ?";
-        $pelajaran_kelas_detail = $this->api_helpers->queryGetArray($query, [$id]);
+        WHERE 
+        a.is_deleted = 0 AND
+        a.id= ?";
+        $pelajaran_kelas = $this->api_helpers->queryGetArray($query, [$id]);
 
         $data = [
-            'message' => 'Set Pelajaran Kelas Detail:',
-            'pelajaran_kelas_detail' => $pelajaran_kelas_detail
+            'message' => 'Detail Pelajaran Kelas:',
+            'pelajaran_kelas' => $pelajaran_kelas
+        ];
+
+        return $this->respond($data, 200);
+    }
+
+    public function show_detail($id= null)
+    {
+        $query = "SELECT DISTINCT
+		a.id as id_parent,
+        b.id as id_detail,
+        b.id_subject,
+        c.subject_name
+        FROM class_subject a
+        LEFT JOIN class_subject_detail b ON a.id = b.id_class_subject
+        LEFT JOIN subjects c ON b.id_subject = c.id
+        WHERE 
+        a.is_deleted = 0 AND
+        b.is_deleted = 0 AND
+        a.id= ?";
+        $pelajaran_kelas = $this->api_helpers->queryGetArray($query, [$id]);
+
+        $data = [
+            'message' => 'Detail Pelajaran Kelas (Detail):',
+            'pelajaran_kelas_detail' => $pelajaran_kelas
         ];
 
         return $this->respond($data, 200);
@@ -96,13 +117,14 @@ class CPelajaranKelas extends ResourceController
             return $this->failValidationErrors($response);
         }
 
-        $this->model->insert([
-            'id_class' => esc($this->request->getVar('id_class')),
-            'id_semester' => esc($this->request->getVar('id_semester')),
+        $data =  $this->model->insert([
+                'id_class' => esc($this->request->getVar('id_class')),
+                'id_semester' => esc($this->request->getVar('id_semester')),
         ]);
 
         $response = [
-            'message' => 'Data berhasil disimpan'
+            'message' => 'Data berhasil disimpan',
+            'data' => $data
         ];
 
         return  $this->respondCreated($response);
@@ -122,7 +144,6 @@ class CPelajaranKelas extends ResourceController
         $rules = $this->validate([
             'id_class' => 'required',
             'id_semester' => 'required',
-            'id_subject' => 'required'
         ]);
 
         if (!$rules) {
@@ -136,7 +157,6 @@ class CPelajaranKelas extends ResourceController
         $this->model->update($id, [
             'id_class' => esc($this->request->getVar('id_class')),
             'id_semester' => esc($this->request->getVar('id_semester')),
-            'id_subject' => esc($this->request->getVar('id_subject')),
         ]);
 
         $response = [
@@ -157,6 +177,10 @@ class CPelajaranKelas extends ResourceController
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
+
+        $query = "UPDATE class_subject_detail SET is_deleted = 1 WHERE id_class_subject=?";
+        $this->api_helpers->queryExecute($query, [$id]);
+
         $query = "UPDATE class_subject SET is_deleted = 1 WHERE id=?";
         $this->api_helpers->queryExecute($query, [$id]);
 
@@ -169,6 +193,7 @@ class CPelajaranKelas extends ResourceController
 
     public function option_kelas()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $query = "SELECT DISTINCT a.id, a.class_name FROM class a WHERE a.is_deleted = 0";
         $data_kelas = $this->api_helpers->queryGetArray($query);
 
@@ -181,6 +206,8 @@ class CPelajaranKelas extends ResourceController
 
     public function option_semester()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+
         $query = "SELECT DISTINCT a.id, a.semester FROM semesters a WHERE a.is_deleted = 0 AND a.is_active = 1 ";
         $data_semester = $this->api_helpers->queryGetArray($query);
 
@@ -193,9 +220,11 @@ class CPelajaranKelas extends ResourceController
 
     public function data_mapel()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+
         $query = "SELECT
         a.id,
-        CONCAT_WS(' Kelas ', a.subject_name, a.class) as subject_name
+        CONCAT_WS(' Kelas ', a.subject_name, a.class) as mapel
         FROM subjects a
         WHERE a.is_deleted = 0";
         $data_mapel = $this->api_helpers->queryGetArray($query);
