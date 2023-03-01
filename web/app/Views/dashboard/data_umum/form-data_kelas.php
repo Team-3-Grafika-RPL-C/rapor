@@ -19,7 +19,6 @@
             </div>
             <!-- Form Data Kelas -->
             <div class="mx-3">
-                <div class="container">
                     <form action="<?= $page == 'edit' ? '/data-kelas/form-edit/'.$data->kelas_detail->id :'/data-kelas/form' ?>" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
@@ -62,7 +61,6 @@
                             <a href="<?= base_url(); ?>/data-kelas" class="btn ms-1 text-gray-900" data-toggle="modal" data-target="#cancel" style="min-width: 6rem; background-color: #ECEEEF; border-radius: 8px">Batal</a>
                         </div>
                     </form>
-                </div>
             </div>            
         </div>
     </div>

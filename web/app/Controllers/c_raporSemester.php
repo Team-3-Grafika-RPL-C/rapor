@@ -5,10 +5,36 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 
 class c_raporSemester extends BaseController {
+    private $client, $session;
+    public function __construct()
+    {
+        $this->client = \Config\Services::curlrequest([
+            'baseURI' => baseURI_api
+        ]);
+        $this->session = session();
+    }
+
     public function index()
-    {$data = [
-        'title' => 'Rapodig - Rapor Semester'
-    ];
+    {
+        $response = $this->client->request('GET', 'rapor', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+
+        $body_response = json_decode($response->getBody());
+
+        $data = [
+            'title' => 'Rapodig - Rapor Semester'
+        ];
+
+        if ($response->getStatusCode() === 200) {
+            $data['data'] = $body_response;
+        } else {
+            $data['data_err'] = $body_response;
+        }
+        
         return view('dashboard/rapor/rapor-semester', $data);
     }
     public function form()

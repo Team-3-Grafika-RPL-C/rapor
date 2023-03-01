@@ -9,6 +9,7 @@
   <meta name="author" content="" />
 
   <title><?= $title; ?></title>
+  <!-- Icon title -->
   <link rel="icon" href="<?= base_url(); ?>/assets/logo-polowijen.png" type="image/x-icon">
 
   <!-- Custom fonts for this template-->
@@ -70,7 +71,7 @@
       <!-- <div class="sidebar-heading">Interface</div> -->
 
       <!-- Nav Item - Data Umum Collapse Menu  -->
-      <li class="nav-item <?= session()->get('is_admin') ? '' : 'd-none' ?>">
+      <li class="nav-item <?= session()->get('is_admin') ? '' : '' ?>">
         <a class="nav-link collapsed d-md-flex" href="#" data-toggle="collapse" data-target="#collapseDataUmum" aria-expanded="true" aria-controls="collapseDataUmum">
           <i class="ri-book-2-fill" style="font-size: 24px"></i>
           <span class="my-auto ml-2 mr-auto">Data Umum</span>
@@ -153,7 +154,6 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="<?= base_url(); ?>/rapor-semester">Rapor Semester</a>
             <a class="collapse-item" href="<?= base_url(); ?>/catatan-semester">Catatan Semester</a>
-            <a class="collapse-item" href="<?= base_url(); ?>/status-kenaikan">Status Kenaikan</a>
             <!-- <a class="collapse-item" href="<?= base_url(); ?>/identitas-siswa">Identitas Siswa</a>
               <a class="collapse-item" href="cards.html">Pindah Sekolah</a> -->
           </div>
@@ -207,8 +207,21 @@
 
         <?= $this->renderSection('conten'); ?>
 
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright &copy; Rapodig</span>
+            </div>
+          </div>
+        </footer>        
+        
+      </div>
+      <!-- End of Content Wrapper -->
+      </div>
+      <!-- End of Page Wrapper -->
       </div>
     </div>
+      
 
     <!-- Bootstrap core JavaScript-->
     <script src="<?= base_url(); ?>/package/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -129,6 +129,7 @@ $routes->get('/guru-pelajaran/(:num)', 'CGuruPelajaran::show/$1');
 $routes->get('/guru-pelajaran-detail/(:num)', 'CGuruPelajaran::show_detail/$1');
 $routes->post('/guru-pelajaran', 'CGuruPelajaran::create');
 $routes->post('/guru-pelajaran-detail', 'CGuruPelajaranDetail::create_detail');
+$routes->delete('/guru-pelajaran-detail/(:num)', 'CGuruPelajaranDetail::delete_detail/$1');
 $routes->put('/guru-pelajaran/(:num)', 'CGuruPelajaran::update/$1');
 $routes->delete('/guru-pelajaran/(:num)', 'CGuruPelajaran::delete/$1');
 $routes->get('/gp-option-guru', 'CGuruPelajaran::option_guru');
@@ -152,8 +153,11 @@ $routes->get('/ge-data-ekskul', 'CGuruEkskul::data_ekskul');
 // --- Set Pelajaran Kelas--- //
 $routes->get('/pelajaran-kelas', 'CPelajaranKelas::index');
 $routes->get('/pelajaran-kelas/(:num)', 'CPelajaranKelas::show/$1');
+$routes->get('/pelajaran-kelas-detail/(:num)', 'CPelajaranKelas::show_detail/$1');
 $routes->post('/pelajaran-kelas', 'CPelajaranKelas::create');
 $routes->post('/pelajaran-kelas-detail', 'CPelajaranKelasDetail::create_detail');
+$routes->delete('/pelajaran-kelas-detail/(:num)', 'CPelajaranKelasDetail::delete_detail/$1');
+$routes->put('/pelajaran-kelas/(:num)', 'CPelajaranKelas::update/$1');
 $routes->delete('/pelajaran-kelas/(:num)', 'CPelajaranKelas::delete/$1');
 $routes->get('/pk-option-kelas', 'CPelajaranKelas::option_kelas');
 $routes->get('/pk-option-semester', 'CPelajaranKelas::option_semester');
@@ -185,9 +189,13 @@ $routes->get('/presensi-option-kelas', 'CPresensi::option_kelas');
 
 // --- Rapor Semester --- //
 $routes->get('/rapor', 'CRaporSemester::index');
-$routes->get('/rapor-option-semester', 'CRaporSemester::option_semester');
 $routes->get('/rapor-option-tahun', 'CRaporSemester::option_tahun');
 $routes->get('/rapor-option-siswa', 'CRaporSemester::option_siswa');
+$routes->get('/rapor-profil/(:num)', 'CRaporSemester::get_profil/$1');
+$routes->get('/rapor-nilai/(:num)', 'CRaporSemester::get_nilai/$1');
+$routes->get('/rapor-nilai-ekskul/(:num)', 'CRaporSemester::get_nilai_ekskul/$1');
+$routes->get('/rapor-catatan/(:num)', 'CRaporSemester::get_catatan/$1');
+$routes->get('/rapor-presensi/(:num)', 'CRaporSemester::get_presensi/$1');
 
 
 /*

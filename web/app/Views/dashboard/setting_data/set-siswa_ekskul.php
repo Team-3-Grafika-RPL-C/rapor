@@ -99,7 +99,7 @@
                                         <tr>
                                             <td class="text-center">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="<?= $dat->id ?>" id="flexCheckChecked" name="id_students[]">
+                                                    <input class="form-check-input" type="checkbox" value="<?= $dat->id ?>" id="flexCheckChecked" name="id_student[]">
                                                 </div>
                                             </td>
                                             <td>

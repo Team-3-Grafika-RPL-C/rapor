@@ -57,7 +57,6 @@ class c_setSiswaKelas extends BaseController
         } else {
             $data['data_err'] = json_decode($response_siswa->getBody());
         }
-
         return view('dashboard/setting_data/set-siswa_kelas', $data);
     }
 
@@ -99,7 +98,13 @@ class c_setSiswaKelas extends BaseController
                 'id_class' => $id_class,
             ];
 
-            $response = $this->client->request('POST', 'siswa-kelas', ['json' => $request_client_data]);
+            $response = $this->client->request('POST', 'siswa-kelas', [
+                'json' => $request_client_data,
+                'headers' => [
+                    'Authorization' => 'Bearer ' . session()->get('token')
+                ],
+                'http_errors' => false
+            ]);
             if ($response->getStatusCode() !== 200) {
                 return redirect()->back()->withInput()->with('data_err', $response->getBody());
             }

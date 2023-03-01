@@ -56,15 +56,36 @@ class CGuruPelajaran extends ResourceController
         $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $query = "SELECT
         a.id,
-        b.id as id_detail,
         a.id_teacher,
         c.teacher_name,
         a.id_class,
         d.class_name,
         a.id_academic_year,
-        e.academic_year,
+        e.academic_year
+        FROM teacher_subject a
+        INNER JOIN teachers c ON a.id_teacher = c.id
+        INNER JOIN class d ON a.id_teacher = d.id
+        INNER JOIN academic_years e ON a.id_academic_year = e.id
+        WHERE 
+        a.is_deleted = 0 AND
+        a.id = ?";
+        $guru_pelajaran = $this->api_helpers->queryGetArray($query, [$id]);
+
+        $data = [
+            'message' => 'Detail Guru Pelajaran:',
+            'guru_pelajaran' => $guru_pelajaran
+        ];
+
+        return $this->respond($data, 200);
+    }
+
+    public function show_detail($id = null)
+    {
+        $query = "SELECT
+        a.id as id_parent,
+        b.id as id_detail,
         b.id_subject,
-        CONCAT_WS(' Kelas ', f.subject_name, d.class) as subject_name
+        CONCAT_WS(' Kelas ', f.subject_name, f.class) as subject_name
         FROM teacher_subject a
         LEFT JOIN teacher_subject_detail b ON b.id_teacher_subject = a.id
         INNER JOIN teachers c ON a.id_teacher = c.id
@@ -78,13 +99,12 @@ class CGuruPelajaran extends ResourceController
         $guru_pelajaran = $this->api_helpers->queryGetArray($query, [$id]);
 
         $data = [
-            'message' => 'Detail Guru Pelajaran:',
+            'message' => 'Detail Guru Pelajaran (Detail):',
             'guru_pelajaran_detail' => $guru_pelajaran
         ];
 
         return $this->respond($data, 200);
     }
-    
 
     /**
      * Create a new resource object, from "posted" parameters
@@ -113,9 +133,9 @@ class CGuruPelajaran extends ResourceController
         }
 
         $data = $this->model->insert([
-            'id_teacher' => esc($this->request->getVar('id_teacher')),
-            'id_class' => esc($this->request->getVar('id_class')),
-            'id_academic_year' => esc($this->request->getVar('id_academic_year')),
+                'id_teacher' => esc($this->request->getVar('id_teacher')),
+                'id_class' => esc($this->request->getVar('id_class')),
+                'id_academic_year' => esc($this->request->getVar('id_academic_year')),
         ]);
 
         $response = [
@@ -176,11 +196,10 @@ class CGuruPelajaran extends ResourceController
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
-        
-        $query = "UPDATE teacher_subject SET is_deleted = 1 WHERE id=?";
+        $query = "UPDATE teacher_subject_detail SET is_deleted = 1 WHERE id_teacher_subject=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 
-        $query = "UPDATE teacher_subject_detail SET is_deleted = 1 WHERE id_teacher_subject=?";
+        $query = "UPDATE teacher_subject SET is_deleted = 1 WHERE id=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [
@@ -191,7 +210,6 @@ class CGuruPelajaran extends ResourceController
     }
     public function option_guru()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $query = "SELECT a.id, a.teacher_name FROM teachers a WHERE a.is_deleted = 0";
         $data_guru = $this->api_helpers->queryGetArray($query);
 

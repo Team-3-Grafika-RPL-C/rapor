@@ -28,12 +28,9 @@
                                 </div>
                                 <div class="col-md-8 mb-4">
                                     <select class="custom-select my-1 mr-sm-2" id="kelas" name="kelas" disabled>
-                                        <?php foreach ($data->pelajaran_kelas_detail as $dat) { ?>
-                                        <option value="<?= $dat->id_class ?>">
-                                            <?= $dat->class_name ?>
+                                        <option value="<?= $data->pelajaran_kelas[0]->id_class ?>">
+                                            <?= $data->pelajaran_kelas[0]->class_name ?>
                                         </option>
-                                        <?php
-                                        }?>
                                     </select>
                                 </div>
                                 <div class="col-md-4 mb-4">
@@ -41,12 +38,9 @@
                                 </div>
                                 <div class="col-md-8 mb-4">
                                     <select class="custom-select my-1 mr-sm-2" id="semester" name="semester" disabled>
-                                        <?php foreach ($data->pelajaran_kelas_detail as $dat) { ?>
-                                        <option value="<?= $dat->id_semester ?>">
-                                            <?= $dat->semester ?>
+                                        <option value="<?= $data->pelajaran_kelas[0]->id_semester ?>">
+                                            <?= $data->pelajaran_kelas[0]->semester ?>
                                         </option>
-                                        <?php
-                                        }?>
                                     </select>
                                 </div>
                                 <div class="col-md-4 mb-4">
@@ -54,7 +48,7 @@
                                 </div>
                                 <div class="col-md-8 mb-4">
                                     <select multiple class="form-control" id="mapel_ajaran" size="8" disabled>
-                                        <?php foreach ($data->pelajaran_kelas_detail as $dat) { ?>
+                                        <?php foreach ($detail->pelajaran_kelas_detail as $dat) { ?>
                                         <option value="<?= $dat->id_subject ?>">
                                             <?= $dat->subject_name ?>
                                         </option>

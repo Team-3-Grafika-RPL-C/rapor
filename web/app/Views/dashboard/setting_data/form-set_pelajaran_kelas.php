@@ -21,16 +21,16 @@
     </div>
     <div class="mx-3">
                 <div class="container">
-                    <form action="" method="post">
+                    <form action="<?= $page == 'edit' ? '/set-pelajaran_kelas/form-edit/'.$pelajaran_kelas->pelajaran_kelas[0]->id : '/set-pelajaran_kelas' ?>" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4 mt-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Kelas</h6>
                             </div>
                             <div class="col-md-8 mb-4 mt-4">
                                 <div>
-                                    <select class="custom-select my-1 mr-sm-2" id="kelas">
+                                    <select class="custom-select my-1 mr-sm-2" id="kelas" name="kelas">
                                         <?php foreach ($option_kelas->data_kelas as $dat) { ?>
-                                        <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->pelajaran_kelas_detail->id_class ?'selected' :'') :'' ?>>
+                                        <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $pelajaran_kelas->pelajaran_kelas[0]->id_class ?'selected' :'') :'' ?>>
                                             <?= $dat->class_name ?>
                                         </option>
                                         <?php 
@@ -43,9 +43,9 @@
                             </div>
                             <div class="col-md-8 mb-4">
                                 <div>
-                                    <select class="custom-select my-1 mr-sm-2" id="semester">
+                                    <select class="custom-select my-1 mr-sm-2" id="semester" name="semester">
                                         <?php foreach ($option_semester->data_semester as $dat) { ?>
-                                        <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->pelajaran_kelas_detail->id_semester ?'selected' :'') :'' ?>>
+                                        <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $pelajaran_kelas->pelajaran_kelas[0]->id_semester ?'selected' :'') :'' ?>>
                                             <?= $dat->semester ?>
                                         </option>
                                         <?php 
@@ -59,8 +59,8 @@
                             <div class="col-md-8 mb-4">
                                 <select multiple class="form-control" id="mapel" name="mapel[]" size="10">
                                     <?php foreach ($data_mapel->data_mapel as $dat) { ?>
-                                    <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->pelajaran_kelas_detail->id_subject ?'selected' :'') :'' ?>>
-                                        <?= $dat->subject_name ?>
+                                    <option value="<?= $dat->id ?>" <?= $page == 'edit' ?(in_array($dat->id, $detail_id) ? 'selected' :'') :'' ?>>
+                                        <?= $dat->mapel ?>
                                     </option>
                                     <?php
                                     } ?>
