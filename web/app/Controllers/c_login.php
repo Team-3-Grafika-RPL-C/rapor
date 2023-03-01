@@ -28,25 +28,21 @@ class c_login extends BaseController
             'username' => $username,
             'password' => $password
         ];
-        $request = $this->client->request('POST', 'login', [
+        $response = $this->client->request('POST', 'login', [
             'json' => $request_client_data,
             'http_errors' => false
         ]);
 
-        if ($request->getStatusCode() !== 200) {
-            dd($request->getBody());
-            if ($request->getStatusCode() === 401) {
-                return redirect()->back()->withInput()->with('errors', json_decode($request->getBody())->errors);
-            }
-            return redirect()->back()->withInput();
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
         }
 
-        $result = json_decode($request->getBody())->data;
-        
+        $result = json_decode($response->getBody())->data;
         $session_data = [
-            'id' => $result->id,
+            'token' => $result->token,
             'is_teacher' => $result->is_teacher == 1 ? true : false,
-            'is_admin' => $result->is_admin == 1 ? true : false
+            'is_admin' => $result->is_admin == 1 ? true : false,
+            'username' => $username
         ];
 
         $session = session();

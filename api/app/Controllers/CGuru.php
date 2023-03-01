@@ -23,6 +23,7 @@ class CGuru extends ResourceController
      */
     public function index()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $data = [
             'message'   => 'Data Guru:',
             'data_guru' => $this->model->orderBy('id', 'ASC')->where('is_deleted', 0)->findAll()
@@ -38,6 +39,7 @@ class CGuru extends ResourceController
      */
     public function show($id = null)
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $data = [
             'message'   => 'Data Guru Detail',
             'guru_detail' => $this->model->find($id)
@@ -57,6 +59,11 @@ class CGuru extends ResourceController
      */
     public function create()
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
+        
         $rules = $this->validate([
             'teacher_name'       => 'required',
             'nip'                => 'required',
@@ -93,6 +100,11 @@ class CGuru extends ResourceController
      */
     public function update($id = null)
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
+        
         $rules = $this->validate([
             'teacher_name'       => 'required',
             'nip'                => 'required',
@@ -129,6 +141,11 @@ class CGuru extends ResourceController
      */
     public function delete($id = null)
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
+        
         $query = "UPDATE teachers SET is_deleted = 1 WHERE id=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 

@@ -32,6 +32,10 @@ class CPresensi extends ResourceController
      */
     public function create()
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!($this->api_helpers->isAdmin($token)||$this->api_helpers->isTeacher($token))) {
+            return $this->failForbidden('not admin');
+        }
         $rules = $this->validate([
             'id_class'=> 'required',
             'id_academic_year'=> 'required',
@@ -72,6 +76,10 @@ class CPresensi extends ResourceController
      */
     public function update($id = null)
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!($this->api_helpers->isAdmin($token)||$this->api_helpers->isTeacher($token))) {
+            return $this->failForbidden('not admin');
+        }
         $rules = $this->validate([
             'id_class'=> 'required',
             'id_academic_year'=> 'required',
@@ -86,7 +94,7 @@ class CPresensi extends ResourceController
                 'message' => $this->validator->getErrors()
             ];
 
-            return $this->failValidationError($response);
+            return $this->failValidationErrors($response);
         }
 
         $this->model->update($id, [
@@ -107,6 +115,7 @@ class CPresensi extends ResourceController
 
     public function option_kelas()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $query = "SELECT DISTINCT a.id, a.class_name FROM class a WHERE a.is_deleted = 0";
         $data_kelas = $this->api_helpers->queryGetArray($query);
 

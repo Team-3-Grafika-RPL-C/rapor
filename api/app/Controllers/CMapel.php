@@ -22,6 +22,7 @@ class CMapel extends ResourceController
      */
     public function index()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $data = [
             'message' => 'Data Mata Pelajaran:',
             'data_mapel' => $this->model->orderBy('id', 'ASC')->where('is_deleted', 0)->findAll()
@@ -37,6 +38,7 @@ class CMapel extends ResourceController
      */
     public function show($id = null)
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $data = [
             'message' => 'Berhasil',
             'mapel_detail' => $this->model->find($id)
@@ -56,6 +58,10 @@ class CMapel extends ResourceController
      */
     public function create()
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
         $rules = $this->validate([
             'subject_code' => 'required',
             'subject_name' => 'required',
@@ -90,6 +96,10 @@ class CMapel extends ResourceController
      */
     public function update($id = null)
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
         $rules = $this->validate([
             'subject_code' => 'required',
             'subject_name' => 'required',
@@ -124,6 +134,10 @@ class CMapel extends ResourceController
      */
     public function delete($id = null)
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
         $query = "UPDATE subjects SET is_deleted = 1 WHERE id=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 

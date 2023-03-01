@@ -4,7 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class c_dataKelas extends BaseController {
+class c_dataKelas extends BaseController
+{
     public $client, $session;
 
     public function __construct()
@@ -16,51 +17,72 @@ class c_dataKelas extends BaseController {
     }
     public function index()
     {
-        $response = $this->client->request('GET', 'kelas');
-        $code = $response->getStatusCode();
-        // if ($code = 500) {
-        //     # code...
-        // }
-
-        $body_response= json_decode($response->getBody());
+        $response = $this->client->request('GET', 'kelas', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
         $data = [
             'title' => 'Rapodig - Data Kelas',
-            'data'=> $body_response
-            
         ];
+
+        $response_body = json_decode($response->getBody());
+        $code = $response->getStatusCode();
+        if ($code === 200) {
+            $data['data'] = $response_body;
+        } else {
+            $data['data_err'] = $response_body;
+        }
+
         return view('dashboard/data_umum/data-kelas', $data);
     }
     public function form()
     {
-        $response = $this->client->request('GET', 'kelas-walkel');
-        $code = $response->getStatusCode();
-
-        $body_response= json_decode($response->getBody());
+        $response = $this->client->request('GET', 'kelas-walkel', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
         $data = [
             'title' => 'Rapodig - Tambah Data Kelas',
-            'data_teacher' => $body_response,
-            'page'=> 'create'
+            'page' => 'create'
         ];
+
+        $response_body = json_decode($response->getBody());
+        $code = $response->getStatusCode();
+        if ($code === 200) {
+            $data['data_teacher'] = $response_body;
+        } else {
+            $data['data_err'] = $response_body;
+        }
 
         return view('dashboard/data_umum/form-data_kelas', $data);
     }
     public function form_detail($num)
     {
-        $response = $this->client->request('GET', 'kelas/'.$num);
-        $code = $response->getStatusCode();
-        // if ($code = 500) {
-        //     # code...
-        // }
-
-        $body_response= json_decode($response->getBody());
+        $response = $this->client->request('GET', 'kelas/' . $num, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
         $data = [
             'title' => 'Rapodig - Detail Data Kelas',
-            'data'=> $body_response
         ];
-        
+
+        $response_body = json_decode($response->getBody());
+        $code = $response->getStatusCode();
+        if ($code === 200) {
+            $data['data'] = $response_body;
+        } else {
+            $data['data_err'] = $response_body;
+        }
+
         return view('dashboard/data_umum/form-data_kelas_detail', $data);
     }
 
@@ -78,28 +100,52 @@ class c_dataKelas extends BaseController {
             'student_count' => $jumlah_siswa
         ];
 
-        $response = $this->client->request('POST', 'kelas', ['json'=>$request_client_data]);
+        $response = $this->client->request('POST', 'kelas', [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
+        }
 
         return redirect()->to('/data-kelas');
     }
 
     public function form_edit($num)
     {
-        $response = $this->client->request('GET', 'kelas/'.$num);
-
-        $detail= json_decode($response->getBody());
-
-        $response = $this->client->request('GET', 'kelas-walkel');
-
-        $data_teacher= json_decode($response->getBody());
-
         $data = [
             'title' => 'Rapodig - Edit Data Kelas',
-            'data'=> $detail,
-            'data_teacher' =>$data_teacher,
-            'page'=> 'edit'
+            'page' => 'edit'
         ];
-        
+
+        $response = $this->client->request('GET', 'kelas/' . $num, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if (response()) {
+            $data['data'] = json_decode($response->getBody());
+        } else {
+            $data['data_err'] = json_decode($response->getBody());
+        }
+
+        $response = $this->client->request('GET', 'kelas-walkel', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() === 200) {
+            $data['data_teacher'] = json_decode($response->getBody());
+        } else {
+            $data['data_err'] = json_decode($response->getBody());
+        }
+
         return view('dashboard/data_umum/form-data_kelas', $data);
     }
 
@@ -117,22 +163,33 @@ class c_dataKelas extends BaseController {
             'student_count' => $jumlah_siswa
         ];
 
-        $response = $this->client->request('PUT', 'kelas/'.$id, ['json'=>$request_client_data]);
+        $response = $this->client->request('PUT', 'kelas/' . $id, [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
-        return redirect()->to('/data-kelas'); 
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
+        }
+
+        return redirect()->to('/data-kelas');
     }
 
     public function delete($num)
     {
-        $response = $this->client->request('DELETE', 'kelas/'.$num);
+        $response = $this->client->request('DELETE', 'kelas/' . $num,[
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
         $code = $response->getStatusCode();
-        // if ($code = 500) {
-        //     # code...
-        // }
-
-        $body_response= json_decode($response->getBody());
-        
-        return redirect()->to('/data-kelas'); 
+        if ($code !== 200) {
+            return redirect()->back()->with('data_err', json_decode($response->getBody()));
+        }
+        return redirect()->to('/data-kelas');
     }
-
 }

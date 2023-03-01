@@ -26,7 +26,7 @@ class AuthUser implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         $session = session();
-        if (!($session->has('id') && $session->has('is_teacher') && $session->has('is_admin'))) {
+        if (!($session->has('token') && $session->has('is_teacher') && $session->has('is_admin') && $session->has('username'))) {
             return redirect()->to('/')->with('message', 'Anda Belum Login');
         }
 
