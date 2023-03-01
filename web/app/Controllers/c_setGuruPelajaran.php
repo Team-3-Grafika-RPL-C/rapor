@@ -131,8 +131,6 @@ class c_setGuruPelajaran extends BaseController
             $data['data_err'] = $response_body;
         }
 
-        // dd($data);
-
         return view('dashboard/setting_data/form-set_guru_pelajaran_detail', $data);
     }
 
@@ -330,10 +328,14 @@ class c_setGuruPelajaran extends BaseController
 
     public function delete($id)
     {
-        $response = $this->client->request('DELETE', 'guru-pelajaran/' . $id);
+        $response = $this->client->request('DELETE', 'guru-pelajaran/' . $id, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
         if ($response->getStatusCode() !== 200) {
-            $response_body = json_decode($response->getBody());
             return redirect()->back()->with('data_err', $response_body);
         }
 

@@ -71,6 +71,9 @@
     </div>
 </div>
 <!-- Modal Delete -->
+<?php
+foreach ($data->guru_pelajaran as $dat) {
+?>
 <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="alertModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content py-4">
@@ -90,7 +93,9 @@
         </div>
     </div>
 </div>
-
+<?php
+}
+?>
 
 </div>
 <!-- /.container-fluid -->
