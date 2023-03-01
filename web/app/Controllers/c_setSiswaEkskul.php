@@ -29,7 +29,7 @@ class c_setSiswaEkskul extends BaseController
             'http_errors' => false
         ]);
         if ($option_ekskul->getStatusCode() === 200) {
-            $data['option_eskul'] = json_decode($option_ekskul->getBody());
+            $data['option_ekskul'] = json_decode($option_ekskul->getBody());
         } else {
             $data['data_err'] = json_decode($option_ekskul->getBody());
         }
@@ -45,7 +45,7 @@ class c_setSiswaEkskul extends BaseController
         } else {
             $data['siswa'] = json_decode($response_siswa->getBody());
         }
-
+        // dd($data);
         return view('dashboard/setting_data/set-siswa_ekskul', $data);
     }
 
@@ -70,12 +70,12 @@ class c_setSiswaEkskul extends BaseController
 
     public function insert()
     {
-        $id_students = $this->request->getVar('id_students');
+        $id_student = $this->request->getVar('id_student');
         $id_extracurricular = $this->request->getVar('id_extracurricular');
 
-        foreach ($id_students as $key => $value) {
+        foreach ($id_student as $key => $value) {
             $request_client_data = [
-                'id_students' => $value,
+                'id_student' => $value,
                 'id_extracurricular' => $id_extracurricular,
             ];
 

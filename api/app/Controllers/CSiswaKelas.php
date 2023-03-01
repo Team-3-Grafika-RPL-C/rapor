@@ -72,7 +72,6 @@ class CSiswaKelas extends ResourceController
         LEFT JOIN class_students b ON b.id_students = a.id
         WHERE
         a.is_deleted = 0 AND
-        b.is_deleted = 0 AND
         b.id_students IS NULL";
         $data_siswa = $this->api_helpers->queryGetArray($query);
 

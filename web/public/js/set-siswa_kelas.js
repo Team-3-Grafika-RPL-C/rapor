@@ -15,7 +15,7 @@ $('#kelas, #tahun').change(() => {
 
 function retrieveDataSiswa(){
     $.ajax({
-        url: "http://localhost:8080/data-siswa-kelas",
+        url: "https://2813-103-165-41-34.ap.ngrok.io/data-siswa-kelas",
         method: "post",
         data: {
             id_academic_year: $('#tahun').val(),
