@@ -20,21 +20,21 @@
             <!-- Form Data Kelas -->
             <div class="mx-3">
                 <div class="container">
-                    <form action="<?= $page == 'edit' ? '/data-tp/form-edit/'.$data->tp_detail->id :'/data-tp/form' ?>" method="post">
+                    <form action="<?= $page == 'edit' ? '/data-tp/form-edit/'.$detail->tp_detail->id :'/data-tp/form' ?>" method="post">
                         <div class="row">
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Kode</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="kode_tp" name="kode_tp"
-                                value = "<?= $page == 'edit' ? $data->tp_detail->learning_purpose_code : '' ?>">
+                                value = "<?= $page == 'edit' ? $detail->tp_detail->learning_purpose_code : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h text-gray-900 font-weight-bold">Deskripsi <br> Tujuan Pembelajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="tp" name="tp"
-                                value = "<?= $page == 'edit' ? $data->tp_detail->learning_purpose_description : '' ?>">
+                                value = "<?= $page == 'edit' ? $detail->tp_detail->learning_purpose_description : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Capaian Pembelajaran</h6>
@@ -42,7 +42,7 @@
                             <div class="col-md-8 mb-4">
                                 <select name="cp" id="cp" class="custom-select">
                                     <?php foreach ($data_cp->cp as $dat) { ?>
-                                    <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->tp_detail->id_learning_outcome ?'selected' :'') :'' ?>>
+                                    <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $detail->tp_detail->id_learning_outcome ?'selected' :'') :'' ?>>
                                         <?= $dat->learning_outcome_description ?>
                                     </option>
                                     <?php
@@ -56,7 +56,7 @@
                             <div class="col-md-8 mb-4">
                                 <select name="semester" id="semester" class="custom-select">
                                     <?php foreach ($data_semester->semester as $dat) {?>
-                                    <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->tp_detail->id_semester ?'selected' :'') :'' ?>>
+                                    <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $detail->tp_detail->id_semester ?'selected' :'') :'' ?>>
                                         <?= $dat->semester ?>
                                     </option>
                                     <?php

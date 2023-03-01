@@ -189,8 +189,7 @@ $routes->get('/presensi-option-kelas', 'CPresensi::option_kelas');
 
 // --- Rapor Semester --- //
 $routes->get('/rapor', 'CRaporSemester::index');
-$routes->get('/rapor-option-tahun', 'CRaporSemester::option_tahun');
-$routes->get('/rapor-option-siswa', 'CRaporSemester::option_siswa');
+$routes->get('/rapor-option-siswa/(:num)', 'CRaporSemester::option_siswa/$1');
 $routes->get('/rapor-profil/(:num)', 'CRaporSemester::get_profil/$1');
 $routes->get('/rapor-nilai/(:num)', 'CRaporSemester::get_nilai/$1');
 $routes->get('/rapor-nilai-ekskul/(:num)', 'CRaporSemester::get_nilai_ekskul/$1');
