@@ -4,7 +4,9 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class c_setPelajaranKelas extends BaseController {
+class c_setPelajaranKelas extends BaseController
+{
+    private $client, $session;
     public function __construct()
     {
         $this->client = \Config\Services::curlrequest([
@@ -46,8 +48,8 @@ class c_setPelajaranKelas extends BaseController {
 
     public function form_detail($id)
     {
-        $response = $this->client->request('GET', 'pelajaran-kelas/'.$id);
-        $body_response= json_decode($response->getBody());
+        $response = $this->client->request('GET', 'pelajaran-kelas/' . $id);
+        $body_response = json_decode($response->getBody());
 
         $data = [
             'title' => 'Rapodig - Detail Pelajaran Kelas',
@@ -56,5 +58,4 @@ class c_setPelajaranKelas extends BaseController {
 
         return view('dashboard/setting_data/form-set_pelajaran_kelas_detail', $data);
     }
-
 }

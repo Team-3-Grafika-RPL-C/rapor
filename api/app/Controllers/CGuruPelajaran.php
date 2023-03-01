@@ -22,6 +22,7 @@ class CGuruPelajaran extends ResourceController
      */
     public function index()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $query = "SELECT DISTINCT
         a.id,
         a.id_teacher,
@@ -52,6 +53,7 @@ class CGuruPelajaran extends ResourceController
      */
     public function show($id = null)
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $query = "SELECT
         a.id,
         a.id_teacher,
@@ -111,6 +113,11 @@ class CGuruPelajaran extends ResourceController
      */
     public function create()
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
+        
         $rules = $this->validate([
             'id_teacher' => 'required',
             'id_class' => 'required',
@@ -122,7 +129,7 @@ class CGuruPelajaran extends ResourceController
                 'message' => $this->validator->getErrors()
             ];
 
-            return $this->failValidationError($response);
+            return $this->failValidationErrors($response);
         }
 
         $data = $this->model->insert([
@@ -146,6 +153,11 @@ class CGuruPelajaran extends ResourceController
      */
     public function update($id = null)
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
+        
         $rules = $this->validate([
             'id_teacher' => 'required',
             'id_class' => 'required',
@@ -180,6 +192,11 @@ class CGuruPelajaran extends ResourceController
      */
     public function delete($id = null)
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
+        
         $query = "UPDATE teacher_subject SET is_deleted = 1 WHERE id=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 
@@ -194,6 +211,7 @@ class CGuruPelajaran extends ResourceController
     }
     public function option_guru()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $query = "SELECT a.id, a.teacher_name FROM teachers a WHERE a.is_deleted = 0";
         $data_guru = $this->api_helpers->queryGetArray($query);
 
@@ -205,6 +223,7 @@ class CGuruPelajaran extends ResourceController
     }
     public function option_kelas()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $query = "SELECT DISTINCT a.id, a.class_name FROM class a WHERE a.is_deleted = 0";
         $data_kelas = $this->api_helpers->queryGetArray($query);
 
@@ -216,6 +235,7 @@ class CGuruPelajaran extends ResourceController
     }
     public function option_tahun()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $query = "SELECT DISTINCT a.id, a.academic_year FROM academic_years a WHERE a.is_deleted = 0";
         $data_tahun = $this->api_helpers->queryGetArray($query);
 
@@ -227,6 +247,7 @@ class CGuruPelajaran extends ResourceController
     }
     public function data_mapel()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $query = "SELECT
         a.id,
         CONCAT_WS(' Kelas ', a.subject_name, a.class) as mapel

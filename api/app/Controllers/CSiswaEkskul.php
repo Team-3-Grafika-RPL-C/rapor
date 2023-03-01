@@ -48,6 +48,8 @@ class CSiswaEkskul extends ResourceController
 
     public function option_ekskul()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        
         $query = "SELECT DISTINCT a.id, a.extracurricular_name FROM extracurricular a WHERE a.is_deleted = 0";
         $data_ekskul = $this->api_helpers->queryGetArray($query);
 
@@ -60,6 +62,8 @@ class CSiswaEkskul extends ResourceController
 
     public function data_siswa_ekskul()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+
         $id_extracurricular = $this->request->getVar('id_extracurricular');
 
         $query = "SELECT DISTINCT
@@ -81,6 +85,8 @@ class CSiswaEkskul extends ResourceController
 
     public function data_siswa()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+
         $query = "SELECT DISTINCT
         a.id,
         a.nis,
@@ -101,6 +107,11 @@ class CSiswaEkskul extends ResourceController
 
     public function insert()
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
+
         $rules = $this->validate([
             'id_student' => 'required'
         ]);
@@ -127,6 +138,11 @@ class CSiswaEkskul extends ResourceController
     
     public function delete($id = null)
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
+
         $query = "UPDATE extracurricular_students SET is_deleted = 1 WHERE id=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);
 

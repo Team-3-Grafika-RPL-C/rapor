@@ -22,6 +22,7 @@ class CSemester extends ResourceController
      */
     public function index()
     {
+        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         $data = [
             'message' => 'Data Semester',
             'data_semester' => $this->model->findAll()
@@ -32,6 +33,10 @@ class CSemester extends ResourceController
 
     public function activation($id = null)
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
         $query = "UPDATE semesters SET is_active = 1 WHERE id=?";
         $activate_data = $this->api_helpers->queryExecute($query, [$id]); 
 
@@ -44,6 +49,10 @@ class CSemester extends ResourceController
 
     public function non_activation($id = null)
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if (!$this->api_helpers->isAdmin($token)) {
+            return $this->failForbidden('not admin');
+        }
         $query = "UPDATE semesters SET is_active = 0 WHERE id=?";
         $activate_data = $this->api_helpers->queryExecute($query, [$id]); 
 

@@ -41,7 +41,8 @@ class c_login extends BaseController
         $session_data = [
             'token' => $result->token,
             'is_teacher' => $result->is_teacher == 1 ? true : false,
-            'is_admin' => $result->is_admin == 1 ? true : false
+            'is_admin' => $result->is_admin == 1 ? true : false,
+            'username' => $username
         ];
 
         $session = session();
