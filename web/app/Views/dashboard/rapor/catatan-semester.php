@@ -68,7 +68,8 @@
                         <th class="col-1 my-auto text-center">No</th>
                         <th class="col-1 my-auto text-center">NIS</th>
                         <th class="col-2 my-auto text-center">Nama</th>                        
-                        <th class="col-7 my-auto text-center">Catatan Wali Kelas</th>
+                        <th class="col-5 my-auto text-center">Catatan Wali Kelas</th>
+                        <th class="col-3 my-auto text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">                    
@@ -83,58 +84,41 @@
                             Faisal Adi Prayugo
                         </td>
                         <td>
-                         <textarea class="form-control" name="" id="" cols="67" rows="3"></textarea>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi laborum saepe cupiditate ipsam corrupti temporibus aliquam, doloremque nemo officia neque, similique ducimus illo maiores a tempore. Quis voluptate iste accusantium! Alias quidem vel, consequatur distinctio nihil repellendus libero cumque delectus molestias labore perspiciatis veniam? Nostrum, maiores! Officia cumque ipsum est ea deserunt non veniam, alias a beatae assumenda nostrum doloribus!
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-warning btn-rounded my-1"  data-toggle="modal" data-target="#exampleModal">
+                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
+                            </button>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div class="container row justify-content-center">
-                <a class="btn d-sm-inline-block text-light btn-sm px-3 my-2" href="#!" style="min-width: 45rem; background-color: #845EF7; border-radius: 8px" data-toggle="modal" data-target="#data-siswa-modal"><span>Simpan</span></a>
-                <a class="btn d-sm-inline-block text-gray-900 btn-sm px-3 my-2" href="#!" style="min-width: 45rem; background-color: #ECEEEF; border-radius: 8px" data-toggle="modal" data-target="#data-siswa-modal"><span>Batal</span></a>
-            </div>
         </div>
     </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Catatan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="" method="post">
+        <div class="modal-body">
+            <label for="message-text" class="col-form-label">Catatan Wali Kelas:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
-                        <!-- <div class="card">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">                                    
-                                        <thead>
-                                            <tr>
-                                                <th class="col-1 my-1 text-center">No</th>
-                                                <th class="col-1 my-1 text-center">NIS</th>
-                                                <th class="col-3 my-1 text-center">Nama</th>
-                                                <th class="col-7 my-1 text-center">Catatan Wali Kelas</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="col-1 my-1 text-center">1</td>
-                                                <td class="col-1 my-1 text-center">23423423</td>
-                                                <td class="col-3 my-1 text-center">Faisal Adi Prayugo</td>                                            
-                                                <td class="col-7 my-1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius cum iure, nihil veritatis neque reiciendis doloribus accusamus incidunt quis, et dolorum eum. Laboriosam libero sed corrupti nobis tenetur a labore, similique placeat nisi quae, beatae impedit quod! Veniam enim, quaerat incidunt dolor quis accusamus non consectetur, neque dignissimos saepe voluptatibus ipsum quisquam esse repellat repellendus architecto alias modi dicta mollitia id asperiores facilis, corrupti expedita similique. Dolor aspernatur debitis autem nulla incidunt aut, minima rerum modi, itaque laborum est esse, pariatur veritatis eveniet alias corrupti consequatur? Impedit dolorem, minima dolores eaque nemo dicta ipsam laudantium cum corrupti repellat iusto at?</td>                                            
-                                            </tr>
-                                            <tr>
-                                                <td class="col-1 my-1 text-center">2</td>
-                                                <td class="col-1 my-1 text-center">323423434</td>
-                                                <td class="col-3 my-1 text-center">Abu Bakar As Shiddiq</td>
-                                                <td class="col-7 my-1">Abu Bakar As Shiddiq</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="row my-2 justify-content-center text-right">
-                                            <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="#!" style="min-width: 45rem; background-color: #845EF7; border-radius: 8px" data-toggle="modal" data-target="#data-siswa-modal">
-                                                <span>Simpan</span>
-                                            </a>
-                                    </div>
-                                    <div class="row my-2 justify-content-center text-right">
-                                            <a class="btn d-sm-inline-block text-gray-900 btn-sm shadow px-4" href="#!" style="min-width: 45rem; background-color: #ECEEEF; border-radius: 8px" data-toggle="modal" data-target="#data-siswa-modal">
-                                                <span>Batal</span>
-                                            </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
 
 <script src="<?= base_url(); ?>/js/ctt-semester.js"></script>
 
