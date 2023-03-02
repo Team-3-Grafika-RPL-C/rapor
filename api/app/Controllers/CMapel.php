@@ -22,7 +22,10 @@ class CMapel extends ResourceController
      */
     public function index()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $data = [
             'message' => 'Data Mata Pelajaran:',
             'data_mapel' => $this->model->orderBy('id', 'ASC')->where('is_deleted', 0)->findAll()
@@ -38,7 +41,10 @@ class CMapel extends ResourceController
      */
     public function show($id = null)
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $data = [
             'message' => 'Berhasil',
             'mapel_detail' => $this->model->find($id)
@@ -59,6 +65,9 @@ class CMapel extends ResourceController
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -97,6 +106,9 @@ class CMapel extends ResourceController
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -135,6 +147,9 @@ class CMapel extends ResourceController
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }

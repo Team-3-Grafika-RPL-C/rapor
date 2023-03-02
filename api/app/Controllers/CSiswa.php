@@ -24,7 +24,10 @@ class CSiswa extends ResourceController
      */
     public function index()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $data = [
             'message' => 'Data Siswa:',
             'data_siswa' => $this->model->where('is_deleted', 0)->orderBy('id', 'DESC')->findAll()
@@ -40,7 +43,10 @@ class CSiswa extends ResourceController
      */
     public function show($id = null)
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $data = [
             'message' => 'Berhasil',
             'siswa_detail' => $this->model->find($id)
@@ -61,6 +67,9 @@ class CSiswa extends ResourceController
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -138,6 +147,9 @@ class CSiswa extends ResourceController
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -203,6 +215,9 @@ class CSiswa extends ResourceController
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }

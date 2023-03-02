@@ -22,7 +22,10 @@ class CTahunAjaran extends ResourceController
      */
     public function index()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         
         $data = [
             'message' => 'Data Tahun Ajaran:',
@@ -39,7 +42,10 @@ class CTahunAjaran extends ResourceController
      */
     public function show($id = null)
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         
         $data = [
             'message' => 'Detail Tahun Ajaran:',
@@ -57,6 +63,9 @@ class CTahunAjaran extends ResourceController
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -92,6 +101,9 @@ class CTahunAjaran extends ResourceController
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -127,6 +139,9 @@ class CTahunAjaran extends ResourceController
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -144,9 +159,13 @@ class CTahunAjaran extends ResourceController
     public function activation($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
+        
         $query = "UPDATE academic_years SET is_active = 0 WHERE is_active=1";
         $nonactivate_data = $this->api_helpers->queryExecute($query, [$id]); 
 
@@ -163,6 +182,9 @@ class CTahunAjaran extends ResourceController
     public function non_activation($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -179,7 +201,10 @@ class CTahunAjaran extends ResourceController
 
     public function option_tahun()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
 
         $data = date('y');
 

@@ -23,7 +23,10 @@ class CTPembelajaran extends ResourceController
      */
     public function index()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
 
         $data = [
             'message' => 'Data Tujuan Pembelajaran',
@@ -44,7 +47,10 @@ class CTPembelajaran extends ResourceController
      */
     public function show($id = null)
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
 
         $query = "SELECT a.*, b.learning_outcome_description, c.semester FROM learning_purposes a INNER JOIN learning_outcomes b ON a.id_learning_outcome = b.id INNER JOIN semesters c ON a.id_semester = c.id WHERE a.id = ?";
         $data_tp = $this->api_helpers->queryGetFirst($query, [$id]);
@@ -69,6 +75,9 @@ class CTPembelajaran extends ResourceController
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -111,6 +120,9 @@ class CTPembelajaran extends ResourceController
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -152,6 +164,9 @@ class CTPembelajaran extends ResourceController
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -168,7 +183,10 @@ class CTPembelajaran extends ResourceController
 
     public function option_cp()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
 
         $query = "SELECT a.id, a.learning_outcome_description FROM learning_outcomes a WHERE a.is_deleted = 0";
         $data_cp = $this->api_helpers->queryGetArray($query);
@@ -186,7 +204,10 @@ class CTPembelajaran extends ResourceController
 
     public function option_semester()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
 
         $query = "SELECT a.id, a.semester FROM semesters a WHERE a.is_deleted = 0";
         $data_semester = $this->api_helpers->queryGetArray($query);

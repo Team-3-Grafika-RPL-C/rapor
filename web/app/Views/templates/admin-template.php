@@ -71,7 +71,7 @@
       <!-- <div class="sidebar-heading">Interface</div> -->
 
       <!-- Nav Item - Data Umum Collapse Menu  -->
-      <li class="nav-item <?= session()->get('is_admin') ? '' : '' ?>">
+      <li class="nav-item <?= session()->get('is_admin') ? '' : 'd-none' ?>">
         <a class="nav-link collapsed d-md-flex" href="#" data-toggle="collapse" data-target="#collapseDataUmum" aria-expanded="true" aria-controls="collapseDataUmum">
           <i class="ri-book-2-fill" style="font-size: 24px"></i>
           <span class="my-auto ml-2 mr-auto">Data Umum</span>

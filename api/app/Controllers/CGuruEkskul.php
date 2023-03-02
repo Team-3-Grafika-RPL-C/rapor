@@ -22,7 +22,10 @@ class CGuruEkskul extends ResourceController
      */
     public function index()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $query = "SELECT DISTINCT
         a.id,
         a.teacher_name,
@@ -51,7 +54,10 @@ class CGuruEkskul extends ResourceController
      */
     public function show($id = null)
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $query = "SELECT a.*, b.extracurricular_name, c.academic_year FROM extracurricular_teacher a INNER JOIN extracurricular b ON a.id_extracurricular = b.id INNER JOIN academic_years c ON a.id_academic_year = c.id WHERE a.id = ?";
         $data_guru_ekskul = $this->api_helpers->queryGetFirst($query, [$id]);
 
@@ -71,6 +77,9 @@ class CGuruEkskul extends ResourceController
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -110,6 +119,9 @@ class CGuruEkskul extends ResourceController
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -149,6 +161,9 @@ class CGuruEkskul extends ResourceController
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
@@ -165,6 +180,10 @@ class CGuruEkskul extends ResourceController
 
     public function option_guru()
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         $query = "SELECT a.id, a.teacher_name FROM teachers a WHERE a.is_deleted = 0";
         $data_guru = $this->api_helpers->queryGetArray($query);
 
@@ -177,7 +196,10 @@ class CGuruEkskul extends ResourceController
 
     public function option_tahun()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         
         $query = "SELECT DISTINCT a.id, a.academic_year FROM academic_years a WHERE a.is_deleted = 0 AND a.is_active = 1";
         $data_tahun = $this->api_helpers->queryGetArray($query);
@@ -191,7 +213,10 @@ class CGuruEkskul extends ResourceController
 
     public function data_ekskul()
     {
-        $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        };
         $query = "SELECT
         a.id,
         a.extracurricular_name
