@@ -36,7 +36,7 @@ class CScore extends ResourceController
             $query = "SELECT subjects.subject_name, subjects.id FROM subjects INNER JOIN class_subject_detail ON subjects.id = class_subject_detail.id_subject INNER JOIN class_subject ON class_subject.id = class_subject_detail.id_class_subject WHERE class_subject.id_class = ?";
             $result_subject = $this->api_helpers->queryGetArray($query, [$res_class['id']]);
             foreach ($result_subject as $res_sub) {
-                $query = "SELECT students.student_name, score.score FROM students INNER JOIN class_students ON students.id = class_students.id_students LEFT JOIN score ON class_students.id = score.id_class_students WHERE class_students.id_class = ? AND score.id_subjects = ?";
+                $query = "SELECT students.student_name, score.score, score.id FROM students INNER JOIN class_students ON students.id = class_students.id_students LEFT JOIN score ON class_students.id = score.id_class_students WHERE class_students.id_class = ? AND score.id_subjects = ?";
                 $result_student = $this->api_helpers->queryGetArray($query, [$res_class['id'], $res_sub['id']]);
                 $data[$res_class['class_name']][$res_sub['subject_name']] = $result_student;
             }

@@ -21,18 +21,18 @@ class c_inputNilaiMapel extends BaseController
             ],
             'http_errors' => false
         ]);
-        
+
         $data = [
             'title' => 'Rapodig - Penilaian'
         ];
 
-        $response_body=json_decode($response->getBody());
-        if($response->getStatusCode()===200){
-            $data['data']=$response_body;
-        }else{
-            $data['data_err']=$response_body;
+        $response_body = json_decode($response->getBody());
+        if ($response->getStatusCode() === 200) {
+            $data['data'] = $response_body;
+        } else {
+            $data['data_err'] = $response_body;
         }
-        
+
         return view('dashboard/penilaian/input-nilai_mapel', $data);
     }
     public function form()
