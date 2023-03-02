@@ -52,14 +52,15 @@ class CCatatanSemester extends ResourceController{
         $query = "SELECT DISTINCT
         a.id,
         b.nis,
-        b.student_name
+        b.student_name,
+        a.notes
         FROM class_students a
         INNER JOIN students b ON a.id_students = b.id
         WHERE 
         a.id_academic_year = ? AND a.id_class = ? AND a.is_deleted = 0 AND b.is_deleted = 0";
         $data_siswa = $this->api_helpers->queryGetArray($query, [$id_academic_year, $id_class]);
 
-        $data = [
+        $data_siswa = [
             'data_siswa' => $data_siswa 
         ];
 

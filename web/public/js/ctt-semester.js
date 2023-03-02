@@ -1,3 +1,4 @@
+const BASE_URL = $('#base_url').val();
 // d-none set
 $('.tampilkan-btn').click(() => {
     retrieveDataSiswa();
@@ -11,14 +12,14 @@ $('.tampilkan-btn').click(() => {
 
 function retrieveDataSiswa(){
     $.ajax({
-        url: BASE_URL+"/data-catatan-semester",
+        url: "http://localhost/rapor/api/public/data-catatan-semester",
         method: "post",
         data: {
             id_academic_year: $('#tahun').val(),
             id_class: $('#kelas').val() 
         },
         success: (result) => {
-            result = JSON.parse(result);
+            console.log(result);
             $('#dataTable').DataTable().clear();
             $('#dataTable').DataTable().destroy();
             $('#tbody-table').empty();
@@ -29,14 +30,15 @@ function retrieveDataSiswa(){
                         <td>${(index+1)}</td>
                         <td>${value.nis}</td>
                         <td>${value.student_name}</td>
-                        <td class="text-center">
-                            <a href="${BASE_URL}/set-siswa_kelas/delete/${value.id}" class="btn btn-danger btn-rounded">
-                                <i class="ri-delete-bin-7-fill" title="Delete"></i>
-                            </a>
+                        <td>${value.notes}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning btn-rounded my-1"  data-toggle="modal" data-target="#modalcatatan${value.id}">
+                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
+                            </button>
                         </td>
                     </tr>
                 `)
-            })
+                })
 
             $('#dataTable').DataTable();
         },

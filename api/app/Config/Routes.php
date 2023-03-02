@@ -53,6 +53,7 @@ $routes->get('/', 'Home::index');
 
 // --- Account --- //
 $routes->post('/login', 'CAccounts::login');
+$routes->get('/get-id','CAccount::getId');
 
 // --- Data Kelas --- //
 $routes->get('/kelas', 'CKelas::index');

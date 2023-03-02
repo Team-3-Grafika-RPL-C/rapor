@@ -251,6 +251,9 @@
 </div>
 
 <script src="<?= base_url(); ?>/js/form-set_siswa_ekskul.js"></script>
+<script>
+    retrieveProfil("<?= $data->id; ?>");
+</script>
 
 <!-- End of Main Content -->
 <?= $this->endsection(); ?>                    

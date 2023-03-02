@@ -50,4 +50,15 @@ class CAccounts extends ResourceController
             'data' => $result[0]
         ]);
     }
+
+    public function getId()
+    {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        $query="SELECT a.id FROM class_students a INNER JOIN students b ON a.id_students = b.id WHERE b.id_account = (SELECT id FROM account WHERE token = ?)";
+        $result = $this->api_helpers->queryGetFirst($query, [$token]);
+
+        return $this->respond([
+            'data'=>$result
+        ]);
+    }
 }
