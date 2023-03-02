@@ -13,12 +13,13 @@
     <div class="card-header py-3">
         <h4 class="m-0 font-weight-bold text-indigo-900">Tabel Catatan Semester</h4>
         <input type="hidden" id="base_url" value="<?=base_url()?>" />
-        <input type="hidden" id="input_tahun" name="id_academic_year" />
-        <input type="hidden" id="input_kelas" name="id_class" />
+        
     </div>
     <div class="mx-3">
                 <div class="container">
                     <form action="" method="POST">
+                    <input type="hidden" id="input_tahun" name="id_academic_year" />
+                    <input type="hidden" id="input_kelas" name="id_class" />
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between my-4">
@@ -38,7 +39,7 @@
                                     <div class="col-xs-2 col-lg-9">
                                         <select class="custom-select my-1 mr-sm-2" id="tahun">
                                             <?php foreach ($option_tahun->data_tahun as $ot) { ?>
-                                                <option value="<?= $ot->id ?>">
+                                                <option value="1">
                                                     <?= $ot->academic_year ?>
                                                 </option>
                                             <?php } ?>
@@ -85,10 +86,7 @@
         </div>
     </div>
 
-<?php 
-foreach ($data_siswa[0] as $dat) {
-?>
-<div class="modal fade" id="modalcatatan<?= $dat->id ?>" tabindex="-1" aria-labelledby="modalcatatanLabel" aria-hidden="true">
+<div class="modal fade" id="modalcatatan" tabindex="-1" aria-labelledby="modalcatatanLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -110,8 +108,6 @@ foreach ($data_siswa[0] as $dat) {
     </div>
   </div>
 </div>
-<?php
-} ?>
 
 <script src="<?= base_url(); ?>/js/ctt-semester.js"></script>
 

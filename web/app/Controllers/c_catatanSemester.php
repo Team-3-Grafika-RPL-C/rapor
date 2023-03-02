@@ -33,7 +33,6 @@ class c_catatanSemester extends BaseController
         } else {
             $data['data_err'] = json_decode($response_kelas->getBody());
         }
-
         $response_tahun = $this->client->request('GET', 'cs-option-tahun', [
             'headers' => [
                 'Authorization' => 'Bearer ' . session()->get('token')
@@ -67,6 +66,7 @@ class c_catatanSemester extends BaseController
             ],
             'http_errors' => false
         ]);
+
 
         if ($response->getStatusCode() !== 200) {
             return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
