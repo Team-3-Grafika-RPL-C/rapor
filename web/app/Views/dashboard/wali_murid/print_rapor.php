@@ -59,7 +59,7 @@
                                         </td>
                                         <td style="width:80%; text-align:left;">
                                             <font face="Arial" size="2">:
-                                                <span id="nama-siswa">-</span>
+                                                <span id="nama-siswa"><?=$data_profil->data_siswa->student_name?></span>
                                             </font> 
                                         </td>
                                     </tr>
@@ -69,7 +69,7 @@
                                         </td>
                                         <td style="width:80%; text-align:left;">
                                             <font face="Arial" size="2">:
-                                                <span id="nis">-</span>
+                                                <span id="nis"><?=$data_profil->data_siswa->nis?></span>
                                             </font> 
                                         </td>
                                     </tr>
@@ -79,7 +79,7 @@
                                         </td>
                                         <td style="width:80%; text-align:left;">
                                             <font face="Arial" size="2">:
-                                                <span id="nisn">-</span>
+                                                <span id="nisn"><?=$data_profil->data_siswa->nisn?></span>
                                             </font> 
                                         </td>
                                     </tr>
@@ -89,7 +89,7 @@
                                         </td>
                                         <td style="width:80%; text-align:left;">
                                             <font face="Arial" size="2">:
-                                                <span id="kelas">-</span>
+                                                <span id="kelas"><?=$data_profil->data_siswa->class_name?></span>
                                             </font> 
                                         </td>
                                     </tr>
@@ -99,7 +99,7 @@
                                         </td>
                                         <td style="width:80%; text-align:left;">
                                             <font face="Arial" size="2">:
-                                                <span id="tahun-ajaran">-</span>
+                                                <span id="tahun-ajaran"><?=$data_profil->data_siswa->academic_year?></span>
                                             </font> 
                                         </td>
                                     </tr>
@@ -142,7 +142,34 @@
                     </tr>
                 </thead>
                 <tbody id="nilai-tabel">
-                    
+                    <?php 
+                    $nomer = 1;
+                    foreach ($data_nilai->data_siswa as $dat) { ?>
+                    <tr class="text-gray-900">
+                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
+                            <font face="Arial" size="2">
+                                <?= $nomer ?>
+                                <?php $nomer++ ?>
+                            </font>
+                        </td>
+                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
+                            <font face="Arial" size="2">
+                                <?= $dat->subject_name ?>
+                            </font>
+                        </td>
+                        <td class="td-padding" style="border: 1px solid #000; text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
+                            <font face="Arial" size="2">
+                                <?= $dat->score ?>
+                            </font>
+                        </td>
+                        <td class="td-border td-padding" style="text-align:left; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
+                            <font face="Arial" size="2">
+                                <?= $dat->learning_outcomes ?>
+                            </font>
+                        </td>
+                    </tr>
+                    <?php
+                    }?>
                 </tbody>
             </table>
             <!-- Ekstrakurikuler -->
@@ -167,7 +194,35 @@
                     </tr>
                 </thead>
                 <tbody id="nilai-ekskul-tabel">
-                           
+                    <?php
+                    $nomer = 1;
+                    foreach ($data_nilai_ekskul->data_siswa as $dat) {
+                    ?>
+                    <tr class="text-gray-900">
+                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
+                            <font face="Arial" size="2">
+                                <?= $nomer ?>
+                                <?php $nomer++ ?>
+                            </font>
+                        </td>
+                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
+                            <font face="Arial" size="2">
+                                <?= $dat->extracurricular_name ?>
+                            </font>
+                        </td>
+                        <td class="td-border td-padding" style="text-align:center; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
+                            <font face="Arial" size="2">
+                                <?= $dat->predicate ?>
+                            </font>
+                        </td>
+                        <td class="td-border td-padding" style="text-align:left; vertical-align:middle; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
+                            <font face="Arial" size="2">
+                                <?= $dat->description ?>
+                            </font>
+                        </td>
+                    </tr> 
+                    <?php
+                    } ?>
                 </tbody>
             </table>
             <!-- Saran-Saran -->
@@ -178,7 +233,7 @@
                 <tbody>
                     <tr class="text-gray-900">
                         <td class="td-border td-padding th-style" style="text-align:left; vertical-align:middle; height:85px; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2" id="saran"></font>
+                            <font face="Arial" size="2" id="saran"><?= $data_catatan->data_siswa[0]->notes ?></font>
                         </td>
                     </tr>
                 </tbody>
@@ -200,7 +255,7 @@
                             <font face="Arial" size="2">Sakit</font>
                         </td>
                         <td class="td-border td-padding" style="text-align:center; width:70px; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2" id="sakit">-</font>
+                            <font face="Arial" size="2" id="sakit"><?= $data_presensi->data_siswa[0]->number_of_sick ?></font>
                         </td>
                     </tr>
                     <tr>
@@ -208,7 +263,7 @@
                             <font face="Arial" size="2">Izin</font>
                         </td>
                         <td class="td-border td-padding" style="text-align:center; width:70px; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2" id="izin">-</font>
+                            <font face="Arial" size="2" id="izin"><?= $data_presensi->data_siswa[0]->number_of_permit ?></font>
                         </td>
                     </tr>
                     <tr>
@@ -216,7 +271,7 @@
                             <font face="Arial" size="2">Tanpa Keterangan</font>
                         </td>
                         <td class="td-border td-padding" style="text-align:center; width:70px; margin-top:3; margin-bottom:3; margin-left:3; margin-right:3;">
-                            <font face="Arial" size="2" id="alpha">-</font>
+                            <font face="Arial" size="2" id="alpha"><?= $data_presensi->data_siswa[0]->number_of_absents ?></font>
                         </td>
                     </tr>
                 </tbody>
@@ -250,7 +305,6 @@
 </div>
 </div>
 
-<script src="<?= base_url(); ?>/js/form-set_siswa_ekskul.js"></script>
 
 <!-- End of Main Content -->
 <?= $this->endsection(); ?>                    

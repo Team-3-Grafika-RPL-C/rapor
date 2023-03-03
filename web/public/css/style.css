@@ -262,3 +262,9 @@ a.text-indigo-500:hover, a.text-indigo-500:focus {
   color: #869099;
   padding: 1rem;
 }
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #845EF7 !important;
+  border-color: #845EF7 !important;
+}

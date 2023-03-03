@@ -53,6 +53,7 @@ $routes->get('/', 'Home::index');
 
 // --- Account --- //
 $routes->post('/login', 'CAccounts::login');
+$routes->get('/get-id','CAccounts::getId');
 
 // --- Data Kelas --- //
 $routes->get('/kelas', 'CKelas::index');
@@ -196,10 +197,25 @@ $routes->get('/rapor-nilai-ekskul/(:num)', 'CRaporSemester::get_nilai_ekskul/$1'
 $routes->get('/rapor-catatan/(:num)', 'CRaporSemester::get_catatan/$1');
 $routes->get('/rapor-presensi/(:num)', 'CRaporSemester::get_presensi/$1');
 
-// --- Nilai --- //
-$routes->get('/score', 'CScore::index');
+// --- Nilai Mapel --- //
+$routes->get('/nm-option-mapel', 'CInputNilaiMapel::option_mapel');
+$routes->get('/nm-option-kelas', 'CInputNilaiMapel::option_kelas');
+$routes->post('/nilai-mapel', 'CInputNilaiMapel::data_nilai');
+$routes->get('/nilai-mapel-detail/(:num)', 'CInputNilaiMapel::show/$1');
+$routes->post('/input-nilai-mapel', 'CInputNilaiMapel::create');
+$routes->put('/input-nilai-mapel/(:num)', 'CInputNilaiMapel::update/$1');
+$routes->delete('/input-nilai-mapel/(:num)', 'CInputNilaiMapel::delete/$1');
 
-// --- Presensi--- //
+// --- Nilai Ekskul --- //
+$routes->get('/ne-option-ekskul', 'CInputNilaiEkskul::option_ekskul');
+$routes->get('/ne-option-kelas', 'CInputNilaiEkskul::option_kelas');
+$routes->post('/nilai-ekskul', 'CInputNilaiEkskul::data_nilai');
+$routes->get('/nilai-ekskul-detail/(:num)', 'CInputNilaiEkskul::show/$1');
+$routes->post('/input-nilai-ekskul', 'CInputNilaiEkskul::create');
+$routes->put('/input-nilai-ekskul/(:num)', 'CInputNilaiEkskul::update/$1');
+$routes->delete('/input-nilai-ekskul/(:num)', 'CInputNilaiEkskul::delete/$1');
+
+// --- Catatan Semester --- //
 $routes->post('/data-catatan-semester', 'CCatatanSemester::data_siswa');
 $routes->get('/cs-option-kelas', 'CCatatanSemester::option_kelas');
 $routes->get('/cs-option-tahun', 'CCatatanSemester::option_tahun');

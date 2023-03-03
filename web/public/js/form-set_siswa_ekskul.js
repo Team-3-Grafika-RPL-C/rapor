@@ -16,7 +16,7 @@ $('#ekskul').change(() => {
 
 function retrieveDataSiswa(){
     $.ajax({
-        url: "http://localhost:8080/data-siswa-ekskul",
+        url: "https://b751-203-78-117-207.ap.ngrok.io/data-siswa-ekskul",
         method: "post",
         data: {
             id_extracurricular: $('#ekskul').val() 

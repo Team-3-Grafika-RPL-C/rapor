@@ -47,13 +47,9 @@
                         <td>
                             <?= $dat->is_active == 1
                             ?
-                            '<a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #21976B; border-radius: 8px">
-                                <span class="d-flex">AKTIF</span>
-                            </a>'
+                            '<span class="text-success">AKTIF</span>'
                             :
-                            '<a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="" style="min-width: 5rem; background-color: #C70A0A; border-radius: 8px">
-                                <span class="d-flex">NON AKTIF</span>
-                            </a>'
+                            '<span class="text-danger">NON AKTIF</span>'
                             ?>
                         </td>
                         <td>

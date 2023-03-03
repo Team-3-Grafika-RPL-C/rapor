@@ -12,30 +12,37 @@
 <div class="card shadow mb-4 mt-3">
     <div class="card-header py-3">
         <h4 class="m-0 font-weight-bold text-indigo-900">Tabel Catatan Semester</h4>
+        <input type="hidden" id="base_url" value="<?=base_url()?>" />
+        
     </div>
     <div class="mx-3">
                 <div class="container">
                     <form action="" method="POST">
+                    <input type="hidden" id="input_tahun" name="id_academic_year" />
+                    <input type="hidden" id="input_kelas" name="id_class" />
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between my-4">
                                     <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Kelas</label>
                                     <div class="col-xs-2 col-lg-9">
-                                        <select id="inputState" class="form-control">
-                                            <option>1A</option>
-                                            <option>1B</option>
-                                            <option>1C</option>
-                                            <option>2A</option>
-                                            <option>2B</option>
+                                        <select class="custom-select my-1 mr-sm-2" id="kelas">
+                                            <?php foreach ($option_kelas->data_kelas as $ok) { ?>
+                                                <option value="<?= $ok->id ?>">
+                                                    <?= $ok->class_name ?>
+                                                </option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between my-4">
                                     <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Semester</label>
                                     <div class="col-xs-2 col-lg-9">
-                                        <select id="inputState" class="form-control">
-                                            <option>Ganjil</option>
-                                            <option>Genap</option>
+                                        <select class="custom-select my-1 mr-sm-2" id="tahun">
+                                            <?php foreach ($option_tahun->data_tahun as $ot) { ?>
+                                                <option value="1">
+                                                    <?= $ot->academic_year ?>
+                                                </option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -72,36 +79,18 @@
                         <th class="col-3 my-auto text-center">Action</th>
                     </tr>
                 </thead>
-                <tbody class="text-center">                    
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            23423423
-                        </td>
-                        <td>
-                            Faisal Adi Prayugo
-                        </td>
-                        <td>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi laborum saepe cupiditate ipsam corrupti temporibus aliquam, doloremque nemo officia neque, similique ducimus illo maiores a tempore. Quis voluptate iste accusantium! Alias quidem vel, consequatur distinctio nihil repellendus libero cumque delectus molestias labore perspiciatis veniam? Nostrum, maiores! Officia cumque ipsum est ea deserunt non veniam, alias a beatae assumenda nostrum doloribus!
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-warning btn-rounded my-1"  data-toggle="modal" data-target="#exampleModal">
-                                <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
-                            </button>
-                        </td>
-                    </tr>
+                <tbody class="text-center" id="tbody-table">                    
+                    
                 </tbody>
             </table>
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalcatatan" tabindex="-1" aria-labelledby="modalcatatanLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Catatan</h5>
+        <h5 class="modal-title" id="modalcatatanLabel">Edit Catatan</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

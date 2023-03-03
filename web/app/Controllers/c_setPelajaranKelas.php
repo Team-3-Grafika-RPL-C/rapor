@@ -314,7 +314,7 @@ class c_setPelajaranKelas extends BaseController
         ]);
 
         if ($response->getStatusCode() !== 200) {
-            return redirect()->back()->with('data_err', $response_body);
+            return redirect()->back()->with('data_err', json_decode($response->getBody()));
         }
         return redirect()->to('/set-pelajaran_kelas');
     }
