@@ -23,7 +23,7 @@ class CInputNilaiMapel extends ResourceController
             return $this->failUnauthorized();
         }
         
-        $query = "SELECT DISTINCT a.id, a.subject_name FROM subjects a WHERE a.is_deleted = 0";
+        $query = "SELECT DISTINCT a.id, CONCAT_WS(' Kelas ', a.subject_name, a.class) as subject_name FROM subjects a WHERE a.is_deleted = 0 ORDER BY a.subject_name ASC";
         $data_mapel = $this->api_helpers->queryGetArray($query);
 
         $option_mapel = [
@@ -57,7 +57,7 @@ class CInputNilaiMapel extends ResourceController
             return $this->failUnauthorized();
         }
 
-        $id_subject = $this->request->getVar('id_subject');
+        $id_subject = $this->request->getVar('id_subjects');
         $id_class = $this->request->getVar('id_class');
 
         $query = "SELECT DISTINCT
@@ -67,7 +67,10 @@ class CInputNilaiMapel extends ResourceController
         FROM score a
         RIGHT JOIN class_students b ON a.id_class_students = b.id
         RIGHT JOIN students c ON b.id_students = c.id
-        WHERE a.id_subjects = ? AND b.id_class = ? ";
+        LEFT JOIN class_subject d ON d.id = a.id_class_subjects
+        INNER JOIN class_subject_detail e ON e.id_class_subject = d.id
+		WHERE 
+        b.id_class = ? AND e.id_subject = ?";
         $nilai = $this->api_helpers->queryGetArray($query, [$id_subject, $id_class]);
 
         $data_nilai = [

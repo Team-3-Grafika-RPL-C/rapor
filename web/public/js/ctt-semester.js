@@ -17,18 +17,14 @@ $('#kelas, #tahun').change(() => {
 function retrieveDataSiswa(){
     $.ajax({
         url: BASE_URL+"/data-catatan-semester",
-        headers: {
-            Authorization: "Bearer 12h21kkn2huygttyt76t76fytfyfyffhghfgvgvgg"
-        },
         method: "post",
         data: {
             id_academic_year: $('#tahun').val(),
             id_class: $('#kelas').val() 
         },
-        contentType:"application/json",
-        dataType:"json",
         success: (result) => {
             console.log(result);
+            result = JSON.parse(result);
             $('#dataTable').DataTable().clear();
             $('#dataTable').DataTable().destroy();
             $('#tbody-table').empty();
@@ -47,12 +43,13 @@ function retrieveDataSiswa(){
                         </td>
                     </tr>
                 `)
+
                 })
 
-            $('#dataTable').DataTable();
-        },
-        error: (err) => {console.log(err);}
-    })
+                $('#dataTable').DataTable();
+            },
+            error: (err) => {console.log(err);}
+        })
 
     $('#input_tahun').val($('#tahun').val())
     $('#input_kelas').val($('#kelas').val())

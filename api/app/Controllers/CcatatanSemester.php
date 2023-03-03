@@ -48,6 +48,27 @@ class CCatatanSemester extends ResourceController{
         return $this->respond($option_tahun, 200);
     }
 
+    public function show($id = null)
+    {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
+        
+        $query = "SELECT 
+        a.id,
+        a.notes
+        FROM class_students a
+        WHERE a.id = ?";
+        $catatan = $this->api_helpers->queryGetArray($query, [$id] );
+
+        $data_catatan = [
+            'data_catatan' => $catatan
+        ];
+
+        return $this->respond($data_catatan, 200);
+    }
+
     public function data_siswa()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));

@@ -16,6 +16,9 @@
     <div class="mx-3">
                 <div class="container">
                     <form action="" method="post">
+                        <input type="hidden" id="base_url" value="<?=base_url()?>">
+                        <input type="hidden" id="input_mapel" name="id_subjects" />
+                        <input type="hidden" id="input_kelas" name="id_class" />
                         <div class="row">
                             <div class="col-md-4 mb-4 mt-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Mata Pelajaran</h6>
@@ -23,18 +26,11 @@
                             <div class="col-md-8 mb-4 mt-4">
                                 <div>
                                     <select class="custom-select my-1 mr-sm-2" id="mapel">
-                                        <option>Pendidikan Agama dan Budi Pekerti</option>
-                                        <option>Pendidikan Pancasila</option>
-                                        <option>Bahasa Indonesia</option>
-                                        <option>Matematika</option>
-                                        <option>Ilmu Pengetahuan Alam dan Sosial</option>
-                                        <option>Pendidikan Jasmani Olahraga dan Kesehatan</option>
-                                        <option>Seni Musik</option>
-                                        <option>Seni Teater</option>
-                                        <option>Seni Tari</option>
-                                        <option>Seni Rupa</option>
-                                        <option>Bahasa Inggris</option>
-                                        <option>Bahasa Jawa</option>
+                                        <?php foreach ($option_mapel->data_mapel as $om) { ?>
+                                            <option value="<?= $om->id ?>">
+                                                <?= $om->subject_name ?>
+                                            </option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -44,18 +40,11 @@
                             <div class="col-md-8 mb-4">
                                 <div>
                                     <select class="custom-select my-1 mr-sm-2" id="kelas">
-                                        <option value="1">1A</option>
-                                        <option value="2">1B</option>
-                                        <option value="3">2A</option>
-                                        <option value="4">2B</option>
-                                        <option value="5">31</option>
-                                        <option value="6">3B</option>
-                                        <option value="7">4A</option>
-                                        <option value="8">4B</option>
-                                        <option value="9">5A</option>
-                                        <option value="10">5B</option>
-                                        <option value="11">6A</option>
-                                        <option value="12">6B</option>
+                                        <?php foreach ($option_kelas->data_kelas as $ok) { ?>
+                                            <option value="<?= $ok->id ?>">
+                                                <?= $ok->class_name ?>
+                                            </option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -82,58 +71,14 @@
                                     </div>
                                     <thead>
                                         <tr>
-                                            <th class="text-center"></th>
                                             <th class="text-center">No</th>
                                             <th class="text-center">Nama</th>
                                             <th class="text-center">Nilai</th>
                                             <th class="text-center">ACTION</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                                </div>
-                                            </td>
-                                            <td>1</td>
-                                            <td>Umar bin Khattab</td>
-                                            <td>99</td>
-                                            </td>
-                                            <td class="text-center">
-                                                <a href="<?= base_url(); ?>/input-nilai-mapel/form-detail" class="btn btn-info btn-rounded">
-                                                    <i class="ri-information-fill" title="Detail"></i>
-                                                </a>
-                                                <a href="" class="btn btn-warning btn-rounded">
-                                                    <i class="ri-pencil-fill" title="Edit"></i>
-                                                </a>
-                                                <a href="" class="btn btn-danger btn-rounded">
-                                                    <i class="ri-delete-bin-7-fill" title="Delete"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                                </div>
-                                            </td>
-                                            <td>2</td>
-                                            <td>Taufiqi Hidayat</td>
-                                            <td> </td>
-                                            </td>
-                                            <td class="text-center">
-                                                <a href="" class="btn btn-info btn-rounded">
-                                                    <i class="ri-information-fill" title="Detail"></i>
-                                                </a>
-                                                <a href="" class="btn btn-warning btn-rounded">
-                                                    <i class="ri-pencil-fill" title="Edit"></i>
-                                                </a>
-                                                <a href="" class="btn btn-danger btn-rounded">
-                                                    <i class="ri-delete-bin-7-fill" title="Delete"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                    <tbody id="tbody-table">
+                                        
                                     </tbody>
                                 </table>
                             </div>

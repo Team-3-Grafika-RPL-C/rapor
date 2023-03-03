@@ -220,6 +220,7 @@ $routes->post('/data-catatan-semester', 'CCatatanSemester::data_siswa');
 $routes->get('/cs-option-kelas', 'CCatatanSemester::option_kelas');
 $routes->get('/cs-option-tahun', 'CCatatanSemester::option_tahun');
 $routes->post('/catatan-semester', 'CCatatanSemester::insert');
+$routes->get('/catatan-semester/(:num)', 'CCatatanSemester::show/$1');
 $routes->put('/catatan-semester/(:num)', 'CCatatanSemester::update/$1');
 
 
