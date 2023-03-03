@@ -162,7 +162,7 @@
             } else {
                 $('.card-body').addClass('d-none')
             }
-        })
+        });s
     </script>
 
     <!-- End of Main Content -->
