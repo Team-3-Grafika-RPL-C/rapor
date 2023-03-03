@@ -155,12 +155,15 @@ $routes->get('/rapor-semester', 'c_raporSemester::index', ['filter' => 'AuthTeac
 $routes->get('/rapor-semester/form/(:num)', 'c_raporSemester::form/$1', ['filter' => 'AuthTeacher']);
 
 $routes->get('/catatan-semester', 'c_catatanSemester::index', ['filter' => 'AuthTeacher']);
+$routes->post('/data-catatan-semester', 'c_catatanSemester::getSiswaKelas', ['filter' => 'AuthTeacher']);
+$routes->get('/catatan-semester-detail/(:num)', 'c_catatanSemester::form/$1', ['filter' => 'AuthTeacher']);
 
 $routes->get('/status-kenaikan', 'c_statusKenaikan::index', ['filter' => 'AuthAdmin']);
 
 $routes->get('/identitas-siswa', 'c_identitasSiswa::index', ['filter' => 'AuthAdmin']);
 
 $routes->get('/input-nilai-mapel', 'c_inputNilaiMapel::index', ['filter' => 'AuthTeacher']);
+$routes->post('/nilai-mapel', 'c_inputNilaiMapel::getNilaiSiswa', ['filter' => 'AuthTeacher']);
 $routes->get('/input-nilai-mapel/form', 'c_inputNilaiMapel::form', ['filter' => 'AuthTeacher']);
 $routes->get('/input-nilai-mapel/form-detail', 'c_inputNilaiMapel::form_detail', ['filter' => 'AuthTeacher']);
 

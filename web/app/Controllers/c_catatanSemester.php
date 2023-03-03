@@ -46,7 +46,6 @@ class c_catatanSemester extends BaseController
             $data['data_err'] = json_decode($response_tahun->getBody());
         }
 
-
         return view('dashboard/rapor/catatan-semester', $data);
     }
 
@@ -68,6 +67,7 @@ class c_catatanSemester extends BaseController
             'http_errors' => false
         ]);
 
+
         if ($response->getStatusCode() !== 200) {
             return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
         }
@@ -75,12 +75,21 @@ class c_catatanSemester extends BaseController
         echo $response->getBody();
     }
 
-    public function form()
+    public function form($id)
     {
-        $data = [
-            'title' => 'Rapodig - Form Rapor Semester'
-        ];
+        $response = $this->client->request('GET', 'catatan-semester/' . $id, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
-        return view('dashboard/rapor/form-rapor_semester', $data);
+        $response_body = json_decode($response->getBody());
+        if ($response->getStatusCode() === 200) {
+            $data['data'] = $response_body;
+        } else {
+            $data['data_err'] = $response_body;
+        }
+
     }
 }

@@ -10,9 +10,13 @@ $('.tampilkan-btn').click(() => {
     }
 })
 
+$('#kelas, #tahun').change(() => {
+    retrieveDataSiswa();
+})
+
 function retrieveDataSiswa(){
     $.ajax({
-        url: "http://localhost/rapor/api/public/data-catatan-semester",
+        url: BASE_URL+"/data-catatan-semester",
         method: "post",
         data: {
             id_academic_year: $('#tahun').val(),
@@ -20,6 +24,7 @@ function retrieveDataSiswa(){
         },
         success: (result) => {
             console.log(result);
+            result = JSON.parse(result);
             $('#dataTable').DataTable().clear();
             $('#dataTable').DataTable().destroy();
             $('#tbody-table').empty();
@@ -32,18 +37,19 @@ function retrieveDataSiswa(){
                         <td>${value.student_name}</td>
                         <td>${value.notes}</td>
                         <td>
-                            <button type="button" class="btn btn-warning btn-rounded my-1"  data-toggle="modal" data-target="#modalcatatan${value.id}">
+                            <button type="button" class="btn btn-warning btn-rounded my-1"  data-toggle="modal" data-target="#modalcatatan">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </button>
                         </td>
                     </tr>
                 `)
+
                 })
 
-            $('#dataTable').DataTable();
-        },
-        error: (err) => {console.log(err);}
-    })
+                $('#dataTable').DataTable();
+            },
+            error: (err) => {console.log(err);}
+        })
 
     $('#input_tahun').val($('#tahun').val())
     $('#input_kelas').val($('#kelas').val())

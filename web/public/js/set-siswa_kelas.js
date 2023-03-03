@@ -17,6 +17,9 @@ $('#kelas, #tahun').change(() => {
 function retrieveDataSiswa(){
     $.ajax({
         url: BASE_URL+"/data-siswa-kelas",
+        headers: {
+            Authorization: "Bearer 12h21kkn2huygttyt76t76fytfyfyffhghfgvgvgg"
+        },
         method: "post",
         data: {
             id_academic_year: $('#tahun').val(),

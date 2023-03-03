@@ -15,16 +15,16 @@ class c_inputNilaiMapel extends BaseController
     }
     public function index()
     {
+        $data = [
+            'title' => 'Rapodig - Penilaian'
+        ];
+
         $response = $this->client->request('GET', 'score', [
             'headers' => [
                 'Authorization' => 'Bearer ' . session()->get('token')
             ],
             'http_errors' => false
         ]);
-
-        $data = [
-            'title' => 'Rapodig - Penilaian'
-        ];
 
         $response_body = json_decode($response->getBody());
         if ($response->getStatusCode() === 200) {
@@ -33,13 +33,65 @@ class c_inputNilaiMapel extends BaseController
             $data['data_err'] = $response_body;
         }
 
+        $response_mapel = $this->client->request('GET', 'nm-option-mapel', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response_mapel->getStatusCode() === 200) {
+            $data['option_mapel'] = json_decode($response_mapel->getBody());
+        } else {
+            $data['data_err'] = json_decode($response_mapel->getBody());
+        }
+
+        $response_kelas = $this->client->request('GET', 'nm-option-kelas', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response_kelas->getStatusCode() === 200) {
+            $data['option_kelas'] = json_decode($response_kelas->getBody());
+        } else {
+            $data['data_err'] = json_decode($response_kelas->getBody());
+        }
+
+
         return view('dashboard/penilaian/input-nilai_mapel', $data);
     }
+
+    public function getNilaiSiswa()
+    {
+        $id_class = $this->request->getVar('id_class');
+        $id_subjects = $this->request->getVar('id_subjects');
+
+        $request_client_data = [
+            'id_class' => $id_class,
+            'id_subjects' => $id_subjects
+        ];
+
+        $response = $this->client->request('POST', 'nilai-mapel', [
+            'json' => $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+
+        if ($response->getStatusCode() !== 200) {
+            return redirect()->back()->withInput()->with('data_err', json_decode($response->getBody()));
+        }
+
+        echo $response->getBody();
+    }
+
     public function form()
     {
         $data = [
             'title' => 'Rapodig - Input Nilai Mapel'
         ];
+
         return view('dashboard/penilaian/form-input_nilai_mapel', $data);
     }
     public function form_detail()
