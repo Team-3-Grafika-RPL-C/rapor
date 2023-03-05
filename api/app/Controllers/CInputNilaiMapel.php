@@ -50,6 +50,23 @@ class CInputNilaiMapel extends ResourceController
         return $this->respond($option_kelas, 200);
     }
 
+    public function option_tahun()
+    {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
+        
+        $query = "SELECT DISTINCT a.id, a.academic_year FROM academic_years a WHERE a.is_deleted = 0 AND a.is_active=1";
+        $data_tahun = $this->api_helpers->queryGetArray($query);
+
+        $option_tahun = [
+            'data_tahun' => $data_tahun
+        ];
+
+        return $this->respond($option_tahun, 200);
+    }
+
     public function data_nilai()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -59,19 +76,27 @@ class CInputNilaiMapel extends ResourceController
 
         $id_subject = $this->request->getVar('id_subjects');
         $id_class = $this->request->getVar('id_class');
+        $id_academic_year = $this->request->getVar('id_academic_year');
 
         $query = "SELECT DISTINCT
         a.id,
-        c.student_name,
-        a.score
-        FROM score a
-        RIGHT JOIN class_students b ON a.id_class_students = b.id
-        RIGHT JOIN students c ON b.id_students = c.id
-        LEFT JOIN class_subject d ON d.id = a.id_class_subjects
-        INNER JOIN class_subject_detail e ON e.id_class_subject = d.id
-		WHERE 
-        b.id_class = ? AND e.id_subject = ?";
-        $nilai = $this->api_helpers->queryGetArray($query, [$id_subject, $id_class]);
+        a.id_class,
+        c.class_name,
+        d.academic_year,
+        b.student_name,
+        e.score,
+        f.id,
+        g.id_subject
+        FROM class_students a
+        INNER JOIN students b ON a.id_students = b.id
+        INNER JOIN class c ON a.id_class = c.id
+        INNER JOIN academic_years d ON a.id_academic_year = d.id
+        LEFT JOIN score e ON a.id = e.id_class_students
+        LEFT JOIN class_subject f ON e.id_class_subjects = f.id
+        LEFT JOIN class_subject_detail g ON f.id = g.id_class_subject
+        WHERE 
+        a.id_academic_year = ? AND g.id_subject = ? AND d.id= ? AND a.is_deleted = 0 AND b.is_deleted = 0";
+        $nilai = $this->api_helpers->queryGetArray($query, [$id_subject, $id_class, $id_academic_year]);
 
         $data_nilai = [
             'data_nilai' => $nilai 
@@ -131,6 +156,8 @@ class CInputNilaiMapel extends ResourceController
         }
 
         $rules = $this->validate([
+            'id_class_student' => 'required',
+            'id_class_subject' => 'required',
             'learning_outcomes' => 'required',
             'learning_purpose' => 'required',
             'score' => 'required',
@@ -143,6 +170,8 @@ class CInputNilaiMapel extends ResourceController
         }
 
         $this->model->insert([
+            'id_class_student' => esc($this->request->getVar('id_class_student')),
+            'id_class_subject' => esc($this->request->getVar('id_class_subject')),
             'learning_outcomes' => esc($this->request->getVar('learning_outcomes')),
             'learning_purpose' => esc($this->request->getVar('learning_purpose')),
             'score' => esc($this->request->getVar('score')),
