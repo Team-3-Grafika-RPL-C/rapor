@@ -35,11 +35,11 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between my-4">
-                                    <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Semester</label>
+                                    <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Tahun Ajaran</label>
                                     <div class="col-xs-2 col-lg-9">
                                         <select class="custom-select my-1 mr-sm-2" id="tahun">
                                             <?php foreach ($option_tahun->data_tahun as $ot) { ?>
-                                                <option value="1">
+                                                <option value="<?= $ot->id ?>">
                                                     <?= $ot->academic_year ?>
                                                 </option>
                                             <?php } ?>
@@ -86,27 +86,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalcatatan" tabindex="-1" aria-labelledby="modalcatatanLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalcatatanLabel">Edit Catatan</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form action="" method="post">
-            <div class="modal-body">
-                <label for="message-text" class="col-form-label">Catatan Wali Kelas:</label>
-                <textarea class="form-control" id="message-text">pp</textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </form>
-        </div>
-      </div>
+    <div id="modal-root">
+        
     </div>
 
 <script src="<?= base_url(); ?>/js/ctt-semester.js"></script>

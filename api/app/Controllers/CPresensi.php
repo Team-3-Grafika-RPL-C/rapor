@@ -20,9 +20,40 @@ class CPresensi extends ResourceController
      *
      * @return mixed
      */
-    public function index()
+    public function data_siswa()
     {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
+
+        $id_academic_year = $this->request->getVar('id_academic_year');
+        $id_class = $this->request->getVar('id_class');
+
+        $query = "SELECT DISTINCT
+        a.id,
+        a.id_class,
+        c.class_name,
+        a.id_academic_year,
+        d.academic_year,
+        b.student_name,
+        a.number_of_sick,
+        a.number_of_permit,
+        a.number_of_absents
+        FROM class_students a
+        INNER JOIN students b ON a.id_students = b.id
+        INNER JOIN class c ON a.id_class = c.id
+        INNER JOIN academic_years d ON a.id_academic_year = d.id
+        WHERE 
+        a.id_academic_year = ? AND a.id_class = ? AND a.is_deleted = 0 AND b.is_deleted = 0";
         
+        $data_siswa = $this->api_helpers->queryGetArray($query, [$id_academic_year, $id_class]);
+
+        $data_siswa = [
+            'data_siswa' => $data_siswa 
+        ];
+
+        return $this->respond($data_siswa, 200);
     }
 
     /**
@@ -37,9 +68,6 @@ class CPresensi extends ResourceController
             return $this->failForbidden('not admin');
         }
         $rules = $this->validate([
-            'id_class'=> 'required',
-            'id_academic_year'=> 'required',
-            'id_students'=> 'required',
             'number_of_sick' => 'required',
             'number_of_permit' => 'required',
             'number_of_absents' => 'required'
@@ -54,9 +82,6 @@ class CPresensi extends ResourceController
         }
 
         $this->model->insert([
-            'id_class' => esc($this->request->getVar('id_class')),
-            'id_academic_year' => esc($this->request->getVar('id_academic_year')),
-            'id_students' => esc($this->request->getVar('id_students')),
             'number_of_sick' => esc($this->request->getVar('number_of_sick')),
             'number_of_permit' => esc($this->request->getVar('number_of_permit')),
             'number_of_absents' => esc($this->request->getVar('number_of_absents')),
@@ -84,9 +109,6 @@ class CPresensi extends ResourceController
             return $this->failForbidden('not admin');
         }
         $rules = $this->validate([
-            'id_class'=> 'required',
-            'id_academic_year'=> 'required',
-            'id_students'=> 'required',
             'number_of_sick' => 'required',
             'number_of_permit' => 'required',
             'number_of_absents' => 'required'
@@ -101,9 +123,6 @@ class CPresensi extends ResourceController
         }
 
         $this->model->update($id, [
-            'id_class' => esc($this->request->getVar('id_class')),
-            'id_academic_year' => esc($this->request->getVar('id_academic_year')),
-            'id_students' => esc($this->request->getVar('id_students')),
             'number_of_sick' => esc($this->request->getVar('number_of_sick')),
             'number_of_permit' => esc($this->request->getVar('number_of_permit')),
             'number_of_absents' => esc($this->request->getVar('number_of_absents')),
@@ -130,5 +149,22 @@ class CPresensi extends ResourceController
         ];
 
         return $this->respond($option_kelas, 200);
+    }
+
+    public function option_tahun()
+    {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
+        
+        $query = "SELECT DISTINCT a.id, a.academic_year FROM academic_years a WHERE a.is_deleted = 0 AND a.is_active=1";
+        $data_tahun = $this->api_helpers->queryGetArray($query);
+
+        $option_tahun = [
+            'data_tahun' => $data_tahun
+        ];
+
+        return $this->respond($option_tahun, 200);
     }
 }

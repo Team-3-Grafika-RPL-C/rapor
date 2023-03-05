@@ -55,6 +55,18 @@ class c_raporSemester extends BaseController {
             $data['data_err'] = json_decode($response->getBody());
         }
 
+        $response = $this->client->request('GET', 'rapor-profil/'.$id, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() === 200) {
+            $data['siswa'] = json_decode($response->getBody());
+        } else {
+            $data['data_err'] = json_decode($response->getBody());
+        }
+
         return view('dashboard/rapor/form-rapor_semester', $data);
     }
 

@@ -156,7 +156,7 @@ $routes->get('/rapor-semester/form/(:num)', 'c_raporSemester::form/$1', ['filter
 
 $routes->get('/catatan-semester', 'c_catatanSemester::index', ['filter' => 'AuthTeacher']);
 $routes->post('/data-catatan-semester', 'c_catatanSemester::getSiswaKelas', ['filter' => 'AuthTeacher']);
-$routes->get('/catatan-semester-detail/(:num)', 'c_catatanSemester::form/$1', ['filter' => 'AuthTeacher']);
+$routes->post('/catatan-semester-form/(:num)', 'c_catatanSemester::form/$1', ['filter' => 'AuthTeacher']);
 
 $routes->get('/status-kenaikan', 'c_statusKenaikan::index', ['filter' => 'AuthAdmin']);
 
@@ -175,6 +175,8 @@ $routes->get('/rekap-nilai_mapel', 'c_rekapNilaiMapel::index', ['filter' => 'Aut
 $routes->get('/rekap-nilai_ekskul', 'c_rekapNilaiEkskul::index', ['filter' => 'AuthTeacher']);
 
 $routes->get('/input-presensi', 'c_inputPresensi::index', ['filter' => 'AuthTeacher']);
+$routes->post('/data-presensi', 'c_inputPresensi::getSiswaKelas', ['filter' => 'AuthTeacher']);
+$routes->post('/input-presensi-form/(:num)', 'c_inputPresensi::form/$1', ['filter' => 'AuthTeacher']);
 
 // Wali Murid
 $routes->get('/profile-sekolah', 'c_waliMurid::profile', ['filter' => 'AuthUser']);

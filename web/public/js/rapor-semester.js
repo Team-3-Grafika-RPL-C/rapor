@@ -15,8 +15,12 @@ $('.tampilkan-btn').click(() => {
 function retrieveProfil($id){
     $.ajax({
         url: "http://localhost/rapor/api/public/rapor-profil/"+$id,
+        headers: {
+            Authorization: "Bearer 12h21kkn2huygttyt76t76fytfyfyffhghfgvgvgg"
+        },
         method: "get",
         success: (result) => {
+            console.log(result);
             $('#nama-siswa').text(result.data_siswa.student_name)
             $('#nis').text(result.data_siswa.nis)
             $('#nisn').text(result.data_siswa.nisn)
@@ -27,6 +31,9 @@ function retrieveProfil($id){
 
     $.ajax({
         url: "http://localhost/rapor/api/public/rapor-nilai/"+$id,
+        headers: {
+            Authorization: "Bearer 12h21kkn2huygttyt76t76fytfyfyffhghfgvgvgg"
+        },
         method: "get",
         success: (result) => {
             $('#nilai-tabel').empty()
@@ -53,6 +60,9 @@ function retrieveProfil($id){
 
     $.ajax({
         url: "http://localhost/rapor/api/public/rapor-nilai-ekskul/"+$id,
+        headers: {
+            Authorization: "Bearer 12h21kkn2huygttyt76t76fytfyfyffhghfgvgvgg"
+        },
         method: "get",
         success: (result) => {
             $('#nilai-ekskul-tabel').empty()
@@ -79,6 +89,9 @@ function retrieveProfil($id){
 
     $.ajax({
         url: "http://localhost/rapor/api/public/rapor-catatan/"+$id,
+        headers: {
+            Authorization: "Bearer 12h21kkn2huygttyt76t76fytfyfyffhghfgvgvgg"
+        },
         method: "get",
         success: (result) => {
             $('#saran').text(result.data_siswa[0].notes)
@@ -88,9 +101,11 @@ function retrieveProfil($id){
 
     $.ajax({
         url: "http://localhost/rapor/api/public/rapor-presensi/"+$id,
+        headers: {
+            Authorization: "Bearer 12h21kkn2huygttyt76t76fytfyfyffhghfgvgvgg"
+        },
         method: "get",
         success: (result) => {
-            console.log(result);
             $('#sakit').text(result.data_siswa[0].number_of_sick + " Hari")
             $('#izin').text(result.data_siswa[0].number_of_permit + " Hari")
             $('#alpha').text(result.data_siswa[0].number_of_absents + " Hari")

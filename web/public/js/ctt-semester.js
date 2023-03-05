@@ -9,11 +9,9 @@ $('.tampilkan-btn').click(() => {
         $('.none').addClass('d-none')
     }
 })
-
 $('#kelas, #tahun').change(() => {
     retrieveDataSiswa();
 })
-
 function retrieveDataSiswa(){
     $.ajax({
         url: BASE_URL+"/data-catatan-semester",
@@ -28,6 +26,7 @@ function retrieveDataSiswa(){
             $('#dataTable').DataTable().clear();
             $('#dataTable').DataTable().destroy();
             $('#tbody-table').empty();
+            $('#modal-root').empty();
 
             $.each(result.data_siswa, (index, value) => {
                 $('#tbody-table').append(`
@@ -37,11 +36,36 @@ function retrieveDataSiswa(){
                         <td>${value.student_name}</td>
                         <td>${value.notes}</td>
                         <td>
-                            <button type="button" class="btn btn-warning btn-rounded my-1"  data-toggle="modal" data-target="#modalcatatan">
+                            <button type="button" class="btn btn-warning btn-rounded my-1"  data-toggle="modal" data-target="#modalcatatan_${value.id}">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </button>
                         </td>
                     </tr>
+                `)
+
+                $('#modal-root').append(`
+                    <div class="modal fade" id="modalcatatan_${value.id}" tabindex="-1" aria-labelledby="modalcatatanLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="modalcatatanLabel">Edit Catatan</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <form action="catatan-semester-form/${value.id}" method="post">
+                                <div class="modal-body">
+                                    <label for="message-text" class="col-form-label">Catatan Wali Kelas:</label>
+                                    <textarea class="form-control" id="notes" name="notes">${value.notes}</textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 `)
 
                 })

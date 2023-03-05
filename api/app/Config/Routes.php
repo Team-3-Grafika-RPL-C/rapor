@@ -187,6 +187,8 @@ $routes->delete('/siswa-ekskul/(:num)', 'CSiswaEkskul::delete/$1');
 $routes->post('/presensi', 'CPresensi::create');
 $routes->put('/presensi/(:num)', 'CPresensi::update/$1');
 $routes->get('/presensi-option-kelas', 'CPresensi::option_kelas');
+$routes->get('/presensi-option-tahun', 'CPresensi::option_tahun');
+$routes->post('/data-presensi', 'CPresensi::data_siswa');
 
 // --- Rapor Semester --- //
 $routes->get('/rapor', 'CRaporSemester::index');
@@ -223,6 +225,8 @@ $routes->post('/catatan-semester', 'CCatatanSemester::insert');
 $routes->get('/catatan-semester/(:num)', 'CCatatanSemester::show/$1');
 $routes->put('/catatan-semester/(:num)', 'CCatatanSemester::update/$1');
 
+
+$routes->get('/score', 'CScore::index');
 
 /*
  * --------------------------------------------------------------------

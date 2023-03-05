@@ -77,7 +77,14 @@ class c_catatanSemester extends BaseController
 
     public function form($id)
     {
-        $response = $this->client->request('GET', 'catatan-semester/' . $id, [
+        $notes = $this->request->getVar('notes');
+
+        $request_client_data = [
+            'notes' => $notes
+        ];
+
+        $response = $this->client->request('PUT', 'catatan-semester/' . $id, [
+            'json' => $request_client_data,
             'headers' => [
                 'Authorization' => 'Bearer ' . session()->get('token')
             ],
@@ -85,11 +92,14 @@ class c_catatanSemester extends BaseController
         ]);
 
         $response_body = json_decode($response->getBody());
+
         if ($response->getStatusCode() === 200) {
             $data['data'] = $response_body;
         } else {
             $data['data_err'] = $response_body;
         }
+
+        return redirect()->to('/catatan-semester');
 
     }
 }
