@@ -268,3 +268,44 @@ a.text-indigo-500:hover, a.text-indigo-500:focus {
   background-color: #845EF7 !important;
   border-color: #845EF7 !important;
 }
+/* btn */
+.btn-indigo {
+  color: #fff;
+  background-color: #845EF7;
+  border-color: #845EF7;
+}
+
+.btn-indigo:hover {
+  color: #fff;
+  background-color: #5f3dc4;
+  border-color: #5a38bf;
+}
+
+.btn-indigo:focus,
+.btn-indigo.focus {
+  color: #fff;
+  background-color: #5f3dc4;
+  border-color: #5a38bf;
+  box-shadow: 0 0 0 0.2rem rgba(105, 136, 228, 0.5);
+}
+
+.btn-indigo.disabled,
+.btn-indigo:disabled {
+  color: #fff;
+  background-color: #845EF7;
+  border-color: #845EF7;
+}
+
+.btn-indigo:not(:disabled):not(.disabled):active,
+.btn-indigo:not(:disabled):not(.disabled).active,
+.show > .btn-indigo.dropdown-toggle {
+  color: #fff;
+  background-color: #5a38bf;
+  border-color: #5b36ca;
+}
+
+.btn-indigo:not(:disabled):not(.disabled):active:focus,
+.btn-indigo:not(:disabled):not(.disabled).active:focus,
+.show > .btn-indigo.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(105, 136, 228, 0.5);
+}

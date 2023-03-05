@@ -3,10 +3,10 @@ const BASE_URL = $('#base_url').val();
 $('.tampilkan-btn').click(() => {
     retrieveDataSiswa();
     
-    if($('.card-body').hasClass('d-none')){
-        $('.card-body').removeClass('d-none')
+    if($('.none').hasClass('d-none')){
+        $('.none').removeClass('d-none')
     }else{
-        $('.card-body').addClass('d-none')
+        $('.none').addClass('d-none')
     }
 })
 
@@ -31,7 +31,7 @@ function retrieveDataSiswa(){
 
             $.each(result.data_nilai, (index, value) => {
                 $('#tbody-table').append(`
-                    <tr>
+                    <tr class="text-center">
                         <td>${(index+1)}</td>
                         <td>${value.student_name}</td>
                         <td>${value.score}</td>
@@ -46,6 +46,9 @@ function retrieveDataSiswa(){
                             <a href="" class="btn btn-danger btn-rounded">
                                 <i class="ri-delete-bin-7-fill" title="Delete"></i>
                             </a>
+                            <button type="button" class="btn btn-success btn-rounded my-1"  data-toggle="modal" data-target="#modalinput">
+                                <i class="ri-add-fill" data-toggle="tooltip" title="Edit"></i>
+                            </button>
                         </td>
                     </tr>
                 `)

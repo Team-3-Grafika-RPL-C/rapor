@@ -164,7 +164,7 @@ $routes->get('/identitas-siswa', 'c_identitasSiswa::index', ['filter' => 'AuthAd
 
 $routes->get('/input-nilai-mapel', 'c_inputNilaiMapel::index', ['filter' => 'AuthTeacher']);
 $routes->post('/nilai-mapel', 'c_inputNilaiMapel::getNilaiSiswa', ['filter' => 'AuthTeacher']);
-$routes->get('/input-nilai-mapel/form', 'c_inputNilaiMapel::form', ['filter' => 'AuthTeacher']);
+// $routes->get('/input-nilai-mapel/form', 'c_inputNilaiMapel::form', ['filter' => 'AuthTeacher']);
 $routes->get('/input-nilai-mapel/form-detail', 'c_inputNilaiMapel::form_detail', ['filter' => 'AuthTeacher']);
 
 $routes->get('/input-nilai-ekskul', 'c_inputNilaiEkskul::index', ['filter' => 'AuthTeacher']);

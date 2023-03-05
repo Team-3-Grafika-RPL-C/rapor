@@ -55,40 +55,66 @@
                                     <span class="d-flex">Tampilkan</span>
                                 </a>
                             </div>
-                        </div>
-                        <div class="card-body d-none">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <div class="row justify-content-end text-right">
-                                        <div class="col mb-4">
-                                        <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="<?= base_url(); ?>/input-nilai-mapel/form" style="min-width: 5rem; background-color: #845EF7; border-radius: 16px">
-                                            <span class="d-flex">
-                                                <i class="ri-add-line mt-auto mb-auto mr-1" style="font-size: 14px;"></i>
-                                                Input
-                                            </span>
-                                        </a>
-                                        </div>
-                                    </div>
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center">No</th>
-                                            <th class="text-center">Nama</th>
-                                            <th class="text-center">Nilai</th>
-                                            <th class="text-center">ACTION</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tbody-table">
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
+                        </div>                        
+                    </div>
+                    
+                    
+                </div>
+                <!-- /.container-fluid -->
+                
+            </div>
+            <div class="card shadow mb-4 mt-3 none d-none">
+                <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">                                
+                                <thead>
+                                    <tr>
+                                        <th class="col-1 text-center">No</th>
+                                        <th class="col-5 text-center">Nama</th>
+                                        <th class="col-2 text-center">Nilai</th>
+                                        <th class="col-4 text-center">ACTION</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody-table">                                
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                </div>
 
-</div>
-<!-- /.container-fluid -->
 
-</div>
+                <!-- MODAL -->
+                <div class="modal fade" id="modalinput" tabindex="-1" aria-labelledby="modalcatatanLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="modalcatatanLabel">Input Nilai</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <form action="catatan-semester-form/${value.id}" method="post">
+                                <div class="modal-body">
+                                    <label for="message-text" class="col-form-label">Nama Siswa:</label>
+                                    <input type="text" autocomplete="off" class="form-control" id="nama-siswa" name="Nama Siswa" value="Taufiqi Hidayat" readonly>
+                                    <label for="message-text" class="col-form-label">Mapel:</label>
+                                    <input type="text" autocomplete="off" class="form-control" id="mapel" name="Mapel" value="Pendidikan Agama dan Budi Pekerti" readonly>
+                                    <label for="message-text" class="col-form-label">Capaian Pembelajaran:</label>
+                                    <textarea autocomplete="off" class="form-control" id="tp" name="TC" rows="3"></textarea>
+                                    <label for="message-text" class="col-form-label">Tujuan Pembelajaran:</label>
+                                    <textarea autocomplete="off" class="form-control" id="tp" name="TP" rows="3"></textarea>
+                                    <label for="message-text" class="col-form-label">Nilai:</label>
+                                    <input type="text" autocomplete="off" class="form-control" id="nilai" name="Nilai">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                    <button type="submit" class="btn btn-indigo">Simpan</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>                
 <script src="<?= base_url(); ?>/js/input-nilai_mapel.js"></script>
 
 <!-- End of Main Content -->
