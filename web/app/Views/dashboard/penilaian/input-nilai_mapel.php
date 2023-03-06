@@ -22,23 +22,9 @@
                         <input type="hidden" id="input_tahun" name="id_academic_year" />
                         <div class="row">
                             <div class="col-md-4 mb-4 mt-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">Mata Pelajaran</h6>
-                            </div>
-                            <div class="col-md-8 mb-4 mt-4">
-                                <div>
-                                    <select class="custom-select my-1 mr-sm-2" id="mapel">
-                                        <?php foreach ($option_mapel->data_mapel as $om) { ?>
-                                            <option value="<?= $om->id ?>">
-                                                <?= $om->subject_name ?>
-                                            </option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Kelas</h6>
                             </div>
-                            <div class="col-md-8 mb-4">
+                            <div class="col-md-8 mb-4 mt-4">
                                 <div>
                                     <select class="custom-select my-1 mr-sm-2" id="kelas">
                                         <?php foreach ($option_kelas->data_kelas as $ok) { ?>
@@ -50,7 +36,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 mb-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">Tahun ajaran</h6>
+                                <h6 class="h6 text-gray-900 font-weight-bold">Tahun Ajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <div>
@@ -61,6 +47,20 @@
                                                 </option>
                                             <?php } ?>
                                         </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Mata Pelajaran</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <div>
+                                    <select class="custom-select my-1 mr-sm-2" id="mapel">
+                                        <?php foreach ($option_mapel->data_mapel as $om) { ?>
+                                            <option value="<?= $om->id ?>">
+                                                <?= $om->subject_name ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>

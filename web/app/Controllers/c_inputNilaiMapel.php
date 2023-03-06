@@ -33,18 +33,6 @@ class c_inputNilaiMapel extends BaseController
             $data['data_err'] = $response_body;
         }
 
-        $response_mapel = $this->client->request('GET', 'nm-option-mapel', [
-            'headers' => [
-                'Authorization' => 'Bearer ' . session()->get('token')
-            ],
-            'http_errors' => false
-        ]);
-        if ($response_mapel->getStatusCode() === 200) {
-            $data['option_mapel'] = json_decode($response_mapel->getBody());
-        } else {
-            $data['data_err'] = json_decode($response_mapel->getBody());
-        }
-
         $response_kelas = $this->client->request('GET', 'nm-option-kelas', [
             'headers' => [
                 'Authorization' => 'Bearer ' . session()->get('token')
@@ -67,6 +55,23 @@ class c_inputNilaiMapel extends BaseController
             $data['option_tahun'] = json_decode($response_tahun->getBody());
         } else {
             $data['data_err'] = json_decode($response_tahun->getBody());
+        }
+
+        $id_class = $this->request->getVar('id_class');        
+        $request_client_data = [
+            'id_class' => $id_class
+        ];
+        $response_mapel = $this->client->request('GET', 'nm-option-mapel', [
+            'json'=> $request_client_data,
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response_mapel->getStatusCode() === 200) {
+            $data['option_mapel'] = json_decode($response_mapel->getBody());
+        } else {
+            $data['data_err'] = json_decode($response_mapel->getBody());
         }
 
         return view('dashboard/penilaian/input-nilai_mapel', $data);
