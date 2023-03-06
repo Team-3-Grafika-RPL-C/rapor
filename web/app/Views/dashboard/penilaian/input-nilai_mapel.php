@@ -70,9 +70,15 @@
                     </div>
                 </div>
                 <!-- /.container-fluid -->
-                
-            <div class="card shadow mb-4 mt-3 none d-none">
+            </div>
+            <div class="card shadow mb-4 mt-3 none ">
                 <div class="card-body">
+                        <div class="row justify-content-end my-3">
+                            <a class="btn d-flex justify-content-center btn-indigo shadow" style="min-width: 5rem; border-radius:8px;" data-toggle="modal" data-target="#modalInputData">
+                                <i class="ri-add-fill"></i>
+                                <span class="d-none d-md-block">Input Data</span>
+                            </a>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">                                
                                 <thead>
@@ -96,6 +102,44 @@
                 <div id="modal-root">
                     
                 </div>
+
+                <!-- MODAL INPUT DATA -->
+                <div class="modal fade" id="modalInputData" tabindex="-1" aria-labelledby="modalcatatanLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="modalcatatanLabel">Input Nilai</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <form action="" method="post">
+                                    <div class="modal-body">
+                                        <label for="message-text" class="col-form-label ">Nama Siswa:</label>
+                                        <select name="Nama Siswa" id="nama_siswa" class="custom-select">
+                                            <option value="0">Muhammad Sumubl</option>
+                                            <option value="1">Khidir Karawita</option>
+                                        </select>
+                                        <label for="message-text" class="col-form-label">Mapel:</label>
+                                        <input type="text" autocomplete="off" class="form-control" id="mata-pelajaran" name="mata-pelajaran" value="Pendidikan Agama dan Budi Pekerti" readonly>
+                                        <label for="message-text" class="col-form-label">Capaian Pembelajaran:</label>
+                                        <input type="text" autocomplete="off" class="form-control" id="capaian_pembelajaran" name="Capaian Pembelajaran">
+                                        <label for="message-text" class="col-form-label">Tujuan Pembelajaran:</label>
+                                        <textarea autocomplete="off" class="form-control" id="tp" name="tp" rows="3"></textarea>
+                                        <label for="message-text" class="col-form-label">Nilai:</label>
+                                        <input type="text" autocomplete="off" class="form-control" id="nilai" name="nilai">
+    
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-indigo">Simpan</button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+
 
 <script src="<?= base_url(); ?>/js/input-nilai_mapel.js"></script>
 

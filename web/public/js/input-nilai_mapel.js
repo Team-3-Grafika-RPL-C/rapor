@@ -69,7 +69,7 @@ function retrieveDataSiswa(){
                             <a href="" class="btn btn-danger btn-rounded">
                                 <i class="ri-delete-bin-7-fill" title="Delete"></i>
                             </a>
-                            <button type="button" class="btn btn-success btn-rounded my-1"  data-toggle="modal" data-target="#modalinput_${value.id}">
+                            <button type="button" class="btn btn-success btn-rounded my-1" data-toggle="modal" data-target="#modalinput_${value.id}">
                                 <i class="ri-add-fill" data-toggle="tooltip" title="Edit"></i>
                             </button>
                         </td>
