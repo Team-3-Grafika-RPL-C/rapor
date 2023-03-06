@@ -68,6 +68,7 @@
                                             <th class="col-1 my-1 text-center">No</th>
                                             <th class="col-2 my-1 text-center">NIS</th>
                                             <th class="col-4 my-1 text-center">Nama</th>
+                                            <th class="col-4 my-1 text-center">Status</th>
                                             <th class="col-5 my-1 text-center">Pilihan</th>
                                         </tr>
                                     </thead>
@@ -76,19 +77,11 @@
                                             <td class="col-1 my-1">1</td>
                                             <td class="col-2 my-1">23423423</td>
                                             <td class="col-4 my-1">Faisal Adi Prayugo</td>                                            
+                                            <td class="col-4 my-1">Naik</td>                                            
                                             <td class="col-5 my-1">
-                                                <button class="btn btn-success">Lulus</button>
-                                                <button class="btn btn-danger">Tidak Lulus</button>
+                                                <button class="btn btn-success">Naik</button>
+                                                <button class="btn btn-danger">Tidak Naik</button>
                                             </td>                                            
-                                        </tr>
-                                        <tr>
-                                            <td class="col-1 my-1">2</td>
-                                            <td class="col-2 my-1">323423434</td>
-                                            <td class="col-4 my-1">Abu Bakar As Shiddiq</td>
-                                            <td class="col-5 my-1">
-                                                <button class="btn btn-success">Lulus</button>
-                                                <button class="btn btn-danger">Tidak Lulus</button>                                            
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

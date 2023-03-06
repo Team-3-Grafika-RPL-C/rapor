@@ -80,12 +80,10 @@ class c_inputNilaiMapel extends BaseController
     public function getNilaiSiswa()
     {
         $id_class = $this->request->getVar('id_class');
-        $id_subject = $this->request->getVar('id_subject');
         $id_academic_year = $this->request->getVar('id_academic_year');
 
         $request_client_data = [
             'id_class' => $id_class,
-            'id_subject' => $id_subject,
             'id_academic_year' => $id_academic_year
         ];
 

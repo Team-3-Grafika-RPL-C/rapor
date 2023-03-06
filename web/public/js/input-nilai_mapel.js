@@ -10,7 +10,7 @@ $('.tampilkan-btn').click(() => {
     }
 })
 
-$('#kelas, #mapel, #tahun').change(() => {
+$('#kelas, #tahun').change(() => {
     retrieveDataSiswa();
 })
 
@@ -19,7 +19,6 @@ function retrieveDataSiswa(){
         url: BASE_URL+"/nilai-mapel",
         method: "post",
         data: {
-            id_subject: $('#mapel').val(),
             id_class: $('#kelas').val() ,
             id_academic_year: $('#tahun').val() ,
         },
