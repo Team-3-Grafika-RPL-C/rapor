@@ -57,6 +57,17 @@ class c_inputNilaiMapel extends BaseController
             $data['data_err'] = json_decode($response_kelas->getBody());
         }
 
+        $response_tahun = $this->client->request('GET', 'nm-option-tahun', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response_tahun->getStatusCode() === 200) {
+            $data['option_tahun'] = json_decode($response_tahun->getBody());
+        } else {
+            $data['data_err'] = json_decode($response_tahun->getBody());
+        }
 
         return view('dashboard/penilaian/input-nilai_mapel', $data);
     }
@@ -64,11 +75,13 @@ class c_inputNilaiMapel extends BaseController
     public function getNilaiSiswa()
     {
         $id_class = $this->request->getVar('id_class');
-        $id_subjects = $this->request->getVar('id_subjects');
+        $id_subject = $this->request->getVar('id_subject');
+        $id_academic_year = $this->request->getVar('id_academic_year');
 
         $request_client_data = [
             'id_class' => $id_class,
-            'id_subjects' => $id_subjects
+            'id_subject' => $id_subject,
+            'id_academic_year' => $id_academic_year
         ];
 
         $response = $this->client->request('POST', 'nilai-mapel', [

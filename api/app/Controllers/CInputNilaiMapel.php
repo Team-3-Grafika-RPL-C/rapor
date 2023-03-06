@@ -74,7 +74,7 @@ class CInputNilaiMapel extends ResourceController
             return $this->failUnauthorized();
         }
 
-        $id_subject = $this->request->getVar('id_subjects');
+        $id_subject = $this->request->getVar('id_subject');
         $id_class = $this->request->getVar('id_class');
         $id_academic_year = $this->request->getVar('id_academic_year');
 
@@ -93,11 +93,10 @@ class CInputNilaiMapel extends ResourceController
         INNER JOIN academic_years d ON a.id_academic_year = d.id
         LEFT JOIN score e ON a.id = e.id_class_students
         LEFT JOIN class_subject f ON e.id_class_subjects = f.id
-        LEFT JOIN class_subject_detail g ON f.id = g.id_class_subject
+        LEFT JOIN class_subject_detail g ON g.id_class_subject = f.id
         WHERE 
-        a.id_academic_year = ? AND g.id_subject = ? AND d.id= ? AND a.is_deleted = 0 AND b.is_deleted = 0";
-        $nilai = $this->api_helpers->queryGetArray($query, [$id_subject, $id_class, $id_academic_year]);
-
+        a.id_class =? AND d.id=? AND a.is_deleted = 0 AND b.is_deleted = 0";
+        $nilai = $this->api_helpers->queryGetArray($query, [$id_class, $id_academic_year, $id_subject]);
         $data_nilai = [
             'data_nilai' => $nilai 
         ];

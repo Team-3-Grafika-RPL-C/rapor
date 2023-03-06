@@ -202,6 +202,7 @@ $routes->get('/rapor-presensi/(:num)', 'CRaporSemester::get_presensi/$1');
 // --- Nilai Mapel --- //
 $routes->get('/nm-option-mapel', 'CInputNilaiMapel::option_mapel');
 $routes->get('/nm-option-kelas', 'CInputNilaiMapel::option_kelas');
+$routes->get('/nm-option-tahun', 'CInputNilaiMapel::option_tahun');
 $routes->post('/nilai-mapel', 'CInputNilaiMapel::data_nilai');
 $routes->get('/nilai-mapel-detail/(:num)', 'CInputNilaiMapel::show/$1');
 $routes->post('/input-nilai-mapel', 'CInputNilaiMapel::create');
