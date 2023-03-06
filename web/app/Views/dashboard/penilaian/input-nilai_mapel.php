@@ -71,7 +71,7 @@
                 </div>
                 <!-- /.container-fluid -->
             </div>
-            <div class="card shadow mb-4 mt-3 none ">
+            <div class="card shadow mb-4 mt-3 none d-none">
                 <div class="card-body">
                         <div class="row justify-content-end my-3">
                             <a class="btn d-flex justify-content-center btn-indigo shadow" style="min-width: 5rem; border-radius:8px;" data-toggle="modal" data-target="#modalInputData">
