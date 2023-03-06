@@ -25,7 +25,6 @@ function getMapel() {
         },
         success: (result) => {
             result = JSON.parse(result);
-            console.log(result);
 
             $('#mapel').empty();
 
