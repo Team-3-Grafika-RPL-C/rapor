@@ -28,7 +28,7 @@ class CKelas extends ResourceController
         }
         $data = [
             'message' => 'Data Kelas:',
-            'data_kelas' => $this->model->orderBy('id', 'ASC')->where('is_deleted', 0)->findAll()
+            'data_kelas' => $this->model->orderBy('class_name', 'ASC')->where('is_deleted', 0)->findAll()
         ];
         
         return $this->respond($data, 200);

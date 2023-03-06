@@ -28,7 +28,7 @@ class CMapel extends ResourceController
         }
         $data = [
             'message' => 'Data Mata Pelajaran:',
-            'data_mapel' => $this->model->orderBy('id', 'ASC')->where('is_deleted', 0)->findAll()
+            'data_mapel' => $this->model->orderBy('class', 'ASC')->where('is_deleted', 0)->findAll()
         ];
 
         return $this->respond($data, 200);

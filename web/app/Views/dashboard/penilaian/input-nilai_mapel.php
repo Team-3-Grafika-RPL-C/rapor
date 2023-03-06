@@ -17,27 +17,14 @@
                 <div class="container">
                     <form action="" method="post">
                         <input type="hidden" id="base_url" value="<?=base_url()?>">
-                        <input type="hidden" id="input_mapel" name="id_subjects" />
+                        <input type="hidden" id="input_mapel" name="id_subject" />
                         <input type="hidden" id="input_kelas" name="id_class" />
+                        <input type="hidden" id="input_tahun" name="id_academic_year" />
                         <div class="row">
                             <div class="col-md-4 mb-4 mt-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">Mata Pelajaran</h6>
-                            </div>
-                            <div class="col-md-8 mb-4 mt-4">
-                                <div>
-                                    <select class="custom-select my-1 mr-sm-2" id="mapel">
-                                        <?php foreach ($option_mapel->data_mapel as $om) { ?>
-                                            <option value="<?= $om->id ?>">
-                                                <?= $om->subject_name ?>
-                                            </option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Kelas</h6>
                             </div>
-                            <div class="col-md-8 mb-4">
+                            <div class="col-md-8 mb-4 mt-4">
                                 <div>
                                     <select class="custom-select my-1 mr-sm-2" id="kelas">
                                         <?php foreach ($option_kelas->data_kelas as $ok) { ?>
@@ -49,19 +36,30 @@
                                 </div>
                             </div>
                             <div class="col-md-4 mb-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">Tahun ajaran</h6>
+                                <h6 class="h6 text-gray-900 font-weight-bold">Tahun Ajaran</h6>
                             </div>
                             <div class="col-md-8 mb-4">
                                 <div>
-                                    <select class="custom-select my-1 mr-sm-2" id="kelas">
-                                        <?php //foreach ($option_kelas->data_kelas as $ok) { ?>
-                                            <!-- <option value="<?= $ok->id ?>">
-                                                <?= $ok->class_name ?>
-                                            </option> -->
-                                        <?php //} ?>
-                                        <option value="2022">2022</option>
-                                        <option value="2023">2023</option>
-                                        <option value="2024">2024</option>
+                                        <select class="custom-select my-1 mr-sm-2" id="tahun">
+                                            <?php foreach ($option_tahun->data_tahun as $ot) { ?>
+                                                <option value="<?= $ot->id ?>">
+                                                    <?= $ot->academic_year ?>
+                                                </option>
+                                            <?php } ?>
+                                        </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Mata Pelajaran</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <div>
+                                    <select class="custom-select my-1 mr-sm-2" id="mapel">
+                                        <?php foreach ($option_mapel->data_mapel as $om) { ?>
+                                            <option value="<?= $om->id ?>">
+                                                <?= $om->subject_name ?>
+                                            </option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -74,12 +72,9 @@
                             </div>
                         </div>                        
                     </div>
-                    
-                    
                 </div>
                 <!-- /.container-fluid -->
                 
-            </div>
             <div class="card shadow mb-4 mt-3 none d-none">
                 <div class="card-body">
                         <div class="table-responsive">
@@ -88,50 +83,24 @@
                                     <tr>
                                         <th class="col-1 text-center">No</th>
                                         <th class="col-5 text-center">Nama</th>
-                                        <th class="col-2 text-center">Nilai</th>
                                         <th class="col-4 text-center">ACTION</th>
                                     </tr>
                                 </thead>
-                                <tbody id="tbody-table">                                
+                                <tbody class="text-center" id="tbody-table">    
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
+            </div>
 
 
                 <!-- MODAL -->
-                <div class="modal fade" id="modalinput" tabindex="-1" aria-labelledby="modalcatatanLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="modalcatatanLabel">Input Nilai</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
-                                <form action="catatan-semester-form/${value.id}" method="post">
-                                <div class="modal-body">
-                                    <label for="message-text" class="col-form-label">Nama Siswa:</label>
-                                    <input type="text" autocomplete="off" class="form-control" id="nama-siswa" name="Nama Siswa" value="Taufiqi Hidayat" readonly>
-                                    <label for="message-text" class="col-form-label">Mapel:</label>
-                                    <input type="text" autocomplete="off" class="form-control" id="mapel" name="Mapel" value="Pendidikan Agama dan Budi Pekerti" readonly>
-                                    <label for="message-text" class="col-form-label">Capaian Pembelajaran:</label>
-                                    <textarea autocomplete="off" class="form-control" id="tp" name="TC" rows="3"></textarea>
-                                    <label for="message-text" class="col-form-label">Tujuan Pembelajaran:</label>
-                                    <textarea autocomplete="off" class="form-control" id="tp" name="TP" rows="3"></textarea>
-                                    <label for="message-text" class="col-form-label">Nilai:</label>
-                                    <input type="text" autocomplete="off" class="form-control" id="nilai" name="Nilai">
+                <div id="modal-root">
+                    
+                </div>
 
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                    <button type="submit" class="btn btn-indigo">Simpan</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>                
 <script src="<?= base_url(); ?>/js/input-nilai_mapel.js"></script>
 
 <!-- End of Main Content -->

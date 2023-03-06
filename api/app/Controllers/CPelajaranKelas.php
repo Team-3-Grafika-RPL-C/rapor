@@ -35,7 +35,8 @@ class CPelajaranKelas extends ResourceController
         FROM class_subject a
         INNER JOIN class b ON a.id_class = b.id 
         INNER JOIN semesters d ON a.id_semester = d.id 
-        WHERE a.is_deleted = 0";
+        WHERE a.is_deleted = 0
+        ORDER BY b.class_name ASC";
         $pelajaran_kelas = $this->api_helpers->queryGetArray($query);
 
         $data = [
