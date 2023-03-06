@@ -48,6 +48,23 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-4 mb-4">
+                                <h6 class="h6 text-gray-900 font-weight-bold">Tahun ajaran</h6>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <div>
+                                    <select class="custom-select my-1 mr-sm-2" id="kelas">
+                                        <?php //foreach ($option_kelas->data_kelas as $ok) { ?>
+                                            <!-- <option value="<?= $ok->id ?>">
+                                                <?= $ok->class_name ?>
+                                            </option> -->
+                                        <?php //} ?>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="row justify-content-end text-right">
                             <div class="col mb-4">
