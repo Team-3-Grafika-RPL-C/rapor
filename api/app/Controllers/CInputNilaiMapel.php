@@ -16,33 +16,6 @@ class CInputNilaiMapel extends ResourceController
         $this->api_helpers = new Api_helpers();
     }
 
-    public function option_mapel()
-    {
-        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
-        if($token === false){
-            return $this->failUnauthorized();
-        }
-
-        $id_class = $this->request->getVar('id_class');
-        
-        $query = "SELECT DISTINCT 
-        a.id, 
-        b.id_subject,
-        CONCAT_WS(' Kelas ', c.subject_name, c.class) as subject_name 
-        FROM class_subject a 
-        INNER JOIN class_subject_detail b ON a.id = b.id_class_subject
-        INNER JOIN subjects c ON b.id_subject = c.id
-        WHERE a.is_deleted = 0 AND a.id_class = ?
-        ORDER BY c.subject_name ASC";
-        $data_mapel = $this->api_helpers->queryGetArray($query, [$id_class]);
-
-        $option_mapel = [
-            'data_mapel' => $data_mapel
-        ];
-
-        return $this->respond($option_mapel, 200);
-    }
-
     public function option_kelas()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -75,6 +48,33 @@ class CInputNilaiMapel extends ResourceController
         ];
 
         return $this->respond($option_tahun, 200);
+    }
+
+    public function option_mapel()
+    {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
+
+        $id_class = $this->request->getVar('id_class');
+        
+        $query = "SELECT DISTINCT 
+        a.id, 
+        b.id_subject,
+        CONCAT_WS(' Kelas ', c.subject_name, c.class) as subject_name 
+        FROM class_subject a 
+        INNER JOIN class_subject_detail b ON a.id = b.id_class_subject
+        INNER JOIN subjects c ON b.id_subject = c.id
+        WHERE a.is_deleted = 0 AND a.id_class = ?
+        ORDER BY c.subject_name ASC";
+        $data_mapel = $this->api_helpers->queryGetArray($query, [$id_class]);
+
+        $option_mapel = [
+            'data_mapel' => $data_mapel
+        ];
+
+        return $this->respond($option_mapel, 200);
     }
 
     public function data_nilai()

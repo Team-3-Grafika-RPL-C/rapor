@@ -3,7 +3,7 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 
-class CCatatanSemester extends ResourceController{
+class CStatusKenaikan extends ResourceController{
     protected $modelName = 'App\Models\MSiswaKelas';
     protected $format = 'json';
 
@@ -84,12 +84,11 @@ class CCatatanSemester extends ResourceController{
             return $this->failForbidden('not admin');
         }
 
-        $this->model->update($id, [
-            'notes' => esc($this->request->getVar('notes')),
-        ]);
+        $query = "UPDATE class_students SET is_promoted = 1 WHERE id = ?";
+        $promoted = $this->api_helpers->queryExecute($query, [$id]); 
 
         $response = [
-            'message' => 'Data berhasil diubah'
+            'message' => 'Data berhasil disimpan'
         ];
 
         return  $this->respondUpdated($response);
@@ -102,12 +101,11 @@ class CCatatanSemester extends ResourceController{
             return $this->failForbidden('not admin');
         }
 
-        $this->model->update($id, [
-            'notes' => esc($this->request->getVar('notes')),
-        ]);
+        $query = "UPDATE class_students SET is_promoted = 0 WHERE id = ?";
+        $promoted = $this->api_helpers->queryExecute($query, [$id]); 
 
         $response = [
-            'message' => 'Data berhasil diubah'
+            'message' => 'Data berhasil disimpan'
         ];
 
         return  $this->respondUpdated($response);

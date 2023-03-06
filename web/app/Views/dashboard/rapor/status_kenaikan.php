@@ -12,33 +12,36 @@
 <div class="card shadow mb-4 mt-3">
     <div class="card-header py-3">
         <h4 class="m-0 font-weight-bold text-indigo-900">Tabel Status Kenaikan</h4>
+        <input type="hidden" id="base_url" value="<?=base_url()?>" />
     </div>
     <div class="mx-3">
                 <div class="container">
                     <form action="" method="post">
+                    <input type="hidden" id="input_tahun" name="id_academic_year" />
+                    <input type="hidden" id="input_kelas" name="id_class" />
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between my-4">
                                     <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Kelas</label>
                                     <div class="col-xs-2 col-lg-9">
-                                        <select id="inputState" class="form-control">
-                                            <option>1A</option>
-                                            <option>1B</option>
-                                            <option>1C</option>
-                                            <option>2A</option>
-                                            <option>2B</option>
+                                        <select class="custom-select my-1 mr-sm-2" id="kelas">
+                                            <?php foreach ($option_kelas->data_kelas as $ok) { ?>
+                                                <option value="<?= $ok->id ?>">
+                                                    <?= $ok->class_name ?>
+                                                </option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between my-4">
                                     <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Tahun</label>
                                     <div class="col-xs-2 col-lg-9">
-                                        <select id="inputState" class="form-control">
-                                            <option>2019</option>
-                                            <option>2020</option>
-                                            <option>2021</option>
-                                            <option>2022</option>
-                                            <option>2023</option>
+                                        <select class="custom-select my-1 mr-sm-2" id="tahun">
+                                            <?php foreach ($option_tahun->data_tahun as $ot) { ?>
+                                                <option value="<?= $ot->id ?>">
+                                                    <?= $ot->academic_year ?>
+                                                </option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -51,49 +54,30 @@
                                 </a>
                                 </div>
                             </div>       
-                            <div class="col-md-6 my-4">
-                                
-                            </div>       
                         </div>
                         <div class="row justify-content-end text-right">
                             <div class="col mb-4">
                                 
                             </div>
                         </div>
-                        <div class="card-body d-none">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">                                    
-                                    <thead>
-                                        <tr>
-                                            <th class="col-1 my-1 text-center">No</th>
-                                            <th class="col-2 my-1 text-center">NIS</th>
-                                            <th class="col-4 my-1 text-center">Nama</th>
-                                            <th class="col-4 my-1 text-center">Status</th>
-                                            <th class="col-5 my-1 text-center">Pilihan</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-center">
-                                        <tr>
-                                            <td class="col-1 my-1">1</td>
-                                            <td class="col-2 my-1">23423423</td>
-                                            <td class="col-4 my-1">Faisal Adi Prayugo</td>                                            
-                                            <td class="col-4 my-1">Naik</td>                                            
-                                            <td class="col-5 my-1">
-                                                <button class="btn btn-success">Naik</button>
-                                                <button class="btn btn-danger">Tidak Naik</button>
-                                            </td>                                            
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="row my-2 justify-content-center text-right">
-                                        <a class="btn d-sm-inline-block text-light btn-sm shadow px-4" href="#!" style="min-width: 45rem; background-color: #845EF7; border-radius: 8px" data-toggle="modal" data-target="#data-siswa-modal">
-                                            <span>Simpan</span>
-                                        </a>
-                                </div>
-                                <div class="row my-2 justify-content-center text-right">
-                                        <a class="btn d-sm-inline-block text-gray-900 btn-sm shadow px-4" href="#!" style="min-width: 45rem; background-color: #ECEEEF; border-radius: 8px" data-toggle="modal" data-target="#data-siswa-modal">
-                                            <span>Batal</span>
-                                        </a>
+
+                        <div class="card shadow mb-4 mt-3 none d-none">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">                                    
+                                        <thead>
+                                            <tr>
+                                                <th class="col-1 my-1 text-center">No</th>
+                                                <th class="col-2 my-1 text-center">NIS</th>
+                                                <th class="col-4 my-1 text-center">Nama</th>
+                                                <th class="col-4 my-1 text-center">Status</th>
+                                                <th class="col-5 my-1 text-center">Pilihan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-center" id="tbody-table">
+                                            
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +87,7 @@
 
 </div>
 
-<script src="<?= base_url(); ?>/js/form-set_siswa_ekskul.js"></script>
+<script src="<?= base_url(); ?>/js/status-kenaikan.js"></script>
 
 <!-- End of Main Content -->
 <?= $this->endsection(); ?>                    

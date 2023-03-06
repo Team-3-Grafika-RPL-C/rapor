@@ -55,11 +55,7 @@
                             <div class="col-md-8 mb-4">
                                 <div>
                                     <select class="custom-select my-1 mr-sm-2" id="mapel">
-                                        <?php foreach ($option_mapel->data_mapel as $om) { ?>
-                                            <option value="<?= $om->id_subject ?>">
-                                                <?= $om->subject_name ?>
-                                            </option>
-                                        <?php } ?>
+                                        
                                     </select>
                                 </div>
                             </div>

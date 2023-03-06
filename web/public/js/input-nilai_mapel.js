@@ -12,7 +12,35 @@ $('.tampilkan-btn').click(() => {
 
 $('#kelas, #tahun').change(() => {
     retrieveDataSiswa();
+    getMapel();
 })
+
+getMapel();
+function getMapel() {
+    $.ajax({
+        url: BASE_URL+"/nm-option-mapel",
+        method: "post",
+        data: {
+            id_class: $('#kelas').val() ,
+        },
+        success: (result) => {
+            result = JSON.parse(result);
+            console.log(result);
+
+            $('#mapel').empty();
+
+            $.each(result.data_mapel, (index, value) => {
+                $('#mapel').append(`
+                    <option value="${value.id_subject}">
+                        ${value.subject_name}
+                    </option>
+                `)
+            })
+        },
+        error: (err) => {console.log(err);}
+    })
+
+}
 
 function retrieveDataSiswa(){
     $.ajax({
@@ -23,7 +51,6 @@ function retrieveDataSiswa(){
             id_academic_year: $('#tahun').val() ,
         },
         success: (result) => {
-            console.log(result);
             result = JSON.parse(result);
             $('#dataTable').DataTable().clear();
             $('#dataTable').DataTable().destroy();
