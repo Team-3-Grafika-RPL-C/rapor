@@ -32,7 +32,9 @@
                                             <?php } ?>
                                         </select>
                                     </div>
-                                </div>
+                                </div>                                                            
+                            </div>   
+                            <div class="col-md-6">
                                 <div class="d-flex justify-content-between my-4">
                                     <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Tahun</label>
                                     <div class="col-xs-2 col-lg-9">
@@ -53,7 +55,7 @@
                                     </span>
                                 </a>
                                 </div>
-                            </div>       
+                            </div>    
                         </div>
                         <div class="row justify-content-end text-right">
                             <div class="col mb-4">
@@ -61,32 +63,32 @@
                             </div>
                         </div>
 
-                        <div class="card shadow mb-4 mt-3 none d-none">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">                                    
-                                        <thead>
-                                            <tr>
-                                                <th class="col-1 my-1 text-center">No</th>
-                                                <th class="col-2 my-1 text-center">NIS</th>
-                                                <th class="col-4 my-1 text-center">Nama</th>
-                                                <th class="col-4 my-1 text-center">Status</th>
-                                                <th class="col-5 my-1 text-center">Pilihan</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="text-center" id="tbody-table">
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-</div>
-</div>
-<!-- /.container-fluid -->
-
-</div>
-
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+                
+            </div>
+            
+            <div class="card shadow mb-4 mt-3 none d-none">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">                                    
+                            <thead>
+                                <tr>
+                                    <th class="col-1 my-1 text-center">No</th>
+                                    <th class="col-3 my-1 text-center">NIS</th>
+                                    <th class="col-4 my-1 text-center">Nama</th>
+                                    <th class="col-2 my-1 text-center">Status</th>
+                                    <th class="col-2 my-1 text-center">Pilihan</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center" id="tbody-table">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 <script src="<?= base_url(); ?>/js/status-kenaikan.js"></script>
 
 <!-- End of Main Content -->
