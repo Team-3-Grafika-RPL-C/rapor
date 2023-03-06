@@ -45,81 +45,71 @@
                                     <span class="d-flex">Tampilkan</span>
                                 </a>
                             </div>
-                        </div>
-                        <div class="card-body d-none">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center"></th>
-                                            <th class="text-center">No</th>
-                                            <th class="text-center">Nama</th>
-                                            <th class="text-center">PA&BP</th>
-                                            <th class="text-center">PP</th>
-                                            <th class="text-center">BI</th>
-                                            <th class="text-center">MAT</th>
-                                            <th class="text-center">IPAS</th>
-                                            <th class="text-center">PJOK</th>
-                                            <th class="text-center">S.Musik</th>
-                                            <th class="text-center">S.Teater</th>
-                                            <th class="text-center">S.Tari</th>
-                                            <th class="text-center">S.Rupa</th>
-                                            <th class="text-center">BING</th>
-                                            <th class="text-center">BD</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                                </div>
-                                            </td>
-                                            <td>1</td>
-                                            <td>Umar bin Khattab</td>
-                                            <td>80</td>
-                                            <td>80</td>
-                                            <td>80</td>
-                                            <td>80</td>
-                                            <td>80</td>
-                                            <td>80</td>
-                                            <td>80</td>
-                                            <td>80</td>
-                                            <td>80</td>
-                                            <td>80</td>
-                                            <td>80</td>
-                                            <td>80</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                                </div>
-                                            </td>
-                                            <td>2</td>
-                                            <td>Taufiqi Hidayat</td>
-                                            <td>90</td>
-                                            <td>90</td>
-                                            <td>90</td>
-                                            <td>90</td>
-                                            <td>90</td>
-                                            <td>90</td>
-                                            <td>90</td>
-                                            <td>90</td>
-                                            <td>90</td>
-                                            <td>90</td>
-                                            <td>90</td>
-                                            <td>90</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        </div>                            
                     </div>
 
 </div>
 <!-- /.container-fluid -->
-
+</div>
+<div class="card shadow mb-4  mt-3 none d-none">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="text-center">No</th>
+                        <th class="text-center">Nama</th>
+                        <th class="text-center">PA&BP</th>
+                        <th class="text-center">PP</th>
+                        <th class="text-center">BI</th>
+                        <th class="text-center">MAT</th>
+                        <th class="text-center">IPAS</th>
+                        <th class="text-center">PJOK</th>
+                        <th class="text-center">S.Musik</th>
+                        <th class="text-center">S.Teater</th>
+                        <th class="text-center">S.Tari</th>
+                        <th class="text-center">S.Rupa</th>
+                        <th class="text-center">BING</th>
+                        <th class="text-center">BD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Umar bin Khattab</td>
+                        <td>80</td>
+                        <td>80</td>
+                        <td>80</td>
+                        <td>80</td>
+                        <td>80</td>
+                        <td>80</td>
+                        <td>80</td>
+                        <td>80</td>
+                        <td>80</td>
+                        <td>80</td>
+                        <td>80</td>
+                        <td>80</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Taufiqi Hidayat</td>
+                        <td>90</td>
+                        <td>90</td>
+                        <td>90</td>
+                        <td>90</td>
+                        <td>90</td>
+                        <td>90</td>
+                        <td>90</td>
+                        <td>90</td>
+                        <td>90</td>
+                        <td>90</td>
+                        <td>90</td>
+                        <td>90</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 <script src="<?= base_url(); ?>/js/rekap-nilai_mapel.js"></script>
 

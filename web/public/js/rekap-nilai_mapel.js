@@ -1,7 +1,7 @@
 $('.tampilkan-btn').click(() => {
-    if($('.card-body').hasClass('d-none')){
-        $('.card-body').removeClass('d-none')
+    if($('.none').hasClass('d-none')){
+        $('.none').removeClass('d-none')
     }else{
-        $('.card-body').addClass('d-none')
+        $('.none').addClass('d-none')
     }
 })
