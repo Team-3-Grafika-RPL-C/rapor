@@ -86,32 +86,57 @@ class CInputNilaiMapel extends ResourceController
 
         $id_class = $this->request->getVar('id_class');
         $id_academic_year = $this->request->getVar('id_academic_year');
+        $id_subjects = $this->request->getVar('id_subjects');
 
         $query = "SELECT DISTINCT
         a.id,
+        e.id as id_score,
         a.id_class,
         c.class_name,
         d.academic_year,
         b.student_name,
         e.score,
-        f.id,
-        g.id_subject
+        e.learning_purpose,
+        e.learning_outcomes,
+        e.id_subjects,
+        CONCAT_WS(' Kelas ', f.subject_name, f.class) as subject_name
         FROM class_students a
         INNER JOIN students b ON a.id_students = b.id
         INNER JOIN class c ON a.id_class = c.id
         INNER JOIN academic_years d ON a.id_academic_year = d.id
         LEFT JOIN score e ON a.id = e.id_class_students
-        LEFT JOIN class_subject f ON e.id_class_subjects = f.id
-        LEFT JOIN class_subject_detail g ON g.id_class_subject = f.id
+        INNER JOIN subjects f ON e.id_subjects = f.id
         WHERE 
-        a.id_class =? AND d.id=? AND a.is_deleted = 0 AND b.is_deleted = 0";
-        $nilai = $this->api_helpers->queryGetArray($query, [$id_class, $id_academic_year]);
+        a.id_class =? AND d.id=? AND e.id_subjects=? AND a.is_deleted = 0 AND e.is_deleted=0 AND b.is_deleted = 0";
+        $nilai = $this->api_helpers->queryGetArray($query, [$id_class, $id_academic_year, $id_subjects]);
         $data_nilai = [
             'data_nilai' => $nilai 
         ];
 
         return $this->respond($data_nilai, 200);
 
+    }
+
+    public function option_siswa()
+    {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
+        $id_class = $this->request->getVar('id_class');
+        
+        $query = "SELECT DISTINCT 
+        a.id, a.id_students, b.student_name
+        FROM class_students a 
+        INNER JOIN students b ON a.id_students = b.id
+        WHERE a.is_deleted = 0 AND a.id_class = ?";
+        $data_siswa = $this->api_helpers->queryGetArray($query, [$id_class]);
+
+        $option_siswa = [
+            'data_siswa' => $data_siswa
+        ];
+
+        return $this->respond($option_siswa, 200);
     }
     /**
      * Return the properties of a resource object
@@ -164,8 +189,8 @@ class CInputNilaiMapel extends ResourceController
         }
 
         $rules = $this->validate([
-            'id_class_student' => 'required',
-            'id_class_subject' => 'required',
+            'id_class_students' => 'required',
+            'id_subjects' => 'required',
             'learning_outcomes' => 'required',
             'learning_purpose' => 'required',
             'score' => 'required',
@@ -178,8 +203,8 @@ class CInputNilaiMapel extends ResourceController
         }
 
         $this->model->insert([
-            'id_class_student' => esc($this->request->getVar('id_class_student')),
-            'id_class_subject' => esc($this->request->getVar('id_class_subject')),
+            'id_class_students' => esc($this->request->getVar('id_class_students')),
+            'id_subjects' => esc($this->request->getVar('id_subjects')),
             'learning_outcomes' => esc($this->request->getVar('learning_outcomes')),
             'learning_purpose' => esc($this->request->getVar('learning_purpose')),
             'score' => esc($this->request->getVar('score')),
@@ -208,6 +233,8 @@ class CInputNilaiMapel extends ResourceController
         }
 
         $rules = $this->validate([
+            'id_class_students' => 'required',
+            'id_subjects' => 'required',
             'learning_outcomes' => 'required',
             'learning_purpose' => 'required',
             'score' => 'required',
@@ -220,6 +247,8 @@ class CInputNilaiMapel extends ResourceController
         }
 
         $this->model->update($id, [
+            'id_class_students' => esc($this->request->getVar('id_class_students')),
+            'id_subjects' => esc($this->request->getVar('id_subjects')),
             'learning_outcomes' => esc($this->request->getVar('learning_outcomes')),
             'learning_purpose' => esc($this->request->getVar('learning_purpose')),
             'score' => esc($this->request->getVar('score')),
@@ -247,8 +276,7 @@ class CInputNilaiMapel extends ResourceController
             return $this->failForbidden('not admin');
         }
         
-        $query = "UPDATE score SET score = NULL, learning_purpose = NULL, learning_outcomes = NULL WHERE id=?";
-        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
+        $query = $this->model->delete($id);
 
         $response = [
             'message' => 'Data berhasil dihapus'

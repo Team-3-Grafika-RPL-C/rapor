@@ -204,6 +204,7 @@ $routes->get('/nm-option-kelas', 'CInputNilaiMapel::option_kelas');
 $routes->get('/nm-option-tahun', 'CInputNilaiMapel::option_tahun');
 $routes->post('/nm-option-mapel', 'CInputNilaiMapel::option_mapel');
 $routes->post('/nilai-mapel', 'CInputNilaiMapel::data_nilai');
+$routes->post('/nm-option-siswa', 'CInputNilaiMapel::option_siswa');
 $routes->get('/nilai-mapel-detail/(:num)', 'CInputNilaiMapel::show/$1');
 $routes->post('/input-nilai-mapel', 'CInputNilaiMapel::create');
 $routes->put('/input-nilai-mapel/(:num)', 'CInputNilaiMapel::update/$1');
