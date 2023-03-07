@@ -20,46 +20,39 @@
                     <input type="hidden" id="input_tahun" name="id_academic_year" />
                     <input type="hidden" id="input_kelas" name="id_class" />
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="d-flex justify-content-between my-4">
-                                    <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Kelas</label>
-                                    <div class="col-xs-2 col-lg-9">
-                                        <select class="custom-select my-1 mr-sm-2" id="kelas">
-                                            <?php foreach ($option_kelas->data_kelas as $ok) { ?>
-                                                <option value="<?= $ok->id ?>">
-                                                    <?= $ok->class_name ?>
-                                                </option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>                                                            
-                            </div>   
-                            <div class="col-md-6">
-                                <div class="d-flex justify-content-between my-4">
-                                    <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Tahun</label>
-                                    <div class="col-xs-2 col-lg-9">
-                                        <select class="custom-select my-1 mr-sm-2" id="tahun">
-                                            <?php foreach ($option_tahun->data_tahun as $ot) { ?>
-                                                <option value="<?= $ot->id ?>">
-                                                    <?= $ot->academic_year ?>
-                                                </option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-center">
+                            <div class="col-md-4 my-4">
+                                <label class="control-label font-weight-bold text-gray-900">Kelas</label>
+                            </div>
+                            <div class="col-md-8 my-4">
+                                <select class="custom-select my-1 mr-sm-2" id="kelas">
+                                    <?php foreach ($option_kelas->data_kelas as $ok) { ?>
+                                        <option value="<?= $ok->id ?>">
+                                            <?= $ok->class_name ?>
+                                        </option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <label class="control-label font-weight-bold text-gray-900">Tahun</label>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <select class="custom-select my-1 mr-sm-2" id="tahun">
+                                    <?php foreach ($option_tahun->data_tahun as $ot) { ?>
+                                        <option value="<?= $ot->id ?>">
+                                            <?= $ot->academic_year ?>
+                                        </option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end text-right">
+                            <div class="col mb-4">
                                 <a class="btn d-sm-inline-block text-light btn-sm shadow px-4 tampilkan-btn" href="#!" style="min-width: 5rem; background-color: #845EF7; border-radius: 8px">
                                     <span class="d-flex">
                                         <i class="ri-search-line mt-auto mb-auto mr-1"></i>
                                         <p class="d-none d-sm-block mt-auto mb-auto">Cari</p>
                                     </span>
                                 </a>
-                                </div>
-                            </div>    
-                        </div>
-                        <div class="row justify-content-end text-right">
-                            <div class="col mb-4">
-                                
                             </div>
                         </div>
 
