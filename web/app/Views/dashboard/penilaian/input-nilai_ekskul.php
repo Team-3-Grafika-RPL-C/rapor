@@ -70,6 +70,12 @@
 </div>
             <div class="card card shadow mb-4 mt-3 none d-none">
                 <div class="card-body">
+                    <div class="row justify-content-end my-3">
+                        <a href="" class="btn d-flex justify-content-center btn-indigo shadow btn-input" style="min-width: 5rem; border-radius:8px;" data-toggle="modal" data-target="#modalInputData">
+                            <i class="ri-add-fill"></i>
+                            <span class="d-none d-md-block">Input Data</span>
+                        </a>
+                    </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -148,6 +154,47 @@
                             </div>
                         </div>
                     </div>    
+
+
+                    <!-- MODAL INPUT DATA -->
+                    <div class="modal-root-input">
+                    <div class="modal fade" id="modalInputData" tabindex="-1" aria-labelledby="modalcatatanLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="modalcatatanLabel">Input Nilai</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <form action="input-nilai-mapel" method="post">
+                                        <div class="modal-body">
+                                            <label for="message-text" class="col-form-label ">Nama Siswa:</label>
+                                            <select name="siswa" id="siswa" class="custom-select">
+                                                <option value="Hitler">Hitler</option>
+                                                <option value="Alexander the great">Alexander the great</option>
+                                                <option value="King Arthur">King Arthur</option>
+                                                <option value="Soeharto">Soeharto</option>
+                                            </select>
+                                            <label for="message-text" class="col-form-label">Ekskul:</label>
+                                            <input type="text" autocomplete="off" class="form-control" id="ekskul" name="ekskul" value="Diktaktor class" readonly>
+                                            <label for="message-text" class="col-form-label">Deskripsi:</label>
+                                            <textarea autocomplete="off" class="form-control" id="tp" name="tp" rows="3"></textarea>
+                                            <label for="message-text" class="col-form-label">Nilai:</label>
+                                            <input type="text" autocomplete="off" class="form-control" id="nilai" name="nilai">
+        
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-indigo">Simpan</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                </div>
+
 <script src="<?= base_url(); ?>/js/input-nilai_ekskul.js"></script>
 
 <!-- End of Main Content -->
