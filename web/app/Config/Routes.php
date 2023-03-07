@@ -178,6 +178,7 @@ $routes->get('/input-nilai-ekskul', 'c_inputNilaiEkskul::index', ['filter' => 'A
 $routes->get('/input-nilai-ekskul/form', 'c_inputNilaiEkskul::form', ['filter' => 'AuthTeacher']);
 
 $routes->get('/rekap-nilai_mapel', 'c_rekapNilaiMapel::index', ['filter' => 'AuthTeacher']);
+$routes->post('/rekap-data-nilai', 'c_rekapNilaiMapel::getNilaiSiswa', ['filter' => 'AuthTeacher']);
 
 $routes->get('/rekap-nilai_ekskul', 'c_rekapNilaiEkskul::index', ['filter' => 'AuthTeacher']);
 

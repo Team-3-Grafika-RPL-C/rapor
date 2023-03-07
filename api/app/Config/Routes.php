@@ -227,12 +227,17 @@ $routes->post('/catatan-semester', 'CCatatanSemester::insert');
 $routes->get('/catatan-semester/(:num)', 'CCatatanSemester::show/$1');
 $routes->put('/catatan-semester/(:num)', 'CCatatanSemester::update/$1');
 
-// --- Catatan Semester --- //
+// --- Status Kenaikan --- //
 $routes->get('/sk-option-kelas', 'CStatusKenaikan::option_kelas');
 $routes->get('/sk-option-tahun', 'CStatusKenaikan::option_tahun');
 $routes->post('/data-kenaikan', 'CStatusKenaikan::data_siswa');
 $routes->post('/sk-naik/(:num)', 'CStatusKenaikan::promoted/$1');
 $routes->post('/sk-tidak-naik/(:num)', 'CStatusKenaikan::not_promoted/$1');
+
+// --- Rekap Nilai --- //
+$routes->get('/rn-option-kelas', 'CRekapNilaiMapel::option_kelas');
+$routes->get('/rn-option-tahun', 'CRekapNilaiMapel::option_tahun');
+$routes->post('/data-nilai-mapel', 'CRekapNilaiMapel::data_siswa');
 
 $routes->get('/score', 'CScore::index');
 
