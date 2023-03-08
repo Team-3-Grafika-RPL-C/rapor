@@ -20,7 +20,31 @@
                     <input type="hidden" id="input_tahun" name="id_academic_year" />
                     <input type="hidden" id="input_kelas" name="id_class" />
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4 my-4">
+                                <label class="control-label font-weight-bold text-gray-900">Kelas</label>
+                            </div>
+                            <div class="col-md-8 my-4">
+                                <select class="custom-select my-1 mr-sm-2" id="kelas">
+                                    <?php foreach ($option_kelas->data_kelas as $ok) { ?>
+                                        <option value="<?= $ok->id ?>">
+                                            <?= $ok->class_name ?>
+                                        </option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Tahun Ajaran</label>
+                            </div>
+                            <div class="col-md-8 mb-4">
+                                <select class="custom-select my-1 mr-sm-2" id="tahun">
+                                    <?php foreach ($option_tahun->data_tahun as $ot) { ?>
+                                        <option value="<?= $ot->id ?>">
+                                            <?= $ot->academic_year ?>
+                                        </option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <!-- <div class="col-md-6">
                                 <div class="d-flex justify-content-between my-4">
                                     <label class="control-label col-xs-3 col-lg-3 font-weight-bold text-gray-900">Kelas</label>
                                     <div class="col-xs-2 col-lg-9">
@@ -45,7 +69,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="row justify-content-end text-right">
                             <div class="col mb-4">
@@ -54,37 +78,38 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="card shadow mb-4 mt-3 none d-none">    
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center">No</th>
-                                            <th class="text-center">Nama</th>
-                                            <th class="text-center">Sakit (Hari)</th>
-                                            <th class="text-center">Ijin (Hari)</th>
-                                            <th class="text-center">Alpha (Hari)</th>
-                                            <th class="text-center">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-center" id="tbody-table">
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        </div>
                     </div>
+                </div>
+                <!-- /.container-fluid -->
+                
+            </div>
 
-                    <!-- modal -->
-                    <div id="modal-root">
-                        
-                    </div>
-</div>
-<!-- /.container-fluid -->
+            <div class="card shadow mb-4 mt-3 none d-none">    
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th class="text-center">No</th>
+                                <th class="text-center">Nama</th>
+                                <th class="text-center">Sakit (Hari)</th>
+                                <th class="text-center">Ijin (Hari)</th>
+                                <th class="text-center">Alpha (Hari)</th>
+                                <th class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center" id="tbody-table">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
 
-</div>
+            <!-- modal -->
+            <div id="modal-root">
+                
+            </div>
 <script src="<?= base_url(); ?>/js/input-presensi.js"></script>
 
 <!-- End of Main Content -->
