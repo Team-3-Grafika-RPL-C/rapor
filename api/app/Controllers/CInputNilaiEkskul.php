@@ -22,8 +22,14 @@ class CInputNilaiEkskul extends ResourceController
         if($token === false){
             return $this->failUnauthorized();
         }
-        
-        $query = "SELECT DISTINCT a.id, a.extracurricular_name FROM extracurricular a WHERE a.is_deleted = 0";
+
+        $query = "SELECT DISTINCT
+        b.id_extracurricular,
+        c.extracurricular_name
+        FROM class_students a
+        LEFT JOIN extracurricular_students b ON a.id_students = b.id_student
+        INNER JOIN extracurricular c ON c.id = b.id_extracurricular
+        WHERE a.is_deleted = 0 AND b.is_deleted = 0 AND c.is_deleted = 0";
         $data_ekskul = $this->api_helpers->queryGetArray($query);
 
         $option_ekskul = [
@@ -57,18 +63,23 @@ class CInputNilaiEkskul extends ResourceController
             return $this->failUnauthorized();
         }
 
-        $id_subject = $this->request->getVar('id_subject');
         $id_extracurricular = $this->request->getVar('id_extracurricular');
 
         $query = "SELECT DISTINCT
-        a.id,
+        a.id as id_score_ekskul,
+        a.id_class_students,
+        b.id_students,
         c.student_name,
-        a.predicate
+        a.id_extracurricular,
+        d.extracurricular_name,
+        a.predicate,
+        a.description
         FROM score_extracurricular a
         RIGHT JOIN class_students b ON a.id_class_students = b.id
         RIGHT JOIN students c ON b.id_students = c.id
-        WHERE a.id_extracurricular = ? AND b.id_class = ?";
-        $nilai = $this->api_helpers->queryGetArray($query, [$id_subject, $id_extracurricular]);
+        INNER JOIN extracurricular d ON a.id_extracurricular = d.id
+        WHERE a.id_extracurricular =?";
+        $nilai = $this->api_helpers->queryGetArray($query, [$id_extracurricular]);
 
         $data_nilai = [
             'data_nilai' => $nilai 
@@ -77,6 +88,30 @@ class CInputNilaiEkskul extends ResourceController
         return $this->respond($data_nilai, 200);
 
     }
+
+    public function option_siswa()
+    {
+        $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
+        $id_extracurricular = $this->request->getVar('id_extracurricular');
+        
+        $query = "SELECT DISTINCT 
+        a.id, a.id_students, c.student_name
+        FROM class_students a 
+        INNER JOIN extracurricular_students b ON a.id_students = b.id_student
+        INNER JOIN students c ON a.id_students = c.id
+        WHERE b.id_extracurricular = ?";
+        $data_siswa = $this->api_helpers->queryGetArray($query, [$id_extracurricular]);
+
+        $option_siswa = [
+            'data_siswa' => $data_siswa
+        ];
+
+        return $this->respond($option_siswa, 200);
+    }
+    
     /**
      * Return the properties of a resource object
      *
@@ -127,6 +162,8 @@ class CInputNilaiEkskul extends ResourceController
         }
 
         $rules = $this->validate([
+            'id_class_students' => 'required',
+            'id_extracurricular' => 'required',
             'predicate' => 'required',
             'description' => 'required',
         ]);
@@ -138,6 +175,8 @@ class CInputNilaiEkskul extends ResourceController
         }
 
         $this->model->insert([
+            'id_class_students' => esc($this->request->getVar('id_class_students')),
+            'id_extracurricular' => esc($this->request->getVar('id_extracurricular')),
             'predicate' => esc($this->request->getVar('predicate')),
             'description' => esc($this->request->getVar('description')),
         ]);
@@ -165,6 +204,8 @@ class CInputNilaiEkskul extends ResourceController
         }
 
         $rules = $this->validate([
+            'id_class_students' => 'required',
+            'id_extracurricular' => 'required',
             'predicate' => 'required',
             'description' => 'required',
         ]);
@@ -176,6 +217,8 @@ class CInputNilaiEkskul extends ResourceController
         }
 
         $this->model->update($id, [
+            'id_class_students' => esc($this->request->getVar('id_class_students')),
+            'id_extracurricular' => esc($this->request->getVar('id_extracurricular')),
             'predicate' => esc($this->request->getVar('predicate')),
             'description' => esc($this->request->getVar('description')),
         ]);
@@ -202,8 +245,7 @@ class CInputNilaiEkskul extends ResourceController
             return $this->failForbidden('not admin');
         }
         
-        $query = "UPDATE score_extracurricular SET predicate = NULL, description = NULL WHERE id=?";
-        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
+        $query = $this->model->delete($id);
 
         $response = [
             'message' => 'Data berhasil dihapus'

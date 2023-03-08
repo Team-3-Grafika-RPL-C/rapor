@@ -16,40 +16,18 @@
     <div class="mx-3">
                 <div class="container">
                     <form action="" method="post">
+                        <input type="hidden" id="base_url" value="<?=base_url()?>">
+                        <input type="hidden" id="input_ekskul" name="id_extracurriculars" />
                         <div class="row">
                             <div class="col-md-4 mb-4 mt-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Ekstrakurikuler</h6>
                             </div>
                             <div class="col-md-8 mb-4 mt-4">
                                 <div>
-                                    <select class="custom-select my-1 mr-sm-2" id="mapel">
-                                        <option>Tari</option>
-                                        <option>Pramuka</option>
-                                        <option>Basket</option>
-                                        <option>Olimpiade</option>
-                                        <option>TIK</option>
-                                        <option>Paskibra</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-4">
-                                <h6 class="h6 text-gray-900 font-weight-bold">Kelas</h6>
-                            </div>
-                            <div class="col-md-8 mb-4">
-                                <div>
-                                    <select class="custom-select my-1 mr-sm-2" id="kelas">
-                                        <option>1A</option>
-                                        <option>1B</option>
-                                        <option>2A</option>
-                                        <option>2B</option>
-                                        <option>31</option>
-                                        <option>3B</option>
-                                        <option>4A</option>
-                                        <option>4B</option>
-                                        <option>5A</option>
-                                        <option>5B</option>
-                                        <option>6A</option>
-                                        <option>6B</option>
+                                    <select class="custom-select my-1 mr-sm-2" id="ekskul">
+                                        <?php foreach ($option_ekskul->data_ekskul as $oe) { ?>
+                                            <option value="<?= $oe->id_extracurricular ?>"><?= $oe->extracurricular_name ?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -71,7 +49,7 @@
             <div class="card card shadow mb-4 mt-3 none d-none">
                 <div class="card-body">
                     <div class="row justify-content-end my-3">
-                        <a href="" class="btn d-flex justify-content-center btn-indigo shadow btn-input" style="min-width: 5rem; border-radius:8px;" data-toggle="modal" data-target="#modalInputData">
+                        <a href="" class="btn d-flex justify-content-center btn-indigo shadow btn-input" style="min-width: 5rem; border-radius:8px;" data-toggle="modal" data-target="#modalInputEkskul">
                             <i class="ri-add-fill"></i>
                             <span class="d-none d-md-block">Input Data</span>
                         </a>
@@ -86,44 +64,19 @@
                                             <th class="col-3 text-center">ACTION</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="text-center">
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Umar bin Khattab</td>
-                                            <td>80</td>
-                                            <td>
-                                                <a href="" class="btn btn-warning btn-rounded">
-                                                    <i class="ri-pencil-fill" title="Edit"></i>
-                                                </a>
-                                                <a href="" class="btn btn-danger btn-rounded">
-                                                    <i class="ri-delete-bin-7-fill" title="Delete"></i>
-                                                </a>
-                                                <button type="button" class="btn btn-success btn-rounded my-1"  data-toggle="modal" data-target="#modalInputEkskul">
-                                                    <i class="ri-add-fill" data-toggle="tooltip" title="Edit"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Taufiqi Hidayat</td>
-                                            <td> </td>
-                                            <td>
-                                                <a href="" class="btn btn-warning btn-rounded">
-                                                    <i class="ri-pencil-fill" title="Edit"></i>
-                                                </a>
-                                                <a href="" class="btn btn-danger btn-rounded">
-                                                    <i class="ri-delete-bin-7-fill" title="Delete"></i>
-                                                </a>
-                                                <button type="button" class="btn btn-success btn-rounded my-1"  data-toggle="modal" data-target="#modalInputEkskul">
-                                                    <i class="ri-add-fill" data-toggle="tooltip" title="Edit"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                    <tbody class="text-center" id="tbody-table">
+                                        
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                 </div>
+
+                <!-- MODAL -->
+                <div id="modal-root">
+                    
+                </div>
+                
                 <!-- MODAL -->
                     <div class="modal fade" id="modalInputEkskul" tabindex="-1" aria-labelledby="modalcatatanLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -134,14 +87,18 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                                 </div>
-                                <form action="catatan-semester-form/${value.id}" method="post">
+                                <form action="input-nilai-ekskul" method="post">
                                 <div class="modal-body">
-                                    <label for="message-text" class="col-form-label">Nama Siswa:</label>
-                                    <input type="text" autocomplete="off" class="form-control" id="nama-siswa" name="Nama Siswa" value="Taufiqi Hidayat" readonly>
+                                    <input type="hidden" placeholder="id_extracurricular" id="id_extracurricular" name="id_extracurricular" value="">
+                                    <input type="hidden" placeholder="id_class_student" id="id_class_students" name="id_class_students" value="">
+                                    <label for="message-text" class="col-form-label ">Nama Siswa:</label>
+                                    <select name="siswa" id="siswa" class="custom-select">
+
+                                    </select>
                                     <label for="message-text" class="col-form-label">Ekstrakurikuler:</label>
-                                    <input type="text" autocomplete="off" class="form-control" id="ekskul" name="Ekskul" value="Tari" readonly>
-                                    <label for="message-text" class="col-form-label">Nilai:</label>
-                                    <input type="text" autocomplete="off" class="form-control" id="nilai" name="Nilai">
+                                    <input type="text" autocomplete="off" class="form-control" id="ekstrakurikuler" name="ekstrakurikuler" value="" readonly>
+                                    <label for="message-text" class="col-form-label">Predikat:</label>
+                                    <input type="text" autocomplete="off" class="form-control" id="predikat" name="predikat">
                                     <label for="message-text" class="col-form-label">Deskripsi:</label>
                                     <textarea class="form-control" name="desc" id="desc" cols="30" rows="5"></textarea>
 
@@ -153,47 +110,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>    
-
-
-                    <!-- MODAL INPUT DATA -->
-                    <div class="modal-root-input">
-                    <div class="modal fade" id="modalInputData" tabindex="-1" aria-labelledby="modalcatatanLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                        <h5 class="modal-title" id="modalcatatanLabel">Input Nilai</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        </div>
-                                        <form action="input-nilai-mapel" method="post">
-                                        <div class="modal-body">
-                                            <label for="message-text" class="col-form-label ">Nama Siswa:</label>
-                                            <select name="siswa" id="siswa" class="custom-select">
-                                                <option value="Hitler">Hitler</option>
-                                                <option value="Alexander the great">Alexander the great</option>
-                                                <option value="King Arthur">King Arthur</option>
-                                                <option value="Soeharto">Soeharto</option>
-                                            </select>
-                                            <label for="message-text" class="col-form-label">Ekskul:</label>
-                                            <input type="text" autocomplete="off" class="form-control" id="ekskul" name="ekskul" value="Diktaktor class" readonly>
-                                            <label for="message-text" class="col-form-label">Deskripsi:</label>
-                                            <textarea autocomplete="off" class="form-control" id="tp" name="tp" rows="3"></textarea>
-                                            <label for="message-text" class="col-form-label">Nilai:</label>
-                                            <input type="text" autocomplete="off" class="form-control" id="nilai" name="nilai">
-        
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                            <button type="submit" class="btn btn-indigo">Simpan</button>
-                                        </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>  
-                        </div>
-                </div>
+                    </div>   
 
 <script src="<?= base_url(); ?>/js/input-nilai_ekskul.js"></script>
 

@@ -175,7 +175,12 @@ $routes->get('/input-nilai-mapel/form-detail', 'c_inputNilaiMapel::form_detail',
 $routes->get('/input-nilai-mapel/delete/(:num)', 'c_inputNilaiMapel::delete/$1', ['filter' => 'AuthTeacher']);
 
 $routes->get('/input-nilai-ekskul', 'c_inputNilaiEkskul::index', ['filter' => 'AuthTeacher']);
-$routes->get('/input-nilai-ekskul/form', 'c_inputNilaiEkskul::form', ['filter' => 'AuthTeacher']);
+$routes->get('/ne-option-ekskul', 'c_inputNilaiEkskul::getEkskul', ['filter' => 'AuthTeacher']);
+$routes->post('/nilai-ekskul', 'c_inputNilaiEkskul::getNilaiSiswa', ['filter' => 'AuthTeacher']);
+$routes->post('/ne-option-siswa', 'c_inputNilaiEkskul::option_siswa', ['filter' => 'AuthTeacher']);
+$routes->post('/input-nilai-ekskul', 'c_inputNilaiEkskul::create', ['filter' => 'AuthTeacher']);
+$routes->post('/input-nilai-ekskul/form-edit/(:num)', 'c_inputNilaiEkskul::form_edit_process/$1', ['filter' => 'AuthTeacher']);
+$routes->get('/input-nilai-ekskul/delete/(:num)', 'c_inputNilaiEkskul::delete/$1', ['filter' => 'AuthTeacher']);
 
 $routes->get('/rekap-nilai_mapel', 'c_rekapNilaiMapel::index', ['filter' => 'AuthTeacher']);
 $routes->post('/rekap-data-nilai', 'c_rekapNilaiMapel::getNilaiSiswa', ['filter' => 'AuthTeacher']);

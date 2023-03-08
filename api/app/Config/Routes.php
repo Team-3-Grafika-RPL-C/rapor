@@ -214,6 +214,7 @@ $routes->delete('/input-nilai-mapel/(:num)', 'CInputNilaiMapel::delete/$1');
 $routes->get('/ne-option-ekskul', 'CInputNilaiEkskul::option_ekskul');
 $routes->get('/ne-option-kelas', 'CInputNilaiEkskul::option_kelas');
 $routes->post('/nilai-ekskul', 'CInputNilaiEkskul::data_nilai');
+$routes->post('/ne-option-siswa', 'CInputNilaiEkskul::option_siswa');
 $routes->get('/nilai-ekskul-detail/(:num)', 'CInputNilaiEkskul::show/$1');
 $routes->post('/input-nilai-ekskul', 'CInputNilaiEkskul::create');
 $routes->put('/input-nilai-ekskul/(:num)', 'CInputNilaiEkskul::update/$1');
