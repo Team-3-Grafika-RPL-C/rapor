@@ -182,8 +182,8 @@ class c_inputNilaiMapel extends BaseController
 
     public function form_edit_process($id)
     {
-        $id_subject = $this->request->getVar('id_subject_detail');
-        $id_class_students = $this->request->getVar('id_class_students_detail');
+        $id_subject = $this->request->getVar('id_subject_edit');
+        $id_class_students = $this->request->getVar('id_class_students_edit');
         $cp = $this->request->getVar('cp_detail');
         $tp = $this->request->getVar('tp_detail');
         $nilai = $this->request->getVar('nilai_detail');

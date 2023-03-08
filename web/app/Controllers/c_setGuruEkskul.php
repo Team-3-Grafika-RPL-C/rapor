@@ -10,22 +10,22 @@ class c_setGuruEkskul extends BaseController
     public function __construct()
     {
         $this->client = \Config\Services::curlrequest([
-            'baseURI' => 'http://localhost/rapor/api/public/'
+            'baseURI' => baseURI_api
         ]);
         $this->session = session();
     }
     public function index()
     {
+        $data = [
+            'title' => 'Rapodig - Set Guru Ekskul',
+        ];
+
         $response = $this->client->request('GET', 'guru-ekskul', [
             'headers' => [
                 'Authorization' => 'Bearer ' . session()->get('token')
             ],
             'http_errors' => false
         ]);
-
-        $data = [
-            'title' => 'Rapodig - Set Guru Ekskul',
-        ];
 
         $response_body = json_decode($response->getBody());
         if ($response->getStatusCode() === 200) {
@@ -110,18 +110,6 @@ class c_setGuruEkskul extends BaseController
             $data['detail'] = json_decode($response->getBody());
         } else {
             $data['date_err'] = json_decode($response->getBody());
-        }
-
-        $response = $this->client->request('GET', 'ge-option-guru', [
-            'headers' => [
-                'Authorization' => 'Bearer ' . session()->get('token')
-            ],
-            'http_errors' => false
-        ]);
-        if ($response->getStatusCode() === 200) {
-            $data['option_guru'] = json_decode($response->getBody());
-        } else {
-            $data['data_err'] = json_decode($response->getBody());
         }
 
         $response = $this->client->request('GET', 'ge-option-tahun', [

@@ -27,7 +27,7 @@
                             </div>
                             <div class="col-md-8 mb-4">
                                 <input type="text" autocomplete="off" class="form-control" id="guru" name="guru"
-                                value="<?= $page == 'edit' ? $data->guru_ekskul_detail->teacher_name : '' ?>">
+                                value="<?= $page == 'edit' ? $detail->guru_ekskul_detail->teacher_name : '' ?>">
                             </div>
                             <div class="col-md-4 mb-4">
                                 <h6 class="h6 text-gray-900 font-weight-bold">Tahun</h6>
@@ -36,7 +36,7 @@
                                 <div>
                                     <select class="custom-select my-1 mr-sm-2" id="tahun" name="tahun">
                                         <?php foreach ($option_tahun->data_tahun as $dat) { ?>
-                                            <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_ekskul_detail->id_academic_year ?'selected' :'') :'' ?>>
+                                            <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $detail->guru_ekskul_detail->id_academic_year ?'selected' :'') :'' ?>>
                                                 <?= $dat->academic_year ?>
                                             </option>
                                         <?php
@@ -51,7 +51,7 @@
                                 <div>
                                     <select class="custom-select my-1 mr-sm-2" id="ekskul" name="ekskul">
                                         <?php foreach ($data_ekskul->data_ekskul as $dat) { ?>
-                                            <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $data->guru_ekskul_detail->id_extracurricular ?'selected' :'') :'' ?>>
+                                            <option value="<?= $dat->id ?>" <?= $page == 'edit' ?($dat->id == $detail->guru_ekskul_detail->id_extracurricular ?'selected' :'') :'' ?>>
                                                 <?= $dat->extracurricular_name ?>
                                             </option>
                                         <?php
