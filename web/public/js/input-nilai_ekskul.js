@@ -104,7 +104,7 @@ function retrieveDataSiswa(){
                                         <input type="text" autocomplete="off" class="form-control" id="nama-siswa-edit" name="nama-siswa-edit" value="${value.student_name}" readonly>
                                         <label for="message-text" class="col-form-label">Ekstrakurikuler:</label>
                                         <input type="text" autocomplete="off" class="form-control" id="ekstrakurikuler-edit" name="ekstrakurikuler-edit" value="${value.extracurricular_name}" readonly>
-                                        <label for="message-text" class="col-form-label"Predikat</label>
+                                        <label for="message-text" class="col-form-label">Predikat:</label>
                                         <textarea autocomplete="off" class="form-control" id="predikat-edit" name="predikat-edit" rows="3">${value.predicate}</textarea>
                                         <label for="message-text" class="col-form-label">Deskripsi:</label>
                                         <textarea autocomplete="off" class="form-control" id="desc-edit" name="desc-edit" rows="3">${value.description}</textarea>
