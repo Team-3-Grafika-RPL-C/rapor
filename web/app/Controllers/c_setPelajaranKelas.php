@@ -11,7 +11,7 @@ class c_setPelajaranKelas extends BaseController
     public function __construct()
     {
         $this->client = \Config\Services::curlrequest([
-            'baseURI' => 'http://localhost/rapor/api/public/'
+            'baseURI' => baseURI_api
         ]);
         $this->session = session();
     }
@@ -97,12 +97,10 @@ class c_setPelajaranKelas extends BaseController
             ],
             'http_errors' => false
         ]);
-
-        $response_body = json_decode($response->getBody());
         if ($response->getStatusCode() === 200) {
-            $data['data'] = $response_body;
+            $pelajaran['pelajaran_kelas'] = json_decode($response->getBody());
         } else {
-            $data['data_err'] = $response_body;        
+            $pelajaran['data_err'] = json_decode($response->getBody());
         }
 
         $response = $this->client->request('GET', 'pelajaran-kelas-detail/' . $id, [
@@ -111,13 +109,19 @@ class c_setPelajaranKelas extends BaseController
             ],
             'http_errors' => false
         ]);
-
-        $response_body = json_decode($response->getBody());
         if ($response->getStatusCode() === 200) {
-            $data['data'] = $response_body;
+            $data['detail'] = json_decode($response->getBody());
+            $array_detail= [];
+    
+            foreach ($data['detail']->pelajaran_kelas_detail as $key => $value) {
+                array_push($array_detail, $value->id_subject);
+            }
+            $data['detail_id'] = $array_detail;
+
         } else {
-            $data['data_err'] = $response_body;        
+            $data['data_err'] = json_decode($response->getBody());
         }
+
         return view('dashboard/setting_data/form-set_pelajaran_kelas_detail', $data);
     }
 
@@ -141,7 +145,6 @@ class c_setPelajaranKelas extends BaseController
             $data['data_err'] = json_decode($response->getBody());
         }
 
-        // dd($data['pelajaran_kelas']);
 
         $response = $this->client->request('GET', 'pelajaran-kelas-detail/' . $id, [
             'headers' => [

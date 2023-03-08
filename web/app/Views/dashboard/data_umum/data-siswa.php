@@ -68,7 +68,7 @@
                             <a href="<?= base_url(); ?>/data-siswa/form-edit/<?=$dat->id?>" class="btn btn-warning btn-rounded my-1">
                                 <i class="ri-pencil-fill" data-toggle="tooltip" title="Edit"></i>
                             </a>
-                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete">
+                            <a href="" class="btn btn-danger btn-rounded my-1" data-toggle="modal" data-target="#delete_<?=$dat->id?>">
                                  <i class="ri-delete-bin-7-fill" data-toggle="tooltip" title="Delete"></i>
                             </a>
                             </td>
@@ -84,7 +84,7 @@
 <?php
 foreach ($data->data_siswa as $dat) {
 ?>
-<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="alertModal" aria-hidden="true">
+<div class="modal fade" id="delete_<?=$dat->id?>" tabindex="-1" aria-labelledby="alertModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content py-4">
             <div class="modal-body">

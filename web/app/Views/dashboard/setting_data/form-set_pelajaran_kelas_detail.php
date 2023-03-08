@@ -28,8 +28,8 @@
                                 </div>
                                 <div class="col-md-8 mb-4">
                                     <select class="custom-select my-1 mr-sm-2" id="kelas" name="kelas" disabled>
-                                        <option value="<?= $data->pelajaran_kelas[0]->id_class ?>">
-                                            <?= $data->pelajaran_kelas[0]->class_name ?>
+                                        <option value="<?= $pelajaran_kelas[0]->id_class ?>">
+                                            <?= $pelajaran_kelas[0]->class_name ?>
                                         </option>
                                     </select>
                                 </div>
@@ -38,8 +38,8 @@
                                 </div>
                                 <div class="col-md-8 mb-4">
                                     <select class="custom-select my-1 mr-sm-2" id="semester" name="semester" disabled>
-                                        <option value="<?= $data->pelajaran_kelas[0]->id_semester ?>">
-                                            <?= $data->pelajaran_kelas[0]->semester ?>
+                                        <option value="<?= $pelajaran_kelas[0]->id_semester ?>">
+                                            <?= $pelajaran_kelas[0]->semester ?>
                                         </option>
                                     </select>
                                 </div>

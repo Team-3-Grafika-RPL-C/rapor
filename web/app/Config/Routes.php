@@ -104,8 +104,8 @@ $routes->get('/active-tahun_ajaran/(:num)', 'c_setTahunAjaran::set_aktif/$1', ['
 $routes->get('/nonactive-tahun_ajaran/(:num)', 'c_setTahunAjaran::set_nonaktif/$1', ['filter' => 'AuthAdmin']);
 $routes->get('/set-tahun_ajaran/form', 'c_setTahunAjaran::form', ['filter' => 'AuthAdmin']);
 $routes->post('/set-tahun_ajaran/form', 'c_setTahunAjaran::create', ['filter' => 'AuthAdmin']);
-$routes->post('/set-tahun_ajaran/form-edit/(:num)', 'c_setTahunAjaran::form_edit_process/$1', ['filter' => 'AuthAdmin']);
 $routes->get('/set-tahun_ajaran/form-edit/(:num)', 'c_setTahunAjaran::form_edit/$1', ['filter' => 'AuthAdmin']);
+$routes->post('/set-tahun_ajaran/form-edit/(:num)', 'c_setTahunAjaran::form_edit_process/$1', ['filter' => 'AuthAdmin']);
 $routes->get('/set-tahun_ajaran/delete/(:num)', 'c_setTahunAjaran::delete/$1', ['filter' => 'AuthAdmin']);
 
 
