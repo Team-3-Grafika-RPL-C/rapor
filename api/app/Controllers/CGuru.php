@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\ApiModel;
 use CodeIgniter\RESTful\ResourceController;
 
 class CGuru extends ResourceController
@@ -9,41 +10,32 @@ class CGuru extends ResourceController
     protected $modelName = "App\Models\MGuru";
     protected $format = "json";
 
-    private $api_helpers;
+    private $api_helpers, $models;
 
     public function __construct()
     {
         $this->api_helpers = new Api_helpers();
+        $this->models = new ApiModel();
     }
 
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
     public function index()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
-        if($token === false){
+        if ($token === false) {
             return $this->failUnauthorized();
         }
         $data = [
             'message'   => 'Data Guru:',
             'data_guru' => $this->model->orderBy('id', 'ASC')->where('is_deleted', 0)->findAll()
         ];
-        
+
         return $this->respond($data, 200);
     }
 
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
     public function show($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
-        if($token === false){
+        if ($token === false) {
             return $this->failUnauthorized();
         }
         $data = [
@@ -58,24 +50,19 @@ class CGuru extends ResourceController
         return $this->respond($data, 200);
     }
 
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
-        if($token === false){
+        if ($token === false) {
             return $this->failUnauthorized();
         }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
-        
+
         $rules = $this->validate([
             'teacher_name'       => 'required',
-            'nip'                => 'required',
+            'nip'                => 'required|numeric',
             'address'            => 'required',
             'gender'             => 'required'
         ]);
@@ -95,6 +82,19 @@ class CGuru extends ResourceController
             'gender'          => esc($this->request->getVar('gender'))
         ]);
 
+        do {
+            $token = random_string('sha256', 32);
+            $query = "SELECT count(id) AS num FROM account WHERE token = ?";
+        } while ($this->api_helpers->queryGetFirst($query . [$token])['num'] > 0);
+
+        $this->models->db->table('account')->insert([
+            'created_by' => '',
+            'token' => $token,
+            'username' => esc($this->request->getVar('nip')),
+            'password' => passwordHash(esc($this->request->getVar('nip'))),
+            'is_teacher' => true
+        ]);
+
         $response = [
             'message' => 'Data berhasil ditambahkan'
         ];
@@ -102,24 +102,19 @@ class CGuru extends ResourceController
         return $this->respondCreated($response);
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
-        if($token === false){
+        if ($token === false) {
             return $this->failUnauthorized();
         }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
-        
+
         $rules = $this->validate([
             'teacher_name'       => 'required',
-            'nip'                => 'required',
+            'nip'                => 'required|numeric',
             'address'            => 'required',
             'gender'             => 'required',
         ]);
@@ -146,23 +141,18 @@ class CGuru extends ResourceController
         return $this->respondCreated($response);
     }
 
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
-        if($token === false){
+        if ($token === false) {
             return $this->failUnauthorized();
         }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
-        
+
         $query = "UPDATE teachers SET is_deleted = 1 WHERE id=?";
-        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
+        $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [
             'message' => 'Data berhasil dihapus'
@@ -170,6 +160,4 @@ class CGuru extends ResourceController
 
         return $this->respondDeleted($response);
     }
-
-    
 }

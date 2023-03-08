@@ -15,11 +15,7 @@ class CSemester extends ResourceController
     {
         $this->api_helpers = new Api_helpers();
     }
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
+    
     public function index()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -43,8 +39,9 @@ class CSemester extends ResourceController
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
+
         $query = "UPDATE semesters SET is_active = 1 WHERE id=?";
-        $activate_data = $this->api_helpers->queryExecute($query, [$id]); 
+        $this->api_helpers->queryExecute($query, [$id]); 
 
         $response = [
             'message' => 'Data berhasil diaktifkan'
@@ -63,7 +60,7 @@ class CSemester extends ResourceController
             return $this->failForbidden('not admin');
         }
         $query = "UPDATE semesters SET is_active = 0 WHERE id=?";
-        $activate_data = $this->api_helpers->queryExecute($query, [$id]); 
+        $this->api_helpers->queryExecute($query, [$id]); 
 
         $response = [
             'message' => 'Data berhasil dinonaktifkan'

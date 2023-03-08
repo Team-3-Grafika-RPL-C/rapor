@@ -25,6 +25,20 @@ class CGuruPelajaranDetail extends ResourceController
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
+
+        $rules = $this->validate([
+            'id_subject' => 'required|numeric',
+            'id_teacher_subject' => 'required|numeric'
+        ]);
+
+        if (!$rules) {
+            $response = [
+                'message' => $this->validator->getErrors()
+            ];
+
+            return $this->failValidationErrors($response);
+        }
+
         $id_subject = $this->request->getVar('id_subject');
         $id_teacher_subject = $this->request->getVar('id_teacher_subject');
 
@@ -49,8 +63,6 @@ class CGuruPelajaranDetail extends ResourceController
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
-        $id_subject = $this->request->getVar('id_subject');
-        $id_teacher_subject = $this->request->getVar('id_teacher_subject');
 
         $query = "UPDATE teacher_subject_detail SET is_deleted = 1 WHERE id_teacher_subject=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);

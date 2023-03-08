@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
@@ -20,7 +20,7 @@ class CCatatanSemester extends ResourceController{
         if($token === false){
             return $this->failUnauthorized();
         }
-        
+
         $query = "SELECT DISTINCT a.id, a.class_name FROM class a WHERE a.is_deleted = 0";
         $data_kelas = $this->api_helpers->queryGetArray($query);
 
@@ -37,7 +37,7 @@ class CCatatanSemester extends ResourceController{
         if($token === false){
             return $this->failUnauthorized();
         }
-        
+
         $query = "SELECT DISTINCT a.id, a.academic_year FROM academic_years a WHERE a.is_deleted = 0 AND a.is_active = 1";
         $data_tahun = $this->api_helpers->queryGetArray($query);
 
@@ -54,7 +54,7 @@ class CCatatanSemester extends ResourceController{
         if($token === false){
             return $this->failUnauthorized();
         }
-        
+
         $query = "SELECT 
         a.id,
         a.notes
@@ -76,6 +76,19 @@ class CCatatanSemester extends ResourceController{
             return $this->failUnauthorized();
         }
 
+        $rules = $this->validate([
+            'id_academic_year' => 'required|numeric',
+            'id_class' => 'required|numeric'
+        ]);
+
+        if (!$rules) {
+            $response = [
+                'message' => $this->validator->getErrors()
+            ];
+
+            return $this->failValidationErrors($response);
+        }
+
         $id_academic_year = $this->request->getVar('id_academic_year');
         $id_class = $this->request->getVar('id_class');
 
@@ -95,7 +108,6 @@ class CCatatanSemester extends ResourceController{
         ];
 
         return $this->respond($data_siswa, 200);
-
     }
 
     public function insert()
@@ -106,6 +118,18 @@ class CCatatanSemester extends ResourceController{
         }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
+        }
+
+        $rules = $this->validate([
+            'notes' => 'required'
+        ]);
+
+        if (!$rules) {
+            $response = [
+                'message' => $this->validator->getErrors()
+            ];
+
+            return $this->failValidationErrors($response);
         }
 
         $this->model->insert([
@@ -122,8 +146,23 @@ class CCatatanSemester extends ResourceController{
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
+        if($token === false){
+            return $this->failUnauthorized();
+        }
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
+        }
+
+        $rules = $this->validate([
+            'notes' => 'required'
+        ]);
+
+        if (!$rules) {
+            $response = [
+                'message' => $this->validator->getErrors()
+            ];
+
+            return $this->failValidationErrors($response);
         }
 
         $this->model->update($id, [
@@ -136,5 +175,4 @@ class CCatatanSemester extends ResourceController{
 
         return  $this->respondUpdated($response);
     }
-
 }

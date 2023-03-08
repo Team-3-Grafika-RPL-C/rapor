@@ -15,11 +15,7 @@ class CPelajaranKelas extends ResourceController
     {
         $this->api_helpers = new Api_helpers();
     }
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
+    
     public function index()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -103,12 +99,6 @@ class CPelajaranKelas extends ResourceController
         return $this->respond($data, 200);
     }
 
-
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -119,8 +109,8 @@ class CPelajaranKelas extends ResourceController
             return $this->failForbidden('not admin');
         }
         $rules = $this->validate([
-            'id_class' => 'required',
-            'id_semester' => 'required',
+            'id_class' => 'required|numeric',
+            'id_semester' => 'required|numeric',
         ]);
 
         if (!$rules) {
@@ -144,11 +134,6 @@ class CPelajaranKelas extends ResourceController
         return  $this->respondCreated($response);
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -159,8 +144,8 @@ class CPelajaranKelas extends ResourceController
             return $this->failForbidden('not admin');
         }
         $rules = $this->validate([
-            'id_class' => 'required',
-            'id_semester' => 'required',
+            'id_class' => 'required|numeric',
+            'id_semester' => 'required|numeric',
         ]);
 
         if (!$rules) {
@@ -183,11 +168,6 @@ class CPelajaranKelas extends ResourceController
         return  $this->respondUpdated($response);
     }
 
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));

@@ -15,17 +15,14 @@ class CRaporSemester extends ResourceController
     {
         $this->api_helpers = new Api_helpers();
     }
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
+    
     public function index()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         if ($token === false) {
             return $this->failUnauthorized();
         }
+        
         $query = "SELECT
                     a.id,
                     a.class_name,
@@ -43,25 +40,13 @@ class CRaporSemester extends ResourceController
         return $this->respond($data, 200);
     }
 
-    // public function option_tahun()
-    // {
-    //     $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
-    //     $query = "SELECT DISTINCT a.id, a.academic_year FROM academic_years a WHERE a.is_deleted = 0";
-    //     $data_tahun = $this->api_helpers->queryGetArray($query);
-
-    //     $option_tahun = [
-    //         'data_tahun' => $data_tahun
-    //     ];
-
-    //     return $this->respond($option_tahun, 200);
-    // }
-
     public function option_siswa($id)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         if ($token === false) {
             return $this->failUnauthorized();
         };
+
         $query = "SELECT DISTINCT 
                     a.id,
                     a.id_students,
@@ -85,6 +70,7 @@ class CRaporSemester extends ResourceController
         if ($token === false) {
             return $this->failUnauthorized();
         }
+
         $query = "SELECT
                     a.id,
                     b.student_name,
@@ -112,6 +98,7 @@ class CRaporSemester extends ResourceController
         if ($token === false) {
             return $this->failUnauthorized();
         }
+
         $query = "SELECT
                     a.id_subjects,
                     b.subject_name,
@@ -139,6 +126,7 @@ class CRaporSemester extends ResourceController
         if ($token === false) {
             return $this->failUnauthorized();
         }
+
         $query = "SELECT
                     a.id,
                     a.id_extracurricular,
@@ -167,6 +155,7 @@ class CRaporSemester extends ResourceController
         if ($token === false) {
             return $this->failUnauthorized();
         }
+
         $query = "SELECT
                     a.id,
                     a.id_students,
@@ -190,6 +179,7 @@ class CRaporSemester extends ResourceController
         if ($token === false) {
             return $this->failUnauthorized();
         }
+
         $query = "SELECT
                     a.id,
                     a.id_students,

@@ -15,17 +15,14 @@ class CKelas extends ResourceController
     {
         $this->api_helpers = new Api_helpers();
     }
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
+    
     public function index()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         if($token === false){
             return $this->failUnauthorized();
         }
+
         $data = [
             'message' => 'Data Kelas:',
             'data_kelas' => $this->model->orderBy('class_name', 'ASC')->where('is_deleted', 0)->findAll()
@@ -34,17 +31,13 @@ class CKelas extends ResourceController
         return $this->respond($data, 200);
     }
 
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
     public function show($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         if($token === false){
             return $this->failUnauthorized();
         }
+
         $query="SELECT a.*, b.teacher_name FROM class a INNER JOIN teachers b ON a.id_teachers = b.id WHERE a.id = ?";
         $data_kelas = $this->api_helpers->queryGetFirst($query, [$id]);
         $data = [
@@ -60,11 +53,6 @@ class CKelas extends ResourceController
         return $this->respond($data, 200);
     }
 
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -74,10 +62,11 @@ class CKelas extends ResourceController
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
+
         $rules = $this->validate([
             'class_name'    => 'required',
             'class'         => 'required',
-            'id_teachers'   => 'required',
+            'id_teachers'   => 'required|numeric',
             'student_count' => 'required',
         ]);
 
@@ -103,11 +92,6 @@ class CKelas extends ResourceController
         return $this->respond($response, 200);
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -120,7 +104,7 @@ class CKelas extends ResourceController
         $rules = $this->validate([
             'class_name'    => 'required',
             'class'         => 'required',
-            'id_teachers'   => 'required',
+            'id_teachers'   => 'required|numeric',
             'student_count' => 'required',
         ]);
 
@@ -146,11 +130,6 @@ class CKelas extends ResourceController
         return $this->respond($response, 200);
     }
 
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -161,7 +140,7 @@ class CKelas extends ResourceController
             return $this->failForbidden('not admin');
         }
         $query = "UPDATE class SET is_deleted = 1 WHERE id=?";
-        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
+        $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [
             'message' => 'Data berhasil dihapus'
@@ -185,7 +164,6 @@ class CKelas extends ResourceController
 
         if ($data['wali_kelas'] == null) {
             return $this->failNotFound('Data kelas tidak ditemukan');
-
         }
 
         return $this->respond($data, 200);

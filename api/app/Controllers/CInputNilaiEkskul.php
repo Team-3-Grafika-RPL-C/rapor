@@ -45,7 +45,7 @@ class CInputNilaiEkskul extends ResourceController
         if($token === false){
             return $this->failUnauthorized();
         }
-        
+
         $query = "SELECT DISTINCT a.id, a.class_name FROM class a WHERE a.is_deleted = 0";
         $data_kelas = $this->api_helpers->queryGetArray($query);
 
@@ -61,6 +61,18 @@ class CInputNilaiEkskul extends ResourceController
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         if($token === false){
             return $this->failUnauthorized();
+        }
+
+        $rules = $this->validate([
+            'id_extracurricular' => 'required|numeric'
+        ]);
+
+        if (!$rules) {
+            $response = [
+                'message' => $this->validator->getErrors()
+            ];
+
+            return $this->failValidationErrors($response);
         }
 
         $id_extracurricular = $this->request->getVar('id_extracurricular');
@@ -86,7 +98,6 @@ class CInputNilaiEkskul extends ResourceController
         ];
 
         return $this->respond($data_nilai, 200);
-
     }
 
     public function option_siswa()
@@ -95,6 +106,7 @@ class CInputNilaiEkskul extends ResourceController
         if($token === false){
             return $this->failUnauthorized();
         }
+
         $id_extracurricular = $this->request->getVar('id_extracurricular');
         
         $query = "SELECT DISTINCT 
@@ -111,12 +123,7 @@ class CInputNilaiEkskul extends ResourceController
 
         return $this->respond($option_siswa, 200);
     }
-    
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
+
     public function show($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -146,11 +153,6 @@ class CInputNilaiEkskul extends ResourceController
         return $this->respond($detail_nilai, 200);
     }
 
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -162,8 +164,8 @@ class CInputNilaiEkskul extends ResourceController
         }
 
         $rules = $this->validate([
-            'id_class_students' => 'required',
-            'id_extracurricular' => 'required',
+            'id_class_students' => 'required|numeric',
+            'id_extracurricular' => 'required|numeric',
             'predicate' => 'required',
             'description' => 'required',
         ]);
@@ -188,11 +190,6 @@ class CInputNilaiEkskul extends ResourceController
         return $this->respondCreated($response);
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -204,8 +201,8 @@ class CInputNilaiEkskul extends ResourceController
         }
 
         $rules = $this->validate([
-            'id_class_students' => 'required',
-            'id_extracurricular' => 'required',
+            'id_class_students' => 'required|numeric',
+            'id_extracurricular' => 'required|numeric',
             'predicate' => 'required',
             'description' => 'required',
         ]);
@@ -230,11 +227,6 @@ class CInputNilaiEkskul extends ResourceController
         return $this->respondUpdated($response);
     }
 
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -244,8 +236,8 @@ class CInputNilaiEkskul extends ResourceController
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
-        
-        $query = $this->model->delete($id);
+
+        $this->model->delete($id);
 
         $response = [
             'message' => 'Data berhasil dihapus'

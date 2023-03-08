@@ -15,11 +15,7 @@ class CPresensi extends ResourceController
     {
         $this->api_helpers = new Api_helpers();
     }
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
+    
     public function data_siswa()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -56,11 +52,6 @@ class CPresensi extends ResourceController
         return $this->respond($data_siswa, 200);
     }
 
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -68,9 +59,9 @@ class CPresensi extends ResourceController
             return $this->failForbidden('not admin');
         }
         $rules = $this->validate([
-            'number_of_sick' => 'required',
-            'number_of_permit' => 'required',
-            'number_of_absents' => 'required'
+            'number_of_sick' => 'required|numeric',
+            'number_of_permit' => 'required|numeric',
+            'number_of_absents' => 'required|numeric'
         ]);
 
         if (!$rules) {
@@ -94,11 +85,6 @@ class CPresensi extends ResourceController
         return  $this->respondCreated($response);
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -109,9 +95,9 @@ class CPresensi extends ResourceController
             return $this->failForbidden('not admin');
         }
         $rules = $this->validate([
-            'number_of_sick' => 'required',
-            'number_of_permit' => 'required',
-            'number_of_absents' => 'required'
+            'number_of_sick' => 'required|numeric',
+            'number_of_permit' => 'required|numeric',
+            'number_of_absents' => 'required|numeric'
         ]);
 
         if (!$rules) {

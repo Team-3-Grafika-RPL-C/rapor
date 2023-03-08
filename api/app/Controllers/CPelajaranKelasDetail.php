@@ -49,8 +49,6 @@ class CPelajaranKelasDetail extends ResourceController
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
-        $id_subject = $this->request->getVar('id_subject');
-        $id_class_subject = $this->request->getVar('id_class_subject');
 
         $query = "UPDATE class_subject_detail SET is_deleted = 1 WHERE id_class_subject=?";
         $delete_data = $this->api_helpers->queryExecute($query, [$id]);
@@ -61,6 +59,4 @@ class CPelajaranKelasDetail extends ResourceController
 
         return $this->respondDeleted($response);
     }
-
-    
 }

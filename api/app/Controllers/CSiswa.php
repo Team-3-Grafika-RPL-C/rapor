@@ -17,17 +17,14 @@ class CSiswa extends ResourceController
         $this->api_helpers = new Api_helpers();
         $this->models = new ApiModel();
     }
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
+    
     public function index()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         if($token === false){
             return $this->failUnauthorized();
         }
+
         $data = [
             'message' => 'Data Siswa:',
             'data_siswa' => $this->model->where('is_deleted', 0)->orderBy('id', 'DESC')->findAll()
@@ -36,17 +33,13 @@ class CSiswa extends ResourceController
         return $this->respond($data, 200);
     }
 
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
     public function show($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         if($token === false){
             return $this->failUnauthorized();
         }
+
         $data = [
             'message' => 'Berhasil',
             'siswa_detail' => $this->model->find($id)
@@ -59,11 +52,6 @@ class CSiswa extends ResourceController
         return $this->respond($data, 200);
     }
 
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -73,6 +61,7 @@ class CSiswa extends ResourceController
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
+
         $rules = $this->validate([
             'nis' => 'required|numeric',
             'nisn' => 'required|numeric',
@@ -82,11 +71,11 @@ class CSiswa extends ResourceController
             'birthdate' => 'required|valid_date',
             'birthplace' => 'required|string',
             'religion' => 'required|string',
-            // 'father_name' => 'required|string',
-            // 'mother_name' => 'required|string',
-            // 'father_job' => 'required|string',
-            // 'mother_job' => 'required|string',
-            // 'parent_address' => 'required|string',
+            'father_name' => 'required|string',
+            'mother_name' => 'required|string',
+            'father_job' => 'required|string',
+            'mother_job' => 'required|string',
+            'parent_address' => 'required|string',
             'class' => 'required|string',
             'status' => 'required|numeric',
         ]);
@@ -139,11 +128,6 @@ class CSiswa extends ResourceController
         return $this->respondCreated($response);
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -153,22 +137,23 @@ class CSiswa extends ResourceController
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
+
         $rules = $this->validate([
-            'nis'               => 'required',
-            'nisn'              => 'required',
-            'student_name'      => 'required',
-            'gender'            => 'required',
-            'address'           => 'required',
-            'birthdate'         => 'required',
-            'birthplace'        => 'required',
-            'religion'          => 'required',
-            'father_name'       => 'required',
-            'mother_name'       => 'required',
-            'father_job'        => 'required',
-            'mother_job'        => 'required',
-            'parent_address'    => 'required',
-            'class'             => 'required',
-            'status'            => 'required',
+            'nis' => 'required|numeric',
+            'nisn' => 'required|numeric',
+            'student_name' => 'required|string',
+            'gender' => 'required',
+            'address' => 'required|string',
+            'birthdate' => 'required|valid_date',
+            'birthplace' => 'required|string',
+            'religion' => 'required|string',
+            'father_name' => 'required|string',
+            'mother_name' => 'required|string',
+            'father_job' => 'required|string',
+            'mother_job' => 'required|string',
+            'parent_address' => 'required|string',
+            'class' => 'required|string',
+            'status' => 'required|numeric',
         ]);
 
         if (!$rules) {
@@ -207,11 +192,6 @@ class CSiswa extends ResourceController
         return $this->respond($response, 200);
     }
 
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -221,8 +201,9 @@ class CSiswa extends ResourceController
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
+
         $query = "UPDATE students SET is_deleted = 1 WHERE id=?";
-        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
+        $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [
             'message' => 'Data berhasil dihapus'

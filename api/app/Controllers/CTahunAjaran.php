@@ -15,18 +15,14 @@ class CTahunAjaran extends ResourceController
     {
         $this->api_helpers = new Api_helpers();
     }
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
+
     public function index()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         if($token === false){
             return $this->failUnauthorized();
         }
-        
+
         $data = [
             'message' => 'Data Tahun Ajaran:',
             'data_tahun_ajaran' => $this->model->where('is_deleted', 0)->orderBy('id', 'ASC')->findAll()
@@ -35,18 +31,13 @@ class CTahunAjaran extends ResourceController
         return $this->respond($data, 200);
     }
 
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
     public function show($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         if($token === false){
             return $this->failUnauthorized();
         }
-        
+
         $data = [
             'message' => 'Detail Tahun Ajaran:',
             'detail_tahun_ajaran' => $this->model->find($id)
@@ -55,11 +46,6 @@ class CTahunAjaran extends ResourceController
         return $this->respond($data, 200);
     }
 
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -93,11 +79,6 @@ class CTahunAjaran extends ResourceController
         return $this->respondCreated($response);
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -131,11 +112,6 @@ class CTahunAjaran extends ResourceController
         return $this->respondUpdated($response);
     }
 
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -147,7 +123,7 @@ class CTahunAjaran extends ResourceController
         }
 
         $query = "UPDATE academic_years SET is_deleted = 1 WHERE id=?";
-        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
+        $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [
             'message' => 'Data berhasil dihapus'
@@ -167,10 +143,10 @@ class CTahunAjaran extends ResourceController
         }
         
         $query = "UPDATE academic_years SET is_active = 0 WHERE is_active=1";
-        $nonactivate_data = $this->api_helpers->queryExecute($query, [$id]); 
+        $this->api_helpers->queryExecute($query, [$id]); 
 
         $query = "UPDATE academic_years SET is_active = 1 WHERE id=?";
-        $activate_data = $this->api_helpers->queryExecute($query, [$id]); 
+        $this->api_helpers->queryExecute($query, [$id]); 
 
         $response = [
             'message' => 'Data berhasil diaktifkan'

@@ -84,6 +84,20 @@ class CInputNilaiMapel extends ResourceController
             return $this->failUnauthorized();
         }
 
+        $rules = $this->validate([
+            'id_class' => 'required|numeric',
+            'id_academic_year' => 'required|numeric',
+            'id_subjects' => 'required|numeric'
+        ]);
+
+        if (!$rules) {
+            $response = [
+                'message' => $this->validator->getErrors()
+            ];
+
+            return $this->failValidationErrors($response);
+        }
+
         $id_class = $this->request->getVar('id_class');
         $id_academic_year = $this->request->getVar('id_academic_year');
         $id_subjects = $this->request->getVar('id_subjects');
@@ -123,6 +137,19 @@ class CInputNilaiMapel extends ResourceController
         if($token === false){
             return $this->failUnauthorized();
         }
+
+        $rules = $this->validate([
+            'id_class' => 'required|numeric'
+        ]);
+
+        if (!$rules) {
+            $response = [
+                'message' => $this->validator->getErrors()
+            ];
+
+            return $this->failValidationErrors($response);
+        }
+
         $id_class = $this->request->getVar('id_class');
         
         $query = "SELECT DISTINCT 
@@ -138,11 +165,7 @@ class CInputNilaiMapel extends ResourceController
 
         return $this->respond($option_siswa, 200);
     }
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
+    
     public function show($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -173,11 +196,6 @@ class CInputNilaiMapel extends ResourceController
         return $this->respond($detail_nilai, 200);
     }
 
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -189,8 +207,8 @@ class CInputNilaiMapel extends ResourceController
         }
 
         $rules = $this->validate([
-            'id_class_students' => 'required',
-            'id_subjects' => 'required',
+            'id_class_students' => 'required|numeric',
+            'id_subjects' => 'required|numeric',
             'learning_outcomes' => 'required',
             'learning_purpose' => 'required',
             'score' => 'required',
@@ -217,11 +235,6 @@ class CInputNilaiMapel extends ResourceController
         return $this->respondCreated($response);
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -233,8 +246,8 @@ class CInputNilaiMapel extends ResourceController
         }
 
         $rules = $this->validate([
-            'id_class_students' => 'required',
-            'id_subjects' => 'required',
+            'id_class_students' => 'required|numeric',
+            'id_subjects' => 'required|numeric',
             'learning_outcomes' => 'required',
             'learning_purpose' => 'required',
             'score' => 'required',
@@ -261,11 +274,6 @@ class CInputNilaiMapel extends ResourceController
         return $this->respondUpdated($response);
     }
 
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -276,7 +284,7 @@ class CInputNilaiMapel extends ResourceController
             return $this->failForbidden('not admin');
         }
         
-        $query = $this->model->delete($id);
+        $this->model->delete($id);
 
         $response = [
             'message' => 'Data berhasil dihapus'

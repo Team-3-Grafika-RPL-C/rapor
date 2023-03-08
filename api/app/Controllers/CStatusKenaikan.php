@@ -74,7 +74,6 @@ class CStatusKenaikan extends ResourceController{
         ];
 
         return $this->respond($data_siswa, 200);
-
     }
 
     public function promoted($id = null)
@@ -85,7 +84,7 @@ class CStatusKenaikan extends ResourceController{
         }
 
         $query = "UPDATE class_students SET is_promoted = 1 WHERE id = ?";
-        $promoted = $this->api_helpers->queryExecute($query, [$id]); 
+        $this->api_helpers->queryExecute($query, [$id]); 
 
         $response = [
             'message' => 'Data berhasil disimpan'
@@ -102,7 +101,7 @@ class CStatusKenaikan extends ResourceController{
         }
 
         $query = "UPDATE class_students SET is_promoted = 0 WHERE id = ?";
-        $promoted = $this->api_helpers->queryExecute($query, [$id]); 
+        $this->api_helpers->queryExecute($query, [$id]); 
 
         $response = [
             'message' => 'Data berhasil disimpan'
@@ -110,5 +109,4 @@ class CStatusKenaikan extends ResourceController{
 
         return  $this->respondUpdated($response);
     }
-
 }

@@ -15,11 +15,7 @@ class CGuruPelajaran extends ResourceController
     {
         $this->api_helpers = new Api_helpers();
     }
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
+    
     public function index()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -49,11 +45,6 @@ class CGuruPelajaran extends ResourceController
         return $this->respond($data, 200);
     }
 
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
     public function show($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -116,11 +107,6 @@ class CGuruPelajaran extends ResourceController
         return $this->respond($data, 200);
     }
 
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -132,9 +118,9 @@ class CGuruPelajaran extends ResourceController
         }
         
         $rules = $this->validate([
-            'id_teacher' => 'required',
-            'id_class' => 'required',
-            'id_academic_year' => 'required',
+            'id_teacher' => 'required|numeric',
+            'id_class' => 'required|numeric',
+            'id_academic_year' => 'required|numeric',
         ]);
 
         if (!$rules) {
@@ -159,11 +145,6 @@ class CGuruPelajaran extends ResourceController
         return  $this->respondCreated($response);
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -175,9 +156,9 @@ class CGuruPelajaran extends ResourceController
         }
         
         $rules = $this->validate([
-            'id_teacher' => 'required',
-            'id_class' => 'required',
-            'id_academic_year' => 'required',
+            'id_teacher' => 'required|numeric',
+            'id_class' => 'required|numeric',
+            'id_academic_year' => 'required|numeric',
         ]);
 
         if (!$rules) {
@@ -201,11 +182,6 @@ class CGuruPelajaran extends ResourceController
         return  $this->respondUpdated($response);
     }
 
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -215,11 +191,12 @@ class CGuruPelajaran extends ResourceController
         if (!$this->api_helpers->isAdmin($token)) {
             return $this->failForbidden('not admin');
         }
+
         $query = "UPDATE teacher_subject_detail SET is_deleted = 1 WHERE id_teacher_subject=?";
-        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
+        $this->api_helpers->queryExecute($query, [$id]);
 
         $query = "UPDATE teacher_subject SET is_deleted = 1 WHERE id=?";
-        $delete_data = $this->api_helpers->queryExecute($query, [$id]);
+        $this->api_helpers->queryExecute($query, [$id]);
 
         $response = [
             'message' => 'Data berhasil dihapus'
@@ -227,12 +204,14 @@ class CGuruPelajaran extends ResourceController
 
         return $this->respondDeleted($response);
     }
+
     public function option_guru()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         if($token === false){
             return $this->failUnauthorized();
         }
+
         $query = "SELECT a.id, a.teacher_name FROM teachers a WHERE a.is_deleted = 0";
         $data_guru = $this->api_helpers->queryGetArray($query);
 
@@ -242,12 +221,14 @@ class CGuruPelajaran extends ResourceController
 
         return $this->respond($data, 200);
     }
+
     public function option_kelas()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         if($token === false){
             return $this->failUnauthorized();
         }
+
         $query = "SELECT DISTINCT a.id, a.class_name FROM class a WHERE a.is_deleted = 0";
         $data_kelas = $this->api_helpers->queryGetArray($query);
 
@@ -257,12 +238,14 @@ class CGuruPelajaran extends ResourceController
 
         return $this->respond($option_kelas, 200);
     }
+
     public function option_tahun()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         if($token === false){
             return $this->failUnauthorized();
         }
+
         $query = "SELECT DISTINCT a.id, a.academic_year FROM academic_years a WHERE a.is_deleted = 0";
         $data_tahun = $this->api_helpers->queryGetArray($query);
 
@@ -272,12 +255,14 @@ class CGuruPelajaran extends ResourceController
 
         return $this->respond($option_tahun, 200);
     }
+
     public function data_mapel()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
         if($token === false){
             return $this->failUnauthorized();
         }
+
         $query = "SELECT
         a.id,
         CONCAT_WS(' Kelas ', a.subject_name, a.class) as mapel

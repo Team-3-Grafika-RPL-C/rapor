@@ -15,36 +15,6 @@ class CSiswaEkskul extends ResourceController
     {
         $this->api_helpers = new Api_helpers();
     }
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
-    public function update($id = null)
-    {
-        //
-    }
-
 
     public function option_ekskul()
     {
@@ -70,6 +40,18 @@ class CSiswaEkskul extends ResourceController
             return $this->failUnauthorized();
         }
 
+        $rules = $this->validate([
+            'id_extracurricular' => 'required|numeric'
+        ]);
+
+        if (!$rules) {
+            $response = [
+                'message' => $this->validator->getErrors()
+            ];
+
+            return $this->failValidationErrors($response);
+        }
+
         $id_extracurricular = $this->request->getVar('id_extracurricular');
 
         $query = "SELECT DISTINCT
@@ -87,7 +69,6 @@ class CSiswaEkskul extends ResourceController
         ];
 
         return $this->respond($data_ekskul, 200);
-
     }
 
     public function data_siswa()
@@ -135,8 +116,6 @@ class CSiswaEkskul extends ResourceController
             ];
         }
 
-        $id_extracurricular = $this->request->getVar('id_extracurricular');
-
         $this->model->insert([
             'id_student' => esc($this->request->getVar('id_student')),
             'id_extracurricular' => esc($this->request->getVar('id_extracurricular')),
@@ -159,7 +138,7 @@ class CSiswaEkskul extends ResourceController
             return $this->failForbidden('not admin');
         }
 
-        $query = $this->model->delete($id);
+        $this->model->delete($id);
 
         $response = [
             'message' => 'Data berhasil dihapus'

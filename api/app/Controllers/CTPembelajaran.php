@@ -16,11 +16,6 @@ class CTPembelajaran extends ResourceController
         $this->api_helpers = new Api_helpers();
     }
 
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
     public function index()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -40,11 +35,6 @@ class CTPembelajaran extends ResourceController
         return $this->respond($data, 200);
     }
 
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
     public function show($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -67,11 +57,6 @@ class CTPembelajaran extends ResourceController
         return $this->respond($data, 200);
     }
 
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
     public function create()
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -85,9 +70,8 @@ class CTPembelajaran extends ResourceController
         $rules = $this->validate([
             'learning_purpose_code' => 'required',
             'learning_purpose_description' => 'required',
-            'id_learning_outcome' => 'required',
-            'id_semester' => 'required',
-
+            'id_learning_outcome' => 'required|numeric',
+            'id_semester' => 'required|numeric',
         ]);
 
         if (!$rules) {
@@ -112,11 +96,6 @@ class CTPembelajaran extends ResourceController
         return $this->respondCreated($response);
     }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
     public function update($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));
@@ -130,8 +109,8 @@ class CTPembelajaran extends ResourceController
         $rules = $this->validate([
             'learning_purpose_code' => 'required',
             'learning_purpose_description' => 'required',
-            'id_learning_outcome' => 'required',
-            'id_semester' => 'required',
+            'id_learning_outcome' => 'required|numeric',
+            'id_semester' => 'required|numeric',
         ]);
 
         if (!$rules) {
@@ -156,11 +135,6 @@ class CTPembelajaran extends ResourceController
         return $this->respondUpdated($response);
     }
 
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
     public function delete($id = null)
     {
         $token = $this->api_helpers->authorizing($this->request->getHeader('Authorization'));

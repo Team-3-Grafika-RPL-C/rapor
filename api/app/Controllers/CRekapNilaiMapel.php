@@ -55,6 +55,19 @@ class CRekapNilaiMapel extends ResourceController{
             return $this->failUnauthorized();
         }
 
+        $rules = $this->validate([
+            'id_class' => 'required|numeric',
+            'id_academic_year' => 'required|numeric'
+        ]);
+
+        if (!$rules) {
+            $response = [
+                'message' => $this->validator->getErrors()
+            ];
+
+            return $this->failValidationErrors($response);
+        }
+
         $id_academic_year = $this->request->getVar('id_academic_year');
         $id_class = $this->request->getVar('id_class');
 
@@ -76,7 +89,5 @@ class CRekapNilaiMapel extends ResourceController{
         ];
 
         return $this->respond($data_siswa, 200);
-
     }
-
 }
