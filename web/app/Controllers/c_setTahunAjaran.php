@@ -75,7 +75,12 @@ class c_setTahunAjaran extends BaseController
             'page' => 'edit'
         ];
 
-        $response = $this->client->request('GET', 'tahun-ajaran/' . $id);
+        $response = $this->client->request('GET', 'tahun-ajaran/' . $id, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
 
         $response_body = json_decode($response->getBody());
         if ($response->getStatusCode() === 200) {

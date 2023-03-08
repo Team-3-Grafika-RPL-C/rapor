@@ -49,7 +49,7 @@ class CTahunAjaran extends ResourceController
         
         $data = [
             'message' => 'Detail Tahun Ajaran:',
-            'detail_tahun_ajaran' => $this->model->where('is_deleted', 0)->find($id)
+            'detail_tahun_ajaran' => $this->model->find($id)
         ];
 
         return $this->respond($data, 200);
