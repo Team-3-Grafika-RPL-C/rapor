@@ -153,6 +153,11 @@ $routes->get('/set-pelajaran_kelas/delete/(:num)', 'c_setPelajaranKelas::delete/
 
 $routes->get('/rapor-semester', 'c_raporSemester::index', ['filter' => 'AuthTeacher']);
 $routes->get('/rapor-semester/form/(:num)', 'c_raporSemester::form/$1', ['filter' => 'AuthTeacher']);
+$routes->get('/rapor-semester/profil/(:num)', 'c_raporSemester::profil/$1', ['filter' => 'AuthTeacher']);
+$routes->get('/rapor-semester/nilai-mapel/(:num)', 'c_raporSemester::nilai_mapel/$1', ['filter' => 'AuthTeacher']);
+$routes->get('/rapor-semester/nilai-ekskul/(:num)', 'c_raporSemester::nilai_ekskul/$1', ['filter' => 'AuthTeacher']);
+$routes->get('/rapor-semester/catatan/(:num)', 'c_raporSemester::catatan/$1', ['filter' => 'AuthTeacher']);
+$routes->get('/rapor-semester/presensi/(:num)', 'c_raporSemester::presensi/$1', ['filter' => 'AuthTeacher']);
 
 $routes->get('/catatan-semester', 'c_catatanSemester::index', ['filter' => 'AuthTeacher']);
 $routes->post('/data-catatan-semester', 'c_catatanSemester::getSiswaKelas', ['filter' => 'AuthTeacher']);

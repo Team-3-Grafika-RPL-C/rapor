@@ -55,6 +55,10 @@ class c_raporSemester extends BaseController {
             $data['data_err'] = json_decode($response->getBody());
         }
 
+        return view('dashboard/rapor/form-rapor_semester', $data);
+    }
+    public function profil($id)
+    {
         $response = $this->client->request('GET', 'rapor-profil/'.$id, [
             'headers' => [
                 'Authorization' => 'Bearer ' . session()->get('token')
@@ -62,12 +66,84 @@ class c_raporSemester extends BaseController {
             'http_errors' => false
         ]);
         if ($response->getStatusCode() === 200) {
-            $data['siswa'] = json_decode($response->getBody());
+            $data['profil'] = json_decode($response->getBody());
         } else {
             $data['data_err'] = json_decode($response->getBody());
         }
 
-        return view('dashboard/rapor/form-rapor_semester', $data);
+        echo $response->getBody();
+
+    }
+
+    public function nilai_mapel($id)
+    {
+        $response = $this->client->request('GET', 'rapor-nilai/'.$id, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() === 200) {
+            $data['nilai'] = json_decode($response->getBody());
+        } else {
+            $data['data_err'] = json_decode($response->getBody());
+        }
+
+        echo $response->getBody();
+
+    }
+
+    public function nilai_ekskul($id)
+    {
+        $response = $this->client->request('GET', 'rapor-nilai-ekskul/'.$id, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() === 200) {
+            $data['nilai'] = json_decode($response->getBody());
+        } else {
+            $data['data_err'] = json_decode($response->getBody());
+        }
+
+        echo $response->getBody();
+
+    }
+
+    public function catatan($id)
+    {
+        $response = $this->client->request('GET', 'rapor-catatan/'.$id, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() === 200) {
+            $data['catatan'] = json_decode($response->getBody());
+        } else {
+            $data['data_err'] = json_decode($response->getBody());
+        }
+
+        echo $response->getBody();
+    }
+
+    public function presensi($id)
+    {
+        $response = $this->client->request('GET', 'rapor-presensi/'.$id, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . session()->get('token')
+            ],
+            'http_errors' => false
+        ]);
+        if ($response->getStatusCode() === 200) {
+            $data['presensi'] = json_decode($response->getBody());
+        } else {
+            $data['data_err'] = json_decode($response->getBody());
+        }
+
+        echo $response->getBody();
+
     }
 
     

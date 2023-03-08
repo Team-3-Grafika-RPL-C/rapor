@@ -46,7 +46,7 @@
                     <div class="col-md-6 my-4 d-flex justify-content-between">
                         <label class="control-label col-md-3 font-weight-bold text-gray-900">Siswa</label>
                         <div class="col-md-9">
-                            <select id="inputState" class="form-control">
+                            <select id="siswa" name="siswa" class="form-control">
                                 <?php foreach ($siswa->data_siswa as $dat) {?>
                                     <option value="<?=$dat->id?>">
                                     <?= $dat->student_name ?>
@@ -286,7 +286,7 @@
                         <th style="text-align:center; width: 33.33%;" class="th-style"><font face="Arial" size="2">Malang,</font></th>
                     </tr>
                     <tr>
-                        <th style="text-align:center; width: 33.33%;" class="th-style"><font face="Arial" size="2">Orang Tua</font></th>
+                        <th style="text-align:center; width: 33.33%;" class="th-style"><font face="Arial" size="2">Wali Murid</font></th>
                         <th style="text-align:center; width: 33.33%;" class="th-style"><font face="Arial" size="2">Kepala Sekolah</font></th>
                         <th style="text-align:center; width: 33.33%;" class="th-style"><font face="Arial" size="2">Wali Kelas</font></th>
                     </tr>
