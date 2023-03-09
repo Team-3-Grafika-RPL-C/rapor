@@ -43,7 +43,20 @@
                             </select>
                         </div>
                     </div>                 -->
-                    <div class="col-md-6 my-4 d-flex justify-content-between">
+                    <div class="col-md-4 my-2">
+                        <label class="control-label font-weight-bold text-gray-900">Siswa</label>
+                    </div>
+                    <div class="col-md-8 mb-4">
+                        <select id="siswa" name="siswa" class="form-control">
+                            <?php foreach ($siswa->data_siswa as $dat) {?>
+                                <option value="<?=$dat->id?>">
+                                    <?= $dat->student_name ?>
+                                </option>
+                            <?php
+                            } ?>
+                        </select>
+                    </div>
+                    <!-- <div class="col-md-6 my-4 d-flex justify-content-between">
                         <label class="control-label col-md-3 font-weight-bold text-gray-900">Siswa</label>
                         <div class="col-md-9">
                             <select id="siswa" name="siswa" class="form-control">
@@ -55,7 +68,7 @@
                                 } ?>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </form>
         </div>
