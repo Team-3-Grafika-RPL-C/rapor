@@ -98,11 +98,11 @@ class c_setPelajaranKelas extends BaseController
             'http_errors' => false
         ]);
         if ($response->getStatusCode() === 200) {
-            $pelajaran['pelajaran_kelas'] = json_decode($response->getBody());
+            $data['pelajaran_kelas'] = json_decode($response->getBody())->pelajaran_kelas;
         } else {
-            $pelajaran['data_err'] = json_decode($response->getBody());
+            $data['data_err'] = json_decode($response->getBody());
         }
-
+        
         $response = $this->client->request('GET', 'pelajaran-kelas-detail/' . $id, [
             'headers' => [
                 'Authorization' => 'Bearer ' . session()->get('token')
@@ -112,16 +112,17 @@ class c_setPelajaranKelas extends BaseController
         if ($response->getStatusCode() === 200) {
             $data['detail'] = json_decode($response->getBody());
             $array_detail= [];
-    
+            
             foreach ($data['detail']->pelajaran_kelas_detail as $key => $value) {
                 array_push($array_detail, $value->id_subject);
             }
             $data['detail_id'] = $array_detail;
-
+            
         } else {
             $data['data_err'] = json_decode($response->getBody());
         }
-
+        
+        // dd($data);
         return view('dashboard/setting_data/form-set_pelajaran_kelas_detail', $data);
     }
 

@@ -81,7 +81,7 @@ class CPelajaranKelas extends ResourceController
 		a.id as id_parent,
         b.id as id_detail,
         b.id_subject,
-        c.subject_name
+        CONCAT_WS(' Kelas ', c.subject_name, c.class) as subject_name
         FROM class_subject a
         LEFT JOIN class_subject_detail b ON a.id = b.id_class_subject
         LEFT JOIN subjects c ON b.id_subject = c.id
