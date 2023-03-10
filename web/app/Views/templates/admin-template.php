@@ -47,8 +47,8 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item <?= (session()->get('is_admin') || session()->get('is_teacher')) ? '' : 'd-none' ?>">
         <a class="nav-link d-md-flex" href="<?= base_url(); ?>/dashboard">
-          <i class="ri-dashboard-fill" style="font-size: 24px"></i>
-          <span class="my-auto ml-2">Dashboard</span>
+          <i class="ri-dashboard-fill d-inline p-2" style="font-size: 24px"></i>
+          <span class="my-auto ml-2 d-inline p-2">Dashboard</span>
         </a>
       </li>
       <li class="nav-item <?= (session()->get('is_admin') || session()->get('is_teacher')) ? 'd-none' : '' ?>">
