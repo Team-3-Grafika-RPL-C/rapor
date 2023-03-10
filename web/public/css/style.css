@@ -1,0 +1,311 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 39.81px;
+  line-height: 60px;
+}
+h1.bold {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 39.81px;
+  line-height: 60px;
+}
+h1.extra-bold {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 39.81px;
+  line-height: 60px;
+}
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 33.18px;
+  line-height: 50px;
+}
+h2.bold {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 33.18px;
+  line-height: 50px;
+}
+h2.extra-bold {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 33.18px;
+  line-height: 50px;
+}
+h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 27.65px;
+  line-height: 41px;
+}
+h3.bold {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 27.65px;
+  line-height: 41px;
+}
+h3.extra-bold {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 27.65px;
+  line-height: 41px;
+}
+h4 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 23.04px;
+  line-height: 35px;
+}
+h4.bold {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 23.04px;
+  line-height: 35px;
+}
+h4.extra-bold {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 23.04px;
+  line-height: 35px;
+}
+h5 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19.2px;
+  line-height: 23px;
+}
+h5.bold {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 19.2px;
+  line-height: 23px;
+}
+p {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+p.bold {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+.text-center {
+  text-align: center !important;
+}
+.o-hidden {
+  overflow: hidden !important;
+}
+/* Bg Login */
+.bg-indigo {
+  background-color: #845ef7;
+  background-size: cover;
+}
+/* Bg gradient */
+.bg-login {
+  background-color: #845ef7;
+}
+.card-right {
+  background-color: #c8cdd0;
+}
+/* Form Login */
+.login-placeholder::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font-family: 'Inter', sans-serif;
+  opacity: 1; /* Firefox */
+}
+
+.login-placeholder:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  font-family: 'Inter', sans-serif;
+}
+
+.login-placeholder::-ms-input-placeholder {
+  /* Microsoft Edge */
+  font-family: 'Inter', sans-serif;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #6e707e;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #d1d3e2;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.shadow-lg {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+.login-height {
+  position: absolute;
+  height: 852px;
+}
+form.user .btn-user {
+  font-size: 0.8rem;
+  border-radius: 10rem;
+  padding: 0.75rem 1rem;
+}
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn-block + .btn-block {
+  margin-top: 0.5rem;
+}
+
+input[type='submit'].btn-block,
+input[type='reset'].btn-block,
+input[type='button'].btn-block {
+  width: 100%;
+}
+form.user .form-control-user {
+  font-size: 0.8rem;
+  border-radius: 18px;
+  padding: 1.5rem 1rem;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+/* Important */
+.content-radius {
+  border-radius: 16px !important;
+}
+.bg-primary-500 {
+  background-color: #339af0 !important;
+}
+.bg-danger-500 {
+  background-color: #f87272 !important;
+}
+.bg-warning-500 {
+  background-color: #ffce52 !important;
+}
+.bg-success-700 {
+  background-color: #36d399 !important;
+}
+.bg-success-900 {
+  background-color: #21976B !important;
+}
+.text-indigo-900 {
+  color: #5f3dc4 !important;
+}
+
+a.text-indigo-900:hover,
+a.text-indigo-900:focus {
+  color: #7048e8 !important;
+}
+.btn-rounded {
+  border-radius: 50% !important;
+}
+.text-pink {
+  color: #FAA3A3 !important;
+}
+
+a.text-pink:hover, a.text-pink:focus {
+  color: #F87272 !important;
+}
+.text-blue {
+  color: #74C0FC !important;
+}
+
+a.text-blue:hover, a.text-blue:focus {
+  color: #339AF0 !important;
+}
+.text-indigo-500 {
+  color: #845EF7 !important;
+}
+
+a.text-indigo-500:hover, a.text-indigo-500:focus {
+  color: #5f3dc4 !important;
+}
+[data-href] {
+  cursor: pointer;
+  color: #fff;
+}
+[data-href]:hover {
+  background-color: #B197FC;
+  color: #360DAF;
+}
+.btn-outline-white {
+  border-color: #74838B;
+}
+.main-footer{
+  background-color: #ffff;
+  border-top: 1px solid #dee2e6;
+  color: #869099;
+  padding: 1rem;
+}
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #845EF7 !important;
+  border-color: #845EF7 !important;
+}
+/* btn */
+.btn-indigo {
+  color: #fff;
+  background-color: #845EF7;
+  border-color: #845EF7;
+}
+
+.btn-indigo:hover {
+  color: #fff;
+  background-color: #5f3dc4;
+  border-color: #5a38bf;
+}
+
+.btn-indigo:focus,
+.btn-indigo.focus {
+  color: #fff;
+  background-color: #5f3dc4;
+  border-color: #5a38bf;
+  box-shadow: 0 0 0 0.2rem rgba(105, 136, 228, 0.5);
+}
+
+.btn-indigo.disabled,
+.btn-indigo:disabled {
+  color: #fff;
+  background-color: #845EF7;
+  border-color: #845EF7;
+}
+
+.btn-indigo:not(:disabled):not(.disabled):active,
+.btn-indigo:not(:disabled):not(.disabled).active,
+.show > .btn-indigo.dropdown-toggle {
+  color: #fff;
+  background-color: #5a38bf;
+  border-color: #5b36ca;
+}
+
+.btn-indigo:not(:disabled):not(.disabled):active:focus,
+.btn-indigo:not(:disabled):not(.disabled).active:focus,
+.show > .btn-indigo.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(105, 136, 228, 0.5);
+}
