@@ -47,8 +47,8 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item <?= (session()->get('is_admin') || session()->get('is_teacher')) ? '' : 'd-none' ?>">
         <a class="nav-link d-md-flex" href="<?= base_url(); ?>/dashboard">
-          <i class="ri-dashboard-fill d-inline p-2" style="font-size: 24px"></i>
-          <span class="my-auto ml-2 d-inline p-2">Dashboard</span>
+          <i class="ri-dashboard-fill" style="font-size: 24px"></i>
+          <span class="my-auto ml-2">Dashboard</span>
         </a>
       </li>
       <li class="nav-item <?= (session()->get('is_admin') || session()->get('is_teacher')) ? 'd-none' : '' ?>">
@@ -74,7 +74,7 @@
       <li class="nav-item <?= session()->get('is_admin') ? '' : 'd-none' ?>">
         <a class="nav-link collapsed d-md-flex" href="#" data-toggle="collapse" data-target="#collapseDataUmum" aria-expanded="true" aria-controls="collapseDataUmum">
           <i class="ri-book-2-fill" style="font-size: 24px"></i>
-          <span class="my-auto ml-2 mr-auto">Data Umum</span>
+          <span class="my-auto ml-2">Data Umum</span>
         </a>
         <div id="collapseDataUmum" class="collapse" aria-labelledby="headingDataUmum" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -93,7 +93,7 @@
       <li class="nav-item <?= session()->get('is_admin') ? '' : 'd-none' ?>">
         <a class="nav-link collapsed d-md-flex" href="#" data-toggle="collapse" data-target="#collapseSettingData" aria-expanded="true" aria-controls="collapseSettingData">
           <i class="ri-settings-2-line" style="font-size: 24px"></i>
-          <span class="my-auto ml-2 mr-auto">Setting Data</span>
+          <span class="my-auto ml-2">Setting Data</span>
         </a>
         <div id="collapseSettingData" class="collapse" aria-labelledby="headingSettingData" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -121,7 +121,7 @@
       <li class="nav-item <?= session()->get('is_teacher') || session()->get('is_admin') ? '' : 'd-none' ?>">
         <a class="nav-link collapsed d-md-flex" href="#" data-toggle="collapse" data-target="#collapsePenilaian" aria-expanded="true" aria-controls="collapsePenilaian">
           <i class="ri-draft-fill" style="font-size: 24px"></i>
-          <span class="my-auto ml-2 mr-auto">Penilaian</span>
+          <span class="my-auto ml-2">Penilaian</span>
         </a>
         <div id="collapsePenilaian" class="collapse" aria-labelledby="headingPenilaian" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -148,7 +148,7 @@
       <li class="nav-item <?= session()->get('is_admin') ? '' : 'd-none' ?>">
         <a class="nav-link collapsed d-md-flex" href="#" data-toggle="collapse" data-target="#collapseRapor" aria-expanded="true" aria-controls="collapseRapor">
           <i class="ri-book-read-fill" style="font-size: 24px"></i>
-          <span class="my-auto ml-2 mr-auto">Rapor</span>
+          <span class="my-auto ml-2">Rapor</span>
         </a>
         <div id="collapseRapor" class="collapse" aria-labelledby="headingRapor" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -164,7 +164,7 @@
       <li class="nav-item">
         <a class="nav-link d-md-flex" href="<?= base_url(); ?>/logout">
           <i class="ri-logout-box-line" style="font-size: 24px"></i>
-          <span class="my-auto ml-2 mr-auto">Logout</span></a>
+          <span class="my-auto ml-2">Logout</span></a>
       </li>
 
       <!-- Divider -->
