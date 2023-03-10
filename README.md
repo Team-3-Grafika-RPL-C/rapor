@@ -7,10 +7,6 @@ Frontend :
 
 ![Flutter](https://img.icons8.com/color/64/null/flutter.png)
 
-- Web :
-
-![Codeigniter](https://img.icons8.com/external-tal-revivo-color-tal-revivo/64/000000/external-codeigniter-is-an-open-source-software-rapid-development-web-framework-logo-color-tal-revivo.png)
-
 Backend :
 
 - Api :

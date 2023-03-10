@@ -37,6 +37,21 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+// ----- API ----- //
+
+// --- Account --- //
+$routes->post('/login/user', 'Accounts::loginUser');
+$routes->post('/login/admin', 'Accounts::loginAdmin');
+
+// --- Admin --- //
+$routes->post('/students', 'Admin::addStudent');
+$routes->put('/students/(:any)', 'Admin::updateStudent/$1');
+$routes->delete('/students/(:any)', 'Admin::deleteStudent/$1');
+
+// --- School --- //
+$routes->get('/students', 'Schools::getStudentsList');
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
