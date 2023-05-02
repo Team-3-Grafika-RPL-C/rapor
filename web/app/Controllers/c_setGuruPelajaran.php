@@ -245,7 +245,6 @@ class c_setGuruPelajaran extends BaseController
         ]);
         $body_response = json_decode($response->getBody());
 
-
         foreach ($id_subject as $key => $value) {
             $request_client_data_detail = [
                 'id_subject' => $value,
