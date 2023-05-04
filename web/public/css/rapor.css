@@ -1,0 +1,90 @@
+body{
+    font-family: Arial, sans-serif, Tahoma;
+}
+
+.judul{
+    font-family: Tahoma;
+    line-height: 28px;
+    font-weight: 700;    
+}
+.teks{
+    font-family: sans-serif;
+    line-height: 14px;
+    font-weight: 400;    
+}
+.tiny-judul{
+    font-family: Arial;
+    line-height: 19px;
+    font-weight: 600;
+}
+.photo-box{
+    position: relative;
+    border-collapse: collapse;
+    margin: 0;
+    width: 3cm;
+}
+.photo-content{
+    width: 3cm;
+    height: 4cm;
+    text-align: center;
+    vertical-align: middle;
+    border-style: dotted;
+    border: 1px;    
+}
+.td-border{
+    border-top: 1px solid black !important;
+    border-bottom: 1px solid black !important;
+    border-right: 1px solid black !important;
+    border-left: 1px solid black !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+.text {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 19px;
+    color: #333333;
+}
+.th-style{
+    width: 20%;
+    text-align: left;
+    font-weight: 600;
+    padding-bottom: 7px;
+}
+.no{
+    text-align:center;
+    vertical-align: middle;
+    margin-top: 3;
+    margin-bottom: 3;
+    margin-left: 3;
+    margin-right: 3;
+    width: 3%;
+}
+.mapel{
+    text-align:center;
+    vertical-align: middle;
+    margin-top: 3;
+    margin-bottom: 3;
+    margin-left: 3;
+    margin-right: 3;
+    width: 20%;
+}
+.nilai-akhir{
+    text-align:center;
+    vertical-align: middle;
+    margin-top: 3;
+    margin-bottom: 3;
+    margin-left: 3;
+    margin-right: 3;
+    width: 10%;
+}
+.capaian-komp{
+    text-align:center;
+    vertical-align: middle;
+    margin-top: 3;
+    margin-bottom: 3;
+    margin-left: 3;
+    margin-right: 3;
+    width: 36%;
+}
